@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Console</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            color: green;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #console {
+            width: 90%;
+            height: 80%;
+            border: 2px solid green;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <div id="console">Welcome to the Game Console!
+Press the arrow keys to interact.
+</div>
+
+    <script>
+        const consoleElement = document.getElementById('console');
+
+        // Function to log messages in the console div
+        function logMessage(message) {
+            consoleElement.textContent += `\n${message}`;
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+        }
+
+        // Event listener for key presses
+        window.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'ArrowUp':
+                    logMessage('You pressed UP!');
+                    break;
+                case 'ArrowDown':
+                    logMessage('You pressed DOWN!');
+                    break;
+                case 'ArrowLeft':
+                    logMessage('You pressed LEFT!');
+                    break;
+                case 'ArrowRight':
+                    logMessage('You pressed RIGHT!');
+                    break;
+                case 'f':
+                    logMessage('You pressed F! This key is now recognized.');
+                    break;
+                default:
+                    logMessage(`Key "${event.key}" is not recognized.`);
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

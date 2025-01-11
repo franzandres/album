@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases en Línea</title>
+    <style>
+        body {
+            background-color: #add8e6; /* Fondo celeste */
+            color: #000000; /* Color de texto negro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            border: 2px solid #000;
+        }
+        .circle-content {
+            text-align: center;
+            font-size: 14px;
+        }
+        .circle-content h2 {
+            font-size: 24px;
+            margin: 5px;
+        }
+        .content {
+            text-align: center;
+            margin: 20px;
+        }
+        .content h2 {
+            font-size: 24px;
+        }
+        .content p {
+            font-size: 14px;
+        }
+        .payment-info {
+            margin: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .chat-section {
+            text-align: center;
+            margin: 20px;
+        }
+        .chat-section textarea {
+            width: 80%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .chat-section button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-history {
+            width: 80%;
+            margin: 0 auto 20px auto;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 16px;
+        }
+        .chat-history p {
+            margin: 5px 0;
+        }
+        .user-message {
+            color: #000;
+        }
+        .chatbot-response {
+            color: #007BFF;
+        }
+    </style>
+    <script>
+        function sendMessage() {
+            const userMessage = document.querySelector("textarea").value;
+            const chatHistory = document.querySelector(".chat-history");
+
+            if (userMessage.trim() !== "") {
+                // Agregar el mensaje del usuario al historial
+                const userMessageElement = document.createElement("p");
+                userMessageElement.textContent = "Usuario: " + userMessage;
+                userMessageElement.classList.add("user-message");
+                chatHistory.appendChild(userMessageElement);
+
+                // Agregar la respuesta del chatbot
+                const botResponseElement = document.createElement("p");
+                botResponseElement.textContent = "Chatbot: En qué puedo ayudarle?";
+                botResponseElement.classList.add("chatbot-response");
+                chatHistory.appendChild(botResponseElement);
+
+                // Limpiar el área de texto
+                document.querySelector("textarea").value = "";
+
+                // Desplazar hacia abajo el historial de chat
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            } else {
+                alert("Por favor, escriba un mensaje.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="circle">
+            <div class="circle-content">
+                <h2>Religión</h2>
+                <h2>Lenguaje</h2>
+                <h2>Psicología</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Religión, Ética y Moral</h2>
+        <h2>Conocimiento</h2>
+        <p>Psicología, Literatura</p>
+    </div>
+
+    <div class="payment-info">
+        <p>Formas de pago:</p>
+        <ul>
+            <li>Número de teléfono celular: 69245269</li>
+            <li>Tigo Money</li>
+            <li>Banco Unión</li>
+        </ul>
+    </div>
+
+    <div class="chat-section">
+        <h2>Chatea con nosotros</h2>
+        <div class="chat-history"></div>
+        <textarea placeholder="Escribe tu mensaje aquí..."></textarea><br>
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+</body>
+</html>

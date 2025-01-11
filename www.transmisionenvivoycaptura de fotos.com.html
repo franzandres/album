@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transmisión en Vivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .video-container, .photo-container {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        video, canvas, img {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .photo-gallery img {
+            max-width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transmisión en Vivo y Captura de Fotos</h1>
+
+    <!-- Contenedor de video en vivo -->
+    <div class="video-container">
+        <video id="liveVideo" autoplay></video>
+        <br>
+        <button id="captureButton">Capturar Foto</button>
+    </div>
+
+    <!-- Canvas oculto para capturar la imagen -->
+    <canvas id="photoCanvas" style="display:none;"></canvas>
+
+    <!-- Contenedor para mostrar la foto capturada -->
+    <div class="photo-container">
+        <h2>Foto Capturada</h2>
+        <img id="capturedPhoto" src="" alt="Foto capturada">
+    </div>
+
+    <!-- Galería de fotos capturadas -->
+    <div class="photo-gallery" id="photoGallery"></div>
+
+    <script>
+        // Referencias a elementos HTML
+        const liveVideo = document.getElementById('liveVideo');
+        const captureButton = document.getElementById('captureButton');
+        const photoCanvas = document.getElementById('photoCanvas');
+        const capturedPhoto = document.getElementById('capturedPhoto');
+        const photoGallery = document.getElementById('photoGallery');
+
+        // Acceso a la cámara
+        async function startLiveVideo() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                liveVideo.srcObject = stream;
+            } catch (error) {
+                console.error('Error al acceder a la cámara:', error);
+                alert('No se pudo acceder a la cámara.');
+            }
+        }
+
+        // Capturar foto
+        captureButton.addEventListener('click', () => {
+            const context = photoCanvas.getContext('2d');
+            photoCanvas.width = liveVideo.videoWidth;
+            photoCanvas.height = liveVideo.videoHeight;
+
+            // Dibujar el video en el canvas
+            context.drawImage(liveVideo, 0, 0, photoCanvas.width, photoCanvas.height);
+
+            // Obtener la imagen como base64
+            const photoData = photoCanvas.toDataURL('image/png');
+
+            // Mostrar la imagen capturada
+            capturedPhoto.src = photoData;
+
+            // Agregar la foto a la galería
+            const img = document.createElement('img');
+            img.src = photoData;
+            photoGallery.appendChild(img);
+        });
+
+        // Iniciar la transmisión en vivo al cargar la página
+        window.onload = startLiveVideo;
+    </script>
+</body>
+</html>

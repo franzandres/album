@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation 2 Console</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .game-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .game {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .game img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .gameplay {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .control {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #555;
+            color: white;
+            font-size: 18px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .control:active {
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PlayStation 2 Console</h1>
+        <p>Over 500 Games to Explore</p>
+    </header>
+    <main>
+        <h2>Game Library</h2>
+        <div class="game-list">
+            <!-- Example Game -->
+            <div class="game">
+                <img src="https://via.placeholder.com/150" alt="Game Cover">
+                <h3>Game Title 1</h3>
+                <p>Genre: Action</p>
+            </div>
+            <div class="game">
+                <img src="https://via.placeholder.com/150" alt="Game Cover">
+                <h3>Game Title 2</h3>
+                <p>Genre: Adventure</p>
+            </div>
+            <!-- Repeat similar blocks for other games -->
+        </div>
+        <div class="gameplay">
+            <h2>Game Controls</h2>
+            <p>Use the arrow keys to play:</p>
+            <div class="controls">
+                <div class="control" id="up">&#8593;</div>
+            </div>
+            <div class="controls">
+                <div class="control" id="left">&#8592;</div>
+                <div class="control" id="down">&#8595;</div>
+                <div class="control" id="right">&#8594;</div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 PlayStation 2 Fans. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('keydown', (event) => {
+            const keyName = event.key;
+            switch (keyName) {
+                case 'ArrowUp':
+                    alert('You pressed UP!');
+                    break;
+                case 'ArrowDown':
+                    alert('You pressed DOWN!');
+                    break;
+                case 'ArrowLeft':
+                    alert('You pressed LEFT!');
+                    break;
+                case 'ArrowRight':
+                    alert('You pressed RIGHT!');
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

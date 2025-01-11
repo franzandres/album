@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Mensajería Instantánea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #075e54;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 25%;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .chat-box {
+            width: 70%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #d8f7ff;
+            border-radius: 5px;
+        }
+        .chat-input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .chat-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .send-button, .upload-photo, .upload-video {
+            background-color: #075e54;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .send-button:hover, .upload-photo:hover, .upload-video:hover {
+            background-color: #034e38;
+        }
+        .upload-photo, .upload-video {
+            margin-left: 10px;
+        }
+        .file-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>WhatsApp Mensajería Instantánea</h1>
+    <p>Conéctate, comparte fotos, videos y más!</p>
+</div>
+
+<!-- Container -->
+<div class="container">
+
+    <!-- Sidebar (Grupos) -->
+    <div class="sidebar">
+        <h3>Grupos</h3>
+        <ul>
+            <li>Grupo Familia</li>
+            <li>Grupo Amigos</li>
+            <li>Grupo Trabajo</li>
+        </ul>
+        <button onclick="alert('Crear nuevo grupo')">Crear Nuevo Grupo</button>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box">
+        <div class="messages" id="messageContainer">
+            <!-- Los mensajes se agregarán aquí -->
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Escribe un mensaje...">
+            <button class="send-button" onclick="sendMessage()">Enviar</button>
+            <input type="file" class="file-input" id="photoInput" onchange="sendPhoto()" />
+            <button class="upload-photo" onclick="document.getElementById('photoInput').click()">Enviar Foto</button>
+
+            <input type="file" class="file-input" id="videoInput" onchange="sendVideo()" />
+            <button class="upload-video" onclick="document.getElementById('videoInput').click()">Enviar Video</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Función para enviar mensaje
+    function sendMessage() {
+        const chatInput = document.getElementById('chatInput');
+        const message = chatInput.value.trim();
+
+        if (message !== '') {
+            const messageContainer = document.getElementById('messageContainer');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+            newMessage.textContent = message;
+            messageContainer.appendChild(newMessage);
+            chatInput.value = '';
+            messageContainer.scrollTop = messageContainer.scrollHeight; // Desplazar hacia abajo
+        }
+    }
+
+    // Función para enviar foto
+    function sendPhoto() {
+        const photoInput = document.getElementById('photoInput');
+        const file = photoInput.files[0];
+
+        if (file) {
+            const messageContainer = document.getElementById('messageContainer');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+
+            const image = document.createElement('img');
+            image.src = URL.createObjectURL(file);
+            image.style.maxWidth = '200px';
+            newMessage.appendChild(image);
+
+            messageContainer.appendChild(newMessage);
+            photoInput.value = ''; // Limpiar el campo
+            messageContainer.scrollTop = messageContainer.scrollHeight; // Desplazar hacia abajo
+        }
+    }
+
+    // Función para enviar video
+    function sendVideo() {
+        const videoInput = document.getElementById('videoInput');
+        const file = videoInput.files[0];
+
+        if (file) {
+            const messageContainer = document.getElementById('messageContainer');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+
+            const video = document.createElement('video');
+            video.src = URL.createObjectURL(file);
+            video.controls = true;
+            video.style.maxWidth = '200px';
+            newMessage.appendChild(video);
+
+            messageContainer.appendChild(newMessage);
+            videoInput.value = ''; // Limpiar el campo
+            messageContainer.scrollTop = messageContainer.scrollHeight; // Desplazar hacia abajo
+        }
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Messenger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        /* Header */
+        .header {
+            background-color: #f1c6e4; /* Rosado claro */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        /* Main container for chat */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* Sidebar (List of contacts or groups) */
+        .sidebar {
+            width: 25%;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #f1c6e4; /* Rosado claro en hover */
+        }
+
+        /* Chat Box */
+        .chat-box {
+            width: 70%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .messages {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #e0a8d1; /* Rosado para los mensajes */
+            border-radius: 8px;
+            color: white;
+        }
+
+        .message.user-message {
+            background-color: #f1c6e4; /* Rosado claro para mensajes del usuario */
+            color: #333;
+        }
+
+        .message.bot-message {
+            background-color: #db6fa6; /* Rosado intermedio */
+            color: white;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+        }
+
+        .send-button {
+            background-color: #f1c6e4; /* Rosado claro */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background-color: #db6fa6; /* Rosado intermedio en hover */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>WhatsApp Messenger</h1>
+    </div>
+
+    <!-- Main container (Sidebar and Chat Box) -->
+    <div class="container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3>Contactos</h3>
+            <ul>
+                <li>Amigos</li>
+                <li>Familia</li>
+                <li>Trabajo</li>
+                <li>Grupo 1</li>
+                <li>Grupo 2</li>
+            </ul>
+        </div>
+
+        <!-- Chat Box -->
+        <div class="chat-box">
+            <!-- Messages -->
+            <div class="messages" id="messageContainer">
+
+                <div class="message bot-message">¡Hola! ¿En qué puedo ayudarte hoy?</div>
+                <div class="message user-message">¡Hola! ¿Cómo estás?</div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="input-container">
+                <input type="text" id="chatInput" class="chat-input" placeholder="Escribe un mensaje..." />
+                <button class="send-button" onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para enviar mensajes
+        function sendMessage() {
+            const messageInput = document.getElementById('chatInput');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== '') {
+                // Añadir mensaje del usuario
+                const messageContainer = document.getElementById('messageContainer');
+                const newMessage = document.createElement('div');
+                newMessage.classList.add('message', 'user-message');
+                newMessage.textContent = messageText;
+                messageContainer.appendChild(newMessage);
+
+                // Limpiar el input
+                messageInput.value = '';
+                messageContainer.scrollTop = messageContainer.scrollHeight; // Desplazar hacia abajo
+            }
+        }
+    </script>
+
+</body>
+</html>

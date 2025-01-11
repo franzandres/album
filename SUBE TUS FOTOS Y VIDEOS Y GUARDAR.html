@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Fotos y Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        #preview {
+            margin-top: 20px;
+        }
+        .media-preview {
+            margin: 10px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        img, video {
+            max-width: 300px;
+            margin-top: 10px;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sube tus Fotos y Videos</h1>
+
+    <div class="container">
+        <input type="file" id="fileInput" accept="image/*,video/*" multiple>
+        <br>
+        <button id="uploadButton">Subir Archivos</button>
+    </div>
+
+    <div id="preview"></div>
+    
+    <div>
+        <button id="saveImageBtn" style="display: none;">Guardar Imagen</button>
+        <button id="saveVideoBtn" style="display: none;">Guardar Video</button>
+    </div>
+
+    <script>
+        let filesToUpload = [];
+        let selectedImage = null;
+        let selectedVideo = null;
+
+        // Evento para seleccionar archivos
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            filesToUpload = event.target.files;
+            displayFiles(filesToUpload);
+        });
+
+        // Mostrar archivos seleccionados en el navegador
+        function displayFiles(files) {
+            let previewContainer = document.getElementById('preview');
+            previewContainer.innerHTML = '';  // Limpiar la vista previa
+
+            Array.from(files).forEach(file => {
+                let fileReader = new FileReader();
+                fileReader.onload = function(e) {
+                    let fileType = file.type.split('/')[0];
+                    let mediaPreview = document.createElement('div');
+                    mediaPreview.classList.add('media-preview');
+
+                    if (fileType === 'image') {
+                        let img = document.createElement('img');
+                        img.src = e.target.result;
+                        mediaPreview.appendChild(img);
+                        selectedImage = img;
+                        document.getElementById('saveImageBtn').style.display = 'inline';  // Mostrar botón para guardar imagen
+                    } else if (fileType === 'video') {
+                        let video = document.createElement('video');
+                        video.src = e.target.result;
+                        video.controls = true;
+                        mediaPreview.appendChild(video);
+                        selectedVideo = video;
+                        document.getElementById('saveVideoBtn').style.display = 'inline';  // Mostrar botón para guardar video
+                    }
+
+                    previewContainer.appendChild(mediaPreview);
+                };
+
+                fileReader.readAsDataURL(file);
+            });
+        }
+
+        // Función para guardar la imagen
+        document.getElementById('saveImageBtn').addEventListener('click', function() {
+            if (selectedImage) {
+                let link = document.createElement('a');
+                link.href = selectedImage.src;
+                link.download = 'imagen.jpg';  // Nombre del archivo a descargar
+                link.click();
+            }
+        });
+
+        // Función para guardar el video
+        document.getElementById('saveVideoBtn').addEventListener('click', function() {
+            if (selectedVideo) {
+                let link = document.createElement('a');
+                link.href = selectedVideo.src;
+                link.download = 'video.mp4';  // Nombre del archivo a descargar
+                link.click();
+            }
+        });
+
+        // Validación y subida de archivos (esto es solo para mostrar la funcionalidad de los botones)
+        document.getElementById('uploadButton').addEventListener('click', function() {
+            if (filesToUpload.length === 0) {
+                alert('Por favor, selecciona archivos primero');
+            } else {
+                alert('Archivos cargados correctamente');
+            }
+        });
+    </script>
+
+</body>
+</html>

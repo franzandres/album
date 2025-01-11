@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Grupo y Chatear</title>
+    <style>
+        body {
+            background-color: #E6E6FA; /* Color lila para el fondo */
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #4B0082;
+        }
+        #chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .group {
+            background-color: #D8BFD8;
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .messages {
+            border: 1px solid #ccc;
+            width: 80%;
+            height: 300px;
+            margin-top: 20px;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        input, button, textarea {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            width: 80%;
+            max-width: 500px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #800080;
+        }
+        .message {
+            background-color: #f1f1f1;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            max-width: 70%;
+        }
+        .user-message {
+            background-color: #D3D3D3;
+        }
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .file-upload {
+            margin: 10px 0;
+        }
+        .video-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Chat y Crear Grupos</h1>
+
+<!-- Formulario para crear grupo -->
+<div class="input-container">
+    <input type="text" id="group-name" placeholder="Nombre del grupo" />
+    <button onclick="createGroup()">Crear Grupo</button>
+</div>
+
+<!-- Área de mensajes -->
+<div id="chat-container">
+    <div class="group" id="group-display">
+        <p><strong>Grupo:</strong> Sin grupo aún</p>
+    </div>
+
+    <div class="messages" id="messages-container"></div>
+
+    <!-- Enviar mensaje de texto -->
+    <textarea id="message-input" placeholder="Escribe un mensaje..."></textarea>
+    <button onclick="sendMessage()">Enviar Mensaje</button>
+
+    <!-- Subir archivos (fotos y videos) -->
+    <div class="file-upload">
+        <input type="file" id="file-upload" accept="image/*,video/*" onchange="sendFile()" />
+    </div>
+
+    <!-- Grabar mensaje de audio -->
+    <button onclick="startRecording()">Grabar Audio</button>
+    <button onclick="stopRecording()">Detener Grabación</button>
+    <audio id="audio-player" controls></audio>
+
+    <!-- Área para videollamada -->
+    <div class="video-container">
+        <h3>Videollamada (Función en desarrollo)</h3>
+        <!-- La videollamada se integraría usando WebRTC o servicios externos como Twilio o Daily.co -->
+    </div>
+</div>
+
+<script>
+    let currentGroup = null;
+    let mediaRecorder;
+    let audioChunks = [];
+
+    // Crear un nuevo grupo
+    function createGroup() {
+        const groupName = document.getElementById('group-name').value;
+        if (groupName.trim() === "") {
+            alert("Por favor, ingresa un nombre para el grupo.");
+            return;
+        }
+
+        currentGroup = { name: groupName, messages: [] };
+        document.getElementById('group-display').innerHTML = `<p><strong>Grupo:</strong> ${currentGroup.name}</p>`;
+        document.getElementById('group-name').value = "";
+    }
+
+    // Función para enviar un mensaje de texto
+    function sendMessage() {
+        const messageText = document.getElementById('message-input').value;
+        if (messageText.trim() === "") {
+            alert("Por favor, ingresa un mensaje.");
+            return;
+        }
+
+        const message = {
+            type: "text",
+            content: messageText,
+            sender: "Tú",
+            timestamp: new Date()
+        };
+        currentGroup.messages.push(message);
+        displayMessages();
+        document.getElementById('message-input').value = "";
+    }
+
+    // Mostrar mensajes
+    function displayMessages() {
+        const messagesContainer = document.getElementById('messages-container');
+        messagesContainer.innerHTML = "";
+        currentGroup.messages.forEach(msg => {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(msg.sender === "Tú" ? 'user-message' : 'other-message');
+            messageDiv.innerText = `${msg.sender}: ${msg.content}`;
+            messagesContainer.appendChild(messageDiv);
+        });
+    }
+
+    // Subir y mostrar archivos (fotos o videos)
+    function sendFile() {
+        const fileInput = document.getElementById('file-upload');
+        const file = fileInput.files[0];
+        if (file) {
+            const message = {
+                type: file.type.startsWith('image') ? "image" : "video",
+                content: URL.createObjectURL(file),
+                sender: "Tú",
+                timestamp: new Date()
+            };
+            currentGroup.messages.push(message);
+            displayMessages();
+        }
+    }
+
+    // Iniciar grabación de audio
+    function startRecording() {
+        audioChunks = [];
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.ondataavailable = event => {
+                    audioChunks.push(event.data);
+                };
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const audioURL = URL.createObjectURL(audioBlob);
+                    document.getElementById('audio-player').src = audioURL;
+
+                    // Enviar audio como mensaje
+                    const message = {
+                        type: "audio",
+                        content: audioURL,
+                        sender: "Tú",
+                        timestamp: new Date()
+                    };
+                    currentGroup.messages.push(message);
+                    displayMessages();
+                };
+                mediaRecorder.start();
+            })
+            .catch(error => console.error("Error al acceder al micrófono:", error));
+    }
+
+    // Detener grabación de audio
+    function stopRecording() {
+        if (mediaRecorder) {
+            mediaRecorder.stop();
+        }
+    }
+</script>
+</body>
+</html>
+
+

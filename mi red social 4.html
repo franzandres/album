@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Red Social</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .post-box, .chat-box, .feed-box, .friend-box {
+            margin-top: 20px;
+        }
+        .post-box textarea, .chat-box textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .feed-item {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .feed-item img, .feed-item video {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .chat-message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .friend-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .friend-item {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .game-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .game-button {
+            padding: 10px 20px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .game-button:hover {
+            background-color: #f50057;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Mi Red Social</h1>
+        <p>Conéctate, juega, comparte y haz nuevos amigos.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Publicar un estado -->
+        <div class="post-box">
+            <h2>Publica un estado</h2>
+            <textarea id="postContent" placeholder="Escribe algo..."></textarea>
+            <button class="button" onclick="publishPost()">Publicar</button>
+        </div>
+
+        <!-- Compartir fotos y videos -->
+        <div class="post-box">
+            <h2>Comparte una Foto o Video</h2>
+            <input type="file" id="mediaFile" accept="image/*,video/*">
+            <button class="button" onclick="shareMedia()">Compartir</button>
+        </div>
+
+        <!-- Grabar video y tomar foto -->
+        <div class="post-box">
+            <h2>Graba un Video o Toma una Foto</h2>
+            <video id="videoPlayer" width="320" height="240" autoplay></video>
+            <button class="button" onclick="startRecording()">Grabar Video</button>
+            <button class="button" onclick="takePhoto()">Tomar Foto</button>
+        </div>
+
+        <!-- Chat -->
+        <div class="chat-box">
+            <h2>Chat</h2>
+            <div class="chat-container">
+                <div id="chatMessages"></div>
+                <textarea id="chatMessage" placeholder="Escribe un mensaje..."></textarea>
+                <button class="button" onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+
+        <!-- Feed de publicaciones -->
+        <div class="feed-box">
+            <h2>Feed de Publicaciones</h2>
+            <ul id="feedList">
+                <!-- Publicaciones aparecerán aquí -->
+            </ul>
+        </div>
+
+        <!-- Lista de Amigos -->
+        <div class="friend-box">
+            <h2>Amigos</h2>
+            <ul class="friend-list" id="friendList">
+                <li class="friend-item">Juan Pérez <button class="button" onclick="sendFriendRequest()">Agregar</button></li>
+                <li class="friend-item">María López <button class="button" onclick="sendFriendRequest()">Agregar</button></li>
+                <!-- Agregar más amigos -->
+            </ul>
+        </div>
+
+        <!-- Juegos -->
+        <div class="game-container">
+            <h2>Jugar en Red Social</h2>
+            <button class="game-button" onclick="startGame()">Iniciar Juego</button>
+        </div>
+
+    </div>
+
+    <script>
+        let posts = [];
+        let friends = ["Juan Pérez", "María López"];
+
+        // Publicar estado
+        function publishPost() {
+            const content = document.getElementById("postContent").value;
+            if(content) {
+                posts.push(content);
+                displayPosts();
+                document.getElementById("postContent").value = "";
+            }
+        }
+
+        // Mostrar publicaciones en el feed
+        function displayPosts() {
+            const feedList = document.getElementById("feedList");
+            feedList.innerHTML = "";
+            posts.forEach(post => {
+                const li = document.createElement("li");
+                li.classList.add("feed-item");
+                li.innerText = post;
+                feedList.appendChild(li);
+            });
+        }
+
+        // Compartir fotos o videos
+        function shareMedia() {
+            const fileInput = document.getElementById("mediaFile");
+            if (fileInput.files.length > 0) {
+                const media = fileInput.files[0];
+                const mediaUrl = URL.createObjectURL(media);
+                const li = document.createElement("li");
+                li.classList.add("feed-item");
+                if (media.type.startsWith("image")) {
+                    li.innerHTML = `<img src="${mediaUrl}" alt="Media">`;
+                } else if (media.type.startsWith("video")) {
+                    li.innerHTML = `<video controls><source src="${mediaUrl}" type="${media.type}"></video>`;
+                }
+                document.getElementById("feedList").appendChild(li);
+            }
+        }
+
+        // Grabar video
+        function startRecording() {
+            const videoPlayer = document.getElementById("videoPlayer");
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    videoPlayer.srcObject = stream;
+                })
+                .catch(function(error) {
+                    alert("No se pudo acceder a la cámara.");
+                });
+        }
+
+        // Tomar foto
+        function takePhoto() {
+            const videoPlayer = document.getElementById("videoPlayer");
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            canvas.width = videoPlayer.videoWidth;
+            canvas.height = videoPlayer.videoHeight;
+            context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
+            const photoUrl = canvas.toDataURL("image/png");
+            const li = document.createElement("li");
+            li.classList.add("feed-item");
+            li.innerHTML = `<img src="${photoUrl}" alt="Foto tomada">`;
+            document.getElementById("feedList").appendChild(li);
+        }
+
+        // Enviar mensaje en el chat
+        function sendMessage() {
+            const message = document.getElementById("chatMessage").value;
+            if (message) {
+                const chatMessages = document.getElementById("chatMessages");
+                const newMessage = document.createElement("div");
+                newMessage.classList.add("chat-message");
+                newMessage.innerText = message;
+                chatMessages.appendChild(newMessage);
+                document.getElementById("chatMessage").value = "";
+            }
+        }
+
+        // Solicitar amistad
+        function sendFriendRequest() {
+            alert("Solicitud de amistad enviada.");
+        }
+
+        // Iniciar juego
+        function startGame() {
+            alert("Iniciando juego...");
+        }
+    </script>
+
+</body>
+</html>
+

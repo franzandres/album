@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - Facebook Places</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .user-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .user-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .user-card img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        .user-card h3 {
+            font-size: 1.2em;
+        }
+        .user-card p {
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Formulario de creación de cuenta -->
+    <div class="form-container" id="formContainer">
+        <h2>Crea tu cuenta</h2>
+        <form id="userForm">
+            <input type="text" id="username" placeholder="Nombre de usuario" required>
+            <input type="text" id="location" placeholder="Ubicación" required>
+            <button type="submit">Crear cuenta</button>
+        </form>
+    </div>
+
+    <!-- Sección que muestra los usuarios -->
+    <div class="user-list" id="userList"></div>
+
+</div>
+
+<script>
+    // Array para almacenar los usuarios registrados
+    let users = [];
+
+    // Función para crear un perfil de usuario
+    function createUserCard(username, location) {
+        return `
+            <div class="user-card">
+                <img src="https://via.placeholder.com/50" alt="Avatar">
+                <h3>${username}</h3>
+                <p>Ubicación: ${location}</p>
+            </div>
+        `;
+    }
+
+    // Manejo del formulario de creación de cuenta
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe
+
+        const username = document.getElementById('username').value;
+        const location = document.getElementById('location').value;
+
+        // Agregar el nuevo usuario al array
+        users.push({ username, location });
+
+        // Limpiar el formulario
+        document.getElementById('userForm').reset();
+
+        // Mostrar la lista de usuarios actualizada
+        displayUsers();
+    });
+
+    // Función para mostrar la lista de usuarios
+    function displayUsers() {
+        let userList = document.getElementById('userList');
+        userList.innerHTML = ''; // Limpiar la lista antes de mostrarla
+
+        // Crear una tarjeta para cada usuario
+        users.forEach(user => {
+            userList.innerHTML += createUserCard(user.username, user.location);
+        });
+    }
+</script>
+
+</body>
+</html>

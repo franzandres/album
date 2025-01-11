@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Fotos y Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        #preview {
+            margin-top: 20px;
+        }
+        .media-preview {
+            margin: 10px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        img, video {
+            max-width: 300px;
+            margin-top: 10px;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sube tus fotos y videos</h1>
+        <input type="file" id="fileInput" accept="image/*,video/*" multiple>
+        <div id="preview"></div>
+    </div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            var files = event.target.files;
+            var previewContainer = document.getElementById('preview');
+            previewContainer.innerHTML = '';  // Limpiar la vista previa antes de agregar nuevos archivos
+
+            Array.from(files).forEach(file => {
+                var fileReader = new FileReader();
+                fileReader.onload = function(e) {
+                    var fileType = file.type.split('/')[0];
+                    var mediaPreview = document.createElement('div');
+                    mediaPreview.classList.add('media-preview');
+
+                    if (fileType === 'image') {
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        mediaPreview.appendChild(img);
+                    } else if (fileType === 'video') {
+                        var video = document.createElement('video');
+                        video.src = e.target.result;
+                        video.controls = true;
+                        mediaPreview.appendChild(video);
+                    }
+
+                    previewContainer.appendChild(mediaPreview);
+                };
+
+                fileReader.readAsDataURL(file);
+            });
+        });
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago en Línea</title>
+    <style>
+        body {
+            background-color: black;
+            color: #a8e063; /* Verde lechuga */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+        }
+
+        .payment-methods {
+            margin: 20px 0;
+        }
+
+        .payment-method {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .message-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            height: 400px;
+            display: flex;
+            flex-direction: column-reverse;
+            overflow-y: scroll;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .message.sent {
+            background-color: #a8e063; /* Verde lechuga */
+            color: white;
+            margin-left: auto;
+        }
+
+        .message.received {
+            background-color: #ddd;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #a8e063; /* Verde lechuga */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #88c34d;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Página de Pago en Línea</h1>
+
+    <div class="payment-methods">
+        <div class="payment-method">Tigo Money</div>
+        <div class="payment-method">Banco Unión</div>
+        <div class="payment-method">Banco Mercantil</div>
+        <div class="payment-method">Banco BNB</div>
+        <div class="payment-method">Banco Económico</div>
+        <div class="payment-method">Banco Ganadero</div>
+        <div class="payment-method">Banco BCP</div>
+    </div>
+
+    <div id="paymentNotification" style="color: white; font-size: 1.2em;"></div>
+
+    <div class="message-container" id="chatContainer">
+        <!-- Mensajes aparecerán aquí -->
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Escribe un mensaje..." />
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== '') {
+                // Crear un nuevo mensaje en el chat
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'sent');
+                messageElement.textContent = messageText;
+
+                // Añadir el mensaje al contenedor de chat
+                const chatContainer = document.getElementById('chatContainer');
+                chatContainer.insertBefore(messageElement, chatContainer.firstChild);
+
+                // Limpiar el campo de entrada
+                messageInput.value = '';
+                chatContainer.scrollTop = 0; // Mantener el scroll al fondo
+            }
+        }
+
+        // Simulación de un pago con notificación
+        function simulatePayment(bank) {
+            const paymentNotification = document.getElementById('paymentNotification');
+            paymentNotification.textContent = `¡Pago recibido de ${bank}!`;
+
+            // Enviar un mensaje en el chat como si fuera el sistema notificando al usuario
+            const chatContainer = document.getElementById('chatContainer');
+            const paymentMessage = document.createElement('div');
+            paymentMessage.classList.add('message', 'received');
+            paymentMessage.textContent = `Pago de ${bank} procesado con éxito. ¡Gracias por tu compra!`;
+            chatContainer.insertBefore(paymentMessage, chatContainer.firstChild);
+            chatContainer.scrollTop = 0; // Mantener el scroll al fondo
+        }
+
+        // Simular pagos cuando el usuario hace clic en los métodos de pago
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => simulatePayment(method.textContent));
+        });
+    </script>
+
+</body>
+</html>
+

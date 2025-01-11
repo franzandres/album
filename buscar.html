@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        body {
+            background-color: lightblue; /* Fondo celeste */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 100px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .g { color: pink; }
+        .o { color: lightpurple; }
+        .o2 { color: brown; }
+        .g2 { color: purple; }
+        .l { color: darkred; }
+        .e { color: black; }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 400px;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-options {
+            display: flex;
+            gap: 20px;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .search-options a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .search-options a:hover {
+            color: darkblue;
+        }
+
+        .content-section {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .content-section img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .content-section video {
+            width: 200px;
+            height: 200px;
+        }
+
+        .content-section .documents {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .content-section .documents a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .content-section .documents a:hover {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span class="g">G</span>
+        <span class="o">o</span>
+        <span class="o2">o</span>
+        <span class="g2">g</span>
+        <span class="l">l</span>
+        <span class="e">e</span>
+    </h1>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar...">
+    </div>
+
+    <div class="search-options">
+        <a href="#imagenes">Imágenes</a>
+        <a href="#videos">Videos</a>
+        <a href="#documentos">Documentos</a>
+    </div>
+
+    <!-- Sección de Imágenes -->
+    <div id="imagenes" class="content-section">
+        <div>
+            <h3>Imágenes</h3>
+            <img src="https://via.placeholder.com/200" alt="Imagen 1">
+            <img src="https://via.placeholder.com/200" alt="Imagen 2">
+            <img src="https://via.placeholder.com/200" alt="Imagen 3">
+        </div>
+    </div>
+
+    <!-- Sección de Videos -->
+    <div id="videos" class="content-section">
+        <div>
+            <h3>Videos</h3>
+            <video controls>
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <video controls>
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
+
+    <!-- Sección de Documentos -->
+    <div id="documentos" class="content-section">
+        <div class="documents">
+            <h3>Documentos</h3>
+            <a href="https://www.w3.org/TR/2008/REC-xml-20081126/">Documento 1</a>
+            <a href="https://www.w3.org/TR/2008/REC-xml-20081126/">Documento 2</a>
+            <a href="https://www.w3.org/TR/2008/REC-xml-20081126/">Documento 3</a>
+        </div>
+    </div>
+</body>
+</html>

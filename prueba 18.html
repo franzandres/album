@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos de PS2</title>
+    <style>
+        body {
+            background-color: red;
+            color: blue;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .game-button {
+            background-color: blue;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .game-button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selección de Juegos de PS2</h1>
+    <div>
+        <p><strong>Mortal Kombat</strong></p>
+        <button class="game-button" onclick="alert('Jugar Mortal Kombat')">Jugar Mortal Kombat</button>
+    </div>
+    <div>
+        <p><strong>Crash Bandicoot</strong></p>
+        <button class="game-button" onclick="alert('Jugar Crash Bandicoot')">Jugar Crash Bandicoot</button>
+    </div>
+    <div>
+        <p><strong>Gran Turismo 3</strong></p>
+        <button class="game-button" onclick="alert('Jugar Gran Turismo 3')">Jugar Gran Turismo 3</button>
+    </div>
+    <div>
+        <p><strong>Need for Speed: Most Wanted</strong></p>
+        <button class="game-button" onclick="alert('Jugar Need for Speed: Most Wanted')">Jugar Need for Speed: Most Wanted</button>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos de PS2 - Multiplayer Console</title>
+    <style>
+        body {
+            background-color: red;
+            color: blue;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .game-button {
+            background-color: blue;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .game-button:hover {
+            background-color: darkblue;
+        }
+        .console {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+            width: 80%;
+            height: 200px;
+            margin: 0 auto;
+            padding: 10px;
+            overflow-y: scroll;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .input-box {
+            margin-top: 10px;
+            padding: 10px;
+            width: 80%;
+            background-color: black;
+            color: white;
+            border: 1px solid blue;
+            font-family: "Courier New", Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selección de Juegos de PS2</h1>
+    
+    <div>
+        <p><strong>Mortal Kombat</strong></p>
+        <button class="game-button" onclick="toggleConsole('mortal')">Jugar Mortal Kombat</button>
+        <div id="console-mortal" class="console" style="display: none;"></div>
+        <input id="input-mortal" class="input-box" type="text" onkeydown="handleInput(event, 'mortal')" placeholder="Escribe algo...">
+    </div>
+    
+    <div>
+        <p><strong>Crash Bandicoot</strong></p>
+        <button class="game-button" onclick="toggleConsole('crash')">Jugar Crash Bandicoot</button>
+        <div id="console-crash" class="console" style="display: none;"></div>
+        <input id="input-crash" class="input-box" type="text" onkeydown="handleInput(event, 'crash')" placeholder="Escribe algo...">
+    </div>
+    
+    <div>
+        <p><strong>Gran Turismo 3</strong></p>
+        <button class="game-button" onclick="toggleConsole('gran')">Jugar Gran Turismo 3</button>
+        <div id="console-gran" class="console" style="display: none;"></div>
+        <input id="input-gran" class="input-box" type="text" onkeydown="handleInput(event, 'gran')" placeholder="Escribe algo...">
+    </div>
+    
+    <div>
+        <p><strong>Need for Speed: Most Wanted</strong></p>
+        <button class="game-button" onclick="toggleConsole('nfs')">Jugar Need for Speed: Most Wanted</button>
+        <div id="console-nfs" class="console" style="display: none;"></div>
+        <input id="input-nfs" class="input-box" type="text" onkeydown="handleInput(event, 'nfs')" placeholder="Escribe algo...">
+    </div>
+
+    <script>
+        function toggleConsole(game) {
+            const consoleElement = document.getElementById(`console-${game}`);
+            const inputElement = document.getElementById(`input-${game}`);
+            if (consoleElement.style.display === "none") {
+                consoleElement.style.display = "block";
+                inputElement.style.display = "block";
+            } else {
+                consoleElement.style.display = "none";
+                inputElement.style.display = "none";
+            }
+        }
+
+        function handleInput(event, game) {
+            if (event.key === "Enter") {
+                const inputField = document.getElementById(`input-${game}`);
+                const message = inputField.value.trim();
+                if (message) {
+                    const consoleElement = document.getElementById(`console-${game}`);
+                    consoleElement.innerHTML += `<p><strong>Jugador:</strong> ${message}</p>`;
+                    inputField.value = '';
+                    consoleElement.scrollTop = consoleElement.scrollHeight;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

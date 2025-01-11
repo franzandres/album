@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation 2 Multiplayer</title>
+    <style>
+        body {
+            background-color: #add8e6; /* Fondo celeste */
+            font-family: Arial, sans-serif;
+            color: blue; /* Color de letra azul */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .console {
+            margin: 50px auto;
+            width: 500px;
+            height: 300px;
+            border: 2px solid blue;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .console-header {
+            background-color: #4682b4;
+            color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+        .game-output {
+            overflow-y: auto;
+            height: 200px;
+            padding: 10px;
+            text-align: left;
+            font-family: monospace;
+            border-top: 1px solid blue;
+            border-bottom: 1px solid blue;
+        }
+        .game-controls {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PlayStation 2 Multiplayer</h1>
+    <div class="console">
+        <div class="console-header">Game Console</div>
+        <div id="game-output" class="game-output">
+            Welcome to the PS2 Multiplayer Game!<br>
+            Use the keyboard to play: <br>
+            W = Forward, S = Backward, A = Left, D = Right, Space = Action
+        </div>
+        <div class="game-controls">
+            <button onclick="clearConsole()">Clear Console</button>
+        </div>
+    </div>
+    <script>
+        const gameOutput = document.getElementById('game-output');
+
+        document.addEventListener('keydown', (event) => {
+            let action = '';
+            switch (event.key) {
+                case 'w':
+                case 'W':
+                    action = 'Moving Forward';
+                    break;
+                case 's':
+                case 'S':
+                    action = 'Moving Backward';
+                    break;
+                case 'a':
+                case 'A':
+                    action = 'Moving Left';
+                    break;
+                case 'd':
+                case 'D':
+                    action = 'Moving Right';
+                    break;
+                case ' ':
+                    action = 'Performing Action';
+                    break;
+                default:
+                    action = `Key ${event.key} not assigned`;
+            }
+            gameOutput.innerHTML += `<br>${action}`;
+            gameOutput.scrollTop = gameOutput.scrollHeight;
+        });
+
+        function clearConsole() {
+            gameOutput.innerHTML = '';
+        }
+    </script>
+</body>
+</html>

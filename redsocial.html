@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Social - Chat y Publicaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
+        .chat-box, .post-box, .group-chat, .stories-box {
+            margin-top: 20px;
+        }
+        .chat-box textarea, .post-box textarea, .group-chat textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .chat-box button, .post-box button, .group-chat button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .chat-box button:hover, .post-box button:hover, .group-chat button:hover {
+            background-color: #45a049;
+        }
+        .posts-list, .chat-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .post-item, .chat-item {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .story-item {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+        }
+        .group-chat-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header de perfil -->
+    <div class="profile-header">
+        <img src="https://via.placeholder.com/60" alt="Avatar">
+        <h2>Mi Perfil</h2>
+        <button onclick="logout()">Cerrar sesión</button>
+    </div>
+
+    <!-- Publicaciones -->
+    <div class="post-box">
+        <h3>Publicar un estado</h3>
+        <textarea id="postContent" placeholder="Escribe algo..."></textarea>
+        <button onclick="publishPost()">Publicar</button>
+
+        <div class="posts-list" id="postsList"></div>
+    </div>
+
+    <!-- Chat -->
+    <div class="chat-box">
+        <h3>Chat</h3>
+        <textarea id="chatContent" placeholder="Escribe un mensaje..."></textarea>
+        <button onclick="sendMessage()">Enviar</button>
+
+        <ul class="chat-list" id="chatList"></ul>
+    </div>
+
+    <!-- Crear un grupo de chat -->
+    <div class="group-chat">
+        <h3>Crear grupo de chat</h3>
+        <textarea id="groupChatContent" placeholder="Escribe un mensaje para el grupo..."></textarea>
+        <button onclick="sendGroupMessage()">Enviar al grupo</button>
+
+        <div class="group-chat-box" id="groupChatBox"></div>
+    </div>
+
+    <!-- Historias -->
+    <div class="stories-box">
+        <h3>Historias</h3>
+        <div class="story-item" onclick="viewStory()">Mi historia</div>
+        <!-- Puedes agregar más historias dinámicamente -->
+    </div>
+
+</div>
+
+<script>
+    let posts = [];
+    let chatMessages = [];
+    let groupMessages = [];
+
+    // Función para publicar un estado
+    function publishPost() {
+        const postContent = document.getElementById('postContent').value;
+        if (postContent) {
+            posts.push(postContent);
+            document.getElementById('postContent').value = '';
+            updatePosts();
+        }
+    }
+
+    // Función para actualizar la lista de publicaciones
+    function updatePosts() {
+        const postsList = document.getElementById('postsList');
+        postsList.innerHTML = '';
+        posts.forEach(post => {
+            const postItem = document.createElement('li');
+            postItem.classList.add('post-item');
+            postItem.textContent = post;
+            postsList.appendChild(postItem);
+        });
+    }
+
+    // Función para enviar mensaje de chat
+    function sendMessage() {
+        const chatContent = document.getElementById('chatContent').value;
+        if (chatContent) {
+            chatMessages.push(chatContent);
+            document.getElementById('chatContent').value = '';
+            updateChat();
+        }
+    }
+
+    // Función para actualizar la lista de mensajes del chat
+    function updateChat() {
+        const chatList = document.getElementById('chatList');
+        chatList.innerHTML = '';
+        chatMessages.forEach(message => {
+            const chatItem = document.createElement('li');
+            chatItem.classList.add('chat-item');
+            chatItem.textContent = message;
+            chatList.appendChild(chatItem);
+        });
+    }
+
+    // Función para enviar mensaje al grupo
+    function sendGroupMessage() {
+        const groupChatContent = document.getElementById('groupChatContent').value;
+        if (groupChatContent) {
+            groupMessages.push(groupChatContent);
+            document.getElementById('groupChatContent').value = '';
+            updateGroupChat();
+        }
+    }
+
+    // Función para actualizar la lista de mensajes del grupo
+    function updateGroupChat() {
+        const groupChatBox = document.getElementById('groupChatBox');
+        groupChatBox.innerHTML = '';
+        groupMessages.forEach(message => {
+            const groupChatItem = document.createElement('div');
+            groupChatItem.classList.add('chat-item');
+            groupChatItem.textContent = message;
+            groupChatBox.appendChild(groupChatItem);
+        });
+    }
+
+    // Función para ver una historia
+    function viewStory() {
+        alert('Ver historia...');
+    }
+
+    // Función de cierre de sesión
+    function logout() {
+        alert('Cerrando sesión...');
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Social - Chat y Publicaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
+        .chat-box, .post-box, .group-chat, .stories-box {
+            margin-top: 20px;
+        }
+        .chat-box textarea, .post-box textarea, .group-chat textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .chat-box button, .post-box button, .group-chat button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .chat-box button:hover, .post-box button:hover, .group-chat button:hover {
+            background-color: #45a049;
+        }
+        .posts-list, .chat-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .post-item, .chat-item {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .story-item {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+        }
+        .group-chat-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header de perfil -->
+    <div class="profile-header">
+        <img src="https://via.placeholder.com/60" alt="Avatar" id="userProfilePic">
+        <h2 id="username">Mi Perfil</h2>
+        <button onclick="logout()">Cerrar sesión</button>
+    </div>
+
+    <!-- Publicaciones -->
+    <div class="post-box">
+        <h3>Publicar un estado</h3>
+        <textarea id="postContent" placeholder="Escribe algo..."></textarea>
+        <button onclick="publishPost()">Publicar</button>
+
+        <div class="posts-list" id="postsList"></div>
+    </div>
+
+    <!-- Chat -->
+    <div class="chat-box">
+        <h3>Chat</h3>
+        <textarea id="chatContent" placeholder="Escribe un mensaje..."></textarea>
+        <button onclick="sendMessage()">Enviar</button>
+
+        <ul class="chat-list" id="chatList"></ul>
+    </div>
+
+    <!-- Crear un grupo de chat -->
+    <div class="group-chat">
+        <h3>Crear grupo de chat</h3>
+        <textarea id="groupChatContent" placeholder="Escribe un mensaje para el grupo..."></textarea>
+        <button onclick="sendGroupMessage()">Enviar al grupo</button>
+
+        <div class="group-chat-box" id="groupChatBox"></div>
+    </div>
+
+    <!-- Historias -->
+    <div class="stories-box">
+        <h3>Historias</h3>
+        <div class="story-item" onclick="viewStory()">Mi historia</div>
+        <!-- Puedes agregar más historias dinámicamente -->
+    </div>
+
+</div>
+
+<script>
+    // Simular usuarios
+    const users = [
+        { username: 'Carlos', profilePic: 'https://via.placeholder.com/60', id: 1 },
+        { username: 'Maria', profilePic: 'https://via.placeholder.com/60', id: 2 },
+        { username: 'Pedro', profilePic: 'https://via.placeholder.com/60', id: 3 },
+    ];
+
+    let currentUser = users[0]; // Usuario inicial, por ejemplo Carlos
+
+    // Función para cambiar de usuario (simulando login)
+    function switchUser(userId) {
+        currentUser = users.find(user => user.id === userId);
+        document.getElementById('username').textContent = currentUser.username;
+        document.getElementById('userProfilePic').src = currentUser.profilePic;
+    }
+
+    // Función para publicar un estado
+    function publishPost() {
+        const postContent = document.getElementById('postContent').value;
+        if (postContent) {
+            const post = { user: currentUser.username, content: postContent };
+            posts.push(post);
+            document.getElementById('postContent').value = '';
+            updatePosts();
+        }
+    }
+
+    // Publicaciones
+    let posts = [];
+
+    // Función para actualizar la lista de publicaciones
+    function updatePosts() {
+        const postsList = document.getElementById('postsList');
+        postsList.innerHTML = '';
+        posts.forEach(post => {
+            const postItem = document.createElement('li');
+            postItem.classList.add('post-item');
+            postItem.innerHTML = `<strong>${post.user}</strong><p>${post.content}</p>`;
+            postsList.appendChild(postItem);
+        });
+    }
+
+    // Función para enviar mensaje de chat
+    let chatMessages = [];
+    function sendMessage() {
+        const chatContent = document.getElementById('chatContent').value;
+        if (chatContent) {
+            const message = { user: currentUser.username, message: chatContent };
+            chatMessages.push(message);
+            document.getElementById('chatContent').value = '';
+            updateChat();
+        }
+    }
+
+    // Función para actualizar la lista de mensajes del chat
+    function updateChat() {
+        const chatList = document.getElementById('chatList');
+        chatList.innerHTML = '';
+        chatMessages.forEach(message => {
+            const chatItem = document.createElement('li');
+            chatItem.classList.add('chat-item');
+            chatItem.innerHTML = `<strong>${message.user}</strong><p>${message.message}</p>`;
+            chatList.appendChild(chatItem);
+        });
+    }
+
+    // Función para enviar mensaje al grupo
+    let groupMessages = [];
+    function sendGroupMessage() {
+        const groupChatContent = document.getElementById('groupChatContent').value;
+        if (groupChatContent) {
+            const groupMessage = { user: currentUser.username, message: groupChatContent };
+            groupMessages.push(groupMessage);
+            document.getElementById('groupChatContent').value = '';
+            updateGroupChat();
+        }
+    }
+
+    // Función para actualizar la lista de mensajes del grupo
+    function updateGroupChat() {
+        const groupChatBox = document.getElementById('groupChatBox');
+        groupChatBox.innerHTML = '';
+        groupMessages.forEach(message => {
+            const groupChatItem = document.createElement('div');
+            groupChatItem.classList.add('chat-item');
+            groupChatItem.innerHTML = `<strong>${message.user}</strong><p>${message.message}</p>`;
+            groupChatBox.appendChild(groupChatItem);
+        });
+    }
+
+    // Función para ver una historia
+    function viewStory() {
+        alert('Ver historia...');
+    }
+
+    // Función de cierre de sesión
+    function logout() {
+        alert('Cerrando sesión...');
+    }
+</script>
+
+</body>
+</html>
+

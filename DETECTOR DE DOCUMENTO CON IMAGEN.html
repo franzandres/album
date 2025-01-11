@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detectar Documento en Foto</title>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+
+        #inputImage {
+            margin-top: 20px;
+        }
+
+        #uploadButton {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #uploadButton:hover {
+            background-color: #45a049;
+        }
+
+        #output {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        #output pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #imagePreview {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Detectar Documento en Foto</h1>
+    
+    <input type="file" id="inputImage" accept="image/*" onchange="previewImage()">
+    <button id="uploadButton" onclick="recognizeText()">Detectar Texto</button>
+    
+    <div id="imagePreview">
+        <img id="image" src="" alt="Imagen cargada">
+    </div>
+    
+    <div id="output">
+        <h2>Texto Detectado:</h2>
+        <pre id="textOutput">El texto detectado aparecerá aquí...</pre>
+    </div>
+
+    <script>
+        function previewImage() {
+            const file = document.getElementById('inputImage').files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                document.getElementById('image').src = e.target.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function recognizeText() {
+            const file = document.getElementById('inputImage').files[0];
+            
+            if (!file) {
+                alert("Por favor, selecciona una imagen.");
+                return;
+            }
+
+            // Mostrar que se está procesando
+            document.getElementById('textOutput').innerText = "Reconociendo texto, por favor espera...";
+
+            // Usar Tesseract.js para procesar la imagen
+            Tesseract.recognize(
+                file,
+                'spa',  // Idioma español (puedes usar 'eng' para inglés, por ejemplo)
+                {
+                    logger: (m) => console.log(m)  // Para ver el progreso
+                }
+            ).then(({ data: { text } }) => {
+                // Mostrar el texto reconocido
+                document.getElementById('textOutput').innerText = text;
+            }).catch((error) => {
+                console.error(error);
+                document.getElementById('textOutput').innerText = "Ocurrió un error al procesar la imagen.";
+            });
+        }
+    </script>
+
+</body>
+</html>
+

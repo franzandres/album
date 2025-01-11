@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS2 Multiplayer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, red, green);
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        .game-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .game-list li {
+            margin: 10px 0;
+        }
+        .search-container {
+            margin: 20px 0;
+        }
+        .search-container input {
+            padding: 10px;
+            font-size: 16px;
+            width: 60%;
+        }
+        .instructions {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>PS2 Multiplayer</h1>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Buscar juegos..." oninput="filterGames()">
+    </div>
+    <ul class="game-list" id="gameList">
+        <li>Heroes</li>
+        <li>Guitar Heroes</li>
+        <li>Ultimate Alliance</li>
+        <li>Smack Down</li>
+        <li>Eragon</li>
+        <li>Mortal Kombat</li>
+        <li>Crash Bandicoot</li>
+        <li>Need for Speed: Most Wanted</li>
+        <li>Midnight Club 2</li>
+        <li>Juiced 2</li>
+        <li>Need for Speed: Pro Street</li>
+        <li>Gran Turismo 4</li>
+        <li>Gran Turismo 3</li>
+        <li>Need for Speed: Carbon</li>
+        <li>Ghost Recon</li>
+        <li>Call of Duty 3</li>
+        <li>Battle for the Pacific</li>
+    </ul>
+    <div class="instructions">
+        <p>Usa las flechas <strong>arriba</strong>, <strong>izquierda</strong>, y <strong>derecha</strong> para controlar el menú.</p>
+    </div>
+
+    <script>
+        function filterGames() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const games = document.querySelectorAll('.game-list li');
+
+            games.forEach(game => {
+                if (game.textContent.toLowerCase().includes(query)) {
+                    game.style.display = '';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

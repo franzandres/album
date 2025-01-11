@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALCON ROJO, C.A</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #001A66;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .logo {
+            margin-top: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: red; /* Fondo rojo del círculo */
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background-color: #3399FF;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #007BFF;
+        }
+
+        .group-list {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            background-color: #003399;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .group-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .group-list li {
+            margin: 10px 0;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function mostrarGrupos() {
+            const groupList = document.querySelector('.group-list');
+            groupList.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Imagen del águila -->
+        <div class="logo">
+            <!-- Reemplaza el enlace de abajo con el enlace directo de tu imagen del águila -->
+        <img src="../../Downloads/Screenshot_2024_12_28-1-removebg-preview.png" width="153" height="150">        </div>
+
+        <!-- Texto descriptivo -->
+        <h1>Halcón Rojo C.A.</h1>
+        <p>Vendemos candados y cerraduras. Candados con seguridad y entramos a los candados con llave, abrimos puertas.</p>
+        <p>
+            Y grupos de seguridad con candados digitales hasta las 24 horas, hay bisagras y clips.<br>
+            También vendemos cerraduras, cilindros y grupos de candado de la misma altura:<br>
+            9.7 de altura y 3.6 de anchura. Cerraduras para vidrios inoxidables. Abrir grupo al entrar.<br>
+            Antes de comprar una cerradura.
+        </p>
+
+        <!-- Botón para mostrar grupos -->
+        <button class="btn" onClick="mostrarGrupos()">Elegir grupo</button>
+
+        <!-- Lista de grupos -->
+        <div class="group-list">
+            <h2>Grupos disponibles:</h2>
+            <ul>
+                <li>Familia Samur</li>
+                <li>Fútbol</li>
+                <li>Carnaval 2024</li>
+                <li>Familia Sanguino</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

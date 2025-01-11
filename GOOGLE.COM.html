@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        body {
+            background-color: lightblue; /* Fondo celeste */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 100px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .g { color: pink; }
+        .o { color: lightpurple; }
+        .o2 { color: brown; }
+        .g2 { color: purple; }
+        .l { color: darkred; }
+        .e { color: black; }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 400px;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-options {
+            display: flex;
+            gap: 20px;
+            font-size: 18px;
+        }
+
+        .search-options a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .search-options a:hover {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span class="g">G</span>
+        <span class="o">o</span>
+        <span class="o2">o</span>
+        <span class="g2">g</span>
+        <span class="l">l</span>
+        <span class="e">e</span>
+    </h1>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar en Google...">
+    </div>
+
+    <div class="search-options">
+        <a href="https://www.google.com/imghp" target="_blank">Imágenes</a>
+        <a href="https://www.google.com/videohp" target="_blank">Videos</a>
+        <a href="https://www.google.com/docs/about/" target="_blank">Documentos</a>
+    </div>
+</body>
+</html>

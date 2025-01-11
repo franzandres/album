@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios en Facebook Places</title>
+    <style>
+        .user-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .user-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .user-card img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        .user-card h3 {
+            font-size: 1.2em;
+        }
+        .user-card p {
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Usuarios en Facebook Places</h1>
+<div class="user-list" id="userList"></div>
+
+<script>
+    // Función para crear una tarjeta de usuario
+    function createUserCard(username) {
+        return `
+            <div class="user-card">
+                <img src="https://via.placeholder.com/50" alt="Avatar">
+                <h3>${username}</h3>
+                <p>Ubicación: Lugar X</p>
+            </div>
+        `;
+    }
+
+    // Generando 1000 usuarios ficticios
+    function generateUsers() {
+        let userList = document.getElementById('userList');
+        for (let i = 1; i <= 1000; i++) {
+            let username = `Usuario ${i}`;
+            userList.innerHTML += createUserCard(username);
+        }
+    }
+
+    // Llamamos a la función para generar los usuarios
+    generateUsers();
+</script>
+
+</body>
+</html>

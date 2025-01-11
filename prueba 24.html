@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Multimedia</title>
+    <style>
+        body {
+            background-color: red;
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .button {
+            background-color: gold;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .section {
+            width: 60%;
+        }
+
+        .photo-upload, .video-upload {
+            background-color: #A0522D;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .photo-upload h3, .video-upload h3 {
+            color: yellow;
+        }
+
+        .media-container {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .media-item img, .media-item video {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .live-stream {
+            width: 35%;
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .live-stream h3 {
+            margin-top: 0;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <button class="button" onclick="showSection('photos')">Fotos</button>
+        <button class="button" onclick="showSection('videos')">Videos</button>
+    </div>
+
+    <div class="main-container">
+
+        <div class="section" id="photos-section" style="display: none;">
+            <div class="photo-upload">
+                <h3>Subir Fotos</h3>
+                <input type="file" accept="image/*" id="photo-input" multiple onchange="displayMedia('photos', this.files)">
+                <div class="media-container" id="photos-container"></div>
+            </div>
+        </div>
+
+        <div class="section" id="videos-section" style="display: none;">
+            <div class="video-upload">
+                <h3>Subir Videos</h3>
+                <input type="file" accept="video/*" id="video-input" multiple onchange="displayMedia('videos', this.files)">
+                <div class="media-container" id="videos-container"></div>
+            </div>
+        </div>
+
+        <div class="live-stream">
+            <h3>Transmisión en Vivo</h3>
+            <button class="button" onclick="startLiveStream()">Transmitir en Vivo</button>
+            <div id="live-container">No hay transmisiones activas</div>
+            <h4>Transmisiones Finalizadas</h4>
+            <div id="recorded-container"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function showSection(section) {
+            document.getElementById('photos-section').style.display = section === 'photos' ? 'block' : 'none';
+            document.getElementById('videos-section').style.display = section === 'videos' ? 'block' : 'none';
+        }
+
+        function displayMedia(type, files) {
+            const container = document.getElementById(`${type}-container`);
+            container.innerHTML = '';
+
+            Array.from(files).forEach(file => {
+                const mediaItem = document.createElement('div');
+                mediaItem.className = 'media-item';
+
+                if (type === 'photos') {
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    mediaItem.appendChild(img);
+                } else if (type === 'videos') {
+                    const video = document.createElement('video');
+                    video.src = URL.createObjectURL(file);
+                    video.controls = true;
+                    mediaItem.appendChild(video);
+                }
+
+                container.appendChild(mediaItem);
+            });
+        }
+
+        function startLiveStream() {
+            const liveContainer = document.getElementById('live-container');
+            liveContainer.innerHTML = '<p>Transmitiendo en vivo...</p>';
+
+            setTimeout(() => {
+                const recordedContainer = document.getElementById('recorded-container');
+                const video = document.createElement('div');
+                video.innerHTML = '<p>Transmisión grabada - Reproducir</p>';
+                recordedContainer.appendChild(video);
+                liveContainer.innerHTML = 'No hay transmisiones activas';
+            }, 10000); // Simula 10 segundos de transmisión
+        }
+    </script>
+
+</body>
+</html>
+
+<img src="ruta/de/tu/imagen.jpg" alt="Descripción de la imagen">
+
+<video controls>
+  <source src="ruta/de/tu/video.mp4" type="video/mp4">
+  Tu navegador no soporta el formato de video.
+</video>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos y Videos</title>
+</head>
+<body>
+    <h1>Galería de Fotos</h1>
+    <img src="foto1.jpg" alt="Foto de paisaje">
+    <img src="foto2.jpg" alt="Foto de ciudad">
+
+    <h1>Video de Ejemplo</h1>
+    <video controls>
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta el formato de video.
+    </video>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos y Videos</title>
+</head>
+<body>
+    <h1>Video de Ejemplo</h1>
+    <video controls>
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta el formato de video.
+    </video>
+
+    <button>Publicar</button>
+</body>
+</html>

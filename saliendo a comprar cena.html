@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saliendo a Comprar Cena</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: yellow;
+        }
+
+        .video-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        video {
+            margin: 10px 0;
+            border: 2px solid yellow;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Saliendo a Comprar Cena</h1>
+    <p>Sube tus videos y reprodúcelos aquí:</p>
+
+    <input type="file" id="videoUpload" accept="video/*">
+    <button onclick="uploadVideo()">Subir Video</button>
+
+    <div id="videoList" class="video-container">
+        <h2>Videos Guardados</h2>
+    </div>
+
+    <script>
+        function uploadVideo() {
+            const fileInput = document.getElementById('videoUpload');
+            const videoList = document.getElementById('videoList');
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const videoURL = URL.createObjectURL(file);
+
+                const videoElement = document.createElement('video');
+                videoElement.src = videoURL;
+                videoElement.controls = true;
+                videoElement.width = 480;
+
+                videoList.appendChild(videoElement);
+            } else {
+                alert('Por favor, selecciona un video para subir.');
+            }
+        }
+    </script>
+</body>
+</html>

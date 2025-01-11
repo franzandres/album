@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transmisión en Vivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        video {
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transmisión en Vivo</h1>
+    
+    <!-- Botón para iniciar la transmisión -->
+    <button id="startLiveStream">Transmitir en Vivo</button>
+
+    <!-- Video donde se mostrará la transmisión -->
+    <div>
+        <video id="liveVideo" autoplay muted></video>
+    </div>
+
+    <script>
+        // Referencias a elementos HTML
+        const startButton = document.getElementById('startLiveStream');
+        const liveVideo = document.getElementById('liveVideo');
+
+        // Función para iniciar la transmisión en vivo
+        async function startLiveStream() {
+            try {
+                // Solicitar acceso a la cámara
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                liveVideo.srcObject = stream;
+            } catch (error) {
+                console.error('Error al acceder a la cámara:', error);
+                alert('No se pudo iniciar la transmisión en vivo.');
+            }
+        }
+
+        // Evento del botón
+        startButton.addEventListener('click', startLiveStream);
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transmisión y Captura de Fotos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        video, canvas, img {
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .btn-live {
+            background-color: #007bff;
+        }
+
+        .btn-live:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-photo {
+            background-color: #28a745;
+        }
+
+        .btn-photo:hover {
+            background-color: #218838;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .gallery img, .gallery video {
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transmisión en Vivo y Fotos</h1>
+
+    <div class="container">
+        <!-- Video en vivo -->
+        <video id="liveVideo" autoplay muted></video>
+        <br>
+
+        <!-- Botones -->
+        <button id="startLiveButton" class="btn-live">Transmitir en Vivo</button>
+        <button id="capturePhotoButton" class="btn-photo">Tomar Foto</button>
+    </div>
+
+    <!-- Canvas oculto para capturar fotos -->
+    <canvas id="photoCanvas" style="display:none;"></canvas>
+
+    <!-- Galería para fotos y videos -->
+    <div>
+        <h2>Galería</h2>
+        <div class="gallery" id="gallery"></div>
+    </div>
+
+    <script>
+        // Referencias a elementos HTML
+        const liveVideo = document.getElementById('liveVideo');
+        const startLiveButton = document.getElementById('startLiveButton');
+        const capturePhotoButton = document.getElementById('capturePhotoButton');
+        const photoCanvas = document.getElementById('photoCanvas');
+        const gallery = document.getElementById('gallery');
+
+        let stream; // Flujo de video en vivo
+
+        // Iniciar la transmisión en vivo
+        async function startLiveStream() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                liveVideo.srcObject = stream;
+                startLiveButton.textContent = "Detener Transmisión";
+                startLiveButton.removeEventListener('click', startLiveStream);
+                startLiveButton.addEventListener('click', stopLiveStream);
+            } catch (error) {
+                console.error('Error al iniciar la transmisión:', error);
+                alert('No se pudo iniciar la transmisión en vivo.');
+            }
+        }
+
+        // Detener la transmisión en vivo
+        function stopLiveStream() {
+            const tracks = stream.getTracks();
+            tracks.forEach(track => track.stop());
+            liveVideo.srcObject = null;
+
+            // Guardar la transmisión como video en la galería
+            const videoElement = document.createElement('video');
+            videoElement.controls = true;
+            videoElement.srcObject = stream;
+            gallery.appendChild(videoElement);
+
+            startLiveButton.textContent = "Transmitir en Vivo";
+            startLiveButton.removeEventListener('click', stopLiveStream);
+            startLiveButton.addEventListener('click', startLiveStream);
+        }
+
+        // Capturar foto
+        capturePhotoButton.addEventListener('click', () => {
+            const context = photoCanvas.getContext('2d');
+            photoCanvas.width = liveVideo.videoWidth;
+            photoCanvas.height = liveVideo.videoHeight;
+
+            // Dibujar el video en el canvas
+            context.drawImage(liveVideo, 0, 0, photoCanvas.width, photoCanvas.height);
+
+            // Obtener la imagen como base64
+            const photoData = photoCanvas.toDataURL('image/png');
+
+            // Agregar la imagen a la galería
+            const imgElement = document.createElement('img');
+            imgElement.src = photoData;
+            gallery.appendChild(imgElement);
+        });
+
+        // Evento para iniciar la transmisión en vivo
+        startLiveButton.addEventListener('click', startLiveStream);
+    </script>
+</body>
+</html>
+
+npm init -y
+
+npm install express multer
+
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const app = express();
+
+// Configuración de multer para guardar imágenes
+const storage = multer.diskStorage({
+    destination: './uploads/', // Carpeta donde se guardarán los archivos
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Renombrar archivo con marca de tiempo
+    }
+});
+const upload = multer({ storage });
+
+// Middleware para servir archivos estáticos y parsear JSON
+app.use(express.static('public'));
+app.use(express.json());
+
+// Ruta para subir fotos
+app.post('/upload-photo', upload.single('photo'), (req, res) => {
+    res.json({ filePath: `/uploads/${req.file.filename}` });
+});
+
+// Ruta para listar fotos guardadas
+app.get('/photos', (req, res) => {
+    const fs = require('fs');
+    const directoryPath = path.join(__dirname, 'uploads');
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            res.status(500).send('Error al leer la carpeta');
+        } else {
+            const fileUrls = files.map(file => `/uploads/${file}`);
+            res.json(fileUrls);
+        }
+    });
+});
+
+// Carpeta para almacenar imágenes
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Servidor corriendo
+const PORT = 3000;
+app.listen(PORT, () => console
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transmisión y Captura de Fotos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #333;
+        }
+
+        video, canvas, img {
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .btn-photo {
+            background-color: #28a745;
+        }
+
+        .btn-photo:hover {
+            background-color: #218838;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .gallery img {
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Captura y Almacenamiento de Fotos</h1>
+
+    <!-- Video para captura -->
+    <video id="liveVideo" autoplay muted></video>
+    <br>
+
+    <!-- Botón para capturar foto -->
+    <button id="capturePhotoButton" class="btn-photo">Tomar Foto</button>
+
+    <!-- Canvas para capturar fotos (invisible) -->
+    <canvas id="photoCanvas" style="display:none;"></canvas>
+
+    <!-- Galería de fotos almacenadas -->
+    <h2>Galería</h2>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const liveVideo = document.getElementById('liveVideo');
+        const capturePhotoButton = document.getElementById('capturePhotoButton');
+        const photoCanvas = document.getElementById('photoCanvas');
+        const gallery = document.getElementById('gallery');
+
+        // Acceder a la cámara del usuario
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                liveVideo.srcObject = stream;
+            } catch (error) {
+                console.error('Error al acceder a la cámara:', error);
+                alert('No se pudo acceder a la cámara.');
+            }
+        }
+
+        // Cargar fotos almacenadas en la galería
+        function loadGallery() {
+            const storedPhotos = JSON.parse(localStorage.getItem('photos')) || [];
+            storedPhotos.forEach(photoData => {
+                const imgElement = document.createElement('img');
+                imgElement.src = photoData;
+                gallery.appendChild(imgElement);
+            });
+        }
+
+        // Guardar fotos en LocalStorage
+        function savePhoto(photoData) {
+            const storedPhotos = JSON.parse(localStorage.getItem('photos')) || [];
+            storedPhotos.push(photoData);
+            localStorage.setItem('photos', JSON.stringify(storedPhotos));
+        }
+
+        // Capturar foto
+        capturePhotoButton.addEventListener('click', () => {
+            const context = photoCanvas.getContext('2d');
+            photoCanvas.width = liveVideo.videoWidth;
+            photoCanvas.height = liveVideo.videoHeight;
+
+            // Dibujar el video en el canvas
+            context.drawImage(liveVideo, 0, 0, photoCanvas.width, photoCanvas.height);
+
+            // Obtener la imagen como base64
+            const photoData = photoCanvas.toDataURL('image/png');
+
+            // Mostrar la imagen en la galería
+            const imgElement = document.createElement('img');
+            imgElement.src = photoData;
+            gallery.appendChild(imgElement);
+
+            // Guardar la imagen en LocalStorage
+            savePhoto(photoData);
+        });
+
+        // Iniciar la cámara al cargar la página
+        window.onload = () => {
+            startCamera();
+            loadGallery();
+        };
+    </script>
+</body>
+</html>

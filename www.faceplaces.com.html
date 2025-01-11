@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faceplaces</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: black;
+        }
+        .section-title {
+            color: red;
+            margin-bottom: 10px;
+        }
+        .text-red {
+            color: red;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-circle {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+        }
+        .button-circle {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+        .button-circle:hover {
+            background-color: #333;
+        }
+        .link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Faceplaces</h1>
+
+        <div class="section">
+            <p class="section-title">Inicios de sesión recientes</p>
+            <p class="text-red">Haz clic en tu foto o añade una cuenta</p>
+        </div>
+
+        <div class="section">
+            <div class="input-group">
+                <label for="email">Correo electrónico, número de teléfono o Gmail</label>
+                <input type="text" id="email" class="input-circle" placeholder="Correo electrónico o número">
+            </div>
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" class="input-circle" placeholder="Contraseña">
+            </div>
+            <button class="button-circle">Iniciar sesión</button>
+            <button class="button-circle" style="margin-top: 10px;">Iniciar sesión con Gmail</button>
+            <p class="link">¿Has olvidado tu contraseña?</p>
+            <button class="button-circle" style="margin-top: 10px;">Crear cuenta</button>
+        </div>
+
+        <div class="footer">
+            <p>Crear página para Facebook famoso, marca o empresas</p>
+        </div>
+    </div>
+</body>
+</html>

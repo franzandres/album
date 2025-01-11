@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatear con Niños, Adolescentes y Jóvenes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .chat-box {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .chat-messages {
+            list-style-type: none;
+            padding: 0;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+        }
+        .message {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .message .username {
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Bienvenido a Chatear con Niños, Adolescentes y Jóvenes</h1>
+        <p>Conéctate y chatea con otros jóvenes de todo el mundo</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Registro -->
+        <div id="registration">
+            <h2>Registro</h2>
+            <form id="registrationForm">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" id="username" placeholder="Escribe tu nombre..." required>
+                <label for="age">Edad:</label>
+                <input type="number" id="age" placeholder="Ingresa tu edad..." required>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+
+        <!-- Chat -->
+        <div id="chatSection" style="display:none;">
+            <h2>Chat en Vivo</h2>
+            <div class="chat-box">
+                <ul class="chat-messages" id="chatMessages"></ul>
+                <textarea id="messageInput" placeholder="Escribe tu mensaje..."></textarea>
+                <button id="sendMessageButton">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Chatear con Niños, Adolescentes y Jóvenes | Todos los derechos reservados</p>
+    </div>
+
+    <script>
+        const registrationForm = document.getElementById('registrationForm');
+        const chatSection = document.getElementById('chatSection');
+        const registrationSection = document.getElementById('registration');
+        const sendMessageButton = document.getElementById('sendMessageButton');
+        const messageInput = document.getElementById('messageInput');
+        const chatMessages = document.getElementById('chatMessages');
+        
+        let userName = '';
+        let userAge = 0;
+
+        // Manejo del registro
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener el nombre de usuario y edad
+            userName = document.getElementById('username').value;
+            userAge = document.getElementById('age').value;
+
+            // Verificar que la edad esté en el rango adecuado
+            if (userAge < 8 || userAge > 17) {
+                alert('Lo siento, debes tener entre 8 y 17 años para registrarte.');
+                return;
+            }
+
+            // Mostrar la sección de chat
+            registrationSection.style.display = 'none';
+            chatSection.style.display = 'block';
+        });
+
+        // Manejo de mensajes en el chat
+        sendMessageButton.addEventListener('click', function() {
+            const messageText = messageInput.value.trim();
+            if (messageText !== '') {
+                const newMessage = document.createElement('li');
+                newMessage.classList.add('message');
+                newMessage.innerHTML = `<span class="username">${userName}</span>: ${messageText}`;
+                chatMessages.appendChild(newMessage);
+                messageInput.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+
+        // Simulación de mensajes enviados
+        setInterval(() => {
+            if (Math.random() > 0.7) { // 30% chance de que aparezca un mensaje simulado
+                const randomMessages = ['¡Hola!', '¿Cómo estás?', '¿Qué tal tu día?', '¡Me encanta este chat!'];
+                const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
+                const randomUser = ['Ana', 'Luis', 'Sofia', 'Marco', 'Clara'][Math.floor(Math.random() * 5)];
+                const newMessage = document.createElement('li');
+                newMessage.classList.add('message');
+                newMessage.innerHTML = `<span class="username">${randomUser}</span>: ${randomMessage}`;
+                chatMessages.appendChild(newMessage);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }, 5000);
+    </script>
+
+</body>
+</html>

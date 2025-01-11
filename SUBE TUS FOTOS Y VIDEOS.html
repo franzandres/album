@@ -1,0 +1,194 @@
+mkdir subir-archivos
+cd subir-archivos
+
+npm init -y
+
+npm install express multer
+
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+
+// Crear una instancia de express
+const app = express();
+
+// Configuración de multer para almacenar los archivos subidos
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Carpeta donde se guardarán los archivos
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)); // Nombre del archivo único
+    }
+});
+
+const upload = multer({ storage: storage });
+
+// Crear una carpeta para almacenar los archivos si no existe
+const fs = require('fs');
+const uploadFolder = './uploads';
+if (!fs.existsSync(uploadFolder)) {
+    fs.mkdirSync(uploadFolder);
+}
+
+// Serve static files
+app.use('/uploads', express.static('uploads'));
+
+// Ruta para servir la página HTML
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Ruta para manejar la subida de archivos
+app.post('/upload', upload.array('files', 10), (req, res) => {
+    if (req.files) {
+        res.json({
+            message: 'Archivos subidos correctamente',
+            files: req.files
+        });
+    } else {
+        res.status(400).json({ message: 'No se subieron archivos' });
+    }
+});
+
+// Iniciar el servidor
+app.listen(3000, () => {
+    console.log('Servidor corriendo en http://localhost:3000');
+});
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Fotos y Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        #preview {
+            margin-top: 20px;
+        }
+        .media-preview {
+            margin: 10px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        img, video {
+            max-width: 300px;
+            margin-top: 10px;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sube tus fotos y videos</h1>
+        <input type="file" id="fileInput" accept="image/*,video/*" multiple>
+        <button id="uploadBtn">Subir Archivos</button>
+        <div id="preview"></div>
+    </div>
+
+    <script>
+        let filesToUpload = [];
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            filesToUpload = event.target.files;
+            displayFiles(filesToUpload);
+        });
+
+        function displayFiles(files) {
+            let previewContainer = document.getElementById('preview');
+            previewContainer.innerHTML = '';  // Limpiar la vista previa antes de agregar nuevos archivos
+
+            Array.from(files).forEach(file => {
+                let fileReader = new FileReader();
+                fileReader.onload = function(e) {
+                    let fileType = file.type.split('/')[0];
+                    let mediaPreview = document.createElement('div');
+                    mediaPreview.classList.add('media-preview');
+
+                    if (fileType === 'image') {
+                        let img = document.createElement('img');
+                        img.src = e.target.result;
+                        mediaPreview.appendChild(img);
+                    } else if (fileType === 'video') {
+                        let video = document.createElement('video');
+                        video.src = e.target.result;
+                        video.controls = true;
+                        mediaPreview.appendChild(video);
+                    }
+
+                    previewContainer.appendChild(mediaPreview);
+                };
+
+                fileReader.readAsDataURL(file);
+            });
+        }
+
+        document.getElementById('uploadBtn').addEventListener('click', function() {
+            let formData = new FormData();
+            for (let i = 0; i < filesToUpload.length; i++) {
+                formData.append('files', filesToUpload[i]);
+            }
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                alert('Archivos subidos correctamente');
+                displayUploadedFiles();
+            })
+            .catch(error => {
+                console.error('Error al subir archivos:', error);
+                alert('Error al subir archivos');
+            });
+        });
+
+        function displayUploadedFiles() {
+            fetch('/uploads')
+                .then(response => response.json())
+                .then(data => {
+                    let previewContainer = document.getElementById('preview');
+                    previewContainer.innerHTML = '';
+                    data.files.forEach(file => {
+                        let fileElement = document.createElement('div');
+                        fileElement.classList.add('media-preview');
+                        let filePath = '/uploads/' + file.filename;
+                        if (file.mimetype.startsWith('image/')) {
+                            let img = document.createElement('img');
+                            img.src = filePath;
+                            fileElement.appendChild(img);
+                        } else if (file.mimetype.startsWith('video/')) {
+                            let video = document.createElement('video');
+                            video.src = filePath;
+                            video.controls = true;
+                            fileElement.appendChild(video);
+                        }
+                        previewContainer.appendChild(fileElement);
+                    });
+                });
+        }
+
+        // Mostrar los archivos existentes
+        displayUploadedFiles();
+    </script>
+
+</body>
+</html>
+
+node server.js
+

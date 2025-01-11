@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar y Descargar Título Académico</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Editar y Descargar Título Académico</h1>
+    
+    <label for="titleInput">Ingresa o edita el título académico:</label><br>
+    <input type="text" id="titleInput" placeholder="Escribe el título académico...">
+    <br>
+    <button onclick="downloadTitle()">Descargar Título</button>
+    
+    <h2>Buscar en Google:</h2>
+    <input type="text" id="searchInput" placeholder="Escribe algo para buscar...">
+    <br>
+    <button onclick="searchGoogle()">Buscar en Google</button>
+
+    <div id="message"></div>
+
+    <script>
+        function downloadTitle() {
+            // Obtener el título ingresado
+            var title = document.getElementById('titleInput').value;
+
+            // Validar si hay un título ingresado
+            if (title === "") {
+                document.getElementById('message').innerText = "Por favor, ingresa un título académico.";
+                return;
+            }
+
+            // Crear un Blob con el título para descargarlo como archivo de texto
+            var blob = new Blob([title], { type: "text/plain" });
+
+            // Crear un enlace para descargar el archivo
+            var link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "titulo_academico.txt";  // Nombre del archivo a descargar
+
+            // Simular un clic en el enlace para descargar el archivo
+            link.click();
+
+            // Mostrar mensaje de descarga
+            document.getElementById('message').innerText = "El título se está descargando...";
+        }
+
+        function searchGoogle() {
+            // Obtener el término de búsqueda
+            var searchText = document.getElementById('searchInput').value;
+
+            // Validar si hay texto ingresado
+            if (searchText === "") {
+                document.getElementById('message').innerText = "Por favor, ingresa un término de búsqueda.";
+                return;
+            }
+
+            // Redirigir al usuario a Google con el término de búsqueda
+            window.open("https://www.google.com/search?q=" + encodeURIComponent(searchText), "_blank");
+
+            // Mostrar mensaje de búsqueda
+            document.getElementById('message').innerText = "Buscando en Google...";
+        }
+    </script>
+
+</body>
+</html>

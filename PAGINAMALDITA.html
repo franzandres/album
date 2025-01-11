@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Maldita</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Creepster', cursive;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 4em;
+            text-align: center;
+            color: #ff0000;
+            text-shadow: 0 0 20px #ff0000, 0 0 40px #990000;
+            position: relative;
+        }
+        h1::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(255, 0, 0, 0.8), transparent);
+            animation: drip 3s infinite;
+        }
+        @keyframes drip {
+            0% { height: 20px; opacity: 1; }
+            50% { height: 40px; opacity: 0.6; }
+            100% { height: 20px; opacity: 1; }
+        }
+        .blood {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/WYrAEnD.png') repeat;
+            opacity: 0.3;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="blood"></div>
+    <h1>Página Maldita</h1>
+</body>
+</html>

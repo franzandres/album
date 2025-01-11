@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Number App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #video {
+            width: 100%;
+            height: 300px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>Videollamada</h2>
+            <video id="video" autoplay></video>
+            <button id="startCall">Iniciar Llamada</button>
+            <button id="endCall">Finalizar Llamada</button>
+        </div>
+
+        <div class="section">
+            <h2>Marcar Número</h2>
+            <input type="tel" id="phoneNumber" placeholder="Ingresa número a marcar">
+            <button id="callNumber">Llamar</button>
+        </div>
+
+        <div class="section">
+            <h2>Contactos</h2>
+            <textarea id="contacts" placeholder="Lista de contactos"></textarea>
+            <button id="addContact">Agregar Contacto</button>
+        </div>
+
+        <div class="section">
+            <h2>Notificaciones</h2>
+            <textarea id="notifications" placeholder="Notificaciones recibidas" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        // WebRTC initialization for videollamadas
+        const startCallButton = document.getElementById('startCall');
+        const endCallButton = document.getElementById('endCall');
+        const video = document.getElementById('video');
+
+        startCallButton.addEventListener('click', () => {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                })
+                .catch(error => {
+                    console.error('Error al iniciar la videollamada:', error);
+                });
+        });
+
+        endCallButton.addEventListener('click', () => {
+            const stream = video.srcObject;
+            if (stream) {
+                const tracks = stream.getTracks();
+                tracks.forEach(track => track.stop());
+                video.srcObject = null;
+            }
+        });
+
+        // Placeholder for llamar functionality
+        document.getElementById('callNumber').addEventListener('click', () => {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            alert(`Llamando a: ${phoneNumber}`);
+            // Aquí se integraría API de llamadas (Twilio, Vonage, etc.)
+        });
+
+        // Placeholder for agregar contactos
+        document.getElementById('addContact').addEventListener('click', () => {
+            const contacts = document.getElementById('contacts');
+            const newContact = prompt('Ingresa el nombre del contacto:');
+            if (newContact) {
+                contacts.value += `${newContact}\n`;
+            }
+        });
+
+        // Notificaciones simuladas
+        const notifications = document.getElementById('notifications');
+        setInterval(() => {
+            const randomNotification = `Notificación nueva: ${new Date().toLocaleTimeString()}`;
+            notifications.value += `${randomNotification}\n`;
+        }, 5000);
+    </script>
+</body>
+</html>

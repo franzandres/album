@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Messenger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .welcome-container, .verification-container, .main-container {
+            text-align: center;
+            padding: 20px;
+            color: #ff69b4; /* Rosado */
+        }
+        .welcome-container h1, .verification-container h1, .main-container h1 {
+            margin: 20px 0;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 50%;
+            background-color: #ff69b4; /* Fondo rosado */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 50%;
+        }
+        .policy-text {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff69b4; /* Rosado */
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #ff85c1;
+        }
+        .verification-container input {
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ff69b4;
+            border-radius: 5px;
+        }
+        .main-container {
+            display: none;
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #ff69b4;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .nav-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .nav-bar button:hover {
+            font-weight: bold;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .chat-list, .call-list, .news-feed {
+            list-style: none;
+            padding: 0;
+        }
+        .chat-list li, .call-list li, .news-feed li {
+            padding: 10px;
+            border-bottom: 1px solid #ff69b4;
+            text-align: left;
+        }
+    .circle1 {            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 50%;
+            background-color: #ff69b4; /* Fondo rosado */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+}
+    .circle2 {            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 50%;
+            background-color: #ff69b4; /* Fondo rosado */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+}
+.circle11 {width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 50%;
+            background-color: #ff69b4; /* Fondo rosado */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+}
+    </style>
+</head>
+<body>
+    <div class="welcome-container" id="welcome-container">
+        <h1>Te damos la bienvenida a WhatsApp</h1>
+        <div class="circle"><span class="circle2"><span class="circle11"><img src="../../Downloads/descarga-removebg-preview (1).png" width="194" height="194"></span></span><img src="whatsapp_icon.png" alt="WhatsApp Icon" id="circle-image">        </div>
+        <p class="policy-text">
+            Lea nuestra <a href="#" style="color: #ff69b4;">política de privacidad</a>. Toca "Aceptar y continuar" para aceptar las condiciones del servicio.
+        </p>
+        <button class="button" id="accept-button">Aceptar y continuar</button>
+</div>
+
+    <div class="verification-container" id="verification-container">
+        <h1>Verificación de número de teléfono</h1>
+        <p>Por favor, ingresa tu número de teléfono para continuar:</p>
+        <input type="text" id="phone-number" placeholder="Número de teléfono">
+        <button id="verify-button">Verificar</button>
+    </div>
+
+    <div class="main-container" id="main-container">
+        <div class="section active" id="chat-section">
+            <h1>Chats</h1>
+            <ul class="chat-list">
+                <li>Contacto 1</li>
+                <li>Contacto 2</li>
+                <li>Contacto 3</li>
+            </ul>
+        </div>
+        <div class="section" id="calls-section">
+            <h1>Llamadas</h1>
+            <ul class="call-list">
+                <li>Llamada 1</li>
+                <li>Llamada 2</li>
+                <li>Llamada 3</li>
+            </ul>
+        </div>
+        <div class="section" id="news-section">
+            <h1>Novedades</h1>
+            <ul class="news-feed">
+                <li>Novedad 1</li>
+                <li>Novedad 2</li>
+                <li>Novedad 3</li>
+            </ul>
+        </div>
+
+        <div class="nav-bar">
+            <button onclick="showSection('chat-section')">Chats</button>
+            <button onclick="showSection('calls-section')">Llamadas</button>
+            <button onclick="showSection('news-section')">Novedades</button>
+        </div>
+    </div>
+
+    <script>
+        // Array de imágenes para el círculo
+        const images = [
+            "whatsapp_icon.png",
+            "ice_cream.png",
+            "guitar.png",
+            "bicycle.png",
+            "shoe.png",
+            "burger.png"
+        ];
+
+        let currentImageIndex = 0;
+        const circleImage = document.getElementById('circle-image');
+        const acceptButton = document.getElementById('accept-button');
+        const welcomeContainer = document.getElementById('welcome-container');
+        const verificationContainer = document.getElementById('verification-container');
+        const mainContainer = document.getElementById('main-container');
+
+        // Cambiar imagen en el círculo al hacer clic en "Aceptar y continuar"
+        acceptButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            circleImage.src = images[currentImageIndex];
+            // Mostrar la sección de verificación
+            welcomeContainer.style.display = 'none';
+            verificationContainer.style.display = 'block';
+        });
+
+        // Botón de verificación
+        const verifyButton = document.getElementById('verify-button');
+        verifyButton.addEventListener('click', () => {
+            const phoneNumber = document.getElementById('phone-number').value;
+            if (phoneNumber) {
+                alert(`Número de teléfono ${phoneNumber} verificado correctamente.`);
+                verificationContainer.style.display = 'none';
+                mainContainer.style.display = 'block';
+            } else {
+                alert('Por favor, ingresa un número de teléfono válido.');
+            }
+        });
+
+        // Función para mostrar las secciones
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Mockup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1877f2;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #165dbb;
+        }
+        .facebook-page {
+            display: none;
+        }
+        .main-page {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .main-page header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1877f2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+        }
+        .main-page header h1 {
+            margin: 0;
+        }
+        .main-page header nav span {
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .main-page header nav span:hover {
+            text-decoration: underline;
+        }
+        .main-page .content {
+            margin: 20px 0;
+        }
+        .main-page .content .post {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .main-page .content .post img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .main-page .content .post .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .main-page .content .post .actions button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1877f2;
+            color: white;
+            cursor: pointer;
+        }
+        .main-page .content .post .actions button:hover {
+            background-color: #165dbb;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            background: #f0f2f5;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .sidebar .friend {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .sidebar .friend img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function registerUser(event) {
+            event.preventDefault(); // Evita el reinicio del formulario
+
+            // Oculta el formulario de registro
+            document.getElementById('register-form').style.display = 'none';
+
+            // Muestra la página principal de Facebook simulada
+            document.getElementById('facebook-page').style.display = 'block';
+        }
+
+        function logout() {
+            // Oculta la página principal de Facebook
+            document.getElementById('facebook-page').style.display = 'none';
+
+            // Muestra el formulario de registro
+            document.getElementById('register-form').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <!-- Formulario de registro -->
+    <div class="container" id="register-form">
+        <h1>Facebook</h1>
+        <form onsubmit="registerUser(event)">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+
+    <!-- Simulación de página principal de Facebook -->
+    <div class="main-page" id="facebook-page" style="display: none;">
+        <header>
+            <h1>Facebook</h1>
+            <nav>
+                <span>Inicio</span> | <span>Amigos</span> | <span>Notificaciones</span> | <span onclick="logout()">Cerrar sesión</span>
+            </nav>
+        </header>
+        <div style="display: flex;">
+            <!-- Sidebar de amigos -->
+            <div class="sidebar">
+                <h3>Amigos</h3>
+                <div class="friend">
+                    <img src="https://via.placeholder.com/40" alt="Amigo">
+                    <span>Amigo 1</span>
+                </div>
+                <div class="friend">
+                    <img src="https://via.placeholder.com/40" alt="Amigo">
+                    <span>Amigo 2</span>
+                </div>
+                <div class="friend">
+                    <img src="https://via.placeholder.com/40" alt="Amigo">
+                    <span>Amigo 3</span>
+                </div>
+            </div>
+
+            <!-- Publicaciones -->
+            <div class="content">
+                <div class="post">
+                    <h4>Usuario 1</h4>
+                    <img src="https://via.placeholder.com/600x300" alt="Publicación">
+                    <p>Esto es un ejemplo de publicación.</p>
+                    <div class="actions">
+                        <button>Me gusta</button>
+                        <button>Comentar</button>
+                        <button>Compartir</button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <h4>Usuario 2</h4>
+                    <img src="https://via.placeholder.com/600x300" alt="Publicación">
+                    <p>Otro ejemplo de publicación.</p>
+                    <div class="actions">
+                        <button>Me gusta</button>
+                        <button>Comentar</button>
+                        <button>Compartir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<style>
+    /* Asegurar que los cuadros sean visibles y estén bien definidos */
+    .container, .main-page, .sidebar, .content, .post {
+        border: 1px solid #ddd;
+    }
+
+    /* Ajustar el diseño y los colores para un estilo más consistente */
+    .sidebar .friend img **or height
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar en Google y Descargar</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Buscar en Google y Descargar el Término</h1>
+    
+    <input type="text" id="searchInput" placeholder="Escribe lo que deseas buscar...">
+    <br>
+    <button onclick="searchAndDownload()">Buscar y Descargar Término</button>
+
+    <div id="message"></div>
+
+    <script>
+        function searchAndDownload() {
+            // Obtener el texto ingresado
+            var searchText = document.getElementById('searchInput').value;
+
+            // Validar si hay texto ingresado
+            if (searchText === "") {
+                document.getElementById('message').innerText = "Por favor, ingresa algo para buscar.";
+                return;
+            }
+
+            // Crear un Blob con el término de búsqueda para descargarlo como archivo
+            var blob = new Blob([searchText], { type: "text/plain" });
+
+            // Crear un enlace para descargar el archivo
+            var link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "busqueda.txt";  // Nombre del archivo a descargar
+
+            // Simular un clic en el enlace para descargar el archivo
+            link.click();
+
+            // Redirigir al usuario a Google con la búsqueda
+            window.open("https://www.google.com/search?q=" + encodeURIComponent(searchText), "_blank");
+
+            // Mostrar mensaje de acción
+            document.getElementById('message').innerText = "Se está realizando la búsqueda en Google y descargando el término...";
+        }
+    </script>
+
+</body>
+</html>

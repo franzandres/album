@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa de Gasolina SRL</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle img {
+            width: 80%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        h1 {
+            margin-top: 10px;
+            color: black;
+        }
+
+        /* Carrusel */
+        .carousel {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel img {
+            width: 300px;
+            height: 200px;
+            margin: 0 10px;
+            scroll-snap-align: center;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        /* Formulario de sueldos */
+        .form-container {
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Chat en l�nea */
+        .chat-container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .chat-input {
+            display: flex;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .chat-input button {
+            padding: 10px;
+            border: none;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+    .circle1 {            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+}
+    .circle2 {            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+}
+    .circle21 {width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+}
+    .circle3 {            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="circle"><span class="circle3"><img src="../../Downloads/ijjkjkmm-removebg-preview.png" width="89%" height="150"></span></div>
+            <h1>Empresa de Gasolina SRL</h1>
+        </div>
+    </header>
+
+    <!-- Carrusel de im�genes -->
+    <section class="carousel"><span class="circle21"><img src="../../Pictures/caratula/jjjiuiii.jpg" width="275" height="183"></span><img src="../../Pictures/caratula/88999oijkjk.jpg" width="275" height="183"><img src="../../Pictures/caratula/99kikkk.jpg" width="300" height="168"></section>
+
+    <!-- Formulario para pagar sueldo -->
+    <section class="form-container">
+      <h2>Pago de Sueldo</h2>
+        <form action="procesar_sueldo.php" method="post">
+            <input type="text" name="nombre" placeholder="Nombre del trabajador" required>
+            <input type="text" name="cargo" placeholder="Cargo del trabajador" required>
+            <input type="number" name="sueldo" placeholder="Monto del sueldo" required>
+            <button type="submit">Pagar</button>
+        </form>
+    </section>
+
+    <!-- Chat en l�nea -->
+    <section class="chat-container">
+        <h2>Chat en L�nea</h2>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Los mensajes se mostrar�n aqu� -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Escribe un mensaje...">
+            <button onClick="enviarMensaje()">Enviar</button>
+        </div>
+    </section>
+
+    <script>
+        // Simulaci�n de chat en l�nea
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+
+        function enviarMensaje() {
+            const mensaje = chatInput.value;
+            if (mensaje.trim() !== "") {
+                const nuevoMensaje = document.createElement('div');
+                nuevoMensaje.textContent = mensaje;
+                chatMessages.appendChild(nuevoMensaje);
+                chatInput.value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
+

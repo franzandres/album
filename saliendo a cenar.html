@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saliendo a Cenar</title>
+    <style>
+        body {
+            background-color: black;
+            color: yellow;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+        .upload-section, .video-list {
+            width: 80%;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .video-item {
+            margin: 10px 0;
+        }
+        .video-item video {
+            width: 100%;
+            max-width: 600px;
+        }
+        input[type="file"] {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>Saliendo a Cenar</header>
+    <section class="upload-section">
+        <h2>Sube tus videos</h2>
+        <form id="uploadForm">
+            <input type="file" id="videoInput" accept="video/*" multiple>
+            <button type="submit">Subir</button>
+        </form>
+    </section>
+    <section class="video-list">
+        <h2>Videos Guardados</h2>
+        <div id="videoContainer"></div>
+    </section>
+
+    <script>
+        const videoContainer = document.getElementById('videoContainer');
+        const uploadForm = document.getElementById('uploadForm');
+        const videoInput = document.getElementById('videoInput');
+
+        const videos = JSON.parse(localStorage.getItem('videos')) || [];
+
+        function displayVideos() {
+            videoContainer.innerHTML = '';
+            videos.forEach((video, index) => {
+                const videoItem = document.createElement('div');
+                videoItem.classList.add('video-item');
+                videoItem.innerHTML = `
+                    <video controls>
+                        <source src="${video}" type="video/mp4">
+                        Tu navegador no soporta reproducción de video.
+                    </video>
+                    <button onclick="deleteVideo(${index})">Eliminar</button>
+                `;
+                videoContainer.appendChild(videoItem);
+            });
+            console.log('Videos mostrados:', videos);
+        }
+
+        function saveVideos() {
+            localStorage.setItem('videos', JSON.stringify(videos));
+            console.log('Videos guardados en localStorage:', videos);
+        }
+
+        function deleteVideo(index) {
+            videos.splice(index, 1);
+            saveVideos();
+            displayVideos();
+        }
+
+        uploadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const files = Array.from(videoInput.files);
+            console.log('Archivos seleccionados:', files);
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    console.log('Archivo leído:', e.target.result);
+                    videos.push(e.target.result);
+                    saveVideos();
+                    displayVideos();
+                };
+                reader.readAsDataURL(file);
+            });
+            videoInput.value = '';
+        });
+
+        displayVideos();
+    </script>
+</body>
+</html>

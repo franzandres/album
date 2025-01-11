@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Archivos</title>
+    <style>
+        body {
+            background-color: red;
+            color: yellow;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .upload-section {
+            text-align: center;
+            margin: 20px;
+        }
+        .file-input {
+            color: yellow;
+        }
+        .file-list {
+            margin-top: 20px;
+        }
+        .file-item {
+            margin: 5px;
+            padding: 10px;
+            background-color: yellow;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Gestión de Archivos (Documentos, Imágenes, Videos)</h1>
+    </div>
+
+    <div class="upload-section">
+        <h2>Subir Archivos</h2>
+        <input type="file" class="file-input" id="fileUpload" multiple>
+        <button onclick="uploadFiles()">Subir</button>
+    </div>
+
+    <div class="file-list" id="fileList">
+        <!-- Archivos subidos aparecerán aquí -->
+    </div>
+
+    <script>
+        function uploadFiles() {
+            const fileInput = document.getElementById('fileUpload');
+            const fileList = document.getElementById('fileList');
+            
+            // Mostrar los archivos seleccionados en la lista
+            const files = fileInput.files;
+            fileList.innerHTML = ''; // Limpiar la lista actual
+            for (let i = 0; i < files.length; i++) {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.textContent = files[i].name;
+                fileList.appendChild(fileItem);
+            }
+        }
+    </script>
+</body>
+</html>

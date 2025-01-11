@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear y Formar Grupos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #groups {
+            margin-top: 20px;
+        }
+        .group {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .group h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .person {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crear y Formar Grupos</h1>
+
+    <div>
+        <label for="group-name">Nombre del Grupo:</label>
+        <input type="text" id="group-name" placeholder="Escribe el nombre del grupo">
+        <button onclick="createGroup()">Crear Grupo</button>
+    </div>
+
+    <div id="group-form">
+        <h2>Agregar Personas al Grupo</h2>
+        <label for="person-name">Nombre de la Persona:</label>
+        <input type="text" id="person-name" placeholder="Escribe el nombre de la persona">
+        <button onclick="addPerson()">Agregar Persona</button>
+    </div>
+
+    <div id="groups">
+        <!-- Los grupos y las personas añadidas se mostrarán aquí -->
+    </div>
+
+    <script>
+        let groups = [];
+
+        // Función para crear un grupo
+        function createGroup() {
+            const groupName = document.getElementById("group-name").value;
+            if (groupName.trim() === "") {
+                alert("Por favor, ingresa un nombre para el grupo.");
+                return;
+            }
+
+            const newGroup = {
+                name: groupName,
+                people: []
+            };
+
+            groups.push(newGroup);
+            document.getElementById("group-name").value = ""; // Limpiar el campo
+
+            // Mostrar el grupo creado
+            updateGroupsDisplay();
+        }
+
+        // Función para agregar una persona al grupo
+        function addPerson() {
+            const personName = document.getElementById("person-name").value;
+            const groupName = document.getElementById("group-name").value;
+
+            if (personName.trim() === "" || groupName.trim() === "") {
+                alert("Por favor, ingresa un nombre de grupo y persona.");
+                return;
+            }
+
+            const group = groups.find(group => group.name === groupName);
+
+            if (group) {
+                group.people.push(personName);
+                document.getElementById("person-name").value = ""; // Limpiar el campo
+
+                // Actualizar la visualización de los grupos
+                updateGroupsDisplay();
+            } else {
+                alert("Grupo no encontrado.");
+            }
+        }
+
+        // Función para actualizar la visualización de los grupos
+        function updateGroupsDisplay() {
+            const groupsContainer = document.getElementById("groups");
+            groupsContainer.innerHTML = ""; // Limpiar la lista de grupos antes de mostrar
+
+            groups.forEach(group => {
+                const groupDiv = document.createElement("div");
+                groupDiv.classList.add("group");
+
+                const groupTitle = document.createElement("h3");
+                groupTitle.innerText = group.name;
+                groupDiv.appendChild(groupTitle);
+
+                group.people.forEach(person => {
+                    const personDiv = document.createElement("div");
+                    personDiv.classList.add("person");
+                    personDiv.innerText = person;
+                    groupDiv.appendChild(personDiv);
+                });
+
+                groupsContainer.appendChild(groupDiv);
+            });
+        }
+    </script>
+</body>
+</html>
+

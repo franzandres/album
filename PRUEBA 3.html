@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1E3A8A; /* Fondo azul */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .circle-button {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .circle-button:hover {
+            background-color: darkred;
+        }
+        .chat-group {
+            background-color: #B91C1C; /* Fondo rojo */
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            display: none; /* Oculto inicialmente */
+        }
+        .chat-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        .chat-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="circle-button" onclick="enterChat()">Entrar</div>
+</div>
+
+<div class="chat-group" id="chatGroup">
+    <h2>Grupo de Chat</h2>
+    <div class="chat-container" id="chatContainer">
+        <!-- Los mensajes aparecerán aquí -->
+    </div>
+    <input type="text" id="chatInput" class="chat-input" placeholder="Escribe un mensaje..." onkeydown="sendMessage(event)">
+</div>
+
+<script>
+    function enterChat() {
+        document.getElementById('chatGroup').style.display = 'block'; // Muestra el chat
+    }
+
+    function sendMessage(event) {
+        if (event.key === 'Enter') {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (message !== '') {
+                const chatContainer = document.getElementById('chatContainer');
+                const newMessage = document.createElement('div');
+                newMessage.textContent = message;
+                chatContainer.appendChild(newMessage);
+
+                input.value = ''; // Limpia el campo de texto
+                chatContainer.scrollTop = chatContainer.scrollHeight; // Desplazar hacia abajo
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Páginas Web</title>
+    <style>
+        body {
+            background-color: red;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        .price {
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+
+        .login-form {
+            background-color: white;
+            color: black;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        input[type="text"], input[type="password"], input[type="tel"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h1>Venta de Páginas Web</h1>
+    <p>Diseñador: Franz Andres Salvatierra</p>
+    <div>
+        <div class="price">Página Web en Venta: $5 USD</div>
+        <div class="price">Página Web en Venta: $7 USD</div>
+        <div class="price">Página Web en Venta: $8 USD</div>
+    </div>
+
+    <div class="login-form">
+        <h2>Iniciar Sesión</h2>
+        <form action="#" method="post">
+            <input type="text" name="nombre" placeholder="Nombre de Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="tel" name="telefono" placeholder="Número de Celular" value="69245269" required>
+            <br>
+            <button type="submit" class="button">Iniciar Sesión</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat en Línea</title>
+    <style>
+        body {
+            background-color: red;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        .chat-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            color: black;
+            text-align: left;
+            height: 400px;
+            display: flex;
+            flex-direction: column-reverse;
+            overflow-y: scroll;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .message.sent {
+            background-color: red;
+            color: white;
+            margin-left: auto;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chat en Línea</h1>
+
+    <div class="chat-container" id="chatContainer">
+        <!-- Mensajes aparecerán aquí -->
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Escribe tu mensaje..." />
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== '') {
+                // Crear un nuevo mensaje en el chat
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'sent');
+                messageElement.textContent = messageText;
+
+                // Añadir el mensaje al contenedor de chat
+                const chatContainer = document.getElementById('chatContainer');
+                chatContainer.insertBefore(messageElement, chatContainer.firstChild);
+
+                // Limpiar el campo de entrada
+                messageInput.value = '';
+                chatContainer.scrollTop = 0; // Mantener el scroll al fondo
+            }
+        }
+
+        // Simulación de un mensaje del sistema o bot
+        setInterval(() => {
+            const chatContainer = document.getElementById('chatContainer');
+            const botMessage = document.createElement('div');
+            botMessage.classList.add('message');
+            botMessage.textContent = 'Hola, ¿en qué puedo ayudarte hoy?';
+            chatContainer.insertBefore(botMessage, chatContainer.firstChild);
+            chatContainer.scrollTop = 0; // Mantener el scroll al fondo
+        }, 5000); // El bot enviará un mensaje cada 5 segundos
+    </script>
+
+</body>
+</html>
+

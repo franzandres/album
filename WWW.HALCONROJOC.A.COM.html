@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALCON ROJO, C.A</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #001A66;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: red;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background-color: #3399FF;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            background-color: #007BFF;
+        }
+
+        .chat-container {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            background-color: #003399;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .chat-box {
+            width: 100%;
+            height: 200px;
+            background-color: white;
+            color: black;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .chat-actions button {
+            background-color: #3399FF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .chat-actions button:hover {
+            background-color: #007BFF;
+        }
+    </style>
+    <script>
+        function mostrarChat(grupo) {
+            const chats = document.querySelectorAll('.chat-container');
+            chats.forEach(chat => chat.style.display = 'none');
+            document.getElementById(`chat-${grupo}`).style.display = 'block';
+        }
+
+        function enviarMensaje(grupo) {
+            const input = document.getElementById(`input-${grupo}`);
+            const mensaje = input.value.trim();
+            if (mensaje) {
+                const chatBox = document.getElementById(`box-${grupo}`);
+                const nuevoMensaje = document.createElement('div');
+                nuevoMensaje.textContent = mensaje;
+                chatBox.appendChild(nuevoMensaje);
+                chatBox.scrollTop = chatBox.scrollHeight;
+                input.value = '';
+            }
+        }
+
+        function enviarAccion(tipo) {
+            alert(`Función para enviar ${tipo} activada. Esto requiere programación adicional.`);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Imagen del águila -->
+        <div class="logo"><img src="../../Downloads/Screenshot_2024_12_28-1-removebg-preview.png" width="153" height="150"></div>
+
+        <!-- Título -->
+        <h1>Halcón Rojo C.A.</h1>
+
+        <!-- Botones de grupos -->
+        <h2>Grupos disponibles:</h2>
+        <button class="btn" onclick="mostrarChat('samur')">Familia Samur</button>
+        <button class="btn" onclick="mostrarChat('futbol')">Fútbol</button>
+        <button class="btn" onclick="mostrarChat('carnaval')">Carnaval 2024</button>
+        <button class="btn" onclick="mostrarChat('sanguino')">Familia Sanguino</button>
+
+        <!-- Chat Familia Samur -->
+        <div id="chat-samur" class="chat-container">
+            <h2>Chat: Familia Samur</h2>
+            <div id="box-samur" class="chat-box"></div>
+            <div class="chat-input">
+                <input id="input-samur" type="text" placeholder="Escribe tu mensaje...">
+                <button onclick="enviarMensaje('samur')">Enviar</button>
+            </div>
+            <div class="chat-actions">
+                <button onclick="enviarAccion('fotos')">Enviar Foto</button>
+                <button onclick="enviarAccion('videos')">Enviar Video</button>
+                <button onclick="enviarAccion('documentos')">Enviar Documento</button>
+                <button onclick="enviarAccion('llamada')">Hacer Llamada</button>
+                <button onclick="enviarAccion('videollamada')">Hacer Videollamada</button>
+            </div>
+        </div>
+
+        <!-- Repite las mismas secciones para cada grupo -->
+        <div id="chat-futbol" class="chat-container">
+            <h2>Chat: Fútbol</h2>
+            <div id="box-futbol" class="chat-box"></div>
+            <div class="chat-input">
+                <input id="input-futbol" type="text" placeholder="Escribe tu mensaje...">
+                <button onclick="enviarMensaje('futbol')">Enviar</button>
+            </div>
+            <div class="chat-actions">
+                <button onclick="enviarAccion('fotos')">Enviar Foto</button>
+                <button onclick="enviarAccion('videos')">Enviar Video</button>
+                <button onclick="enviarAccion('documentos')">Enviar Documento</button>
+                <button onclick="enviarAccion('llamada')">Hacer Llamada</button>
+                <button onclick="enviarAccion('videollamada')">Hacer Videollamada</button>
+            </div>
+        </div>
+
+        <!-- Repite para Carnaval y Familia Sanguino -->
+    </div>
+</body>
+</html>

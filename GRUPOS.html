@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos de Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="grupo_familia_samur">
+        <h2>Familia Samur</h2>
+        <div class="chat-box">
+            <div class="messages"></div>
+            <textarea id="input_familia_samur" placeholder="Escribe un mensaje..."></textarea>
+            <button onClick="enviarMensaje('familia_samur')">Enviar</button>
+            <button onClick="abrirCamara('familia_samur')">Enviar Foto</button>
+            <button onClick="enviarVideo('familia_samur')">Enviar Video</button>
+            <button onClick="enviarDocumento('familia_samur')">Enviar Documento</button>
+            <button onClick="iniciarLlamada('familia_samur')">Llamar</button>
+            <button onClick="iniciarVideollamada('familia_samur')">Videollamada</button>
+        </div>
+    </div>
+    <div id="grupo_futbol">
+        <h2>Futbol</h2>
+        <!-- Similar estructura para el grupo de Futbol -->
+    </div>
+    <div id="grupo_carnaval_2024">
+        <h2>Carnaval 2024</h2>
+        <!-- Similar estructura para el grupo de Carnaval -->
+    </div>
+    <div id="grupo_familia_sanguino">
+        <h2>Familia Sanguino</h2>
+        <!-- Similar estructura para el grupo de Familia Sanguino -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    color: #333;
+}
+
+.chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+textarea {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+// Funci�n para enviar mensajes
+function enviarMensaje(grupo) {
+    let mensaje = document.getElementById(`input_${grupo}`).value;
+    if (mensaje) {
+        let chatBox = document.querySelector(`#${grupo} .messages`);
+        let mensajeElement = document.createElement('div');
+        mensajeElement.textContent = mensaje;
+        chatBox.appendChild(mensajeElement);
+        document.getElementById(`input_${grupo}`).value = ''; // Limpiar el input
+    }
+}
+
+// Funci�n para abrir la c�mara y enviar foto
+function abrirCamara(grupo) {
+    // Aqu� ir�a la l�gica para acceder a la c�mara y capturar la foto
+    alert("Accede a la c�mara para tomar una foto.");
+}
+
+// Funci�n para enviar video
+function enviarVideo(grupo) {
+    // Aqu� ir�a la l�gica para grabar y enviar video
+    alert("Accede a la c�mara para grabar un video.");
+}
+
+// Funci�n para enviar documento
+function enviarDocumento(grupo) {
+    // Aqu� ir�a la l�gica para seleccionar y enviar un documento
+    alert("Selecciona un documento para enviar.");
+}
+
+// Funci�n para iniciar llamada
+function iniciarLlamada(grupo) {
+    alert("Iniciando llamada...");
+    // Aqu� ir�a la l�gica para realizar una llamada (con WebRTC o API externa)
+}
+
+// Funci�n para iniciar videollamada
+function iniciarVideollamada(grupo) {
+    alert("Iniciando videollamada...");
+    // Aqu� ir�a la l�gica para realizar una videollamada (con WebRTC o API externa)
+}
+

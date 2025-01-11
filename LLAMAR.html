@@ -1,0 +1,28 @@
+<a href="tel:+1234567890">Llamar al +1234567890</a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llamada Telefónica con Twilio</title>
+</head>
+<body>
+    <h2>Hacer una llamada con Twilio</h2>
+    <button id="callButton">Llamar</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/twilio-client@1.9.0/dist/twilio.min.js"></script>
+    <script>
+        var callButton = document.getElementById("callButton");
+
+        callButton.addEventListener("click", function() {
+            fetch("/start-call")  // Aquí haces una llamada a tu servidor para iniciar la llamada
+                .then(response => response.json())
+                .then(data => {
+                    var device = new Twilio.Device(data.token);
+                    device.connect();
+                });
+        });
+    </script>
+</body>
+</html>

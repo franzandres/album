@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear y Descargar Títulos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Escribe un Título y Descárgalo</h1>
+    
+    <input type="text" id="titleInput" placeholder="Escribe tu título aquí...">
+    <br>
+    <button onclick="downloadTitle()">Descargar Título</button>
+
+    <div id="message"></div>
+
+    <script>
+        function downloadTitle() {
+            // Obtener el título que se ingresó en el campo de texto
+            var title = document.getElementById('titleInput').value;
+
+            if (title === "") {
+                document.getElementById('message').innerText = "Por favor, escribe un título antes de descargar.";
+                return;
+            }
+
+            // Crear un Blob con el título y establecer el tipo MIME para texto
+            var blob = new Blob([title], { type: "text/plain" });
+
+            // Crear un enlace para descargar el archivo
+            var link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "titulo.txt";  // Nombre del archivo a descargar
+
+            // Simular un clic en el enlace para descargar el archivo
+            link.click();
+
+            // Mostrar un mensaje indicando que el archivo se está descargando
+            document.getElementById('message').innerText = "El título se está descargando...";
+        }
+    </script>
+
+</body>
+</html>
+

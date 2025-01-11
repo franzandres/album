@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear y Guardar Documento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 80%;
+            height: 300px;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            line-height: 1.5;
+            resize: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Trabaja con tu Documento</h1>
+    <textarea id="documentText" placeholder="Escribe tu documento aquí..."></textarea><br>
+    <button onclick="saveDocument()">Guardar Documento</button>
+
+    <script>
+        function saveDocument() {
+            // Obtener el contenido del documento
+            var text = document.getElementById("documentText").value;
+
+            // Crear un Blob con el contenido
+            var blob = new Blob([text], { type: "text/plain" });
+
+            // Crear un enlace para descargar el archivo
+            var link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "documento.txt"; // Nombre del archivo que se guardará
+
+            // Simular un clic en el enlace para iniciar la descarga
+            link.click();
+        }
+    </script>
+
+</body>
+</html>

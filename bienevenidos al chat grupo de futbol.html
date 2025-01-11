@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Botón Entrar</title>
+    <style>
+        #entrarBtn {
+            width: 150px;
+            height: 50px;
+            background-color: blue;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #chatBox {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido al Chat</h1>
+    <button id="entrarBtn">Entrar</button>
+    
+    <div id="chatBox">
+        <h3>Chat:</h3>
+        <div id="messages"></div>
+        <input type="text" id="userInput" placeholder="Escribe un mensaje..."/>
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <script>
+        document.getElementById('entrarBtn').onclick = function() {
+            document.getElementById('chatBox').style.display = 'block';
+            // Aquí se podría agregar la lógica de verificación (número de celular o correo)
+            const verification = prompt("Verificación: ingresa tu número de celular o correo electrónico:");
+            if (verification) {
+                // Aquí podrías guardar el dato de verificación
+                alert("Verificación exitosa. ¡Bienvenido al chat!");
+            } else {
+                alert("Verificación fallida.");
+            }
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            if (input.value) {
+                const messagesDiv = document.getElementById('messages');
+                messagesDiv.innerHTML += `<p>${input.value}</p>`;
+                input.value = ''; // Limpiar el campo de entrada
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Futbol en Santa Cruz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #entrarBtn {
+            width: 150px;
+            height: 50px;
+            background-color: blue;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #chatBox {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+            text-align: left;
+        }
+        #messages {
+            margin-bottom: 10px;
+        }
+        #userInput {
+            width: 80%;
+            padding: 5px;
+        }
+        #imageContainer {
+            width: 100px; /* Tamaño del contenedor */
+            height: 100px; /* Tamaño del contenedor */
+            margin: auto;
+            border-radius: 50%; /* Hace la imagen circular */
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        #imageContainer img {
+            width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Grupo: Futbol en Santa Cruz de la Sierra</h1>
+
+    <div id="imageContainer">
+        <img src="ruta/de/tu/imagen.jpg" alt="Imagen del grupo" />
+    </div>
+    
+    <button id="entrarBtn">Entrar</button>
+    
+    <div id="chatBox">
+        <h3>Chat:</h3>
+        <div id="messages"></div>
+        <input type="text" id="userInput" placeholder="Escribe un mensaje..."/>
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <script>
+        document.getElementById('entrarBtn').onclick = function() {
+            document.getElementById('chatBox').style.display = 'block';
+            // Verificación
+            const verification = prompt("Verificación: ingresa tu número de celular o correo electrónico:");
+            if (verification) {
+                alert("Verificación exitosa. ¡Bienvenido al chat!");
+            } else {
+                alert("Verificación fallida.");
+            }
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            if (input.value) {
+                const messagesDiv = document.getElementById('messages');
+                messagesDiv.innerHTML += `<p>${input.value}</p>`;
+                input.value = ''; // Limpiar el campo de entrada
+            }
+        }
+    </script>
+</body>
+</html>

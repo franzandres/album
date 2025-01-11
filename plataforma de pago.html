@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Pago</title>
+    <style>
+        body {
+            background-color: orange;
+            color: blue;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        .payment-options {
+            margin: 20px 0;
+        }
+
+        .payment-button {
+            display: block;
+            margin: 10px auto;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: blue;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 70%;
+            max-width: 300px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .payment-button:hover {
+            background-color: darkblue;
+        }
+
+        .chat-container {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            color: black;
+            border-radius: 8px;
+            text-align: left;
+            height: 300px;
+            display: flex;
+            flex-direction: column-reverse;
+            overflow-y: scroll;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .message.sent {
+            background-color: blue;
+            color: white;
+            margin-left: auto;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Plataforma de Pago</h1>
+
+    <div class="payment-options">
+        <a href="https://www.tigomoney.com.bo/" class="payment-button" target="_blank">Tigo Money</a>
+        <a href="https://www.bancounion.com.bo/" class="payment-button" target="_blank">Banco Unión</a>
+        <a href="https://www.bcp.com.bo/" class="payment-button" target="_blank">Banco BCP</a>
+        <a href="https://www.bancomercantil.com/" class="payment-button" target="_blank">Banco Mercantil</a>
+        <a href="https://www.bnb.com.bo/" class="payment-button" target="_blank">Banco BNB</a>
+        <a href="https://www.bg.com.bo/" class="payment-button" target="_blank">Banco Ganadero</a>
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <!-- Mensajes aparecerán aquí -->
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Escribe un mensaje..." />
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== '') {
+                // Crear un nuevo mensaje en el chat
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'sent');
+                messageElement.textContent = messageText;
+
+                // Añadir el mensaje al contenedor de chat
+                const chatContainer = document.getElementById('chatContainer');
+                chatContainer.insertBefore(messageElement, chatContainer.firstChild);
+
+                // Limpiar el campo de entrada
+                messageInput.value = '';
+                chatContainer.scrollTop = 0; // Mantener el scroll al fondo
+            }
+        }
+    </script>
+
+</body>
+</html>

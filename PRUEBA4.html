@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos de Mundiales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .group-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .chat-box {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .chat-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .chat-message {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+        }
+        .chat-input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .send-button, .send-photo {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .send-button:hover, .send-photo:hover {
+            background-color: #005f8e;
+        }
+        .send-photo {
+            margin-left: 10px;
+        }
+        .photo-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <div class="group-name">Familia Samur FranzAndres Salvatierra Samur Futbol</div>
+    <div>Bienvenidos a los Grupos de Mundiales</div>
+</div>
+
+<!-- Chat Box -->
+<div class="chat-box">
+    <div class="chat-container" id="chatContainer">
+        <!-- Los mensajes de chat se agregarán aquí -->
+    </div>
+    <div class="chat-input-container">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Escribe un mensaje..." />
+        <button class="send-button" onclick="sendMessage()">Enviar</button>
+        <input type="file" class="photo-input" id="photoInput" onchange="sendPhoto()" />
+        <button class="send-photo" onclick="document.getElementById('photoInput').click()">Enviar Foto</button>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        const chatInput = document.getElementById('chatInput');
+        const message = chatInput.value.trim();
+        
+        if (message !== '') {
+            const chatContainer = document.getElementById('chatContainer');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('chat-message');
+            newMessage.textContent = message;
+            chatContainer.appendChild(newMessage);
+            chatInput.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Desplazar hacia abajo
+        }
+    }
+
+    function sendPhoto() {
+        const photoInput = document.getElementById('photoInput');
+        const chatContainer = document.getElementById('chatContainer');
+
+        const file = photoInput.files[0];
+        if (file) {
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('chat-message');
+            const image = document.createElement('img');
+            image.src = URL.createObjectURL(file);
+            image.style.maxWidth = '200px'; // Limitar el tamaño de la imagen
+            newMessage.appendChild(image);
+            chatContainer.appendChild(newMessage);
+        }
+        photoInput.value = ''; // Limpiar el input de foto
+        chatContainer.scrollTop = chatContainer.scrollHeight; // Desplazar hacia abajo
+    }
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos de Mundiales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .group-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .chat-box {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .chat-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .chat-message {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+        }
+        .chat-input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .send-button, .send-photo {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .send-button:hover, .send-photo:hover {
+            background-color: #005f8e;
+        }
+        .send-photo {
+            margin-left: 10px;
+       
+
+

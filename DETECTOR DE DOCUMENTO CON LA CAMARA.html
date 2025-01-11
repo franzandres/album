@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detectar Documento con Cámara</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        
+        video {
+            width: 80%;
+            height: auto;
+            border: 2px solid #333;
+            margin-top: 20px;
+        }
+
+        canvas {
+            display: none;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #captureResult {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Detectar Documento con la Cámara</h1>
+
+    <video id="video" autoplay></video>
+    <button id="captureButton">Capturar Imagen</button>
+
+    <div id="captureResult">
+        <h3>Imagen Capturada:</h3>
+        <canvas id="canvas"></canvas>
+        <img id="capturedImage" alt="Imagen Capturada">
+    </div>
+
+    <script>
+        // Acceder a la cámara
+        const video = document.getElementById('video');
+        const captureButton = document.getElementById('captureButton');
+        const canvas = document.getElementById('canvas');
+        const capturedImage = document.getElementById('capturedImage');
+        const context = canvas.getContext('2d');
+
+        // Obtener el stream de la cámara
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(error => {
+                alert("No se pudo acceder a la cámara.");
+                console.log(error);
+            });
+
+        // Capturar imagen de la cámara
+        captureButton.addEventListener('click', () => {
+            // Establecer las dimensiones del canvas
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            // Dibujar la imagen del video en el canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Mostrar la imagen capturada
+            capturedImage.src = canvas.toDataURL('image/png');
+            capturedImage.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

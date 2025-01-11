@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Hosting & Page Selling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .plans {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+        }
+        .plan {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 30%;
+            text-align: center;
+        }
+        .plan h2 {
+            margin: 0;
+            color: #333;
+        }
+        .plan p {
+            margin: 1rem 0;
+            color: #555;
+        }
+        .plan button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .plan button:hover {
+            background: #218838;
+        }
+        .upload-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .upload-section input {
+            margin: 1rem 0;
+        }
+        .register-login {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: #fff;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web Hosting & Page Selling</h1>
+        <p>Your one-stop platform for buying, hosting, and uploading websites.</p>
+    </header>
+    
+    <div class="container">
+        <section class="plans">
+            <div class="plan">
+                <h2>US Pages</h2>
+                <p>$3 per page</p>
+                <button>Buy Now</button>
+            </div>
+            <div class="plan">
+                <h2>Flexible Plan</h2>
+                <p>$4 or $1 per page</p>
+                <button>Buy Now</button>
+            </div>
+        </section>
+
+        <section class="upload-section">
+            <h2>Upload Your Website</h2>
+            <form>
+                <input type="file" name="website" accept=".html,.zip,.doc,.docx,.wordpress">
+                <br>
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+
+        <section class="register-login">
+            <h2>Register or Login</h2>
+            <button onclick="alert('Login with Gmail')">Login with Gmail</button>
+            <button onclick="alert('Login with Hotmail/Outlook')">Login with Hotmail/Outlook</button>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Web Hosting & Page Selling. All rights reserved.</p>
+    </footer>
+</body>
+</html>

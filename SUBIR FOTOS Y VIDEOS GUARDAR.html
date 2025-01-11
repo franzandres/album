@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Fotos y Videos</title>
+    <style>
+        body {
+            background-color: #3498db; /* Fondo azul */
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        #photosContainer, #videosContainer {
+            width: 45%;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 10px;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #photosContainer {
+            float: left;
+        }
+
+        #videosContainer {
+            float: right;
+        }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        .file-preview {
+            margin: 10px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        img, video {
+            max-width: 200px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Sube tus Fotos y Videos</h1>
+
+    <div class="container">
+        <!-- Sección para fotos -->
+        <div id="photosContainer">
+            <h2>Fotos</h2>
+            <input type="file" id="photoInput" accept="image/*" multiple>
+            <button id="uploadPhotosBtn">Subir Fotos</button>
+            <div id="photosPreview"></div>
+        </div>
+
+        <!-- Sección para videos -->
+        <div id="videosContainer">
+            <h2>Videos</h2>
+            <input type="file" id="videoInput" accept="video/*" multiple>
+            <button id="uploadVideosBtn">Subir Videos</button>
+            <div id="videosPreview"></div>
+        </div>
+    </div>
+
+    <script>
+        // Variables para manejar las fotos y los videos
+        let photoFiles = [];
+        let videoFiles = [];
+
+        // Elementos de la página para las vistas previas
+        const photosPreview = document.getElementById('photosPreview');
+        const videosPreview = document.getElementById('videosPreview');
+
+        // Subir fotos
+        document.getElementById('photoInput').addEventListener('change', function(event) {
+            photoFiles = event.target.files;
+            displayFiles(photoFiles, 'image');
+        });
+
+        // Subir videos
+        document.getElementById('videoInput').addEventListener('change', function(event) {
+            videoFiles = event.target.files;
+            displayFiles(videoFiles, 'video');
+        });
+
+        // Mostrar los archivos seleccionados
+        function displayFiles(files, type) {
+            if (type === 'image') {
+                photosPreview.innerHTML = '';  // Limpiar las fotos previas
+                Array.from(files).forEach(file => {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        let img = document.createElement('img');
+                        img.src = e.target.result;
+                        let div = document.createElement('div');
+                        div.classList.add('file-preview');
+                        div.appendChild(img);
+                        photosPreview.appendChild(div);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            if (type === 'video') {
+                videosPreview.innerHTML = '';  // Limpiar los videos previos
+                Array.from(files).forEach(file => {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        let video = document.createElement('video');
+                        video.src = e.target.result;
+                        video.controls = true;
+                        let div = document.createElement('div');
+                        div.classList.add('file-preview');
+                        div.appendChild(video);
+                        videosPreview.appendChild(div);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        }
+
+        // Botón para subir fotos (muestra las fotos sin enviarlas a un servidor)
+        document.getElementById('uploadPhotosBtn').addEventListener('click', function() {
+            if (photoFiles.length === 0) {
+                alert('Por favor selecciona una foto para subir.');
+            } else {
+                alert('Fotos subidas correctamente');
+            }
+        });
+
+        // Botón para subir videos (muestra los videos sin enviarlos a un servidor)
+        document.getElementById('uploadVideosBtn').addEventListener('click', function() {
+            if (videoFiles.length === 0) {
+                alert('Por favor selecciona un video para subir.');
+            } else {
+                alert('Videos subidos correctamente');
+            }
+        });
+    </script>
+
+</body>
+</html>

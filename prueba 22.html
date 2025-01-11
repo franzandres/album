@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e2f7e1; /* Verde claro */
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .formulario {
+            background-color: #fdfd96; /* Amarillo claro */
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .formulario h1 {
+            color: #008000; /* Verde */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .formulario input, .formulario button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #008000;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .formulario button {
+            background-color: #008000; /* Verde */
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .formulario button:hover {
+            background-color: #005f00; /* Verde oscuro */
+        }
+
+        .formulario a {
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #008000;
+        }
+    </style>
+</head>
+<body>
+    <div class="formulario">
+        <h1>Formulario de Registro</h1>
+        <form action="guardar.php" method="post">
+            <input type="text" name="nombre" placeholder="Nombre Completo" required>
+            <input type="text" name="usuario" placeholder="Nombre de Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
+        <a href="usuarios.php">Ver usuarios registrados</a>
+    </div>
+</body>
+</html>
+
+<?php
+// Verifica que el formulario fue enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nombre = htmlspecialchars($_POST['nombre']);
+    $usuario = htmlspecialchars($_POST['usuario']);
+    $password = htmlspecialchars($_POST['password']);
+
+    // Abre el archivo usuarios.txt y guarda los datos
+    $archivo = fopen('usuarios.txt', 'a');
+    fwrite($archivo, "$nombre|$usuario|$password\n");
+    fclose($archivo);
+
+    // Redirige a la página de usuarios
+    header('Location: usuarios.php');
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios Registrados</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e2f7e1; /* Verde claro */
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #008000;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #008000;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #fdfd96; /* Amarillo claro */
+        }
+
+        a {
+            margin-top: 20px;
+            text-decoration: none;
+            color: #008000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Usuarios Registrados</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Contraseña</th>
+        </tr>
+        <?php
+        // Lee el archivo usuarios.txt y muestra los datos
+        if (file_exists('usuarios.txt')) {
+            $archivo = fopen('usuarios.txt', 'r');
+            while ($linea = fgets($archivo)) {
+                list($nombre, $usuario, $password) = explode('|', trim($linea));
+                echo "<tr>
+                        <td>$nombre</td>
+                        <td>$usuario</td>
+                        <td>$password</td>
+                      </tr>";
+            }
+            fclose($archivo);
+        } else {
+            echo "<tr><td colspan='3'>No hay usuarios registrados.</td></tr>";
+        }
+        ?>
+    </table>
+    <a href="index.html">Volver al formulario</a>
+</body>
+</html>
+
