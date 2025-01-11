@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum de Recuerdos</title>
+    <style>
+        body {
+            background-color: #8B4513; /* Color café */
+            font-family: Arial, sans-serif;
+            color: #FFFFFF; /* Texto blanco */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 20px;
+            background-color: #5A2D0C; /* Café oscuro */
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .upload-section {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #A0522D; /* Café más claro */
+            border: 2px solid #5A2D0C;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            color: #FFFFFF;
+        }
+        .upload-section h2 {
+            color: #FFF8DC; /* Color claro */
+        }
+        input[type="file"], button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #FFF8DC; /* Color claro */
+            color: #5A2D0C; /* Café oscuro */
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="file"]:hover, button:hover {
+            background-color: #FFDAB9; /* Tono más claro */
+            cursor: pointer;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #5A2D0C;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Álbum de Recuerdos
+    </header>
+    <main>
+        <section class="upload-section">
+            <h2>Sube tus fotos y videos</h2>
+            <form>
+                <label for="upload-photo">Subir foto:</label>
+                <input type="file" id="upload-photo" accept="image/*"><br>
+                <label for="upload-video">Subir video:</label>
+                <input type="file" id="upload-video" accept="video/*"><br>
+                <button type="submit">Guardar</button>
+            </form>
+        </section>
+        <section class="gallery">
+            <h2>Galería</h2>
+            <p>Aquí aparecerán las fotos y videos subidos.</p>
+        </section>
+    </main>
+    <footer>
+        © 2024 Álbum de Recuerdos - Tus mejores momentos guardados
+    </footer>
+</body>
+</html>
+
+<input />
+
+(accept="image/*")
+
+(accept="video/*)
