@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retiro Bancario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff0000, #0000ff);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff0000;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+        }
+
+        .money-stack {
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .money-stack img {
+            width: 100%;
+            max-width: 300px;
+            animation: float 2s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Retiro Bancario</h1>
+
+        <div class="money-stack">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Bolivian_200_bolivianos_banknote_Obverse_%282018%29.png" alt="Billetes de Bolivia">
+        </div>
+
+        <form id="bank-form">
+            <label for="bank">Selecciona tu banco:</label>
+            <select id="bank" required>
+                <option value="bnb">Banco BNB</option>
+                <option value="economico">Banco Económico</option>
+                <option value="ganadero">Banco Ganadero</option>
+                <option value="mercantil">Banco Mercantil</option>
+                <option value="bcp">Banco BCP</option>
+            </select>
+
+            <label for="card-number">Número de tarjeta:</label>
+            <input type="password" id="card-number" placeholder="••••••••••••••••" required>
+
+            <label for="pin">Código PIN:</label>
+            <input type="password" id="pin" placeholder="••••" required>
+
+            <button type="submit">Registrar y Retirar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("bank-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const bank = document.getElementById("bank").value;
+            const cardNumber = document.getElementById("card-number").value;
+            const pin = document.getElementById("pin").value;
+
+            if (cardNumber && pin) {
+                alert(`¡Registro exitoso! Puedes retirar dinero en ${bank}.`);
+            } else {
+                alert("Por favor, completa todos los campos.");
+            }
+        });
+    </script>
+</body>
+</html>
