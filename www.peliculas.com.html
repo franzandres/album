@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas y Videos Musicales</title>
+    <style>
+        body {
+            background-color: black;
+            color: blue;
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        input[type="file"], input[type="text"], button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Página de Películas y Videos Musicales</h1>
+        <h2>Subir Video Musical (Borrador)</h2>
+
+        <!-- Formulario para subir video y guardar borrador -->
+        <form id="uploadForm" action="#" method="post">
+            <label for="videoUpload">Seleccionar video **** subir:</label>
+            <input type="file" id="videoUpload" name="video" accept="video/*" required>
+            
+            <label for="videoTitle">Título del video:</label>
+            <input type="text" id="videoTitle" name="title" placeholder="Escribe el título del video" required>
+            
+            <button type="button" onclick="guardarVideo()">Guardar Video en Borrador</button>
+        </form>
+
+        <!-- Mensaje de éxito -->
+        <div id="successMessage" style="display: none; text-align: center; color: green;">
+            <h2>¡El video ha **** ******** en ** borrador!</h2>
+        </div>
+    </div>
+
+    <script>
+        function guardarVideo() {
+            const videoFile = document.getElementById('videoUpload').files[0];
+            const videoTitle = document.getElementById('videoTitle').value;
+
+            if (videoFile && videoTitle) {
+                // Aquí se puede agregar código para enviar los datos a un servidor (backend).
+                // Este es un ejemplo simplificado de guardar el borrador localmente.
+
+                document.getElementById('successMessage').style.display = 'block';
+
+                // Limpiar formulario
+                document.getElementById('uploadForm').reset();
+            } else {
+                alert("Por favor, selecciona un video y escribe un título.");
+            }
+        }
+    </script>
+
+<div style="color: red">Prueba de Word a HTML - por favor <a href="https://wordtohtml.net/site/payment">Go PRO</a> para obtener el HTML completo.</div>
+</body>
+</html>
