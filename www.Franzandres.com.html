@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Página</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #FFC0CB; /* Fondo rosado */
+        }
+
+        header {
+            background-color: #800000; /* Color guinda */
+            padding: 10px;
+            color: yellow;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        nav button {
+            background-color: #B8860B; /* Botones dorados */
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery, .forum {
+            background-color: #8B4513; /* Color marrón */
+            padding: 15px;
+            border-radius: 10px;
+            color: yellow;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #800000;
+            color: yellow;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Franzandres.com
+    </header>
+
+    <nav>
+        <button onclick="alert('Foro aún no disponible')">Foro</button>
+        <button onclick="alert('Galería aún no disponible')">Galería</button>
+        <button onclick="alert('Videos aún no disponibles')">Videos</button>
+    </nav>
+
+    <div class="container">
+        <div class="gallery">
+            <h2>Fotos</h2>
+            <img src="https://via.placeholder.com/300x200" alt="Ejemplo de foto">
+            <p>Foto: Yendo a la iglesia</p>
+        </div>
+
+        <div class="forum">
+            <h2>Foro</h2>
+            <p>Participa en *** *********** sobre nuestras actividades.</p>
+            <button onclick="alert('Ingresando al foro')">Ingresar</button>
+        </div>
+    </div>
+
+    <footer>
+        Franzandres.*** &copy; 2025
+    </footer>
+
+<div style="color: red">Prueba de Word a HTML - por favor <a href="https://wordtohtml.net/site/payment">Go PRO</a> para obtener el HTML completo.</div>
+</body>
+</html>
