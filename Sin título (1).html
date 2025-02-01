@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #87CEEB; /* Color celeste */
+            font-family: Arial, sans-serif;
+            color: yellow; /* Letras amarillo */
+        }
+        #camera {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #capture {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: yellow;
+            border: none;
+            color: #87CEEB;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #capture:hover {
+            background-color: #ffea00;
+        }
+    </style>
+</head>
+<body>
+    <div id="camera">
+        <video id="video" autoplay playsinline style="max-width: 100%; height: auto;"></video>
+        <button id="capture">Tomar Foto</button>
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('capture');
+
+        // Acceder a la cámara
+        navigator.mediaDevices.getUserMedia({ video: { width: 1290, height: 1080 } })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => {
+                console.error('Error al acceder a la cámara:', err);
+            });
+
+        // Capturar la foto
+        captureButton.addEventListener('click', () => {
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Guardar la imagen
+            const link = document.createElement('a');
+            link.download = 'foto.jpg';
+            link.href = canvas.toDataURL('image/jpeg');
+            link.click();
+        });
+    </script>
+
+<div style="color: red">Prueba de Word a HTML - por favor <a href="https://wordtohtml.net/site/payment">Go PRO</a> para obtener el HTML completo.</div>
+</body>
+</html>
