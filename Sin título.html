@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomar Foto</title>
+    <style>
+        body {
+            background-color: green;
+            color: blue;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #video {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            border: 2px solid blue;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        #photo {
+            margin-top: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tomar Foto</h1>
+
+    <!-- Video para mostrar la cámara -->
+    <video id="video" autoplay></video>
+
+    <!-- Botón para capturar la foto -->
+    <button id="capture">***** Foto</button>
+
+    <!-- Imagen donde se mostrará la foto tomada -->
+    <img id="photo" src="" alt="Foto tomada">
+
+    <script>
+        const video = document.getElementById('video');
+        const captureButton = document.getElementById('capture');
+        const photo = document.getElementById('photo');
+
+        // Acceder a la cámara
+        navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720 } })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => {
+                console.error("No se pudo acceder a la cámara", err);
+            });
+
+        // Capturar la imagen
+        captureButton.addEventListener('click', () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Configurar las dimensiones del lienzo
+            canvas.width = 1280;
+            canvas.height = 720;
+
+            // Dibujar el contenido del video en el lienzo
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convertir el lienzo a una imagen y mostrarla
+            const dataUrl = canvas.toDataURL('image/jpeg');
+            photo.src = dataUrl;
+        });
+    </script>
+
+<div style="color: red">Prueba de Word a HTML - por favor <a href="https://wordtohtml.net/site/payment">Go PRO</a> para obtener el HTML completo.</div>
+</body>
+</html>
