@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Franz Andrés Salvatierra Samur</title>
+    <style>
+        body {
+            background-color: yellow;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        .chatbot-container {
+            margin: 20px;
+        }
+        .chatbot-header {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .status {
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            Chatbot: ¿En qué le puedo ayudar?
+        </div>
+        <p>Si desea saber más sobre materias disponibles, o si desea más información, puede contactarse al número 69245269.</p>
+        <p>Por favor, complete el siguiente formulario:</p>
+
+        <div class="form-container">
+            <label for="nombre">Nombre:</label>
+            <br>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" required><br>
+
+            <label for="ci">Número de Carnet de Identidad:</label>
+            <input type="text" id="ci" required><br>
+
+            <label for="celular">Número de Celular:</label>
+            <input type="text" id="celular" required><br>
+
+            <button onclick="submitForm()">Enviar</button>
+        </div>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Obtener los valores del formulario
+            var nombre = document.getElementById("nombre").value;
+            var apellido = document.getElementById("apellido").value;
+            var ci = document.getElementById("ci").value;
+            var celular = document.getElementById("celular").value;
+
+            // Verificar que todos los campos estén llenos
+            if (nombre && apellido && ci && celular) {
+                document.getElementById("status").innerHTML = "Gracias, el formulario se ha enviado correctamente. El costo es de 100 Bs.";
+            } else {
+                document.getElementById("status").innerHTML = "Por favor, complete todos los campos.";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Franz Andrés Salvatierra Samur</title>
+    <style>
+        body {
+            background-color: yellow;
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .chatbot-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container input, .form-container button {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .status {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .status.success {
+            color: green;
+        }
+        .status.error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="chatbot-header">
+            Chatbot: ¿En qué le puedo ayudar?
+        </div>
+        <p>Si desea saber más sobre materias disponibles, o si desea más información, puede contactarse al número 69245269.</p>
+        <p>Por favor, complete el siguiente formulario:</p>
+
+        <div class="form-container">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" required><br>
+
+            <label for="apellido">Apellido:</label><br>
+            <input type="text" id="apellido" required><br>
+
+            <label for="ci">Número de Carnet de Identidad:</label><br>
+            <input type="text" id="ci" required><br>
+
+            <label for="celular">Número de Celular:</label><br>
+            <input type="text" id="celular" required><br>
+
+            <button onclick="submitForm()">Enviar</button>
+        </div>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Obtener los valores del formulario
+            var nombre = document.getElementById("nombre").value;
+            var apellido = document.getElementById("apellido").value;
+            var ci = document.getElementById("ci").value;
+            var celular = document.getElementById("celular").value;
+
+            // Verificar que todos los campos estén llenos
+            if (nombre === "" || apellido === "" || ci === "" || celular === "") {
+                document.getElementById("status").innerHTML = "Por favor, complete todos los campos.";
+                document.getElementById("status").className = "status error";
+                return;
+            }
+
+            // Si todos los campos están completos
+            document.getElementById("status").innerHTML = "Gracias, el formulario se ha enviado correctamente. El costo es de 100 Bs.";
+            document.getElementById("status").className = "status success";
+
+            // Opcional: Limpiar los campos después de enviar el formulario
+            document.getElementById("nombre").value = "";
+            document.getElementById("apellido").value = "";
+            document.getElementById("ci").value = "";
+            document.getElementById("celular").value = "";
+        }
+    </script>
+
+</body>
+</html>

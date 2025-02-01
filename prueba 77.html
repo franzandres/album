@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugerente</title>
+    <style>
+        body {
+            background-color: #6a4c92; /* Fondo lila */
+            font-family: Arial, sans-serif;
+            color: yellow;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4b2e83; /* Parte superior color café */
+            padding: 20px;
+            text-align: center;
+            color: yellow;
+        }
+        h1 {
+            font-size: 36px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #6a4c92; /* Fondo lila para la barra de navegación */
+            padding: 10px;
+        }
+        nav a {
+            color: yellow;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            margin: 0 15px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #4b2e83; /* Efecto hover */
+        }
+        .content {
+            padding: 20px;
+            margin: 0 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .select-box {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .select-box label {
+            font-size: 18px;
+            color: yellow;
+            width: 30%;
+        }
+        .select-box select, .select-box input {
+            width: 65%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fff;
+            border: 2px solid #6a4c92;
+            border-radius: 5px;
+        }
+        .select-box select:focus, .select-box input:focus {
+            border-color: #4b2e83;
+        }
+        .text-red {
+            color: red;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .form {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .form div {
+            width: 48%;
+        }
+        .form select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fff;
+            border: 2px solid #6a4c92;
+            border-radius: 5px;
+        }
+        .form input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fff;
+            border: 2px solid #6a4c92;
+            border-radius: 5px;
+        }
+        .calendar {
+            display: flex;
+            justify-content: space-between;
+        }
+        .calendar div {
+            width: 48%;
+        }
+        footer {
+            background-color: #4b2e83;
+            color: yellow;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tugerente</h1>
+    </header>
+
+    <nav>
+        <a href="#">Compra Inventarios</a>
+        <a href="#">Proveedores</a>
+        <a href="#">Clientes</a>
+    </nav>
+
+    <div class="content">
+        <div class="select-box">
+            <label for="reporte">Seleccione su reporte</label>
+            <select id="reporte">
+                <option value="reporte1">Reporte 1</option>
+                <option value="reporte2">Reporte 2</option>
+                <option value="reporte3">Reporte 3</option>
+            </select>
+        </div>
+
+        <div class="select-box">
+            <label for="stock">Stock Actual</label>
+            <select id="stock">
+                <option value="stock1">Stock 1</option>
+                <option value="stock2">Stock 2</option>
+            </select>
+        </div>
+
+
+        <div class="select-box">
+            <label for="sucursal">Sucursal</label>
+            <select id="sucursal">
+                <option value="sucursal1">Sucursal 1</option>
+                <option value="sucursal2">Sucursal 2</option>
+            </select>
+        </div>
+
+        <div class="select-box">
+            <label for="producto">Producto</label>
+            <input type="text" id="producto" value="Todos" readonly>
+        </div>
+
+        <div class="text-red">
+            <p>¿Deseas conocer más de este reporte?</p>
+        </div>
+
+        <div class="form">
+            <div>
+                <label for="formapago">Forma de pago</label>
+                <select id="formapago">
+                    <option value="banco_economico">Banco Económico</option>
+                    <option value="banco_union">Banco Unión</option>
+                    <option value="banco_bnb">Banco BNB</option>
+                    <option value="banco_mercantil">Banco Mercantil</option>
+                    <option value="banco_ganadero">Banco Ganadero</option>
+                    <option value="tigo_money">Tigo Money</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha">
+            </div>
+        </div>
+
+        <div class="calendar">
+            <div>
+                <label for="filtrar_fecha">Filtrar por fecha de elaboración</label>
+                <input type="date" id="filtrar_fecha">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>www.tugerente.com</p>
+    </footer>
+</body>
+</html>

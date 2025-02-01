@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Videos</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #fff;
+        }
+        input[type="file"] {
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="file"]:hover {
+            background-color: #666;
+        }
+        .video-container {
+            margin-top: 20px;
+        }
+        .video-container video {
+            width: 80%;
+            height: auto;
+        }
+        .album {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .album video {
+            margin: 10px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ver Videos - www.vervideos.com</h1>
+
+    <!-- Formulario para subir video -->
+    <div>
+        <h2>Sube tu video</h2>
+        <input type="file" id="videoUpload" accept="video/*" onchange="uploadVideo()">
+    </div>
+
+    <!-- Contenedor para mostrar videos -->
+    <div class="video-container">
+        <h2>Videos</h2>
+        <video controls>
+            <source src="video1.mp4" type="video/mp4">
+            Tu navegador no soporta el formato de video.
+        </video>
+    </div>
+
+    <!-- Album de videos subidos -->
+    <div class="album" id="album">
+        <!-- Los videos subidos aparecerán aquí -->
+    </div>
+
+    <script>
+        // Función para cargar video al álbum
+        function uploadVideo() {
+            const fileInput = document.getElementById("videoUpload");
+            const file = fileInput.files[0];
+            const album = document.getElementById("album");
+
+            if (file) {
+                const videoElement = document.createElement("video");
+                videoElement.controls = true;
+                videoElement.src = URL.createObjectURL(file);
+
+                const videoWrapper = document.createElement("div");
+                videoWrapper.appendChild(videoElement);
+                album.appendChild(videoWrapper);
+            }
+        }
+    </script>
+</body>
+</html>

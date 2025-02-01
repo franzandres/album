@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Multimedia</title>
+    <style>
+        body {
+            background-color: #D8BFD8; /* Lila */
+            color: #FF69B4; /* Rosado */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            color: #FF69B4;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        img, video {
+            max-width: 80%;
+            height: auto;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Galería de Fotos y Videos</h1>
+    <nav>
+        <a href="#" onclick="showSection('inicio')">Inicio</a>
+        <a href="#" onclick="showSection('fotos1')">Fotos 1</a>
+        <a href="#" onclick="showSection('fotos2')">Fotos 2</a>
+        <a href="#" onclick="showSection('videos1')">Videos 1</a>
+        <a href="#" onclick="showSection('videos2')">Videos 2</a>
+        <a href="#" onclick="showSection('subir')">Subir</a>
+        <a href="#" onclick="showSection('guardados')">Guardados</a>
+        <a href="#" onclick="showSection('contacto')">Contacto</a>
+    </nav>
+    
+    <div id="inicio" class="section active">
+        <h2>Bienvenido a la Galería</h2>
+        <p>Explora nuestras fotos y videos.</p>
+    </div>
+    
+    <div id="fotos1" class="section">
+        <h2>Fotos - Página 1</h2>
+        <img src="foto1.jpg" alt="Imagen 1">
+        <img src="foto2.jpg" alt="Imagen 2">
+    </div>
+    
+    <div id="fotos2" class="section">
+        <h2>Fotos - Página 2</h2>
+        <img src="foto3.jpg" alt="Imagen 3">
+        <img src="foto4.jpg" alt="Imagen 4">
+    </div>
+    
+    <div id="videos1" class="section">
+        <h2>Videos - Página 1</h2>
+        <video controls>
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div id="videos2" class="section">
+        <h2>Videos - Página 2</h2>
+        <video controls>
+            <source src="video2.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div id="subir" class="section">
+        <h2>Sube tu contenido</h2>
+        <input type="file" accept="image/*,video/*" id="fileInput">
+        <button onclick="saveVideo()">Guardar</button>
+    </div>
+    
+    <div id="guardados" class="section">
+        <h2>Videos Guardados</h2>
+        <div id="savedVideos"></div>
+    </div>
+    
+    <div id="contacto" class="section">
+        <h2>Contacto</h2>
+        <p>Envíanos un mensaje a contacto@example.com</p>
+    </div>
+    
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        function saveVideo() {
+            const fileInput = document.getElementById('fileInput');
+            const savedVideos = document.getElementById('savedVideos');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const url = URL.createObjectURL(file);
+                const videoElement = document.createElement('video');
+                videoElement.controls = true;
+                videoElement.src = url;
+                savedVideos.appendChild(videoElement);
+            }
+        }
+    </script>
+</body>
+</html>
+

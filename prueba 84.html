@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Fotos y Videos</title>
+    <style>
+        body {
+            background-color: yellow;
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        .upload-container {
+            margin-top: 30px;
+        }
+        .upload-container input {
+            margin: 10px 0;
+        }
+        .message {
+            font-size: 1.2em;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a SubirFotosyVideos.com</h1>
+    <p>¡Sube tus fotos y videos fácilmente! Los archivos se guardarán automáticamente después de ser cargados.</p>
+    
+    <div class="upload-container">
+        <form action="upload_backend.php" method="POST" enctype="multipart/form-data">
+            <label for="file">Selecciona un archivo para subir:</label><br>
+            <input type="file" id="file" name="file" accept="image/*, video/*" required><br><br>
+            <input type="submit" value="Subir archivo">
+        </form>
+    </div>
+    
+    <div class="message">
+        <p>¡Gracias por usar SubirFotosyVideos.com!</p>
+    </div>
+
+    <!-- Aquí se pueden agregar más funciones según sea necesario -->
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Fotos y Videos</title>
+    <style>
+        body {
+            background-color: yellow;
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            font-size: 1.2em;
+            color: red;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 2px solid red;
+        }
+        nav a:hover {
+            background-color: red;
+            color: white;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .upload-container {
+            margin-top: 30px;
+        }
+        .upload-container input {
+            margin: 10px 0;
+        }
+        .message {
+            font-size: 1.2em;
+            color: green;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a SubirFotosyVideos.com</h1>
+    
+    <!-- Menú de Navegación -->
+    <nav>
+        <a href="javascript:void(0)" onclick="showSection('upload')">Subir Fotos y Videos</a>
+        <a href="javascript:void(0)" onclick="showSection('view')">Ver Fotos y Videos</a>
+    </nav>
+
+    <!-- Contenido -->
+    <div class="content">
+
+        <!-- Sección de subir archivos -->
+        <div id="upload" class="section">
+            <h2>Sube tus Fotos o Videos</h2>
+            <div class="upload-container">
+                <form action="upload_backend.php" method="POST" enctype="multipart/form-data">
+                    <label for="file">Selecciona un archivo para subir:</label><br>
+                    <input type="file" id="file" name="file" accept="image/*, video/*" required><br><br>
+                    <input type="submit" value="Subir archivo">
+                </form>
+            </div>
+        </div>
+
+        <!-- Sección de ver archivos -->
+        <div id="view" class="section hidden">
+            <h2>Ver Fotos y Videos</h2>
+            <p>Aquí podrás ver tus fotos y videos subidos. (Esta funcionalidad requiere un backend).</p>
+            <!-- Aquí podrías agregar un espacio para ver las imágenes/videos subidos -->
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar la sección correspondiente
+        function showSection(section) {
+            // Ocultar todas las secciones
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(sec) {
+                sec.classList.add('hidden');
+            });
+
+            // Mostrar la sección seleccionada
+            document.getElementById(section).classList.remove('hidden');
+        }
+
+        // Mostrar la primera sección por defecto
+        showSection('upload');
+    </script>
+</body>
+</html>
+
