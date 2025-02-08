@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galer�a Multimedia</title>
+    <style>
+        body {
+            background-color: #D8BFD8; /* Lila */
+            color: #FF69B4; /* Rosado */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            color: #FF69B4;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        img, video {
+            max-width: 80%;
+            height: auto;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Galer�a de Fotos y Videos</h1>
+    <nav>
+        <a href="file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html#" onclick="showSection(&#39;inicio&#39;)">Inicio</a>
+        <a href="file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html#" onclick="showSection(&#39;fotos1&#39;)">Fotos 1</a>
+        <a href="file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html#" onclick="showSection(&#39;fotos2&#39;)">Fotos 2</a>
+        <a href="file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html#" onclick="showSection(&#39;videos1&#39;)">Videos 1</a>
+        <a href="file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html#" onclick="showSection(&#39;videos2&#39;)">Videos 2</a>
+        <a href="file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html#" onclick="showSection(&#39;subir&#39;)">Subir</a>
+        <a href="file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html#" onclick="showSection(&#39;guardados&#39;)">Guardados</a>
+        <a href="file:///C:/Users/USUARIO/Documents/djfdskksdk/galeriademultimedia.com.html#" onclick="showSection(&#39;contacto&#39;)">Contacto</a>
+    </nav>
+    
+    <div id="inicio" class="section active">
+        <h2>Bienvenido a la Galer�a</h2>
+        <p>Explora nuestras fotos y videos.</p>
+    </div>
+    
+    <div id="fotos1" class="section">
+        <h2>Fotos - P�gina 1</h2>
+        <img src="file:///C:/Users/USUARIO/Documents/djfdskksdk/foto1.jpg" alt="Imagen 1">
+        <img src="file:///C:/Users/USUARIO/Documents/djfdskksdk/foto2.jpg" alt="Imagen 2">
+    </div>
+    
+    <div id="fotos2" class="section">
+        <h2>Fotos - P�gina 2</h2>
+        <img src="file:///C:/Users/USUARIO/Documents/djfdskksdk/foto3.jpg" alt="Imagen 3">
+        <img src="file:///C:/Users/USUARIO/Documents/djfdskksdk/foto4.jpg" alt="Imagen 4">
+    </div>
+    
+    <div id="videos1" class="section">
+        <h2>Videos - P�gina 1</h2>
+        <video controls="">
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div id="videos2" class="section">
+        <h2>Videos - P�gina 2</h2>
+        <video controls="">
+            <source src="video2.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div id="subir" class="section">
+        <h2>Sube tu contenido</h2>
+        <input type="file" accept="image/*,video/*" id="fileInput">
+        <button onclick="saveVideo()">Guardar</button>
+    </div>
+    
+    <div id="guardados" class="section">
+        <h2>Videos Guardados</h2>
+        <div id="savedVideos"></div>
+    </div>
+    
+    <div id="contacto" class="section">
+        <h2>Contacto</h2>
+        <p>Env�anos un mensaje a contacto@example.com</p>
+    </div>
+    
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        function saveVideo() {
+            const fileInput = document.getElementById('fileInput');
+            const savedVideos = document.getElementById('savedVideos');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const url = URL.createObjectURL(file);
+                const videoElement = document.createElement('video');
+                videoElement.controls = true;
+                videoElement.src = url;
+                savedVideos.appendChild(videoElement);
+            }
+        }
+    </script>
+
+
+
+</body></html>
