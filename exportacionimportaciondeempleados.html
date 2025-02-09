@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exportación/Importación de Empleados</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid white;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        button, input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exportación/Importación de Empleados</h1>
+    <input type="file" id="fileInput" accept=".csv">
+    <button onclick="importCSV()">Importar CSV</button>
+    <button onclick="exportCSV()">Exportar CSV</button>
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Departamento</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        function importCSV() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) return alert('Seleccione un archivo CSV');
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const rows = e.target.result.split('\n').map(row => row.split(','));
+                const tableBody = document.querySelector('#employeeTable tbody');
+                tableBody.innerHTML = '';
+                rows.forEach(row => {
+                    if (row.length < 3) return;
+                    const tr = document.createElement('tr');
+                    row.forEach(cell => {
+                        const td = document.createElement('td');
+                        td.textContent = cell.trim();
+                        tr.appendChild(td);
+                    });
+                    tableBody.appendChild(tr);
+                });
+            };
+            reader.readAsText(file);
+        }
+        
+        function exportCSV() {
+            let csvContent = '';
+            document.querySelectorAll('#employeeTable tr').forEach(row => {
+                let rowData = [];
+                row.querySelectorAll('td, th').forEach(cell => rowData.push(cell.textContent));
+                csvContent += rowData.join(',') + '\n';
+            });
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'empleados.csv';
+            link.click();
+        }
+    </script>
+</body>
+</html>

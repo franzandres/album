@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos de Empleados</title>
+    <style>
+        body {
+            background-color: #001f3f;
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
+        img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>Base de Datos de Empleados</h1>
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="file" id="foto" accept="image/*">
+    <button onclick="agregarEmpleado()">Agregar Empleado</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="empleados"></tbody>
+    </table>
+    <script>
+        function agregarEmpleado() {
+            let nombre = document.getElementById("nombre").value;
+            let foto = document.getElementById("foto").files[0];
+            
+            if (!nombre || !foto) {
+                alert("Por favor, ingresa un nombre y selecciona una foto.");
+                return;
+            }
+            
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                let fotoURL = e.target.result;
+                let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
+                empleados.push({ nombre, foto: fotoURL });
+                localStorage.setItem("empleados", JSON.stringify(empleados));
+                mostrarEmpleados();
+            };
+            reader.readAsDataURL(foto);
+        }
+
+        function eliminarEmpleado(index) {
+            let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
+            empleados.splice(index, 1);
+            localStorage.setItem("empleados", JSON.stringify(empleados));
+            mostrarEmpleados();
+        }
+
+        function mostrarEmpleados() {
+            let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
+            let tbody = document.getElementById("empleados");
+            tbody.innerHTML = "";
+            empleados.forEach((empleado, index) => {
+                let fila = `<tr>
+                    <td><img src="${empleado.foto}" alt="Foto"></td>
+                    <td>${empleado.nombre}</td>
+                    <td><button onclick="eliminarEmpleado(${index})">Eliminar</button></td>
+                </tr>`;
+                tbody.innerHTML += fila;
+            });
+        }
+        mostrarEmpleados();
+    </script>
+</body>
+</html>

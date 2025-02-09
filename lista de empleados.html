@@ -1,0 +1,83 @@
+' Este código en VBA permite gestionar una base de datos de empleados con fotografía
+' y una interfaz visual mejorada con colores y macros, además de generar una página HTML para visualizar los datos
+
+Option Explicit
+
+Sub AgregarEmpleado()
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets("Empleados")
+    
+    Dim ultimaFila As Long
+    ultimaFila = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1
+    
+    ' Solicitar datos al usuario
+    ws.Cells(ultimaFila, 1).Value = InputBox("Ingrese el ID del empleado:")
+    ws.Cells(ultimaFila, 2).Value = InputBox("Ingrese el nombre del empleado:")
+    ws.Cells(ultimaFila, 3).Value = InputBox("Ingrese el puesto del empleado:")
+    ws.Cells(ultimaFila, 4).Value = InputBox("Ingrese la edad del empleado:")
+    
+    ' Permitir insertar una imagen
+    Dim filePath As String
+    filePath = Application.GetOpenFilename("Imágenes (*.jpg; *.png), *.jpg; *.png", , "Seleccione una imagen")
+    If filePath <> "False" Then
+        Dim img As Picture
+        Set img = ws.Pictures.Insert(filePath)
+        img.Left = ws.Cells(ultimaFila, 5).Left
+        img.Top = ws.Cells(ultimaFila, 5).Top
+        img.Width = 50
+        img.Height = 50
+    End If
+    
+    MsgBox "Empleado agregado correctamente", vbInformation, "Éxito"
+End Sub
+
+Sub ConfigurarFormato()
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets("Empleados")
+    
+    ' Aplicar colores
+    ws.Cells.Interior.Color = RGB(0, 0, 128) ' Azul oscuro
+    ws.Cells.Font.Color = RGB(255, 0, 0) ' Rojo
+    
+    ' Configurar encabezados
+    ws.Cells(1, 1).Value = "ID"
+    ws.Cells(1, 2).Value = "Nombre"
+    ws.Cells(1, 3).Value = "Puesto"
+    ws.Cells(1, 4).Value = "Edad"
+    ws.Cells(1, 5).Value = "Fotografía"
+    ws.Rows(1).Font.Bold = True
+    ws.Rows(1).Font.Size = 12
+    
+    MsgBox "Formato configurado", vbInformation, "Configuración"
+End Sub
+
+Sub GenerarHTML()
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets("Empleados")
+    Dim htmlFile As String
+    htmlFile = ThisWorkbook.Path & "\Empleados.html"
+    
+    Dim fileNum As Integer
+    fileNum = FreeFile
+    Open htmlFile For Output As #fileNum
+    
+    Print #fileNum, "<html><head><title>Base de Datos de Empleados</title></head><body style='background-color: navy; color: red;'>"
+    Print #fileNum, "<h1>Lista de Empleados</h1><table border='1' style='color: red;'>"
+    Print #fileNum, "<tr><th>ID</th><th>Nombre</th><th>Puesto</th><th>Edad</th><th>Fotografía</th></tr>"
+    
+    Dim i As Integer
+    For i = 2 To ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+        Print #fileNum, "<tr>"
+        Print #fileNum, "<td>" & ws.Cells(i, 1).Value & "</td>"
+        Print #fileNum, "<td>" & ws.Cells(i, 2).Value & "</td>"
+        Print #fileNum, "<td>" & ws.Cells(i, 3).Value & "</td>"
+        Print #fileNum, "<td>" & ws.Cells(i, 4).Value & "</td>"
+        Print #fileNum, "<td><img src='" & ws.Cells(i, 5).Value & "' width='50' height='50'></td>"
+        Print #fileNum, "</tr>"
+    Next i
+    
+    Print #fileNum, "</table></body></html>"
+    Close #fileNum
+    
+    MsgBox "Archivo HTML generado exitosamente", vbInformation, "Éxito"
+End Sub

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisión de Rendimiento</title>
+    <style>
+        body {
+            background-color: #006400; /* Verde bandera */
+            color: #98FB98; /* Verde lechuga */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, textarea, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #32CD32;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #228B22;
+        }
+    </style>
+</head>
+<body>
+    <h1>Revisión de Rendimiento</h1>
+    <div class="container">
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="evaluacion">Evaluación:</label>
+            <textarea id="evaluacion" name="evaluacion" rows="4" required></textarea>
+            
+            <button type="submit">Enviar Revisión</button>
+        </form>
+    </div>
+</body>
+</html>

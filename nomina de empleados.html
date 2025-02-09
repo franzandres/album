@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nómina de Empleados</title>
+    <style>
+        body {
+            background-color: #006400; /* Verde bandera */
+            color: #7CFC00; /* Verde lechuga */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: white;
+            color: black;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        th {
+            background-color: #228B22; /* Verde más oscuro */
+            color: white;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #32CD32;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nómina de Empleados</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Salario Base ($)</th>
+                <th>Impuestos (%)</th>
+                <th>Deducciones ($)</th>
+                <th>Salario Neto ($)</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-body">
+            <tr>
+                <td><input type="text" id="nombre"></td>
+                <td><input type="number" id="salario" oninput="calcularSalario()"></td>
+                <td><input type="number" id="impuestos" oninput="calcularSalario()"></td>
+                <td><input type="number" id="deducciones" oninput="calcularSalario()"></td>
+                <td><span id="salario-neto">0</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="agregarFila()">Agregar Empleado</button>
+    <script>
+        function calcularSalario() {
+            let salario = parseFloat(document.getElementById("salario").value) || 0;
+            let impuestos = parseFloat(document.getElementById("impuestos").value) || 0;
+            let deducciones = parseFloat(document.getElementById("deducciones").value) || 0;
+            let salarioNeto = salario - (salario * (impuestos / 100)) - deducciones;
+            document.getElementById("salario-neto").innerText = salarioNeto.toFixed(2);
+        }
+
+        function agregarFila() {
+            let tabla = document.getElementById("tabla-body");
+            let nuevaFila = document.createElement("tr");
+            let nombre = document.getElementById("nombre").value;
+            let salario = document.getElementById("salario").value;
+            let impuestos = document.getElementById("impuestos").value;
+            let deducciones = document.getElementById("deducciones").value;
+            let salarioNeto = document.getElementById("salario-neto").innerText;
+            
+            nuevaFila.innerHTML = `
+                <td>${nombre}</td>
+                <td>${salario}</td>
+                <td>${impuestos}</td>
+                <td>${deducciones}</td>
+                <td>${salarioNeto}</td>
+            `;
+            tabla.appendChild(nuevaFila);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos de Empleados</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <style>
+        body {
+            background-color: #98FB98; /* Verde lechuga */
+            color: #008000; /* Verde bandera */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #008000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #32CD32;
+        }
+        button {
+            background-color: #008000;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Empleados</h1>
+    <button onclick="exportarExcel()">Exportar a Excel</button>
+    <table id="empleados">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Puesto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juan Pérez</td>
+                <td>30</td>
+                <td>Gerente</td>
+                <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function exportarExcel() {
+            let tabla = document.getElementById("empleados");
+            let wb = XLSX.utils.table_to_book(tabla, {sheet: "Empleados"});
+            XLSX.writeFile(wb, "Empleados.xlsx");
+        }
+        function eliminarFila(boton) {
+            let fila = boton.parentNode.parentNode;
+            fila.parentNode.removeChild(fila);
+        }
+    </script>
+</body>
+</html>
