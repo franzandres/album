@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Ausencias</title>
+    <style>
+        body {
+            background-color: #8B4513;
+            color: #00CED1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #654321;
+            color: #00CED1;
+        }
+        th, td {
+            border: 1px solid #00CED1;
+            padding: 10px;
+        }
+        button {
+            background-color: #00CED1;
+            color: #8B4513;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Control de Ausencias y Vacaciones</h1>
+    <form id="absenceForm">
+        <input type="text" id="name" placeholder="Nombre del empleado" required>
+        <input type="date" id="date" required>
+        <select id="type">
+            <option value="Vacaciones">Vacaciones</option>
+            <option value="Enfermedad">Enfermedad</option>
+            <option value="Permiso">Permiso</option>
+        </select>
+        <button type="submit">Agregar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="absenceList"></tbody>
+    </table>
+    <script>
+        document.getElementById('absenceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let date = document.getElementById('date').value;
+            let type = document.getElementById('type').value;
+            let table = document.getElementById('absenceList');
+            let row = table.insertRow();
+            row.innerHTML = `<td>${name}</td><td>${date}</td><td>${type}</td><td><button onclick="removeRow(this)">Eliminar</button></td>`;
+            document.getElementById('absenceForm').reset();
+        });
+        function removeRow(button) {
+            let row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+</html>
