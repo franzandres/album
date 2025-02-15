@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabla de Ventas</title>
+  <style>
+    body {
+      background-color: #add8e6; /* Fondo celeste */
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: yellow;
+      text-align: center;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 5px;
+    }
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid black;
+      text-align: center;
+      color: black; /* Texto amarillo es poco legible, así que solo títulos importantes */
+    }
+    th {
+      background-color: #4CAF50;
+      color: yellow;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tabla de Ventas - Búsqueda</h1>
+  <input type="text" id="searchInput" placeholder="Buscar nombre..." onkeyup="searchTable()">
+
+  <table id="ventasTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Q1</th>
+        <th>Q2</th>
+        <th>Q3</th>
+        <th>Q4</th>
+        <th>Total</th>
+        <th>Meta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ella Vator</td><td>$17,211</td><td>$13,879</td><td>$16,008</td><td>$19,910</td><td>$67,008</td><td>Yes</td>
+      </tr>
+      <tr>
+        <td>Otto Matic</td><td>$19,828</td><td>$12,715</td><td>$11,482</td><td>$5,537</td><td>$49,562</td><td>No</td>
+      </tr>
+      <tr>
+        <td>Luke Warm</td><td>$18,638</td><td>$12,932</td><td>$14,020</td><td>$15,400</td><td>$60,450</td><td>Yes</td>
+      </tr>
+      <!-- Puedes agregar más filas según tu necesidad -->
+    </tbody>
+  </table>
+
+  <script>
+    function searchTable() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const table = document.getElementById('ventasTable');
+      const rows = table.getElementsByTagName('tr');
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td')[0]; 
+        if (cells) {
+          const textValue = cells.textContent || cells.innerText;
+          rows[i].style.display = textValue.toLowerCase().includes(input) ? '' : 'none';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+< ! TIPO DE DOC html   >
+
+<html>
+
+<   Cabeza   >
+<titulo> hola, mundo  !    </   titulo   > 
+<  link rel   >    =     "hoja de estilo"   href   = " Styles " 
+</Cabeza>
+<   cuerpo    >
+<   h1    class    =   " title "   >   i hola mundo !    <   /h1   >
+
+<  p  id  =  "hora actual"    >   </   p   >
+< script Src  =   "Script . js  "  >   </script  >
+
+</   Cuerpo   >
+
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Filtro vs XLOOKUP</title>
+  <style>
+    body {
+      background-color: #ffc0cb; /* Fondo rosado */
+      font-family: Arial, sans-serif;
+      color: #00bfff; /* Texto celeste */
+    }
+    h1 {
+      text-align: center;
+    }
+    .section {
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #00bfff;
+      background-color: #fff;
+      color: #000;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #00bfff;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #00bfff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Filtro vs XLOOKUP en Excel</h1>
+
+  <div class="section">
+    <h2>FILTER</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Region</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>East</td>
+        <td>$327</td>
+        <td>$752</td>
+        <td>$869</td>
+        <td>$575</td>
+        <td>$481</td>
+        <td>$854</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>XLOOKUP</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Region</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+      </tr>
+      <tr>
+        <td>Sarah</td>
+        <td>West</td>
+        <td>$801</td>
+        <td>$563</td>
+        <td>$252</td>
+        <td>$109</td>
+        <td>$854</td>
+        <td>$690</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Ahora, hablemos de XLOOKUP</h3>
+    <p>Una auténtica revolución en la búsqueda de datos en Excel.</p>
+  </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Filtro vs XLOOKUP</title>
+  <style>
+    body {
+      background-color: #ffc0cb; /* Fondo rosado */
+      font-family: Arial, sans-serif;
+      color: #00bfff; /* Texto celeste */
+    }
+    h1 {
+      text-align: center;
+    }
+    .section {
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #00bfff;
+      background-color: #fff;
+      color: #000;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #00bfff;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #00bfff;
+      color: white;
+    }
+    input {
+      width: 90%;
+      padding: 5px;
+      text-align: center;
+      border: 1px solid #00bfff;
+      border-radius: 5px;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #008fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Filtro vs XLOOKUP en Excel</h1>
+
+  <div class="section">
+    <h2>FILTER</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Region</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="Nombre" value="John"></td>
+        <td><input type="text" placeholder="Región" value="East"></td>
+        <td><input type="text" placeholder="Jan" value="327"></td>
+        <td><input type="text" placeholder="Feb" value="752"></td>
+        <td><input type="text" placeholder="Mar" value="869"></td>
+        <td><input type="text" placeholder="Apr" value="575"></td>
+        <td><input type="text" placeholder="May" value="481"></td>
+        <td><input type="text" placeholder="Jun" value="854"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>XLOOKUP</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Region</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="Nombre" value="Sarah"></td>
+        <td><input type="text" placeholder="Región" value="West"></td>
+        <td><input type="text" placeholder="Jan" value="801"></td>
+        <td><input type="text" placeholder="Feb" value="563"></td>
+        <td><input type="text" placeholder="Mar" value="252"></td>
+        <td><input type="text" placeholder="Apr" value="109"></td>
+        <td><input type="text" placeholder="May" value="854"></td>
+        <td><input type="text" placeholder="Jun" value="690"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Ahora, hablemos de XLOOKUP</h3>
+    <p>Una auténtica revolución en la búsqueda de datos en Excel.</p>
+  </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Filtro vs XLOOKUP</title>
+  </head>
+  <body style="background-color: #ffc0cb; color: #00bfff; font-family: Arial, sans-serif;">
+
+    <h1 style="text-align: center;">Filtro vs XLOOKUP en Excel</h1>
+
+    <!-- Sección FILTER -->
+    <h2>FILTER</h2>
+    <table border="1" width="100%" style="border-collapse: collapse;">
+      <tr style="background-color: #00bfff; color: white;">
+        <th>Name</th>
+        <th>Region</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+      </tr>
+      <tr>
+        <td><input type="text" value="John"></td>
+        <td><input type="text" value="East"></td>
+        <td><input type="text" value="327"></td>
+        <td><input type="text" value="752"></td>
+        <td><input type="text" value="869"></td>
+        <td><input type="text" value="575"></td>
+        <td><input type="text" value="481"></td>
+        <td><input type="text" value="854"></td>
+      </tr>
+    </table>
+
+    <!-- Sección XLOOKUP -->
+    <h2>XLOOKUP</h2>
+    <table border="1" width="100%" style="border-collapse: collapse;">
+      <tr style="background-color: #00bfff; color: white;">
+        <th>Name</th>
+        <th>Region</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+      </tr>
+      <tr>
+        <td><input type="text" value="Sarah"></td>
+        <td><input type="text" value="West"></td>
+        <td><input type="text" value="801"></td>
+        <td><input type="text" value="563"></td>
+        <td><input type="text" value="252"></td>
+        <td><input type="text" value="109"></td>
+        <td><input type="text" value="854"></td>
+        <td><input type="text" value="690"></td>
+      </tr>
+    </table>
+
+    <!-- Nota final -->
+    <p style="font-size: 18px;"><strong>Ahora, hablemos de XLOOKUP:</strong> Una auténtica revolución en la búsqueda de datos en Excel.</p>
+
+  </body>
+</html>
+< ! TIPO DE DOC html   >
+
+<html>
+
+<   Cabeza   >
+<titulo> hola, mundo  !    </   titulo   > 
+<  link rel   >    =     "hoja de estilo"   href   = " Styles " 
+</Cabeza>
+<   cuerpo    >
+<   h1    class    =   " title "   >   i hola mundo !    <   /h1   >
+
+<  p  id  =  "hora actual"    >   </   p   >
+< script Src  =   "Script . js  "  >   </script  >
+
+</   Cuerpo   >
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasando Clase Virtual con mis Compañeros y Compañeras</title>
+  <style>
+    body {
+      background-color: yellow;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 72px;
+      color: black;
+    }
+    .espacio {
+      margin: 40px 0;
+    }
+    .imagenes {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .imagenes img {
+      max-width: 250px;
+      height: auto;
+      border: 3px solid #000;
+      border-radius: 10px;
+    }
+    .boton-subir {
+      font-size: 20px;
+      padding: 10px 20px;
+      color: white;
+      background-color: #c8a2c8;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .boton-subir:hover {
+      background-color: #b28ab2;
+    }
+    .carpeta {
+      margin-top: 30px;
+      border: 2px dashed black;
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+    .carpeta img {
+      width: 100px;
+      height: auto;
+      margin: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pasando Clase Virtual con mis Compañeros y Compañeras</h1>
+
+  <div class="espacio"></div>
+
+  <div class="imagenes">
+    <img src="img1.jpg" alt="Clase Virtual 1">
+    <img src="img2.jpg" alt="Clase Virtual 2">
+    <img src="img3.jpg" alt="Clase Virtual 3">
+  </div>
+
+  <div class="espacio"></div>
+
+  <input type="file" id="inputImagen" accept="image/*">
+  <button class="boton-subir" onclick="subirImagen()">Subir Imagen</button>
+
+  <div class="carpeta" id="carpetaImagenes">
+    <p>Imágenes guardadas en la carpeta del perfil del álbum:</p>
+  </div>
+
+  <script>
+    function subirImagen() {
+      const input = document.getElementById('inputImagen');
+      const carpeta = document.getElementById('carpetaImagenes');
+
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const nuevaImagen = document.createElement('img');
+          nuevaImagen.src = e.target.result;
+          nuevaImagen.alt = 'Imagen subida';
+          carpeta.appendChild(nuevaImagen);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+< ! TIPO DE DOC html   >
+
+<html>
+
+<   Cabeza   >
+<titulo> hola, mundo  !    </   titulo   > 
+<  link rel   >    =     "hoja de estilo"   href   = " Styles " 
+</Cabeza>
+<   cuerpo    >
+<   h1    class    =   " title "   >   i hola mundo !    <   /h1   >
+
+<  p  id  =  "hora actual"    >   </   p   >
+< script Src  =   "Script . js  "  >   </script  >
+
+</   Cuerpo   >
+
+</html>
