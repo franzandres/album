@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enviar mensaje por WhatsApp</h2>
+    <label for="telefono">Número de teléfono:</label>
+    <input type="tel" id="telefono" placeholder="Ej: 521234567890">
+    <button onclick="enviarWhatsApp()">Abrir WhatsApp</button>
+    
+    <script>
+        function enviarWhatsApp() {
+            var telefono = document.getElementById("telefono").value;
+            if(telefono) {
+                var url = "https://wa.me/" + telefono;
+                window.open(url, "_blank");
+            } else {
+                alert("Por favor, ingresa un número de teléfono válido.");
+            }
+        }
+    </script>
+</body>
+</html>

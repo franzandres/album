@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat para WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Escribe tu mensaje y envíalo por WhatsApp</h2>
+    <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..."></textarea><br>
+    <button type="button" onclick="enviarWhatsApp()">Enviar a WhatsApp</button>
+
+    <script>
+        function enviarWhatsApp() {
+            let mensaje = document.getElementById('mensaje').value;
+            let numero = '1234567890'; // Reemplaza con tu número
+            let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+    </script>
+</body>
+</html>

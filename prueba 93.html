@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadarma</title>
+    <style>
+        body {
+            background-color: black;
+            color: #6f4f31; /* Color café */
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a Zadarma</h1>
+    <p>Recibe tus correos de mensajes de confirmación aquí.</p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Registro</title>
+    <style>
+        body {
+            background-color: black;
+            color: #6f4f31; /* Color café */
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #6f4f31;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Confirmación de Registro en Zadarma</h1>
+    <p>Gracias por registrarte en Zadarma. Para completar tu proceso de registro, por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+    <p><a href="https://example.com/confirmar" style="color: #6f4f31;">Confirmar mi cuenta</a></p>
+    <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Registro</title>
+    <style>
+        body {
+            background-color: black;
+            color: #6f4f31; /* Color café */
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #6f4f31;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Confirmación de Registro en Zadarma</h1>
+    <p>Gracias por registrarte en Zadarma. Para completar tu proceso de registro, por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+    <p><a href="https://example.com/confirmar" style="color: #6f4f31;">Confirmar mi cuenta</a></p>
+    <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+</body>
+</html>
+
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# Configuración del correo
+from_email = "tucorreo@example.com"
+to_email = "destinatario@example.com"
+password = "tu_contraseña"
+smtp_server = "smtp.example.com"
+smtp_port = 587
+
+# Crear el mensaje
+msg = MIMEMultipart()
+msg['From'] = from_email
+msg['To'] = to_email
+msg['Subject'] = "Confirmación de Registro"
+
+# Cuerpo del mensaje en HTML
+body = """
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmación de Registro</title>
+</head>
+<body style="background-color: black; color: #6f4f31; font-size: 18px; font-family: Arial, sans-serif;">
+    <h1>Confirmación de Registro en Zadarma</h1>
+    <p>Gracias por registrarte en Zadarma. Para completar tu proceso de registro, por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+    <p><a href="https://example.com/confirmar" style="color: #6f4f31;">Confirmar mi cuenta</a></p>
+    <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+</body>
+</html>
+"""
+
+# Adjuntar el cuerpo HTML al mensaje
+msg.attach(MIMEText(body, 'html'))
+
+# Enviar el correo
+with smtplib.SMTP(smtp_server, smtp_port) as server:
+    server.starttls()
+    server.login(from_email, password)
+    server.sendmail(from_email, to_email, msg.as_string())
+
+print("Correo enviado con éxito")
+
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# Configuración del correo
+from_email = "tucorreo@example.com"
+to_email = "destinatario@example.com"
+password = "tu_contraseña"
+smtp_server = "smtp.example.com"
+smtp_port = 587
+
+# Crear el mensaje
+msg = MIMEMultipart()
+msg['From'] = from_email
+msg['To'] = to_email
+msg['Subject'] = "Confirmación de Registro"
+
+# Cuerpo del mensaje en HTML
+body = """
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmación de Registro</title>
+</head>
+<body style="background-color: black; color: #6f4f31; font-size: 18px; font-family: Arial, sans-serif;">
+    <h1>Confirmación de Registro en Zadarma</h1>
+    <p>Gracias por registrarte en Zadarma. Para completar tu proceso de registro, por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+    <p><a href="https://example.com/confirmar" style="color: #6f4f31;">Confirmar mi cuenta</a></p>
+    <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+</body>
+</html>
+"""
+
+# Adjuntar el cuerpo HTML al mensaje
+msg.attach(MIMEText(body, 'html'))
+
+# Enviar el correo
+with smtplib.SMTP(smtp_server, smtp_port) as server:
+    server.starttls()
+    server.login(from_email, password)
+    server.sendmail(from_email, to_email, msg.as_string())
+
+print("Correo enviado con éxito")
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeja de Entrada - Zadarma</title>
+    <style>
+        body {
+            background-color: black;
+            color: #6f4f31;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #222;
+            color: #6f4f31;
+        }
+        th, td {
+            border: 1px solid #6f4f31;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bandeja de Entrada</h1>
+    <table>
+        <tr>
+            <th>Remitente</th>
+            <th>Asunto</th>
+            <th>Fecha</th>
+        </tr>
+
+        <?php
+        // Conectar a servidor IMAP para leer correos
+        $mailbox = "{imap.example.com:993/imap/ssl}INBOX"; // Cambia por tu servidor IMAP
+        $username = "tuemail@example.com"; 
+        $password = "tucontraseña";
+
+        $inbox = imap_open($mailbox, $username, $password) or die("Error al conectar: " . imap_last_error());
+
+        $emails = imap_search($inbox, 'ALL');
+
+        if ($emails) {
+            rsort($emails);
+            foreach ($emails as $email_number) {
+                $header = imap_headerinfo($inbox, $email_number);
+                echo "<tr>";
+                echo "<td>" . htmlentities($header->fromaddress) . "</td>";
+                echo "<td>" . htmlentities($header->subject) . "</td>";
+                echo "<td>" . date("Y-m-d H:i:s", $header->udate) . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='3'>No hay correos</td></tr>";
+        }
+
+        imap_close($inbox);
+        ?>
+
+    </table>
+
+</body>
+</html>
+
+import imaplib
+import email
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# Configurar conexión IMAP
+IMAP_SERVER = "imap.example.com"
+EMAIL_ACCOUNT = "tuemail@example.com"
+EMAIL_PASSWORD = "tucontraseña"
+
+@app.route("/")
+def bandeja():
+    mail = imaplib.IMAP4_SSL(IMAP_SERVER)
+    mail.login(EMAIL_ACCOUNT, EMAIL_PASSWORD)
+    mail.select("inbox")
+
+    result, data = mail.search(None, "ALL")
+    email_ids = data[0].split()
+
+    correos = []
+    for num in email_ids[-10:]:  # Obtener los últimos 10 correos
+        result, msg_data = mail.fetch(num, "(RFC822)")
+        raw_email = msg_data[0][1]
+        msg = email.message_from_bytes(raw_email)
+        correos.append({
+            "remitente": msg["From"],
+            "asunto": msg["Subject"],
+            "fecha": msg["Date"]
+        })
+
+    mail.close()
+    mail.logout()
+
+    return render_template("bandeja.html", correos=correos)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeja de Entrada - Zadarma</title>
+    <style>
+        body {
+            background-color: black;
+            color: #6f4f31;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #222;
+            color: #6f4f31;
+        }
+        th, td {
+            border: 1px solid #6f4f31;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bandeja de Entrada</h1>
+    <table>
+        <tr>
+            <th>Remitente</th>
+            <th>Asunto</th>
+            <th>Fecha</th>
+        </tr>
+        <tr>
+            <td>ejemplo@email.com</td>
+            <td>Bienvenido a Zadarma</td>
+            <td>2025-02-02</td>
+        </tr>
+        <tr>
+            <td>soporte@correo.com</td>
+            <td>Confirmación de Cuenta</td>
+            <td>2025-02-01</td>
+        </tr>
+        <tr>
+            <td>info@empresa.com</td>
+            <td>Últimas Novedades</td>
+            <td>2025-01-30</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+
+<?php
+// Configuración del servidor IMAP
+$servidor_imap = "{imap.example.com:993/imap/ssl}INBOX"; // CAMBIA esto con tu servidor IMAP
+$usuario = "tucorreo@example.com"; // CAMBIA con tu correo
+$contraseña = "tucontraseña"; // CAMBIA con tu contraseña
+
+// Conectar al servidor IMAP
+$conexion = imap_open($servidor_imap, $usuario, $contraseña) or die("Error al conectar: " . imap_last_error());
+
+// Buscar todos los correos
+$emails = imap_search($conexion, "ALL");
+
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeja de Entrada - Zadarma</title>
+    <style>
+        body {
+            background-color: black;
+            color: #6f4f31;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #222;
+            color: #6f4f31;
+        }
+        th, td {
+            border: 1px solid #6f4f31;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bandeja de Entrada</h1>
+    <table>
+        <tr>
+            <th>Remitente</th>
+            <th>Asunto</th>
+            <th>Fecha</th>
+        </tr>
+        <?php
+        if ($emails) {
+            rsort($emails); // Ordenar por fecha (más recientes primero)
+            foreach ($emails as $email_number) {
+                $header = imap_headerinfo($conexion, $email_number);
+                echo "<tr>";
+                echo "<td>" . htmlentities($header->fromaddress) . "</td>";
+                echo "<td>" . htmlentities($header->subject) . "</td>";
+                echo "<td>" . date("Y-m-d H:i:s", $header->udate) . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='3'>No hay correos</td></tr>";
+        }
+
+        // Cerrar conexión IMAP
+        imap_close($conexion);
+        ?>
+    </table>
+
+</body>
+</html>
+
+$servidor_imap = "{imap.example.com:993/imap/ssl}INBOX"; // Servidor IMAP
+$usuario = "tucorreo@example.com"; // Tu correo
+$contraseña = "tucontraseña"; // Tu contraseña
+
+
+$servidor_imap = "{imap.gmail.com:993/imap/ssl}INBOX";
+
+
+$servidor_imap = "{outlook.office365.com:993/imap/ssl}INBOX";
+
+
+$servidor_imap = "{mail.tudominio.com:993/imap/ssl}INBOX";
+
+
