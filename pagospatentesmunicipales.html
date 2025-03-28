@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos Patentes Municipales</title>
+    <style>
+        body {
+            background-color: yellow;
+            font-family: Arial, sans-serif;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: black;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #333;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .main-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main-section img {
+            max-width: 300px;
+        }
+
+        .main-section .text {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .album img {
+            max-width: 200px;
+            margin: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contact-form button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Pagos Patentes Municipales</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#multimedia">Multimedia</a>
+        <a href="#descargar">Descargar</a>
+        <a href="#album">Álbum</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <section id="inicio" class="main-section">
+            <div class="text">
+                <h2>Sistema de Pagos Municipales</h2>
+                <p>Bienvenido a nuestro sistema de pagos de patentes municipales. Aquí podrás gestionar tus pagos y acceder a recursos multimedia.</p>
+            </div>
+            <img src="hombre-escribiendo.jpg" alt="Hombre escribiendo en computadora">
+        </section>
+
+        <section id="multimedia" class="main-section">
+            <div class="text">
+                <h2>Multimedia</h2>
+                <p>Selecciona uno de los siguientes recursos multimedia:</p>
+                <a href="#documentos">Documentos</a>
+                <a href="#videos">Videos</a>
+            </div>
+            <img src="documento-excel.png" alt="Documento Excel" style="max-width: 100px; margin-left: 10px;">
+        </section>
+
+        <section id="descargar" class="main-section">
+            <div class="text">
+                <h2>Descargar</h2>
+                <p>Haz clic en el siguiente enlace para descargar documentos importantes.</p>
+                <a href="documentos/archivo.zip" download>Descargar Archivo</a>          </div>
+            <img src="taza-cafe.jpg" alt="Taza de café caliente" style="max-width: 100px;">        </section>
+
+        <section id="album" class="main-section">
+            <div class="text">
+                <h2>Álbum de Fotos de Ciclismo</h2>
+                <p>Explora las fotos de ciclismo de nuestra galería.</p>
+                <div class="album">
+                    <img src="../Crear una Página Web Gratis en 15 Minutos [Ed. 2023]_files/dkfkkfskmfsm.jpg" width="70" height="63"><img src="../Crear una Página Web Gratis en 15 Minutos [Ed. 2023]_files/download.jpg" width="68" height="57"><a href="documentos/archivo.zip" download><img src="../djfdskksdk/djdsfdsm843.jpg" width="66" height="55"></a><a href="documentos/archivo.zip" download><img src="../beckend.js/rgrt56565565656.jpg" width="74" height="53"></a> </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Si deseas ponerte en contacto, por favor llena el siguiente formulario:</p>
+            <form class="contact-form" method="post" action="mailto:contacto@correo.com" enctype="text/plain">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
+                <input type="tel" name="telefono" placeholder="Número de Teléfono" required>
+                <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Pagos Patentes Municipales. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
