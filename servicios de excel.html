@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Página Completa</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #98FB98; /* Verde lechuga */
+      color: #C8A2C8; /* Lila */
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #7CC47C;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #6FA36F;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #C8A2C8; /* Lila */
+    }
+
+    .main-section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .main-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .main-section p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: #C8A2C8; /* Lila */
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #b091b0;
+    }
+
+    footer {
+      background-color: #6FA36F;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* Responsivo para móviles */
+    @media (max-width: 768px) {
+      .main-section h1 {
+        font-size: 2rem;
+      }
+      .main-section p {
+        font-size: 1.1rem;
+      }
+      nav a {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <h1>Bienvenido a Mi Página</h1>
+    <p>Explora todo lo que tenemos para ti</p>
+  </header>
+
+  <!-- Menú de Navegación -->
+  <nav>
+    <a href="#">Inicio</a>
+    <a href="#">Servicios</a>
+    <a href="#">Acerca</a>
+    <a href="#">Contacto</a>
+  </nav>
+
+  <!-- Sección Principal -->
+  <section class="main-section">
+    <h1>Descubre Nuestras Novedades</h1>
+    <p>Encuentra contenido útil y actualizaciones frescas todos los días.</p>
+    <a href="#" class="button">Saber más</a>
+  </section>
+
+  <!-- Pie de Página -->
+  <footer>
+    <p>&copy; 2025 Mi Página. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
