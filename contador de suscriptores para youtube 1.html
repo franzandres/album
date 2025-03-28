@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Suscriptores de YouTube</title>
+    <style>
+        body {
+            background-color: #76FF7A; /* Verde lechuga */
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: red;
+        }
+        .contador {
+            font-size: 50px;
+            font-weight: bold;
+            color: red;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .actualizar {
+            background-color: #FF5733;
+            color: white;
+        }
+        button:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador de Suscriptores de YouTube</h1>
+    <p class="contador" id="contador">Cargando...</p>
+    <button class="actualizar" id="botonActualizar" onclick="obtenerSuscriptores()">Actualizar</button>
+
+    <script>
+        const API_KEY = https://www.googleapis.com/ Reemplaza con tu clave API
+        const CHANNEL_ID = youtube/v3/channels?part=statistics&id=ID_DEL_CANAL&key=TU_CLAVE_API Reemplaza con el ID del canal de YouTube
+
+        async function obtenerSuscriptores() {
+            const boton = document.getElementById('botonActualizar');
+            boton.disabled = true;
+            try {
+                const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`;
+                const respuesta = await fetch(url);
+                const datos = await respuesta.json();
+                if (datos.items && datos.items.length > 0) {
+                    const subs = datos.items[0].statistics.subscriberCount;
+                    document.getElementById('contador').innerText = subs;
+                } else {
+                    document.getElementById('contador').innerText = "No se encontraron datos";
+                }
+            } catch (error) {
+                document.getElementById('contador').innerText = "Error al cargar";
+                console.error("Error al obtener datos:", error);
+            } finally {
+                boton.disabled = false;
+            }
+        }
+
+        window.onload = obtenerSuscriptores; // Cargar suscriptores al inicio
+    </script>
+</body>
+</html>
