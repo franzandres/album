@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Suscriptores</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #contador {
+            font-size: 50px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .boton {
+            background-color: red;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Suscriptores en Tiempo Real</h1>
+    <div id="contador">0</div>
+    <button class="boton" onclick="incrementar()">Suscribirse</button>
+
+    <script>
+        let suscriptores = 1000; // Número inicial de suscriptores
+        const contadorElemento = document.getElementById("contador");
+        
+        function actualizarContador() {
+            contadorElemento.textContent = suscriptores;
+        }
+        
+        function incrementar() {
+            suscriptores++;
+            actualizarContador();
+        }
+        
+        function actualizarAutomatico() {
+            setInterval(() => {
+                suscriptores += Math.floor(Math.random() * 5); // Simulación de nuevos suscriptores
+                actualizarContador();
+            }, 3000);
+        }
+        
+        actualizarContador();
+        actualizarAutomatico();
+    </script>
+</body>
+</html>
