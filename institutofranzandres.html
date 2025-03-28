@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Franz Andres</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding: 20px;
+        }
+        .circle-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            color: red;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            text-align: center;
+            padding: 10px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            margin-top: 30px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #catalogo {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <h2>Muy buenos d�as, �en qu� lo podemos ayudar?</h2>
+        <img src="../canal de francisco/6b538dd4-c37e-4178-99e8-92bdcf400ffe-gfhgfhghfghfhf-removebg-preview.png" width="500" height="500">
+        <h1>Instituto Franz Andres</h1>
+        <h2>Carreras:</h2>
+        <p>Marketing Digital</p>
+        <p>Ingl�s</p>
+        <p>Mantenimiento y Reparaci�n de Computadoras</p>
+        <p><strong>Precio por mes: 100 Bs.</strong></p>
+        
+        <h2>Cat�logo de Materias</h2>
+        <button onClick="mostrarCatalogo()">Ver materias disponibles</button>
+        <div id="catalogo">
+            <img src="/mnt/data/Screenshot_2025_03_23-1.png" alt="Cat�logo de Materias">
+            <p>Para mayor informaci�n sobre las materias, ll�manos al: <strong>+591 69245269</strong></p>
+        </div>
+        
+        <div class="circle-container">
+            <div class="circle">Aulas por cada materia</div>
+            <div class="circle">T�cnico Medio</div>
+            <div class="circle">Materiales y Presentaciones Digitales</div>
+        </div>
+        <div class="form-container">
+            <h2>Recibe m�s informaci�n</h2>
+            <input type="email" id="email" placeholder="Ingresa tu correo" required>
+            <button onClick="enviarRespuesta()">Suscribirse</button>
+            <p id="mensaje"></p>
+        </div>
+        <div class="contact-info">
+            <p>Contacto:</p>
+            <p>Email: <a href="mailto:cfran6157@gmail.com">cfran6157@gmail.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/59169245269" target="_blank">+591 69245269</a></p>
+            <p>Tel�fono: <strong>+591 69245269</strong></p>
+        </div>
+        <p>&nbsp;</p>
+        <p><span class="form-container"><a href="../HIPERVINCULO COMO FOTO DE ENLACE/DirectorAndressalvatierraandrade.html"><img src="../Crear una Página Web Gratis en 15 Minutos [Ed.png" width="257" height="67" border="0"></a></span></p>
+</div>
+    <script>
+        function enviarRespuesta() {
+            let email = document.getElementById("email").value;
+            if (email) {
+                document.getElementById("mensaje").innerText = "Gracias por suscribirte. Te enviaremos informaci�n pronto.";
+                window.location.href = `mailto:cfran6157@gmail.com?subject=Solicitud de informaci�n&body=Hola, quiero m�s informaci�n sobre las carreras. Mi correo es: ${email}`;
+            } else {
+                document.getElementById("mensaje").innerText = "Por favor, ingresa un correo v�lido.";
+            }
+        }
+        
+        function mostrarCatalogo() {
+            let catalogo = document.getElementById("catalogo");
+            if (catalogo.style.display === "none") {
+                catalogo.style.display = "block";
+            } else {
+                catalogo.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
