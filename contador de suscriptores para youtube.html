@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Suscriptores</title>
+    <style>
+        body {
+            background-color: #00aaff;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .contador {
+            background-color: black;
+            color: #00aaff;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Contador de Suscriptores de YouTube</h1>
+    <div class="contador" id="subscribersCount">Cargando...</div>
+
+    <script>
+        const API_KEY = 'TU_API_KEY'; 
+        const CHANNEL_ID = 'TU_CHANNEL_ID';  
+
+        async function getSubscribers() {
+            try {
+                let response = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`);
+                let data = await response.json();
+                let subscribers = data.items[0].statistics.subscriberCount;
+                document.getElementById('subscribersCount').innerText = `Suscriptores: ${subscribers}`;
+            } catch (error) {
+                console.error("Error al obtener datos", error);
+                document.getElementById('subscribersCount').innerText = "Error al cargar";
+            }
+        }
+
+        getSubscribers();
+        setInterval(getSubscribers, 5000); // Actualiza cada 5 segundos
+    </script>
+
+</body>
+</html>
