@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MSN Rojo Chat</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <style>
+    body {
+      background-color: red;
+      font-family: Arial, sans-serif;
+      color: pink;
+      text-align: center;
+      margin: 0;
+    }
+    input, button {
+      margin: 5px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .hidden { display: none; }
+    .chat-box, .friends {
+      background: white;
+      color: black;
+      margin: 10px auto;
+      padding: 10px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: left;
+    }
+    .chat-box {
+      height: 300px;
+      overflow-y: auto;
+    }
+    .friend {
+      cursor: pointer;
+      padding: 5px;
+      border-bottom: 1px solid #ccc;
+    }
+    .online { color: green; font-weight: bold; }
+    .offline { color: gray; }
+    .msg { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <h1>MSN Rojo Chat 🔴</h1>
+
+  <!-- Registro/Login -->
+  <div id="auth">
+    <h2>Registrarse</h2>
+    <input type="email" id="reg-email" placeholder="Correo"><br>
+    <input type="password" id="reg-pass" placeholder="Contraseña"><br>
+    <button onclick="register()">Registrarse</button>
+
+    <h2>Iniciar Sesión</h2>
+    <input type="email" id="log-email" placeholder="Correo"><br>
+    <input type="password" id="log-pass" placeholder="Contraseña"><br>
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <!-- Chat + Amigos -->
+  <div id="chat-area" class="hidden">
+    <h3>Bienvenido: <span id="userEmail"></span> 
+      <button onclick="logout()">Salir</button>
+    </h3>
+
+    <div class="friends" id="friendsList"></div>
+
+    <div id="selectedFriend" class="hidden">
+      <h3>Chateando con: <span id="chatWith"></span></h3>
+      <div class="chat-box" id="chatBox"></div>
+      <input type="text" id="message" placeholder="Mensaje...">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <!-- Sonido y Pop-up -->
+  <audio id="notifSound" src="notificacion.mp3" preload="auto"></audio>
+  <div id="popup" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+    display: none;
+    font-weight: bold;
+  ">
+    Nuevo mensaje de <span id="popupSender"></span> 💬
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_AUTH_DOMAIN",
+      projectId: "TU_PROJECT_ID",
+      storageBucket: "TU_BUCKET",
+      messagingSenderId: "TU_SENDER_ID",
+      appId: "TU_APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    let currentUser = null;
+    let currentFriend = null;
+
+    function register() {
+      const email = document.getElementById("reg-email").value;
+      const pass = document.getElementById("reg-pass").value;
+      auth.createUserWithEmailAndPassword(email, pass)
+        .then(() => alert("¡Registrado correctamente!"))
+        .catch(err => alert(err.message));
+    }
+
+    function login() {
+      const email = document.getElementById("log-email").value;
+      const pass = document.getElementById("log-pass").value;
+      auth.signInWithEmailAndPassword(email, pass)
+        .catch(err => alert(err.message));
+    }
+
+    function logout() {
+      setEstado("desconectado").then(() => auth.signOut());
+    }
+
+    async function setEstado(estado) {
+      if (auth.currentUser) {
+        await db.collection("usuarios").doc(auth.currentUser.email).set({
+          email: auth.currentUser.email,
+          estado: estado
+        }, { merge: true });
+      }
+    }
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        currentUser = user;
+        document.getElementById("auth").classList.add("hidden");
+        document.getElementById("chat-area").classList.remove("hidden");
+        document.getElementById("userEmail").textContent = user.email;
+        setEstado("en línea");
+        cargarAmigos();
+      } else {
+        document.getElementById("auth").classList.remove("hidden");
+        document.getElementById("chat-area").classList.add("hidden");
+        document.getElementById("selectedFriend").classList.add("hidden");
+        currentUser = null;
+        currentFriend = null;
+      }
+    });
+
+    function cargarAmigos() {
+      db.collection("usuarios").onSnapshot(snapshot => {
+        const lista = document.getElementById("friendsList");
+        lista.innerHTML = "<h3>Amigos</h3>";
+        snapshot.forEach(doc => {
+          const user = doc.data();
+          if (user.email !== currentUser.email) {
+            const estado = user.estado === "en línea" ? "online" : "offline";
+            lista.innerHTML += `
+              <div class="friend ${estado}" onclick="seleccionarAmigo('${user.email}')">
+                ${user.email} - <span class="${estado}">${user.estado}</span>
+              </div>`;
+          }
+        });
+      });
+    }
+
+    function seleccionarAmigo(email) {
+      currentFriend = email;
+      document.getElementById("selectedFriend").classList.remove("hidden");
+      document.getElementById("chatWith").textContent = email;
+      cargarMensajes();
+    }
+
+    function sendMessage() {
+      const texto = document.getElementById("message").value;
+      if (texto && currentFriend) {
+        db.collection("mensajes").add({
+          de: currentUser.email,
+          para: currentFriend,
+          texto: texto,
+          timestamp: Date.now()
+        });
+        document.getElementById("message").value = "";
+      }
+    }
+
+    function cargarMensajes() {
+      db.collection("mensajes")
+        .orderBy("timestamp")
+        .onSnapshot(snapshot => {
+          const box = document.getElementById("chatBox");
+          const sound = document.getElementById("notifSound");
+          let nuevoMensaje = false;
+          box.innerHTML = "";
+
+          snapshot.forEach(doc => {
+            const msg = doc.data();
+            const entreAmbos =
+              (msg.de === currentUser.email && msg.para === currentFriend) ||
+              (msg.de === currentFriend && msg.para === currentUser.email);
+            if (entreAmbos) {
+              box.innerHTML += `<div class="msg"><strong>${msg.de}:</strong> ${msg.texto}</div>`;
+            }
+
+            if (msg.para === currentUser.email && msg.de !== currentFriend) {
+              nuevoMensaje = msg.de;
+            }
+          });
+
+          box.scrollTop = box.scrollHeight;
+
+          if (nuevoMensaje) {
+            sound.play();
+            mostrarPopup(nuevoMensaje);
+          }
+        });
+    }
+
+    function mostrarPopup(remitente) {
+      const popup = document.getElementById("popup");
+      const sender = document.getElementById("popupSender");
+      sender.textContent = remitente;
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 4000);
+    }
+
+    window.addEventListener("beforeunload", () => {
+      if (auth.currentUser) {
+        navigator.sendBeacon(
+          `https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents/usuarios/${auth.currentUser.email}`,
+          JSON.stringify({ fields: { estado: { stringValue: "desconectado" } } })
+        );
+      }
+    });
+  </script>
+</body>
+</html>
