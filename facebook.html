@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Social Media Clon</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --facebook-blue: #1877f2;
+    --facebook-gray: #f0f2f5;
+    --border-color: #dddfe2;
+    --card-background: #fff;
+    --text-dark: #050505;
+    --text-light: #65676b;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--facebook-gray);
+    display: flex;
+    min-height: 100vh;
+    overflow-y: auto; /* Allow scrolling for the entire body */
+  }
+
+  /* Main Container for the 3 columns */
+  .container {
+    display: flex;
+    width: 100%;
+    max-width: 1300px; /* Adjust as needed for overall width */
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+
+  /* Left Panel - Navigation */
+  .left-panel {
+    width: 250px;
+    padding: 15px;
+    background: var(--card-background);
+    border-right: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+  }
+
+  .left-panel .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--facebook-blue);
+    margin-bottom: 20px;
+  }
+
+  .left-panel ul {
+    list-style: none;
+  }
+
+  .left-panel ul li {
+    margin-bottom: 10px;
+  }
+
+  .left-panel ul li a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+  }
+
+  .left-panel ul li a:hover {
+    background-color: var(--facebook-gray);
+  }
+
+  .left-panel ul li a img,
+  .left-panel ul li a .icon-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: var(--facebook-blue); /* For placeholder */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  .left-panel ul li a.profile-link img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Center Content - Main Feed */
+  .main-content {
+    flex-grow: 1;
+    padding: 15px 20px;
+    overflow-y: auto; /* Allow scrolling for main content */
+  }
+
+  .stories-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px; /* For scrollbar */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--text-light) var(--facebook-gray); /* Firefox */
+  }
+
+  .stories-section::-webkit-scrollbar {
+    height: 6px;
+  }
+  .stories-section::-webkit-scrollbar-thumb {
+    background-color: var(--text-light);
+    border-radius: 10px;
+  }
+  .stories-section::-webkit-scrollbar-track {
+    background-color: var(--facebook-gray);
+  }
+
+
+  .story-card {
+    min-width: 110px;
+    height: 180px;
+    border-radius: 10px;
+    background-color: var(--facebook-blue);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .story-card.add-story {
+    background-color: var(--card-background);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .story-card.add-story .icon {
+    background-color: var(--facebook-blue);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  .story-card.add-story:hover {
+    background-color: var(--facebook-gray);
+  }
+
+  .create-post-section {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .create-post-section h3 {
+    margin-bottom: 10px;
+    color: var(--text-dark);
+  }
+
+  .create-post-section textarea {
+    width: 100%;
+    min-height: 80px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    resize: vertical;
+    transition: border-color 0.3s;
+    font-family: inherit;
+  }
+
+  .create-post-section textarea:focus {
+    outline: none;
+    border-color: var(--facebook-blue);
+  }
+
+  .post-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  }
+
+  .post-controls button,
+  .media-controls button {
+    padding: 10px 15px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: var(--facebook-blue);
+    color: white;
+    transition: background-color 0.3s;
+    flex: 1; /* Make buttons flexible */
+    min-width: 120px; /* Ensure buttons don't get too small */
+  }
+
+  .post-controls button:disabled,
+  .media-controls button:disabled {
+    background-color: #a3c1f7;
+    cursor: not-allowed;
+  }
+
+  .post-controls button:hover:not(:disabled),
+  .media-controls button:hover:not(:disabled) {
+    background-color: #0f52d1;
+  }
+
+  .media-section {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  .media-section h3 {
+    margin-bottom: 10px;
+    color: var(--text-dark);
+  }
+
+  #cameraPreview, #liveVideo {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    background: black;
+    object-fit: cover;
+    margin-top: 10px;
+    display: block; /* Ensure it takes full width */
+  }
+
+  .media-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  #postsContainer {
+    margin-top: 20px;
+  }
+
+  .post-box {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 2px rgba(0 0 0 / 0.1);
+  }
+
+  .post-box strong {
+    color: var(--text-dark);
+    display: block; /* New line for strong text */
+    margin-bottom: 8px;
+  }
+
+  .post-box p {
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .post-box img,
+  .post-box video {
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    display: block; /* Ensure no extra space below */
+  }
+
+  /* Right Panel - Contacts & Photos */
+  .right-panel {
+    width: 280px; /* Slightly wider for photos */
+    padding: 15px;
+    background: var(--card-background);
+    border-left: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+  }
+
+  .right-panel h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+  }
+
+  .contact-list ul {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+  .contact-list ul li {
+    margin-bottom: 10px;
+  }
+  .contact-list ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+  .contact-list ul li a img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+    border: 2px solid #5cb85c; /* Online indicator */
+  }
+
+  #photosContainer img {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+      padding: 10px;
+    }
+    .left-panel, .right-panel {
+      width: 100%;
+      border-right: none;
+      border-left: none;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 10px;
+    }
+    .main-content {
+      padding: 15px 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .left-panel ul li a {
+      justify-content: center;
+      padding: 8px;
+    }
+    .left-panel ul li a span {
+      display: none; /* Hide text, show only icons */
+    }
+    .post-controls button, .media-controls button {
+      flex: none; /* Disable flex growth on smaller screens */
+      width: 100%; /* Stack buttons vertically */
+      margin-bottom: 5px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left-panel">
+    <div class="logo">facebook</div>
+    <ul>
+      <li>
+        <a href="#" class="profile-link">
+          <img src="https://via.placeholder.com/32/FFD700/000000?text=FA" alt="Franz Andres" />
+          <span>Franz Andres Salvatierra samur</span>
+        </a>
+      </li>
+      <li><a href="#"><div class="icon-placeholder">??</div> <span>Amigos</span></a></li>
+      <li><a href="#"><div class="icon-placeholder">???</div> <span>Grupos</span></a></li>
+      <li><a href="#"><div class="icon-placeholder" style="background-color: #e74c3c;">??</div> <span>Jugar</span></a></li>
+      <li><a href="#"><div class="icon-placeholder" style="background-color: #3b5998;">??</div> <span>Bienvenida</span></a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="stories-section" id="storiesContainer">
+      <div class="story-card add-story" onclick="agregarHistoria()">
+        <div class="icon">+</div>
+        <span>Crear Historia</span>
+      </div>
+      </div>
+
+    <div class="create-post-section">
+      <h3>¿Qué estás pensando, Franz Andres?</h3>
+      <textarea id="textPost" placeholder="Escribe tu estado..."></textarea>
+      <div class="post-controls">
+        <button id="btnPostText" onclick="publicarTexto()">Publicar Texto</button>
+      </div>
+    </div>
+
+    <div class="media-section">
+      <h3>Cámara y Grabación</h3>
+      <video id="cameraPreview" autoplay muted playsinline></video>
+      <div class="media-controls">
+        <button id="btnTakePhoto" onclick="tomarFoto()">Tomar Foto</button>
+        <button id="startRecordBtn" onclick="iniciarGrabacion()">Iniciar Grabación</button>
+        <button id="stopRecordBtn" onclick="detenerGrabacion()" disabled>Detener Grabación</button>
+      </div>
+    </div>
+
+    <div class="media-section">
+      <h3>Transmisión en Vivo</h3>
+      <video id="liveVideo" autoplay muted playsinline></video>
+      <div class="media-controls">
+        <button id="startLiveBtn" onclick="iniciarTransmision()">Iniciar Transmisión</button>
+        <button id="stopLiveBtn" onclick="detenerTransmision()" disabled>Detener Transmisión</button>
+      </div>
+    </div>
+
+    <div id="postsContainer">
+      </div>
+  </div>
+
+  <div class="right-panel">
+    <h3>Contactos</h3>
+    <div class="contact-list">
+      <ul>
+        <li><a href="#"><img src="https://via.placeholder.com/36/5cb85c/ffffff?text=FR" alt="Fernandez Rodriguez" /> <span>Fernandez Rodriguez</span></a></li>
+        <li><a href="#"><img src="https://via.placeholder.com/36/5cb85c/ffffff?text=ZS" alt="uzaru shafi u skd" /> <span>uzaru shafi u skd</span></a></li>
+        </ul>
+    </div>
+    <h3>Conversaciones en grupo</h3>
+    <p style="color: var(--text-light); font-size: 14px;">Chats.....</p>
+
+    <h3 style="margin-top: 20px;">Fotos Tomadas</h3>
+    <div id="photosContainer">
+      </div>
+  </div>
+</div>
+
+<script>
+  let stream = null;
+  let mediaRecorder = null;
+  let recordedChunks = [];
+  let liveStream = null;
+
+  // --- Persistence Functions ---
+  function guardarPublicaciones() {
+    // Only save the content of postsContainer and photosContainer
+    const postsHTML = document.getElementById('postsContainer').innerHTML;
+    localStorage.setItem('publicaciones', postsHTML);
+
+    const photosHTML = document.getElementById('photosContainer').innerHTML;
+    localStorage.setItem('fotosTomadas', photosHTML);
+
+    const storiesData = [];
+    document.querySelectorAll('#storiesContainer .story-card:not(.add-story)').forEach(storyDiv => {
+      storiesData.push({
+        text: storyDiv.textContent.trim(),
+        bgImage: storyDiv.style.backgroundImage // Store background image if any
+      });
+    });
+    localStorage.setItem('historias', JSON.stringify(storiesData));
+  }
+
+  function cargarPublicaciones() {
+    const postsHTML = localStorage.getItem('publicaciones');
+    if (postsHTML) {
+      document.getElementById('postsContainer').innerHTML = postsHTML;
+    }
+
+    const photosHTML = localStorage.getItem('fotosTomadas');
+    if (photosHTML) {
+      document.getElementById('photosContainer').innerHTML = photosHTML;
+    }
+
+    const storiesData = JSON.parse(localStorage.getItem('historias') || '[]');
+    const storiesContainer = document.getElementById('storiesContainer');
+    storiesData.forEach(storyData => {
+      const story = document.createElement('div');
+      story.className = 'story-card';
+      story.textContent = storyData.text;
+      if (storyData.bgImage) {
+        story.style.backgroundImage = storyData.bgImage;
+        story.style.color = 'white'; // Assume white text for image backgrounds
+        story.style.textShadow = '0 0 3px rgba(0,0,0,0.8)'; // Make text readable
+      }
+      storiesContainer.appendChild(story);
+    });
+  }
+
+  // --- Camera & Media Functions ---
+  async function iniciarCamara() {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+      document.getElementById('cameraPreview').srcObject = stream;
+    } catch (error) {
+      console.error('Error al acceder a la cámara:', error);
+      alert('No se pudo acceder a la cámara: ' + error.message + '\nAsegúrate de haber concedido los permisos.');
+    }
+  }
+
+  function escapeHTML(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // --- Posting Functions ---
+  function crearPostBox(contentHTML, title) {
+    const postBox = document.createElement('div');
+    postBox.className = 'post-box';
+    postBox.innerHTML = `<strong>${escapeHTML(title)}:</strong><br>${contentHTML}`;
+    document.getElementById('postsContainer').prepend(postBox);
+    return postBox;
+  }
+
+  function publicarTexto() {
+    const texto = document.getElementById('textPost').value.trim();
+    if (texto.length === 0) {
+      alert('Por favor, escribe algo para publicar.');
+      return;
+    }
+    crearPostBox(`<p>${escapeHTML(texto)}</p>`, 'Estado');
+    document.getElementById('textPost').value = '';
+    guardarPublicaciones();
+  }
+
+  function tomarFoto() {
+    if (!stream) {
+      alert('La cámara no está activa. Por favor, recarga la página o revisa los permisos.');
+      return;
+    }
+    const video = document.getElementById('cameraPreview');
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth || 640;
+    canvas.height = video.videoHeight || 480;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const imgUrl = canvas.toDataURL('image/png');
+
+    // Add to right panel
+    const imgRightPanel = document.createElement('img');
+    imgRightPanel.src = imgUrl;
+    document.getElementById('photosContainer').prepend(imgRightPanel);
+
+    // Add to main feed
+    crearPostBox(`<img src="${imgUrl}" alt="Foto tomada" />`, 'Foto Publicada');
+    guardarPublicaciones();
+  }
+
+  async function iniciarGrabacion() {
+    if (!stream) {
+      alert('La cámara no está activa. Por favor, recarga la página o revisa los permisos.');
+      return;
+    }
+    recordedChunks = [];
+    try {
+      mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm; codecs=vp8' });
+    } catch(e) {
+      console.error('Error al crear MediaRecorder:', e);
+      alert('Tu navegador no soporta grabación de video con los codecs especificados o hay un problema con la cámara.');
+      return;
+    }
+
+    mediaRecorder.ondataavailable = e => {
+      if (e.data.size > 0) recordedChunks.push(e.data);
+    };
+
+    mediaRecorder.onstop = () => {
+      const blob = new Blob(recordedChunks, { type: 'video/webm' });
+      const url = URL.createObjectURL(blob);
+
+      crearPostBox(`<video src="${url}" controls></video>`, 'Video Publicado');
+
+      document.getElementById('startRecordBtn').disabled = false;
+      document.getElementById('stopRecordBtn').disabled = true;
+      // Note: Videos are not persisted in localStorage due to size limitations.
+      // A server-side solution would be needed for persistent video storage.
+    };
+
+    mediaRecorder.start();
+    document.getElementById('startRecordBtn').disabled = true;
+    document.getElementById('stopRecordBtn').disabled = false;
+  }
+
+  function detenerGrabacion() {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+    }
+  }
+
+  async function iniciarTransmision() {
+    try {
+      liveStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+      const liveVideo = document.getElementById('liveVideo');
+      liveVideo.srcObject = liveStream;
+      liveVideo.play();
+
+      document.getElementById('startLiveBtn').disabled = true;
+      document.getElementById('stopLiveBtn').disabled = false;
+    } catch (err) {
+      console.error('Error al iniciar la transmisión:', err);
+      alert('No se pudo iniciar la transmisión: ' + err.message + '\nAsegúrate de haber concedido los permisos.');
+    }
+  }
+
+  function detenerTransmision() {
+    if (liveStream) {
+      liveStream.getTracks().forEach(track => track.stop());
+      document.getElementById('liveVideo').srcObject = null;
+
+      crearPostBox(`<p>Tu transmisión en vivo ha finalizado.</p>`, 'Transmisión en Vivo Terminada');
+
+      document.getElementById('startLiveBtn').disabled = false;
+      document.getElementById('stopLiveBtn').disabled = true;
+    }
+  }
+
+  function agregarHistoria() {
+    const texto = prompt('Escribe el texto de tu historia:');
+    if (!texto || texto.trim().length === 0) return;
+
+    const storiesContainer = document.getElementById('storiesContainer');
+    const story = document.createElement('div');
+    story.className = 'story-card';
+    story.textContent = texto.trim();
+
+    // Optional: Ask for an image URL for the story background
+    const imageUrl = prompt('Opcional: Ingresa una URL de imagen para el fondo de la historia:');
+    if (imageUrl && imageUrl.trim().length > 0) {
+      story.style.backgroundImage = `url('${imageUrl.trim()}')`;
+      story.style.color = 'white'; // Adjust text color for better contrast on images
+      story.style.textShadow = '0 0 3px rgba(0,0,0,0.8)';
+    }
+
+    // Insert the new story just before the "Add Story" card
+    const addStoryCard = storiesContainer.querySelector('.add-story');
+    if (addStoryCard) {
+        storiesContainer.insertBefore(story, addStoryCard.nextSibling);
+    } else {
+        storiesContainer.appendChild(story);
+    }
+    guardarPublicaciones(); // Save stories
+  }
+
+  // --- Initialize on Load ---
+  window.onload = () => {
+    iniciarCamara();
+    cargarPublicaciones();
+  }
+</script>
+
+</body>
+</html>

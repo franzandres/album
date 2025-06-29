@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suscriptores</title>
+    <style>
+        body {
+            background-color: red;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #suscriptores {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Suscripción</h1>
+    <p>Ingresa tu nombre para suscribirte:</p>
+    <input type="text" id="nombre" placeholder="Tu nombre">
+    <button onclick="suscribirse()">Suscribirse</button>
+    
+    <h2>Suscriptores:</h2>
+    <ul id="suscriptores"></ul>
+
+    <script>
+        function suscribirse() {
+            let nombre = document.getElementById('nombre').value;
+            if (nombre.trim() !== "") {
+                let lista = document.getElementById('suscriptores');
+                let nuevoElemento = document.createElement('li');
+                nuevoElemento.textContent = nombre;
+                lista.appendChild(nuevoElemento);
+                document.getElementById('nombre').value = "";
+            } else {
+                alert("Por favor, ingresa un nombre válido.");
+            }
+        }
+    </script>
+</body>
+</html>

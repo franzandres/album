@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-item h3 {
+            margin: 15px 0;
+        }
+        .product-item p {
+            color: #555;
+        }
+        .buy-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buy-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenidos a nuestra Tienda</h1>
+    <div class="product-list">
+        <div class="product-item">
+            <img src="https://via.placeholder.com/200" alt="Producto 1">
+            <h3>Producto 1</h3>
+            <p>Descripción breve del producto 1.</p>
+            <button class="buy-button" onclick="window.location.href='https://link_de_compra_producto_1'">Comprar</button>
+        </div>
+        <div class="product-item">
+            <img src="https://via.placeholder.com/200" alt="Producto 2">
+            <h3>Producto 2</h3>
+            <p>Descripción breve del producto 2.</p>
+            <button class="buy-button" onclick="window.location.href='https://link_de_compra_producto_2'">Comprar</button>
+        </div>
+        <div class="product-item">
+            <img src="https://via.placeholder.com/200" alt="Producto 3">
+            <h3>Producto 3</h3>
+            <p>Descripción breve del producto 3.</p>
+            <button class="buy-button" onclick="window.location.href='https://link_de_compra_producto_3'">Comprar</button>
+        </div>
+    </div>
+</body>
+</html>

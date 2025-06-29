@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Económico - Pago</title>
+    <style>
+        body {
+            background-color: red;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        #chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            color: black;
+            border-radius: 5px;
+            padding: 10px;
+            width: 300px;
+            height: 350px;
+            overflow-y: auto;
+        }
+        #chatbot p {
+            margin: 5px 0;
+        }
+        #chatbot input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #pay-button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: green;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Bienvenido al Banco Económico</h1>
+<p>Realiza tu pago de forma segura con tarjeta de débito.</p>
+<a href="banco economico.html" id="pay-button">Pagar ahora</a>
+
+<div id="chatbot">
+    <p id="chatbot-welcome">Hola, ¿en qué podemos ayudarte?</p>
+    <input type="text" id="userInput" placeholder="Escribe tu pregunta aquí...">
+</div>
+
+<script>
+    const chatbot = document.getElementById('chatbot');
+    const chatbotWelcome = document.getElementById('chatbot-welcome');
+    const userInput = document.getElementById('userInput');
+    const payButton = document.getElementById('pay-button');
+
+    // Función para determinar el saludo según el momento del día
+    function getGreeting() {
+        const hours = new Date().getHours();
+        if (hours < 12) {
+            return "Pagar ahora en la mañana";
+        } else if (hours < 18) {
+            return "Pagar ahora en la tarde";
+        } else {
+            return "Pagar ahora en la noche";
+        }
+    }
+
+    // Mostrar el saludo apropiado en el chatbot
+    chatbotWelcome.textContent = getGreeting();
+
+    // Evento para capturar el mensaje del usuario
+    userInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            const userMessage = userInput.value.toLowerCase();
+
+            // Si el usuario pregunta algo relacionado con el pago
+            if (userMessage.includes('pagar') || userMessage.includes('pago')) {
+                chatbot.innerHTML += `<p><strong>Tú:</strong> ${userMessage}</p>`;
+                chatbot.innerHTML += `<p><strong>Dr. Andrés:</strong> ${getGreeting()}</p>`;
+                userInput.value = '';  // Limpiar el campo de entrada
+                chatbot.scrollTop = chatbot.scrollHeight;  // Desplazar el chat hacia abajo
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

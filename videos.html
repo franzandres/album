@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Colección de Videos de Artistas - Azul Oscuro</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header-azul-oscuro">
+        <div class="contenedor">
+            <h1 class="titulo-sitio">Mi Mundo Musical y Viral</h1>
+            <nav class="navegacion-principal">
+                <ul>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#fotos">Fotos</a></li>
+                    <li><a href="#documentos">Documentos</a></li>
+                    <li><a href="#artistas">Artistas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenido-principal">
+        <section class="seccion-busqueda">
+            <div class="contenedor">
+                <form id="formularioBusqueda" class="barra-busqueda-azul-oscuro">
+                    <input type="text" id="campoBusqueda" placeholder="Buscar videos, fotos, documentos de Shakira, Bieber, Ozuna, TikTok..." aria-label="Campo de búsqueda">
+                    <button type="submit" id="botonBusqueda" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                </form>
+                <div id="mensajeCargando" class="mensaje-carga" style="display:none;">
+                    <p>Está cargando videos y contenido...</p>
+                    <div class="spinner"></div> </div>
+            </div>
+        </section>
+
+        <section class="resultados-busqueda">
+            <div class="contenedor">
+                <div id="galeriaResultados" class="galeria-videos">
+                    <div class="item-contenido">
+                        <img src="https://via.placeholder.com/300x180?text=Miniatura+Video+1" alt="Descripción del Video 1">
+                        <h3>Título del Video Ejemplo 1</h3>
+                        <p>Breve descripción del video o artista.</p>
+                        <a href="#" class="boton-ver-mas">Ver Video</a>
+                    </div>
+                    <div class="item-contenido">
+                        <img src="https://via.placeholder.com/300x180?text=Miniatura+Video+2" alt="Descripción del Video 2">
+                        <h3>Título del Video Ejemplo 2</h3>
+                        <p>Breve descripción del video o artista.</p>
+                        <a href="#" class="boton-ver-mas">Ver Video</a>
+                    </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-azul-oscuro">
+        <div class="contenedor">
+            <p>&copy; 2025 Mi Mundo Musical y Viral. Todos los derechos reservados.</p>
+            <div class="enlaces-redes">
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

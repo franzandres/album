@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inicio - Feisbuk</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #eee;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #0d47a1;
+    color: white;
+    padding: 15px 20px;
+    font-size: 24px;
+  }
+  main {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+  .post {
+    background: #1e1e1e;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 15px;
+  }
+  .post-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .post-media {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .post-description {
+    margin-bottom: 10px;
+  }
+  .comments-toggle {
+    background: none;
+    border: none;
+    color: #64b5f6;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .comments-list {
+    background: #333;
+    border-radius: 8px;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .comment {
+    margin-bottom: 8px;
+  }
+  .comment strong {
+    color: #81d4fa;
+  }
+</style>
+</head>
+<body>
+
+<header>Feisbuk - Inicio</header>
+
+<main id="feed">
+
+  <!-- Posts cargados dinámicamente -->
+
+</main>
+
+<script>
+  const posts = [
+    {
+      id: 1,
+      usuario: "Ana Martínez",
+      tipo: "foto",
+      src: "https://picsum.photos/id/1015/600/400",
+      descripcion: "Un día maravilloso en la playa.",
+      comentarios: [
+        {usuario: "Carlos", texto: "Qué linda foto!"},
+        {usuario: "Lucía", texto: "Me encantaría estar ahí."},
+        {usuario: "Miguel", texto: "Hermoso lugar."},
+        // ... puedes añadir más comentarios
+      ]
+    },
+    {
+      id: 2,
+      usuario: "Carlos Gómez",
+      tipo: "video",
+      src: "https://sample-videos.com/video123/mp4/480/asdasdas.mp4", // Puedes cambiar a un video válido
+      descripcion: "Mira este atardecer increíble.",
+      comentarios: Array(170).fill({usuario:"Usuario", texto:"Comentario genérico"}), // 170 comentarios simulados
+    },
+    {
+      id: 3,
+      usuario: "Lucía Fernández",
+      tipo: "foto",
+      src: "https://picsum.photos/id/1021/600/400",
+      descripcion: "Foto de mi jardín.",
+      comentarios: [
+        {usuario: "Ana", texto: "Se ve precioso!"},
+        {usuario: "Carlos", texto: "Qué flores tan bonitas."},
+      ]
+    }
+  ];
+
+  const feed = document.getElementById('feed');
+
+  function crearPost(post) {
+    const postDiv = document.createElement('div');
+    postDiv.className = 'post';
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'post-header';
+    header.textContent = post.usuario;
+    postDiv.appendChild(header);
+
+    // Media (foto o video)
+    let mediaElement;
+    if(post.tipo === 'foto') {
+      mediaElement = document.createElement('img');
+      mediaElement.src = post.src;
+      mediaElement.alt = `Foto de ${post.usuario}`;
+      mediaElement.className = 'post-media';
+    } else if(post.tipo === 'video') {
+      mediaElement = document.createElement('video');
+      mediaElement.src = post.src;
+      mediaElement.controls = true;
+      mediaElement.className = 'post-media';
+    }
+    postDiv.appendChild(mediaElement);
+
+    // Descripción
+    const desc = document.createElement('p');
+    desc.className = 'post-description';
+    desc.textContent = post.descripcion;
+    postDiv.appendChild(desc);
+
+    // Botón para mostrar/ocultar comentarios
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'comments-toggle';
+    const numComentarios = post.comentarios.length;
+    toggleBtn.textContent = `${numComentarios} comentario${numComentarios !== 1 ? 's' : ''}`;
+    postDiv.appendChild(toggleBtn);
+
+    // Lista comentarios (inicialmente oculta)
+    const commentsList = document.createElement('div');
+    commentsList.className = 'comments-list';
+    commentsList.style.display = 'none';
+
+    post.comentarios.forEach(c => {
+      const commentDiv = document.createElement('div');
+      commentDiv.className = 'comment';
+      commentDiv.innerHTML = `<strong>${c.usuario}:</strong> ${c.texto}`;
+      commentsList.appendChild(commentDiv);
+    });
+
+    postDiv.appendChild(commentsList);
+
+    toggleBtn.addEventListener('click', () => {
+      if (commentsList.style.display === 'none') {
+        commentsList.style.display = 'block';
+        toggleBtn.textContent = `Ocultar comentarios (${numComentarios})`;
+      } else {
+        commentsList.style.display = 'none';
+        toggleBtn.textContent = `${numComentarios} comentario${numComentarios !== 1 ? 's' : ''}`;
+      }
+    });
+
+    return postDiv;
+  }
+
+  posts.forEach(post => {
+    feed.appendChild(crearPost(post));
+  });
+</script>
+
+</body>
+</html>

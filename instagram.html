@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Instagram Lila Completo - Con Encabezado Fijo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #c8a2c8 0%, #d9a2d9 100%);
+    color: #5a297a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px; /* espacio para header fijo */
+  }
+
+  header {
+    background: linear-gradient(90deg, #b76ba3, #e75480, #ffd700);
+    padding: 15px 0;
+    color: white;
+    font-weight: 600;
+    font-size: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(183, 107, 163, 0.4);
+    letter-spacing: 1.5px;
+    user-select: none;
+    animation: fadeInDown 1s ease forwards;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  }
+
+  nav {
+    margin: 15px 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+  }
+
+  nav button {
+    background: #e75480;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(231, 84, 128, 0.6);
+    transition: background 0.3s ease, transform 0.2s ease;
+    flex: 1 1 150px;
+    max-width: 200px;
+  }
+
+  nav button:hover {
+    background: #d13968;
+    transform: scale(1.05);
+  }
+
+  #searchInput {
+    width: 90%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 2px solid #e75480;
+    font-size: 1rem;
+    color: #5a297a;
+    margin: 15px auto;
+    display: block;
+  }
+
+  .stories, .reels, .posts {
+    margin: 10px 20px;
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #e75480 #f0d3f0;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1s;
+  }
+
+  .stories::-webkit-scrollbar,
+  .reels::-webkit-scrollbar,
+  .posts::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .stories::-webkit-scrollbar-thumb,
+  .reels::-webkit-scrollbar-thumb,
+  .posts::-webkit-scrollbar-thumb {
+    background-color: #e75480;
+    border-radius: 10px;
+  }
+
+  .story, .reel, .post {
+    background: white;
+    border-radius: 15px;
+    flex: 0 0 110px;
+    height: 170px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(167, 86, 167, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .story:hover, .reel:hover, .post:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(167, 86, 167, 0.4);
+  }
+
+  .story img, .reel video, .post img, .post video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    pointer-events: none;
+  }
+
+  .chat {
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    width: 320px;
+    max-height: 450px;
+    background: #f8c5d8;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -6px 15px rgba(231, 84, 128, 0.7);
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95em;
+    user-select: none;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+  }
+
+  .chat-header {
+    padding: 15px;
+    background: #d13968;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 3px 8px rgba(209, 57, 104, 0.8);
+    position: relative;
+  }
+
+  .chat-notification {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: #d13968;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 0 8px #d13968;
+    display: none;
+    user-select: none;
+  }
+
+  .chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #ffd1e8;
+    border-bottom: 1px solid #e0a8bb;
+    scrollbar-width: thin;
+    scrollbar-color: #d13968 #ffd1e8;
+  }
+
+  .chat-messages::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .chat-messages::-webkit-scrollbar-thumb {
+    background-color: #d13968;
+    border-radius: 12px;
+  }
+
+  .chat-input {
+    display: flex;
+    padding: 10px 15px;
+    background: #fbc2d5;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top: 1px solid #e0a8bb;
+  }
+
+  .chat-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: 1px solid #d13968;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .chat-input input:focus {
+    border-color: #a42a58;
+  }
+
+  .chat-input button {
+    background: #d13968;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(209, 57, 104, 0.7);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .chat-input button:hover {
+    background: #a42a58;
+    transform: scale(1.1);
+  }
+
+  .message {
+    background: #fef2f7;
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    max-width: 75%;
+    box-shadow: 0 2px 6px rgba(231, 84, 128, 0.25);
+    line-height: 1.3;
+    color: #5a297a;
+  }
+
+  .message.self {
+    background: #d64a83;
+    color: white;
+    align-self: flex-end;
+    box-shadow: 0 4px 10px rgba(214, 74, 131, 0.8);
+  }
+
+  .message > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .message > p {
+    margin: 5px 0 0 40px;
+  }
+
+  /* Botón siguiente */
+  .next-btn {
+    display: block;
+    margin: 30px auto 40px;
+    padding: 15px 40px;
+    background: #ffde59;
+    border: none;
+    border-radius: 40px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #5a297a;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 15px #f8e71c;
+    transition: background 0.3s ease, transform 0.25s ease;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 2s;
+    opacity: 0;
+  }
+
+  .next-btn:hover {
+    background: #f8e71c;
+    transform: scale(1.05);
+  }
+
+  /* Modal para añadir contenido */
+  .modal {
+    position: fixed;
+    top: 0; left: 0; right:0; bottom: 0;
+    background: rgba(90, 41, 122, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+  }
+
+  .modal-content {
+    background: #fff0ff;
+    padding: 30px 25px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 0 25px #b76ba3aa;
+    user-select: none;
+    font-weight: 600;
+    color: #7a397a;
+    font-size: 1.1rem;
+  }
+
+  .modal-content input[type="file"] {
+    margin: 15px 0;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid #d39acb;
+    width: 100%;
+  }
+
+  .modal-content button {
+    margin-top: 15px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #e75480;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(231, 84, 128, 0.7);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .modal-content button:hover {
+    background: #d13968;
+    transform: scale(1.05);
+  }
+
+  .modal-content button.cancel-btn {
+    background: #999;
+    margin-left: 15px;
+    box-shadow: none;
+    transition: background 0.3s ease;
+  }
+
+  .modal-content button.cancel-btn:hover {
+    background: #666;
+  }
+
+  /* Live streaming */
+  .live-stream {
+    margin: 30px auto;
+    text-align: center;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+  }
+
+  .live-stream h3 {
+    font-weight: 700;
+    color: #7a397a;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+  }
+
+  .live-video {
+    width: 360px;
+    height: 270px;
+    border: 3px solid #e75480;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(231, 84, 128, 0.7);
+  }
+
+  .live-stream button {
+    margin-top: 20px;
+    padding: 12px 40px;
+    background: #e75480;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(231, 84, 128, 0.8);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .live-stream button:hover {
+    background: #d13968;
+    transform: scale(1.05);
+  }
+
+  /* Animaciones */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    nav {
+      flex-direction: column;
+    }
+    nav button {
+      max-width: 100%;
+      flex: none;
+    }
+    .chat {
+      width: 100%;
+      right: 0;
+      bottom: 0;
+      border-radius: 0;
+    }
+    .live-video {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>Instagram Lila</header>
+
+<nav>
+  <button onclick="openModal('story')">Añadir Historia</button>
+  <button onclick="openModal('reel')">Añadir Reel</button>
+  <button onclick="startLive()">Transmitir en Directo</button>
+  <button onclick="openModal('post')">Publicar Imagen/Video</button>
+</nav>
+
+<input
+  type="text"
+  id="searchInput"
+  placeholder="Buscar contenido..."
+  oninput="filterContent()"
+/>
+
+<section id="highlightSection" style="text-align:center; margin: 20px auto; max-width: 400px;">
+  <h3 id="highlightTitle">Contenido Destacado</h3>
+  <div id="highlightContent" style="border-radius: 15px; overflow: hidden; box-shadow: 0 6px 15px rgba(167,86,167,0.3); min-height: 180px;">
+    <p style="padding: 20px; color: #7a397a;">Presiona "Siguiente" para ver contenido destacado.</p>
+  </div>
+</section>
+
+<section class="stories" id="storiesSection">
+  <h3>Historias</h3>
+</section>
+
+<section class="reels" id="reelsSection">
+  <h3>Reels</h3>
+</section>
+
+<section class="posts" id="postsSection">
+  <h3>Publicaciones</h3>
+</section>
+
+<button class="next-btn" onclick="nextContent()">Siguiente</button>
+
+<!-- Chat -->
+<div class="chat" style="opacity:1;">
+  <div class="chat-header">
+    Chat
+    <div class="chat-notification" id="chatNotification">Nuevo mensaje</div>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Escribe un mensaje..." onkeydown="if(event.key==='Enter'){sendMessage()}"/>
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
+</div>
+
+<!-- Modal para añadir contenido -->
+<div class="modal" id="addContentModal">
+  <div class="modal-content">
+    <h2 id="modalTitle">Añadir contenido</h2>
+    <input type="file" id="fileInput" accept="image/*,video/*" />
+    <div style="margin-top: 15px;">
+      <button onclick="addContent()">Añadir</button>
+      <button class="cancel-btn" onclick="closeModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Transmisión en directo -->
+<div class="live-stream" id="liveStream" style="display:none;">
+  <h3>Transmisión en Directo</h3>
+  <video id="liveVideo" class="live-video" autoplay muted></video>
+  <br />
+  <button onclick="stopLive()">Detener transmisión</button>
+</div>
+
+<!-- Sonidos chat -->
+<audio id="sendSound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+<audio id="receiveSound" src="https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg"></audio>
+
+<script>
+  // Variables para contenido
+  let stories = [];
+  let reels = [];
+  let posts = [];
+
+  // Variables para contenido destacado
+  let currentHighlightIndex = 0;
+  let currentHighlightType = 'story';
+
+  // Modal control
+  let currentModal = null;
+
+  function openModal(type) {
+    currentModal = type;
+    const modal = document.getElementById('addContentModal');
+    const title = document.getElementById('modalTitle');
+    title.textContent = 'Añadir ' + (type.charAt(0).toUpperCase() + type.slice(1));
+    document.getElementById('fileInput').value = '';
+    modal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('addContentModal');
+    modal.style.display = 'none';
+    document.getElementById('fileInput').value = '';
+  }
+
+  // Añadir contenido nuevo
+  function addContent() {
+    const fileInput = document.getElementById('fileInput');
+    if (!fileInput.files.length) {
+      alert('Por favor selecciona una imagen o video.');
+      return;
+    }
+    const file = fileInput.files[0];
+    const url = URL.createObjectURL(file);
+
+    let type = '';
+    if (file.type.startsWith('video')) {
+      type = 'video/mp4'; // asumiendo mp4 para simplicidad
+    } else if (file.type.startsWith('image')) {
+      type = 'image/jpeg'; // puede ser png o jpeg, simplificamos
+    } else {
+      alert('Tipo de archivo no soportado.');
+      return;
+    }
+
+    if (currentModal === 'story') {
+      stories.push({ url, type });
+      renderStories();
+    } else if (currentModal === 'reel') {
+      reels.push({ url, type });
+      renderReels();
+    } else if (currentModal === 'post') {
+      posts.push({ url, type });
+      renderPosts();
+    }
+
+    closeModal();
+  }
+
+  // Renderizar historias, reels y posts
+  function renderStories() {
+    const container = document.getElementById('storiesSection');
+    container.innerHTML = '<h3>Historias</h3>';
+    stories.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'story';
+      if (item.type.startsWith('video')) {
+        el.innerHTML = `<video src="${item.url}" muted loop></video>`;
+      } else {
+        el.innerHTML = `<img src="${item.url}" alt="Historia ${i+1}">`;
+      }
+      container.appendChild(el);
+    });
+  }
+  function renderReels() {
+    const container = document.getElementById('reelsSection');
+    container.innerHTML = '<h3>Reels</h3>';
+    reels.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'reel';
+      if (item.type.startsWith('video')) {
+        el.innerHTML = `<video src="${item.url}" controls></video>`;
+      } else {
+        el.innerHTML = `<img src="${item.url}" alt="Reel ${i+1}">`;
+      }
+      container.appendChild(el);
+    });
+  }
+  function renderPosts() {
+    const container = document.getElementById('postsSection');
+    container.innerHTML = '<h3>Publicaciones</h3>';
+    posts.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'post';
+      if (item.type.startsWith('video')) {
+        el.innerHTML = `<video src="${item.url}" controls></video>`;
+      } else {
+        el.innerHTML = `<img src="${item.url}" alt="Post ${i+1}">`;
+      }
+      container.appendChild(el);
+    });
+  }
+
+  // Navegación siguiente contenido destacado
+  function nextContent() {
+    const highlightContent = document.getElementById('highlightContent');
+    const highlightTitle = document.getElementById('highlightTitle');
+
+    let currentArray = [];
+    if (currentHighlightType === 'story') {
+      currentArray = stories;
+      highlightTitle.textContent = 'Historia Destacada';
+    } else if (currentHighlightType === 'reel') {
+      currentArray = reels;
+      highlightTitle.textContent = 'Reel Destacado';
+    } else if (currentHighlightType === 'post') {
+      currentArray = posts;
+      highlightTitle.textContent = 'Publicación Destacada';
+    }
+
+    if (currentArray.length === 0) {
+      highlightContent.innerHTML = `<p style="padding: 20px; color: #7a397a;">No hay contenido para mostrar.</p>`;
+      advanceHighlightType();
+      return;
+    }
+
+    const item = currentArray[currentHighlightIndex];
+    if (item.type.startsWith('video')) {
+      highlightContent.innerHTML = `<video src="${item.url}" controls autoplay muted loop style="width:100%; height:auto; border-radius: 15px;"></video>`;
+    } else {
+      highlightContent.innerHTML = `<img src="${item.url}" alt="${currentHighlightType} destacado" style="width:100%; height:auto; border-radius: 15px;" />`;
+    }
+
+    currentHighlightIndex++;
+    if (currentHighlightIndex >= currentArray.length) {
+      currentHighlightIndex = 0;
+      advanceHighlightType();
+    }
+  }
+
+  function advanceHighlightType() {
+    if (currentHighlightType === 'story') currentHighlightType = 'reel';
+    else if (currentHighlightType === 'reel') currentHighlightType = 'post';
+    else currentHighlightType = 'story';
+  }
+
+  // Chat
+
+  function playSound(id) {
+    const sound = document.getElementById(id);
+    if (sound) {
+      sound.currentTime = 0;
+      sound.play();
+    }
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const text = input.value.trim();
+    if (!text) return;
+    addChatMessage(text, true);
+    playSound('sendSound');
+    input.value = '';
+
+    setTimeout(() => {
+      addChatMessage('Respuesta automática: ' + text, false);
+      playSound('receiveSound');
+      showNotification();
+    }, 1200);
+  }
+
+  function addChatMessage(text, self) {
+    const container = document.getElementById('chatMessages');
+    const userName = self ? 'Tú' : 'Bot Andrés';
+    const userAvatar = self
+      ? 'https://i.pravatar.cc/40?u=user_self'
+      : 'https://i.pravatar.cc/40?u=bot_andres';
+
+    const msg = document.createElement('div');
+    msg.className = 'message ' + (self ? 'self' : '');
+
+    msg.innerHTML = `
+      <div style="display:flex; align-items:center; gap:8px;">
+        <img src="${userAvatar}" alt="${userName}" style="width:32px; height:32px; border-radius:50%; object-fit:cover;" />
+        <strong style="color: ${self ? '#fff' : '#5a297a'};">${userName}:</strong>
+      </div>
+      <p>${text}</p>
+    `;
+
+    container.appendChild(msg);
+    container.scrollTop = container.scrollHeight;
+
+    msg.style.opacity = '0';
+    msg.style.transform = 'translateY(10px)';
+    setTimeout(() => {
+      msg.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      msg.style.opacity = '1';
+      msg.style.transform = 'translateY(0)';
+    }, 10);
+  }
+
+  function showNotification() {
+    const notification = document.getElementById('chatNotification');
+    notification.style.display = 'block';
+    setTimeout(() => {
+      notification.style.display = 'none';
+    }, 3000);
+  }
+
+  // Filtrado de contenido
+
+  function filterContent() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+
+    const storiesFiltered = stories.filter(item =>
+      item.type.toLowerCase().includes(query)
+    );
+    const reelsFiltered = reels.filter(item =>
+      item.type.toLowerCase().includes(query)
+    );
+    const postsFiltered = posts.filter(item =>
+      item.type.toLowerCase().includes(query)
+    );
+
+    renderFilteredContent(storiesFiltered, reelsFiltered, postsFiltered);
+  }
+
+  function renderFilteredContent(storiesF, reelsF, postsF) {
+    const storiesContainer = document.getElementById('storiesSection');
+    const reelsContainer = document.getElementById('reelsSection');
+    const postsContainer = document.getElementById('postsSection');
+
+    storiesContainer.innerHTML = '<h3>Historias</h3>';
+    reelsContainer.innerHTML = '<h3>Reels</h3>';
+    postsContainer.innerHTML = '<h3>Publicaciones</h3>';
+
+    storiesF.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'story';
+      if (item.type.startsWith('video')) {
+        el.innerHTML = `<video src="${item.url}" muted loop></video>`;
+      } else {
+        el.innerHTML = `<img src="${item.url}" alt="Historia filtrada ${i + 1}">`;
+      }
+      storiesContainer.appendChild(el);
+    });
+
+    reelsF.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'reel';
+      if (item.type.startsWith('video')) {
+        el.innerHTML = `<video src="${item.url}" controls></video>`;
+      } else {
+        el.innerHTML = `<img src="${item.url}" alt="Reel filtrado ${i + 1}">`;
+      }
+      reelsContainer.appendChild(el);
+    });
+
+    postsF.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'post';
+      if (item.type.startsWith('video')) {
+        el.innerHTML = `<video src="${item.url}" controls></video>`;
+      } else {
+        el.innerHTML = `<img src="${item.url}" alt="Post filtrado ${i + 1}">`;
+      }
+      postsContainer.appendChild(el);
+    });
+  }
+
+  // Transmisión en directo
+
+  let stream = null;
+
+  async function startLive() {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      const videoElem = document.getElementById('liveVideo');
+      videoElem.srcObject = stream;
+      document.getElementById('liveStream').style.display = 'block';
+      window.scrollTo(0, document.body.scrollHeight);
+    } catch (err) {
+      alert('No se pudo acceder a la cámara: ' + err.message);
+    }
+  }
+
+  function stopLive() {
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+      stream = null;
+    }
+    document.getElementById('liveStream').style.display = 'none';
+  }
+
+  // Render inicial vacío
+  renderStories();
+  renderReels();
+  renderPosts();
+</script>
+
+</body>
+</html>

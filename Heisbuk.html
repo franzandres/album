@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regístrate en Heisbuk</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #F0F2F5; /* A light grey, closer to original Facebook login */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #CD201F, #F0F2F5); /* Red to light grey gradient */
+        }
+
+        .top-bar {
+            background-color: #3B5998; /* Dark blue for the original Facebook top bar */
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 980px; /* Standard Facebook width */
+            width: 100%;
+            padding: 0 20px;
+            justify-content: flex-end; /* Align login form to the right */
+        }
+
+        .top-bar .logo {
+            font-family: 'Grand Hotel', cursive; /* Using a similar fancy font as Heisbuk */
+            font-size: 38px;
+            color: #fff;
+            margin-right: auto; /* Push logo to the left */
+        }
+
+        .top-bar label {
+            color: #fff;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .top-bar input[type="text"],
+        .top-bar input[type="password"] {
+            padding: 5px 7px;
+            border: 1px solid #1D2A5B;
+            border-radius: 3px;
+            font-size: 13px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .top-bar button {
+            background-color: #4267B2; /* Slightly lighter blue for login button */
+            color: #fff;
+            border: 1px solid #29487D;
+            border-radius: 3px;
+            padding: 7px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background-color 0.2s;
+        }
+
+        .top-bar button:hover {
+            background-color: #365899;
+        }
+
+        .login-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-links a {
+            color: #9CB8E2;
+            text-decoration: none;
+            font-size: 11px;
+        }
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center;
+            width: 100%;
+            max-width: 980px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .registration-section {
+            background-color: #fff;
+            border: 1px solid #dddfe2;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+            padding: 20px 30px;
+            width: 100%;
+            max-width: 400px; /* Width similar to the screenshot's form */
+            text-align: left;
+        }
+
+        .registration-section h1 {
+            font-size: 30px;
+            color: #1c1e21;
+            margin-bottom: 5px;
+        }
+
+        .registration-section p {
+            font-size: 16px;
+            color: #606770;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #606770;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #1c1e21;
+        }
+
+        .form-group select {
+            padding: 10px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #1c1e21;
+            background-color: #fff;
+            width: 32%; /* Approximate width for date selects */
+            display: inline-block;
+            margin-right: 2%;
+        }
+        .form-group select:last-child {
+             margin-right: 0;
+        }
+
+        .help-text {
+            font-size: 13px;
+            color: #606770;
+            margin-top: 5px;
+        }
+
+        .btn-register {
+            background-color: #007bff; /* Bright blue for "Crear Cuenta" */
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-register:hover {
+            background-color: #0056b3;
+        }
+
+        .create-page-link {
+            font-size: 14px;
+            color: #1877f2;
+            text-decoration: none;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+        .create-page-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3B5998; /* Facebook blue spinner */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="logo">Heisbuk</div>
+            <div class="login-field">
+                <label for="email">Correo electrónico</label>
+                <input type="text" id="email">
+            </div>
+            <div class="login-field">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password">
+                <div class="login-links">
+                    <input type="checkbox" id="keep-logged-in"> <label for="keep-logged-in" style="font-size: 11px;">No cerrar sesión</label>
+                    &nbsp;
+                    <a href="#">¿Has olvidado tu contraseña?</a>
+                </div>
+            </div>
+            <button>Entrar</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="registration-section">
+            <h1>Regístrate</h1>
+            <p>Es gratis (y lo seguirá siendo).</p>
+
+            <form id="registrationForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Apellidos" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Tu dirección de correo electrónico:" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Contraseña nueva:" required>
+                </div>
+                <div class="form-group">
+                    <label>Sexo:</label>
+                    <select>
+                        <option>Mujer</option>
+                        <option>Hombre</option>
+                        <option>Personalizado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Fecha de nacimiento:</label>
+                    <select>
+                        <script>
+                            for (let i = 1; i <= 31; i++) {
+                                document.write(`<option>${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                    <select>
+                        <option value="1">enero</option>
+                        <option value="2">febrero</option>
+                        <option value="3">marzo</option>
+                        <option value="4" selected>abril</option>
+                        <option value="5">mayo</option>
+                        <option value="6">junio</option>
+                        <option value="7">julio</option>
+                        <option value="8">agosto</option>
+                        <option value="9">septiembre</option>
+                        <option value="10">octubre</option>
+                        <option value="11">noviembre</option>
+                        <option value="12">diciembre</option>
+                    </select>
+                    <select>
+                        <script>
+                            const currentYear = new Date().getFullYear();
+                            for (let i = currentYear; i >= 1905; i--) {
+                                document.write(`<option ${i === 1960 ? 'selected' : ''}>${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                    <div class="help-text">
+                        <a href="#" style="color: #606770; text-decoration: none;">¿Por qué tengo que dar esta información?</a>
+                    </div>
+                </div>
+                <button type="submit" class="btn-register">Crear Cuenta</button>
+            </form>
+            <a href="#" class="create-page-link">Crear una página para un famoso, grupo de música o empresa.</a>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Cargando...</div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            loadingOverlay.style.display = 'flex'; // Show loading overlay
+
+            // Simulate loading time
+            setTimeout(() => {
+                window.location.href = 'principal.html'; // Redirect to the main page
+            }, 2000); // 2 seconds loading time
+        });
+    </script>
+</body>
+</html>

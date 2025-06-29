@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSN Messenger Mockup</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="msn-container">
+        <div class="msn-login-section">
+            <div class="msn-avatar-box">
+                <img src="msn-avatar.png" alt="MSN Avatar" class="msn-main-avatar">
+            </div>
+            <div class="login-form">
+                <label for="email">Email address:</label>
+                <input type="email" id="email" value="your@example.com">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" value="********">
+
+                <div class="status-dropdown">
+                    <span>Status:</span>
+                    <select id="status">
+                        <option value="online">Online</option>
+                        <option value="away">Away</option>
+                        <option value="busy">Busy</option>
+                    </select>
+                </div>
+                </div>
+        </div>
+
+        <div class="msn-contact-list-section">
+            <div class="contact-group">
+                <div class="group-header">
+                    <span class="arrow">?</span> En el carguero (2/2)
+                </div>
+                <div class="contacts">
+                    <div class="contact-item">
+                        <img src="avatar-green.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">Minkowski</span>
+                        <span class="contact-status">iii buscando una CONSTANTE!</span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="avatar-green.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">Sayid</span>
+                        <span class="contact-status">?? Love Boat</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-group">
+                <div class="group-header">
+                    <span class="arrow">?</span> En la escotilla (2/2)
+                </div>
+                <div class="contacts">
+                    <div class="contact-item">
+                        <img src="avatar-green.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">Kelvin</span>
+                        <span class="contact-status">(cosiéndome el traje...)</span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="avatar-red.png" alt="Avatar" class="contact-avatar"> <span class="contact-name">Radzinsky</span>
+                        <span class="contact-status">(en el techo)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-group">
+                <div class="group-header">
+                    <span class="arrow">?</span> En la isla (5/5)
+                </div>
+                <div class="contacts">
+                    <div class="contact-item">
+                        <img src="avatar-green.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">BEN</span>
+                        <span class="contact-status">the island is mine... -</span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="avatar-green.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">Charlie</span>
+                        <span class="contact-status">?? I'm gonna die...</span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="avatar-green.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">Jack</span>
+                        <span class="contact-status">????????????...</span>
+                    </div>
+                    </div>
+            </div>
+
+            <div class="contact-group">
+                <div class="group-header">
+                    <span class="arrow">?</span> Familia Widmore (2/2)
+                </div>
+                <div class="contacts">
+                    <div class="contact-item">
+                        <img src="avatar-red.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">Charles Widmore</span>
+                        <span class="contact-status">(Sin admisión)</span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="avatar-orange.png" alt="Avatar" class="contact-avatar"> <span class="contact-name">Penny</span>
+                        <span class="contact-status">- Esperando una llamada...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-group">
+                <div class="group-header">
+                    <span class="arrow">?</span> Otros contactos (10/37)
+                </div>
+                <div class="contacts">
+                    <div class="contact-item">
+                        <img src="avatar-green.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">Hawkings</span>
+                        <span class="contact-status">(Salí a comer castañas)</span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="avatar-green.png" alt="Avatar" class="contact-avatar">
+                        <span class="contact-name">McCutcheon</span>
+                        <span class="contact-status">// preparando el pedido</span>
+                    </div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Similar to old Windows fonts */
+    background-color: #e0e0e0; /* Light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.msn-container {
+    display: flex;
+    background-color: #fff; /* White background for the main window */
+    border: 1px solid #a0a0a0; /* Light border */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    width: 800px; /* Adjust as needed */
+    max-width: 95vw;
+    height: 600px; /* Adjust as needed */
+    overflow: hidden; /* Hide scrollbars if content overflows, we'll handle internal scrolling */
+    border-radius: 3px; /* Slightly rounded corners */
+}
+
+/* --- Left Section: Login --- */
+.msn-login-section {
+    width: 40%; /* Approximately 40% for the login section */
+    padding: 20px;
+    border-right: 1px solid #e0e0e0; /* Separator line */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    box-sizing: border-box;
+}
+
+.msn-avatar-box {
+    width: 150px; /* Size of the avatar box */
+    height: 150px;
+    background-color: #e6f0ff; /* Light blue background for avatar box */
+    border: 1px solid #c0d0f0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px; /* Space below avatar */
+    overflow: hidden; /* Ensure avatar image doesn't overflow */
+}
+
+.msn-main-avatar {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Keep aspect ratio and fit within box */
+}
+
+.login-form {
+    width: 100%;
+    max-width: 250px; /* Max width for form elements */
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: calc(100% - 10px); /* Adjust for padding */
+    padding: 8px 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.status-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.status-dropdown select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+}
+
+
+/* --- Right Section: Contact List --- */
+.msn-contact-list-section {
+    width: 60%; /* Approximately 60% for the contact list */
+    background-color: #f0f0f0; /* Slightly different background for the list */
+    padding: 10px 0; /* Vertical padding, no horizontal padding here */
+    overflow-y: auto; /* Enable vertical scrolling for the contact list */
+    box-sizing: border-box;
+}
+
+.contact-group {
+    margin-bottom: 5px; /* Space between groups */
+    border-bottom: 1px solid #e0e0e0; /* Separator for groups */
+    padding-bottom: 5px;
+}
+
+.group-header {
+    background-color: #e0e0e0; /* Header background */
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #333;
+    cursor: pointer; /* Indicate clickable */
+    display: flex;
+    align-items: center;
+}
+
+.group-header .arrow {
+    margin-right: 5px;
+    font-size: 0.8em; /* Smaller arrow */
+    color: #666;
+}
+
+.contacts {
+    padding-left: 10px; /* Indent contacts under header */
+    padding-right: 10px; /* Right padding for the scrollable area */
+    max-height: 200px; /* Example max height before scrolling if needed */
+    /* overflow-y: auto; */ /* Uncomment this if you want groups to scroll internally */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 0.85em;
+    color: #333;
+}
+
+.contact-avatar {
+    width: 20px; /* Size of small contact avatars */
+    height: 20px;
+    border-radius: 50%; /* Make them round */
+    margin-right: 8px;
+    border: 1px solid #ccc; /* Subtle border for avatars */
+}
+
+.contact-name {
+
+    font-weight: bold;
+    margin-right: 5px;
+    white-space: nowrap; /* Prevent name from wrapping */
+}
+
+.contact-status {
+    color: #666;
+    overflow: hidden; /* Hide overflowing status text */
+    text-overflow: ellipsis; /* Add ellipsis for long status */
+    white-space: nowrap; /* Keep status on one line */
+    flex-grow: 1; /* Allow status to take remaining space */
+}
+
+/* Basic styles for placeholder avatars - You should replace these with actual image files */
+/* For the main MSN Avatar */
+.msn-main-avatar {
+    content: url('https://via.placeholder.com/100x100?text=MSN'); /* Placeholder for the main avatar */
+    background-color: #a7d0e8; /* Background color for the placeholder */
+    border-radius: 5px;
+}
+
+/* For contact avatars */
+.contact-avatar[src="avatar-green.png"] {
+    content: url('https://via.placeholder.com/20x20/86d486/ffffff?text='); /* Green dot for online */
+    background-color: #86d486;
+}
+
+.contact-avatar[src="avatar-red.png"] {
+    content: url('https://via.placeholder.com/20x20/e06f6f/ffffff?text='); /* Red dot for busy/offline */
+    background-color: #e06f6f;
+}
+
+.contact-avatar[src="avatar-orange.png"] {
+    content: url('https://via.placeholder.com/20x20/ffb06e/ffffff?text='); /* Orange dot for away */
+    background-color: #ffb06e;
+}

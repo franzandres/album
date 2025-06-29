@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Imágenes al Álbum</title>
+    <style>
+        body {
+            background-color: #FF33FF; /* Rosado */
+            color: yellow; /* Letras amarillas */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .contenedor {
+            margin: 50px auto;
+            width: 50%;
+            padding: 20px;
+            border: 2px solid yellow;
+            border-radius: 10px;
+        }
+        .imagen-preview {
+            width: 100%;
+            max-width: 300px;
+            margin-top: 20px;
+            display: none;
+        }
+        .guardar-borrador {
+            background-color: yellow;
+            color: #ffb6c1;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
+<body>
+    <div class="contenedor">
+        <h1>Subir Imagen al Álbum</h1>
+        <input type="file" id="subirImagen" accept="image/*">
+        <br>
+        <img id="preview" class="imagen-preview" alt="Vista previa">
+        <br>
+        <button class="guardar-borrador" onClick="guardarBorrador()">Guardar en Borrador</button>
+    </div>
+
+    <script>
+        document.getElementById("subirImagen").addEventListener("change", function(event) {
+            const archivo = event.target.files[0];
+            if (archivo) {
+                const lector = new FileReader();
+                lector.onload = function(e) {
+                    document.getElementById("preview").src = e.target.result;
+                    document.getElementById("preview").style.display = "block";
+                };
+                lector.readAsDataURL(archivo);
+            }
+        });
+
+        function guardarBorrador() {
+            alert("Imagen guardada en borrador.");
+        }
+    </script>
+</body>
+</html>

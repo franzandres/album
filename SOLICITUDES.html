@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solicitudes - Feisbuk</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #16213e;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    nav button {
+      background: #0f3460;
+      border: none;
+      color: #fff;
+      padding: 10px 15px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    nav button:hover {
+      background: #53354a;
+    }
+    main {
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .solicitud {
+      background: #0f3460;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .solicitud img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #53354a;
+    }
+    .info {
+      flex-grow: 1;
+    }
+    .info h3 {
+      margin: 0 0 5px 0;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-aceptar, .btn-rechazar {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+    }
+    .btn-aceptar {
+      background: #28a745;
+    }
+    .btn-aceptar:hover {
+      background: #218838;
+    }
+    .btn-rechazar {
+      background: #dc3545;
+    }
+    .btn-rechazar:hover {
+      background: #c82333;
+    }
+    #sinSolicitudes {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 18px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Feisbuk</h1>
+    <nav>
+      <button onclick="mostrarSolicitudes()">Solicitudes</button>
+      <button onclick="mostrarInicio()">Inicio</button>
+    </nav>
+  </header>
+
+  <main id="contenidoPrincipal">
+    <!-- Aquí se mostrarán solicitudes o inicio -->
+  </main>
+
+  <script>
+    // Lista simulada de solicitudes
+    let solicitudes

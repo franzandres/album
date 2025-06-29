@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Dr. Andrés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        #chatbox {
+            width: 300px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        #messages {
+            height: 200px;
+            overflow-y: auto;
+            text-align: left;
+            margin-bottom: 10px;
+            border: 1px solid gray;
+            padding: 10px;
+            background: #fff;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            width: calc(100% - 22px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Chatbot Dr. Andrés</h1>
+    
+    <div id="chatbox">
+        <h3>Dr. Andrés</h3>
+        <div id="messages"></div>
+        <input type="text" id="userInput" placeholder="Escribe tu pregunta...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+    
+    <script>
+        function getGreeting() {
+            let hour = new Date().getHours();
+            if (hour < 12) return "Muy buenos días, ¿en qué podemos ayudarlo?";
+            if (hour < 18) return "Muy buenas tardes, ¿en qué podemos ayudarlo?";
+            return "Muy buenas noches, ¿en qué podemos ayudarlo?";
+        }
+        
+        function sendMessage() {
+            let input = document.getElementById("userInput").value.toLowerCase();
+            let messages = document.getElementById("messages");
+            
+            let response = "No entendí la pregunta.";
+            if (input.includes("hola")) {
+                response = getGreeting();
+            } else if (input.includes("materia")) {
+                response = "Aquí tienes nuestro catálogo de materias: <a href='catalogo.pdf' download>Descargar</a>";
+            }
+            
+            messages.innerHTML += "<p><strong>Tú:</strong> " + input + "</p>";
+            messages.innerHTML += "<p><strong>Dr. Andrés:</strong> " + response + "</p>";
+            document.getElementById("userInput").value = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feisbuk con Comentarios Reales, Likes y Compartir</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #eee;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #0d47a1;
+    color: white;
+    padding: 15px 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  main {
+    max-width: 840px;
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+  #crearPublicacion {
+    background:#1e1e1e;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom: 20px;
+  }
+  #crearPublicacion h3 {
+    margin-top: 0;
+  }
+  #textoPublicacion {
+    width: 100%;
+    border-radius: 8px;
+    padding: 8px;
+    resize: vertical;
+    font-size: 14px;
+    background: #333;
+    border: none;
+    color: #eee;
+  }
+  #archivoPublicacion {
+    margin-top: 10px;
+  }
+  #previewArchivo img, #previewArchivo video {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  #btnPublicar {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #0d47a1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  #btnPublicar:hover {
+    background: #1565c0;
+  }
+  #feed .post {
+    background: #1e1e1e;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 15px;
+  }
+  .post-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .post-media {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .post-description {
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .post-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+  .post-actions button {
+    background: #0d47a1;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  .post-actions button:hover {
+    background: #1565c0;
+  }
+  .like-count {
+    font-size: 14px;
+  }
+  .comments-list {
+    background: #333;
+    border-radius: 8px;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+  .comment {
+    padding: 5px 0;
+    border-bottom: 1px solid #444;
+    font-size: 14px;
+  }
+  .comment:last-child {
+    border-bottom: none;
+  }
+  .add-comment {
+    display: flex;
+    gap: 10px;
+  }
+  .add-comment input {
+    flex: 1;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+  }
+  .add-comment button {
+    background: #0d47a1;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  .add-comment button:hover {
+    background: #1565c0;
+  }
+  /* Notification */
+  #notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #1565c0;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 5000;
+  }
+  #notification.show {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<header>Feisbuk con Comentarios Reales, Likes y Compartir</header>
+
+<main>
+  <section id="crearPublicacion">
+    <h3>Crear Publicación</h3>
+    <textarea id="textoPublicacion" rows="3" placeholder="¿Qué estás pensando?"></textarea>
+    <input type="file" id="archivoPublicacion" accept="image/*,video/*" />
+    <div id="previewArchivo"></div>
+    <button id="btnPublicar">Publicar</button>
+  </section>
+
+  <section id="feed"></section>
+</main>
+
+<div id="notification"></div>
+
+<script>
+  const textoPublicacion = document.getElementById('textoPublicacion');
+  const archivoPublicacion = document.getElementById('archivoPublicacion');
+  const previewArchivo = document.getElementById('previewArchivo');
+  const btnPublicar = document.getElementById('btnPublicar');
+  const feed = document.getElementById('feed');
+  const notification = document.getElementById('notification');
+
+  let archivoURL = null;
+  let tipoArchivo = null;
+
+  archivoPublicacion.addEventListener('change', () => {
+    const file = archivoPublicacion.files[0];
+    previewArchivo.innerHTML = '';
+    archivoURL = null;
+    tipoArchivo = null;
+    if (file) {
+      archivoURL = URL.createObjectURL(file);
+      if (file.type.startsWith('image/')) {
+        tipoArchivo = 'foto';
+        const img = document.createElement('img');
+        img.src = archivoURL;
+        img.style.maxWidth = '100%';
+        img.style.borderRadius = '10px';
+        previewArchivo.appendChild(img);
+      } else if (file.type.startsWith('video/')) {
+        tipoArchivo = 'video';
+        const video = document.createElement('video');
+        video.src = archivoURL;
+        video.controls = true;
+        video.style.maxWidth = '100%';
+        video.style.borderRadius = '10px';
+        previewArchivo.appendChild(video);
+      } else {
+        previewArchivo.textContent = 'Archivo no soportado.';
+      }
+    }
+  });
+
+  function showNotification(text) {
+    notification.textContent = text;
+    notification.classList.add('show');
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 3500);
+  }
+
+  function crearPostHTML({usuario, texto, archivoURL, tipoArchivo}) {
+    const post = document.createElement('div');
+    post.className = 'post';
+
+    const header = document.createElement('div');
+    header.className = 'post-header';
+    header.textContent = usuario;
+    post.appendChild(header);
+
+    if (tipoArchivo === 'foto') {
+      const img = document.createElement('img');
+      img.src = archivoURL;
+      img.alt = 'Foto subida';
+      img.className = 'post-media';
+      post.appendChild(img);
+    } else if (tipoArchivo === 'video') {
+      const video = document.createElement('video');
+      video.src = archivoURL;
+      video.controls = true;
+      video.className = 'post-media';
+      post.appendChild(video);
+    }
+
+    if (texto) {
+      const p = document.createElement('p');
+      p.className = 'post-description';
+      p.textContent = texto;
+      post.appendChild(p);
+    }
+
+    // Acciones: like y compartir
+    const actions = document.createElement('div');
+    actions.className = 'post-actions';
+
+    const btnLike = document.createElement('button');
+    btnLike.textContent = '?? Me gusta';
+    actions.appendChild(btnLike);
+
+    const likeCount = document.createElement('span');
+    likeCount.className = 'like-count';
+    likeCount.textContent = '0 likes';
+    actions.appendChild(likeCount);
+
+    const btnCompartir = document.createElement('button');
+    btnCompartir.textContent = '?? Compartir';
+    actions.appendChild(btnCompartir);
+
+    post.appendChild(actions);
+
+    // Comentarios list
+    const commentsList = document.createElement('div');
+    commentsList.className = 'comments-list';
+    post.appendChild(commentsList);
+
+    // Form para añadir comentario
+    const addCommentDiv = document.createElement('div');
+    addCommentDiv.className = 'add-comment';
+
+    const inputComentario = document.createElement('input');
+    inputComentario.type = 'text';
+    inputComentario.placeholder = 'Escribe un comentario...';
+    addCommentDiv.appendChild(inputComentario);
+
+    const btnEnviarComentario = document.createElement('button');
+    btnEnviarComentario.textContent = 'Enviar';
+    addCommentDiv.appendChild(btnEnviarComentario);
+
+    post.appendChild(addCommentDiv);
+
+    let likes = 0;
+
+    btnLike.addEventListener('click', () => {
+      likes++;
+      likeCount.textContent = likes + (likes === 1 ? ' like' : ' likes');
+      showNotification(`Has dado Me gusta a la publicación de ${usuario}`);
+    });
+
+    btnCompartir.addEventListener('click', () => {
+      showNotification(`Has compartido la publicación de ${usuario}`);
+      alert(`Compartir publicación:\n\n${texto || '[Sin texto]'}\n\n(Esto es una simulación)`);
+    });
+
+    btnEnviarComentario.addEventListener('click', () => {
+      const comentario = inputComentario.value.trim();
+      if (comentario.length === 0) {
+        alert('Escribe un comentario antes de enviar.');
+        return;
+      }
+      const commentDiv = document.createElement('div');
+      commentDiv.className = 'comment';
+      commentDiv.textContent = `Fran Andrés Salvatierra Samur: ${comentario}`;
+      commentsList.appendChild(commentDiv);
+      inputComentario.value = '';
+      showNotification(`Comentaste en la publicación de ${usuario}`);
+    });
+
+    return post;
+  }
+
+  btnPublicar.addEventListener('click', () => {
+    const texto = textoPublicacion.value.trim();
+
+    if (texto === '' && !archivoURL) {
+      alert('Por favor escribe un texto o selecciona una foto/video para publicar.');
+      return;
+    }
+
+    const postNuevo = crearPostHTML({
+      usuario: 'Fran Andrés Salvatierra Samur',
+      texto,
+      archivoURL,
+      tipoArchivo
+    });
+
+    feed.insertBefore(postNuevo, feed.firstChild);
+
+    textoPublicacion.value = '';
+    archivoPublicacion.value = '';
+    previewArchivo.innerHTML = '';
+    archivoURL = null;
+    tipoArchivo = null;
+  });
+</script>
+
+</body>
+</html>

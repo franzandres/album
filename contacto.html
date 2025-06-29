@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input, textarea, button {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h2>Nombre:</h2>
+    <input type="text" id="nombre" placeholder="Ingrese su nombre">
+    
+    <h2>Apellido:</h2>
+    <input type="text" id="apellido" placeholder="Ingrese su apellido">
+    
+    <h2>Correo Electrónico (Gmail):</h2>
+    <input type="email" id="correo" placeholder="Ingrese su correo Gmail">
+    
+    <h2>Número de Celular:</h2>
+    <input type="tel" id="telefono" placeholder="Ingrese su número de celular">
+    
+    <h2>Mensaje:</h2>
+    <textarea id="mensaje" placeholder="Escriba su mensaje"></textarea>
+    
+    <h2>Para:</h2>
+    <input type="email" value="cfrn6157@gmail.com" disabled>
+    
+    <h2>De:</h2>
+    <input type="text" id="de" placeholder="Ingrese su nombre">
+    
+    <button onclick="enviarMensaje()">Enviar Mensaje</button>
+    
+    <p id="estado"></p>
+
+    <script>
+        function enviarMensaje() {
+            let nombre = document.getElementById('nombre').value;
+            let apellido = document.getElementById('apellido').value;
+            let correo = document.getElementById('correo').value;
+            let telefono = document.getElementById('telefono').value;
+            let mensaje = document.getElementById('mensaje').value;
+            let de = document.getElementById('de').value;
+            
+            let asunto = `Mensaje de ${nombre} ${apellido}`;
+            let cuerpo = `Nombre: ${nombre} ${apellido}%0D%0A` +
+                         `Correo: ${correo}%0D%0A` +
+                         `Teléfono: ${telefono}%0D%0A` +
+                         `Mensaje: ${mensaje}%0D%0A`;
+            
+            let mailtoLink = `mailto:cfrn6157@gmail.com?subject=${asunto}&body=${cuerpo}`;
+            
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>

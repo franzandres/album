@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feisbuk - Inicio</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #1877f2; color: white; }
+    header { background-color: #0e5aa7; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; }
+    .contenedor { display: flex; flex-direction: column; align-items: center; margin-top: 60px; }
+    .login-box { background-color: white; color: black; padding: 30px; border-radius: 10px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.3); text-align: center; }
+    input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+    .btn { background-color: #1877f2; color: white; padding: 10px 20px; border: none; margin-top: 10px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+    .btn:hover { background-color: #145dbf; }
+    .crear-cuenta { margin-top: 20px; color: white; }
+    .crear-cuenta a { color: yellow; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>Feisbuk</header>
+  <div class="contenedor">
+    <div class="login-box">
+      <h2>Iniciar Sesión</h2>
+      <input type="text" placeholder="Correo o teléfono">
+      <input type="password" placeholder="Contraseña">
+      <button class="btn" onclick="location.href='principal.html'">Entrar</button>
+    </div>
+    <div class="crear-cuenta">¿No tienes una cuenta? <a href="#">Crea una nueva</a></div>
+  </div>
+</body>
+</html>
