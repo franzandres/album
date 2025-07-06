@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Almacenamiento de 20 TB</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      border-bottom: 2px solid #fff;
+    }
+
+    .contenedor {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #1c1c1c;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #555;
+    }
+
+    label, input {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .boton-subir {
+      background-color: white;
+      color: black;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .barra {
+      height: 25px;
+      background-color: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .barra-uso {
+      height: 100%;
+      width: 10%;
+      background-color: #4caf50;
+      text-align: center;
+      color: white;
+      line-height: 25px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Almacenamiento en la Nube - 20 TB
+  </header>
+
+  <div class="contenedor">
+    <h2>Estado del Almacenamiento</h2>
+    <p>Espacio usado: <strong>2 TB</strong> / 20 TB</p>
+
+    <div class="barra">
+      <div class="barra-uso">10%</div>
+    </div>
+
+    <label for="archivo">Subir archivo:</label>
+    <input type="file" id="archivo">
+
+    <button class="boton-subir" onclick="subirArchivo()">Subir</button>
+    <p id="mensaje" style="color: #4caf50;"></p>
+  </div>
+
+  <script>
+    function subirArchivo() {
+      document.getElementById("mensaje").innerText = "Archivo subido correctamente (simulado)";
+    }
+  </script>
+</body>
+</html>

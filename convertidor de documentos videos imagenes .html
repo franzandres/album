@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Imágenes - Multiformato</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    input, select, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .preview {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    canvas {
+      display: none;
+    }
+    .img-container {
+      background-color: #1a1a1a;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    img {
+      max-width: 200px;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Convertidor de Imágenes WebP / PNG / JPG / BMP</h1>
+
+  <input type="file" id="inputFile" multiple accept="image/*">
+  <select id="outputFormat">
+    <option value="image/jpeg">Convertir a JPG</option>
+    <option value="image/png">Convertir a PNG</option>
+  </select>
+  <button onclick="convertImages()">Convertir</button>
+
+  <div class="preview" id="preview"></div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    function convertImages() {
+      const files = document.getElementById('inputFile').files;
+      const format = document.getElementById('outputFormat').value;
+      const preview = document.getElementById('preview');
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      preview.innerHTML = "";
+
+      Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const img = new Image();
+          img.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            canvas.toBlob(blob => {
+              const url = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = file.name.replace(/\.\w+$/, '') + (format === 'image/png' ? '.png' : '.jpg');
+              link.textContent = 'Descargar';
+              link.style.display = 'block';
+
+              const container = document.createElement('div');
+              container.className = 'img-container';
+              container.appendChild(img.cloneNode());
+              container.appendChild(link);
+              preview.appendChild(container);
+            }, format, 1);
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  </script>
+
+</body>
+</html>

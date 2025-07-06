@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor WEBP a JPG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #e0f7ec, #ffffff);
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #1c1c1c;
+    }
+
+    p.subtitle {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    .upload-box {
+      border: 2px dashed #34c759;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 12px;
+      background: #f4fff6;
+      transition: background 0.3s;
+    }
+
+    .upload-box:hover {
+      background: #e6fbe9;
+    }
+
+    .upload-box i {
+      font-size: 50px;
+      color: #34c759;
+      margin-bottom: 10px;
+    }
+
+    .upload-box p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .upload-box button {
+      background-color: #34c759;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .upload-box button:hover {
+      background-color: #28a745;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .external-btns {
+      margin-top: 20px;
+    }
+
+    .external-btns button {
+      margin: 5px;
+      padding: 10px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .external-btns button:hover {
+      background-color: #0056b3;
+    }
+
+    .start-btn {
+      margin: 30px auto 20px;
+      display: block;
+      width: 100%;
+      padding: 15px;
+      font-size: 17px;
+      font-weight: bold;
+      color: white;
+      background-color: #1eae60;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .start-btn:hover {
+      background-color: #159d51;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 10px;
+      transition: border 0.3s;
+    }
+
+    .option:hover {
+      border-color: #34c759;
+    }
+
+    .option input {
+      margin-right: 10px;
+    }
+
+    .badge {
+      background-color: #007bff;
+      color: #fff;
+      font-size: 12px;
+      padding: 3px 6px;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .upload-box {
+        padding: 30px 10px;
+      }
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Conversor de WEBP a JPG</h1>
+    <p class="subtitle">Convierte imágenes fácilmente en segundos</p>
+
+    <form action="convertir.php" method="POST" enctype="multipart/form-data">
+      <div class="upload-box">
+        <i>??</i>
+        <p>Arrastra y suelta tus archivos aquí</p>
+        <button type="button" onclick="document.getElementById('fileInput').click()">Seleccionar archivo</button>
+        <input type="file" name="image" id="fileInput" accept=".webp" required>
+
+        <div class="external-btns">
+          <button type="button">Introducir URL</button>
+          <button type="button">Dropbox</button>
+          <button type="button">Google Drive</button>
+        </div>
+      </div>
+
+      <button class="start-btn" type="submit">EMPEZAR</button>
+
+      <div class="options">
+        <div class="option">
+          <label><input type="radio" name="quality" checked> <strong>Mejor Calidad</strong><br><span>Sin diferencia visual</span></label>
+        </div>
+        <div class="option">
+          <label><input type="radio" name="quality"> <strong>Archivo más pequeño</strong><span class="badge">MEJOR COMPRESIÓN</span><br><span>Tamaño de archivo minúsculo</span></label>
+        </div>
+      </div>
+    </form>
+
+    <div class="footer">
+      <p><a href="#">¿Cómo convertir un archivo WEBP a JPG?</a></p>
+    </div>
+  </div>
+</body>
+</html>

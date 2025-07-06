@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de WEBP a JPG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f8;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #1f1f1f;
+      margin-bottom: 5px;
+      font-size: 26px;
+    }
+
+    p {
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .upload-area {
+      border: 2px dashed #34c759;
+      background-color: #eaf8ee;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .upload-area:hover {
+      background-color: #d7f2dd;
+    }
+
+    .upload-icon {
+      font-size: 50px;
+      color: #34c759;
+      margin-bottom: 10px;
+    }
+
+    .upload-area button {
+      margin-top: 10px;
+      padding: 10px 25px;
+      font-weight: 600;
+      background-color: #fff;
+      color: #34c759;
+      border: 2px solid #34c759;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .upload-area button:hover {
+      background-color: #34c759;
+      color: white;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .external-buttons {
+      margin-top: 20px;
+    }
+
+    .external-buttons button {
+      margin: 5px;
+      padding: 10px 16px;
+      background-color: #34c759;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .external-buttons button:hover {
+      background-color: #2fad4e;
+    }
+
+    .start-button {
+      display: block;
+      width: 100%;
+      background-color: #1eae60;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      margin: 30px 0 20px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .start-button:hover {
+      background-color: #189e54;
+    }
+
+    .options {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .option {
+      flex: 1;
+      background: #f7f7f7;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .option:hover {
+      border-color: #34c759;
+    }
+
+    .option input {
+      margin-right: 10px;
+    }
+
+    .badge {
+      background: #007bff;
+      color: white;
+      font-size: 12px;
+      padding: 3px 6px;
+      border-radius: 5px;
+      margin-left: 8px;
+    }
+
+    .footer-link {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .footer-link a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .footer-link a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Conversor de WEBP a JPG</h2>
+    <p>Convierte tus imágenes fácilmente en segundos</p>
+
+    <div class="upload-area">
+      <div class="upload-icon">??</div>
+      <p>Arrastra y suelta los archivos aquí</p>
+      <button onclick="document.getElementById('fileInput').click()">Seleccionar archivo</button>
+      <input type="file" id="fileInput">
+      <div class="external-buttons">
+        <button>Introducir URL</button>
+        <button>Dropbox</button>
+        <button>Google Drive</button>
+      </div>
+    </div>
+
+    <button class="start-button">EMPEZAR</button>
+
+    <div class="options">
+      <div class="option">
+        <label><input type="radio" name="quality" checked> <strong>Mejor Calidad</strong><br><span>Sin diferencia visual</span></label>
+      </div>
+      <div class="option">
+        <label><input type="radio" name="quality"> <strong>Archivo más pequeño</strong><span class="badge">MEJOR COMPRESIÓN</span><br><span>Tamaño de archivo minúsculo</span></label>
+      </div>
+    </div>
+
+    <div class="footer-link">
+      <p><a href="#">¿Cómo convertir un archivo WEBP a JPG?</a></p>
+    </div>
+  </div>
+</body>
+</html>

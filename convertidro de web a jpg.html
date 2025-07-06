@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de WEBP a JPG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .upload-area {
+      border: 2px dashed #3BB54A;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      color: #444;
+      background: #eaf7ec;
+      margin-bottom: 20px;
+    }
+    .upload-area button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: white;
+      border: 2px solid #3BB54A;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .external-buttons {
+      margin-top: 15px;
+    }
+    .external-buttons button {
+      margin: 5px;
+      padding: 8px 16px;
+      background-color: #3BB54A;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .start-button {
+      background-color: #00b050;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .options {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .option {
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 8px;
+      flex: 1;
+    }
+    .option input {
+      margin-right: 10px;
+    }
+    .badge {
+      background: #007bff;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Conversor de WEBP a JPG</h2>
+    <p>Convertir de WEBP a JPG</p>
+
+    <div class="upload-area">
+      <p>Arrastra y suelta los archivos aquí</p>
+      <button onclick="document.getElementById('fileInput').click()">Seleccionar archivo</button>
+      <input type="file" id="fileInput" style="display:none;">
+      <div class="external-buttons">
+        <button>Introducir URL</button>
+        <button>Dropbox</button>
+        <button>Google Drive</button>
+      </div>
+    </div>
+
+    <button class="start-button">EMPEZAR</button>
+
+    <div class="options">
+      <div class="option">
+        <label><input type="radio" name="quality" checked> <strong>Mejor Calidad</strong><br><span>Sin diferencia visual</span></label>
+      </div>
+      <div class="option">
+        <label><input type="radio" name="quality"> <strong>Archivo más pequeño</strong><span class="badge">MEJOR COMPRESIÓN</span><br><span>Tamaño de archivo minúsculo</span></label>
+      </div>
+    </div>
+
+    <p><a href="#">¿Cómo convertir un archivo WEBP a JPG?</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Convertidor de Imágenes WEBP a JPG</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #1f1f1f, #333);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #222;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #000;
+    }
+    input, button {
+      margin: 15px;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+    }
+    input[type="file"] {
+      background-color: #444;
+      color: #fff;
+    }
+    button {
+      background-color: #00cc66;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00994d;
+    }
+    #preview {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 10px;
+      border: 2px solid #555;
+    }
+    #downloadLink {
+      display: block;
+      margin-top: 20px;
+      color: #00ffcc;
+      font-size: 18px;
+      text-decoration: none;
+    }
+    #message {
+      margin-top: 10px;
+      color: #33ff99;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Convertidor WEBP a JPG</h1>
+    <input type="file" id="webpInput" accept=".webp" onchange="previewImage()">
+    <br>
+    <img id="preview" src="" alt="Vista previa" style="display:none;">
+    <br>
+    <button onclick="convertToJPG()">Convertir a JPG</button>
+    <div id="message"></div>
+    <a id="downloadLink" download="convertido.jpg" style="display:none;">? Descargar JPG</a>
+    <canvas id="canvas" style="display:none;"></canvas>
+  </div>
+
+  <script>
+    function previewImage() {
+      const fileInput = document.getElementById('webpInput');
+      const preview = document.getElementById('preview');
+      const reader = new FileReader();
+      
+      reader.onload = function (e) {
+        preview.src = e.target.result;
+        preview.style.display = "block";
+        document.getElementById('message').textContent = "";
+        document.getElementById('downloadLink').style.display = "none";
+      };
+
+      if (fileInput.files[0]) {
+        reader.readAsDataURL(fileInput.files[0]);
+      }
+    }
+
+    function convertToJPG() {
+      const fileInput = document.getElementById('webpInput');
+      const canvas = document.getElementById('canvas');
+      const link = document.getElementById('downloadLink');
+      const msg = document.getElementById('message');
+
+      if (!fileInput.files[0]) {
+        alert("Por favor selecciona una imagen WEBP primero.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          const jpgData = canvas.toDataURL("image/jpeg", 1.0);
+          link.href = jpgData;
+          link.style.display = "block";
+          msg.textContent = "? Conversión completada. Puedes descargar tu imagen JPG.";
+        };
+        img.src = e.target.result;
+      };
+
+      reader.readAsDataURL(fileInput.files[0]);
+    }
+  </script>
+</body>
+</html>
