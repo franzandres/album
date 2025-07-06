@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Mejorada - Menudencia de Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0; /* Light gray background */
+            text-align: center; /* Center align content */
+            color: #333;
+        }
+        .header {
+            color: #4CAF50; /* Green color for the main title */
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            color: #333;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            margin-bottom: 30px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            background-color: #28a745; /* Green button background */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            cursor: pointer; /* Indicate it's clickable */
+            border: none; /* Remove default button border */
+        }
+        .button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        .large-button {
+            padding: 15px 35px;
+            font-size: 1.3em;
+            background-color: #007bff; /* Blue for the large button example */
+        }
+        .large-button:hover {
+            background-color: #0056b3;
+        }
+        .info-section {
+            background-color: white;
+            padding: 25px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            text-align: left; /* Align text within info sections to the left */
+        }
+        .info-section h3 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+        .info-section p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Estilos para la sección de videos */
+        #videoGallery {
+            display: none; /* Initially hidden */
+            background-color: #e9ecef; /* Slightly darker background for video section */
+            padding: 30px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-width: 900px; /* Wider for videos */
+        }
+
+        .video-item {
+            margin-bottom: 25px;
+            text-align: center; /* Center video and title */
+        }
+
+        .video-item h4 {
+            color: #007bff;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .video-item video {
+            width: 100%;
+            max-width: 640px; /* Limit video width for responsiveness */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 2em;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+            .button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .large-button {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+            .info-section, #videoGallery {
+                margin: 20px 10px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="header">Whatsapp y enlaces</h1>
+
+    <div class="button-container">
+        <a href="#" class="button">Bueno</a>
+        <a href="#" class="button">Tiendas</a>
+        <button id="videoButton" class="button large-button">Menudencia de videos</button>
+    </div>
+
+    <div class="info-section">
+        <h2 class="section-title">Sobre Nosotros</h2>
+        <p>¡Bienvenido a nuestra página! Aquí encontrarás información relevante sobre nuestros servicios, productos y contenido. Nos esforzamos por ofrecerte la mejor experiencia y mantenerte al día con las últimas novedades.</p>
+        <p>Nuestro objetivo es conectar a las personas con la información que necesitan de manera rápida y eficiente. Explora nuestras secciones para descubrir más.</p>
+    </div>
+
+    <div class="info-section">
+        <h2 class="section-title">Enlaces Rápidos</h2>
+        <div class="button-container">
+            <a href="#" class="button">Contacto</a>
+            <a href="#" class="button">Preguntas Frecuentes</a>
+            <a href="#" class="button">Nuestros Servicios</a>
+            <a href="#" class="button">Blog</a>
+            <a href="#" class="button">Galería de Fotos</a>
+        </div>
+        <p>¿Buscas algo específico? Usa nuestros enlaces rápidos para navegar fácilmente por nuestro sitio.</p>
+    </div>
+
+    <div id="videoGallery" class="info-section">
+        <h2 class="section-title">Nuestros Videos Destacados</h2>
+
+        <div class="video-item">
+            <h4>Video 1: Ambiente de Juego</h4>
+            <video controls>
+                <source src="VID-20250603-WA0079[1].mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+
+        <div class="video-item">
+            <h4>Video 2: Gatitos y Frases Divertidas</h4>
+            <video controls>
+                <source src="VID-20250604-WA0049[1].mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+
+        <div class="video-item">
+            <h4>Video 3: Club Discoteca Palladium</h4>
+            <video controls>
+                <source src="VID-20250604-WA0079[1].mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+
+        <div class="video-item">
+            <h4>Video 4: Multitud en un Evento</h4>
+            <video controls>
+                <source src="VID-20250605-WA0001[1].mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+
+        <div class="video-item">
+            <h4>Video 5: Mujer bailando al aire libre</h4>
+            <video controls>
+                <source src="VID-20250607-WA0020[1].mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+
+        <p>¡Esperamos que disfrutes de nuestra colección de videos!</p>
+    </div>
+
+    <script>
+        document.getElementById('videoButton').addEventListener('click', function() {
+            var videoGallery = document.getElementById('videoGallery');
+            if (videoGallery.style.display === 'none' || videoGallery.style.display === '') {
+                videoGallery.style.display = 'block'; // Show the gallery
+                this.textContent = 'Ocultar Videos'; // Change button text
+            } else {
+                videoGallery.style.display = 'none'; // Hide the gallery
+                this.textContent = 'Menudencia de videos'; // Restore button text
+            }
+        });
+    </script>
+
+</body>
+</html>
