@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franz Andres Salvatierra Samur</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FF0000; /* Fondo Rojo */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana */
+        }
+
+        /* Estilos del Encabezado (Header) */
+        header {
+            background-color: #FF0000; /* Fondo del encabezado también rojo */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between; /* Espacio entre los elementos */
+            align-items: center; /* Alineación vertical */
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+            border-bottom: 2px solid #FFC0CB; /* Borde rosado debajo del encabezado */
+        }
+
+        .header-left, .header-center, .header-right {
+            padding: 10px;
+            box-sizing: border-box; /* Incluye padding en el ancho/alto */
+        }
+
+        .header-left {
+            flex-basis: 25%; /* Aproximadamente un cuarto del ancho */
+            text-align: left;
+            min-width: 180px; /* Ancho mínimo para evitar que se comprima demasiado */
+        }
+
+        .header-center {
+            flex-basis: 40%; /* Aproximadamente la mitad del ancho */
+            text-align: center;
+            min-width: 250px; /* Ancho mínimo */
+        }
+
+        .header-right {
+            flex-basis: 25%; /* Aproximadamente un cuarto del ancho */
+            text-align: right;
+            min-width: 200px; /* Ancho mínimo */
+        }
+
+        .page-title {
+            font-family: Arial, sans-serif;
+            font-size: 24px; /* Tamaño 24px */
+            color: #FFC0CB; /* Color Rosado */
+            margin: 0; /* Elimina márgenes por defecto */
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .contact-buttons a {
+            display: inline-block;
+            background-color: #FFC0CB; /* Fondo rosado para los botones */
+            color: #8B0000; /* Texto rojo oscuro para contraste */
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+            white-space: nowrap; /* Evita que el texto del botón se rompa */
+        }
+
+        .contact-buttons a:hover {
+            background-color: #FF69B4; /* Rosa más oscuro al pasar el ratón */
+        }
+
+        /* Contenido Principal */
+        main {
+            flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .video-section-title {
+            font-family: Arial, sans-serif;
+            font-size: 24px; /* Tamaño 24px */
+            color: white; /* Texto blanco para el título de la sección de videos */
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dos columnas en pantallas grandes, una en pequeñas */
+            gap: 20px; /* Espacio entre los videos */
+            justify-content: center;
+            max-width: 1200px; /* Ancho máximo del grid */
+            margin: 0 auto; /* Centrar el grid */
+        }
+
+        .video-item {
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente para el contenedor del video */
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-item video {
+
+            width: 100%;
+            height: auto; /* Mantiene la proporción del video */
+            display: block; /* Elimina espacio extra debajo del video */
+            border-radius: 5px;
+        }
+
+        /* Pie de Página (Footer) */
+        footer {
+            background-color: #FF0000; /* Fondo del pie de página también rojo */
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Alinea los elementos en la parte superior */
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+            border-top: 2px solid #FFC0CB; /* Borde rosado encima del pie de página */
+            margin-top: 30px;
+        }
+
+        .footer-left, .footer-right {
+            padding: 10px;
+            box-sizing: border-box;
+            min-width: 150px; /* Ancho mínimo para los bloques del footer */
+        }
+
+        .footer-left {
+            flex-basis: 45%; /* Espacio para about y categoría */
+            text-align: left;
+        }
+
+        .footer-right {
+            flex-basis: 45%; /* Espacio para EEUU */
+            text-align: right;
+        }
+
+        .footer-left h4 {
+            color: #FFC0CB; /* Color rosado para títulos del footer */
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .footer-left ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .footer-left ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-left, .header-center, .header-right {
+                flex-basis: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .contact-buttons a {
+                margin: 5px;
+            }
+            footer {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-left, .footer-right {
+                flex-basis: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .video-grid {
+                grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+            }
+            .page-title, .video-section-title {
+                font-size: 20px; /* Ajuste de tamaño de fuente para móviles */
+            }
+            .footer-left h4 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <p>País de Creación: EE.UU.</p>
+        </div>
+        <div class="header-center">
+            <h1 class="page-title">FRANZ ANDRES SALVATIERRA SAMUR</h1>
+        </div>
+        <div class="header-right">
+            <h3>Contacto</h3>
+            <div class="contact-buttons">
+                <a href="../nueva carpeta de hiperviculos/LLAMAR.html">Llamar
+                </a><a href="../HIPERVINCULO COMO FOTO DE ENLACE/ENVIAR MENSAJE TEXTO.html">Enviar Mensaje de Texto</a>            </div>
+            <p style="font-size: 0.9em;">Para cualquier pregunta o duda que tenga.</p>
+        </div>
+    </header>
+
+    <main>
+        <h2 class="video-section-title">VIDEOS DE TODOS LOS GRUPOS ENVIADO</h2>
+        <div class="video-grid">
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO1.jpg">
+                    <source src="URL_DE_TU_VIDEO_1.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO2.jpg">
+                    <source src="URL_DE_TU_VIDEO_2.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO3.jpg">
+                    <source src="URL_DE_TU_VIDEO_3.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO4.jpg">
+                    <source src="URL_DE_TU_VIDEO_4.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO5.jpg">
+                    <source src="URL_DE_TU_VIDEO_5.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO6.jpg">
+                    <source src="URL_DE_TU_VIDEO_6.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO7.jpg">
+                    <source src="URL_DE_TU_VIDEO_7.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO8.jpg">
+                    <source src="URL_DE_TU_VIDEO_8.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO9.jpg">
+                    <source src="URL_DE_TU_VIDEO_9.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO10.jpg">
+                    <source src="URL_DE_TU_VIDEO_10.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO11.jpg">
+                    <source src="URL_DE_TU_VIDEO_11.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO12.jpg">
+                    <source src="URL_DE_TU_VIDEO_12.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO13.jpg">
+                    <source src="URL_DE_TU_VIDEO_13.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO14.jpg">
+                    <source src="URL_DE_TU_VIDEO_14.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO15.jpg">
+                    <source src="URL_DE_TU_VIDEO_15.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO16.jpg">
+                    <source src="URL_DE_TU_VIDEO_16.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO17.jpg">
+                    <source src="URL_DE_TU_VIDEO_17.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO18.jpg">
+                    <source src="URL_DE_TU_VIDEO_18.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO19.jpg">
+                    <source src="URL_DE_TU_VIDEO_19.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO20.jpg">
+                    <source src="URL_DE_TU_VIDEO_20.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO21.jpg">
+                    <source src="URL_DE_TU_VIDEO_21.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO22.jpg">
+                    <source src="URL_DE_TU_VIDEO_22.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO23.jpg">
+                    <source src="URL_DE_TU_VIDEO_23.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO24.jpg">
+                    <source src="URL_DE_TU_VIDEO_24.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO25.jpg">
+                    <source src="URL_DE_TU_VIDEO_25.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO26.jpg">
+                    <source src="URL_DE_TU_VIDEO_26.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO27.jpg">
+                    <source src="URL_DE_TU_VIDEO_27.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO28.jpg">
+                    <source src="URL_DE_TU_VIDEO_28.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO29.jpg">
+                    <source src="URL_DE_TU_VIDEO_29.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO30.jpg">
+                    <source src="URL_DE_TU_VIDEO_30.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO31.jpg">
+                    <source src="URL_DE_TU_VIDEO_31.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata" poster="URL_DE_MINIATURA_VIDEO32.jpg">
+                    <source src="URL_DE_TU_VIDEO_32.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            </div>
+    </main>
+
+    <footer>
+        <div class="footer-left">
+            <h4>ABOUT</h4>
+            <h4>CATEGORÍA</h4>
+            <ul>
+                <li>ESPAÑOL</li>
+                <li>INGLÉS</li>
+                <li>ESPAÑA</li>
+                <li>ESTADOS UNIDOS</li>
+                <li>RUSIA</li>
+                <li>VENEZUELA</li>
+                <li>CHILE</li>
+                <li>INDONESIA</li>
+            </ul>
+        </div>
+        <div

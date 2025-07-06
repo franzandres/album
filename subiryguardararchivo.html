@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Subir Archivos</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .formulario {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    input[type="file"],
+    input[type="submit"] {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .archivos {
+      margin-top: 40px;
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Subir y Guardar Archivos</h1>
+
+  <div class="formulario">
+    <form action="subir.php" method="post" enctype="multipart/form-data">
+      <label>Selecciona un archivo:</label>
+      <input type="file" name="archivo" required>
+      <input type="submit" value="Subir Archivo">
+    </form>
+  </div>
+
+  <div class="archivos">
+    <h2>Archivos Guardados</h2>
+    <ul>
+      <?php
+        $dir = "archivos/";
+        if (is_dir($dir)) {
+          $archivos = array_diff(scandir($dir), array('.', '..'));
+          foreach ($archivos as $archivo) {
+            echo "<li><a href='$dir$archivo' target='_blank'>$archivo</a></li>";
+          }
+        }
+      ?>
+    </ul>
+  </div>
+
+</body>
+</html>
+
+<?php
+$directorio = "archivos/";
+
+if (!is_dir($directorio)) {
+    mkdir($directorio, 0777, true);
+}
+
+if (isset($_FILES["archivo"])) {
+    $nombre = basename($_FILES["archivo"]["name"]);
+    $destino = $directorio . $nombre;
+    if (move_uploaded_file($_FILES["archivo"]["tmp_name"], $destino)) {
+        echo "<script>alert('Archivo subido con éxito'); window.location.href='index.html';</script>";
+    } else {
+        echo "<script>alert('Error al subir el archivo'); window.location.href='index.html';</script>";
+    }
+}
+?>
