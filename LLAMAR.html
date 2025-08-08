@@ -1,28 +1,150 @@
-<a href="tel:+1234567890">Llamar al +1234567890</a>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Llamada Telefónica con Twilio</title>
+  <meta charset="UTF-8" />
+  <title>Marcador Telefónico - Llamada a Servicios</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, red, yellow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: white;
+      margin-bottom: 10px;
+    }
+    #screen {
+      width: 260px;
+      height: 50px;
+      background-color: black;
+      color: white;
+      font-size: 24px;
+      text-align: right;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      user-select: none;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 80px);
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 24px;
+      padding: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .btn:hover {
+      background-color: #333;
+    }
+    #call-tigo-btn {
+      background-color: #0073e6;
+      color: white;
+      grid-column: span 1;
+      font-size: 18px;
+    }
+    #call-viva-btn {
+      background-color: #e60000;
+      color: white;
+      grid-column: span 1;
+      font-size: 18px;
+    }
+    #clear-btn {
+      background-color: darkred;
+      color: white;
+      font-size: 18px;
+    }
+    #calling-message {
+      margin-top: 15px;
+      font-size: 18px;
+      color: white;
+      min-height: 24px;
+      text-align: center;
+      width: 260px;
+    }
+  </style>
 </head>
 <body>
-    <h2>Hacer una llamada con Twilio</h2>
-    <button id="callButton">Llamar</button>
+  <h1>Llamada a Servicios Tigo/Viva</h1>
+  <div id="screen"></div>
+  <div class="keypad">
+    <button class="btn">1</button>
+    <button class="btn">2</button>
+    <button class="btn">3</button>
+    <button class="btn">4</button>
+    <button class="btn">5</button>
+    <button class="btn">6</button>
+    <button class="btn">7</button>
+    <button class="btn">8</button>
+    <button class="btn">9</button>
+    <button class="btn">*</button>
+    <button class="btn">0</button>
+    <button class="btn">#</button>
+    <button id="clear-btn" class="btn">Borrar</button>
+  </div>
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <button id="call-tigo-btn" class="btn">Llamar Tigo</button>
+    <button id="call-viva-btn" class="btn">Llamar Viva</button>
+  </div>
+  <button id="call-btn" class="btn" style="background-color: green; font-size: 22px; width: 260px;">Llamar Normal</button>
+  <div id="calling-message"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/twilio-client@1.9.0/dist/twilio.min.js"></script>
-    <script>
-        var callButton = document.getElementById("callButton");
+  <script>
+    const screen = document.getElementById('screen');
+    const buttons = document.querySelectorAll('.btn');
+    const callingMessage = document.getElementById('calling-message');
+    const tigoServiceNumber = "*123";  // Cambia esto por el número real de servicio Tigo
+    const vivaServiceNumber = "*456";  // Cambia esto por el número real de servicio Viva
 
-        callButton.addEventListener("click", function() {
-            fetch("/start-call")  // Aquí haces una llamada a tu servidor para iniciar la llamada
-                .then(response => response.json())
-                .then(data => {
-                    var device = new Twilio.Device(data.token);
-                    device.connect();
-                });
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      screen.textContent = '';
+      callingMessage.textContent = '';
+    });
+
+    buttons.forEach(button => {
+      if (!['Borrar', 'Llamar Normal', 'Llamar Tigo', 'Llamar Viva'].includes(button.textContent)) {
+        button.addEventListener('click', () => {
+          screen.textContent += button.textContent;
+          callingMessage.textContent = '';
         });
-    </script>
+      }
+    });
+
+    function callNumber(fullNumber) {
+      if (fullNumber.length === 0) {
+        alert('Por favor, ingresa un número para llamar.');
+        return;
+      }
+      callingMessage.textContent = `?? Llamando a ${fullNumber}...`;
+      setTimeout(() => {
+        window.location.href = 'tel:' + encodeURIComponent(fullNumber);
+      }, 500);
+    }
+
+    document.getElementById('call-btn').addEventListener('click', () => {
+      callNumber(screen.textContent.trim());
+    });
+
+    document.getElementById('call-tigo-btn').addEventListener('click', () => {
+      callNumber(tigoServiceNumber);
+    });
+
+    document.getElementById('call-viva-btn').addEventListener('click', () => {
+      callNumber(vivaServiceNumber);
+    });
+  </script>
 </body>
 </html>

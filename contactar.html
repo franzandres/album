@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactar</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: yellow;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #00008b; /* Azul oscuro */
+            color: white; /* Texto en blanco para contraste */
+        }
+        .button-group {
+            text-align: center;
+        }
+        .submit-button {
+            background-color: #87ceeb; /* Celeste */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .whatsapp-button {
+            background-color: #25d366; /* Verde de WhatsApp */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Contactar</h1>
+    </div>
+
+    <div class="container">
+        <form>
+            <label class="form-label" for="mensaje">Escribe tu mensaje:</label>
+            <textarea id="mensaje" class="form-textarea" placeholder="Aquí va tu mensaje..."></textarea>
+            <div class="button-group">
+                <button type="submit" class="submit-button">Enviar</button>
+            </div>
+        </form>
+        <p style="text-align: center;">¿No pudiste enviar el mensaje?</p>
+        <a href="https://wa.me/69245269" class="whatsapp-button">Hablar por WhatsApp</a>
+    </div>
+
+</body>
+</html>

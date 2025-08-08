@@ -3,69 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Colección de Videos de Artistas - Azul Oscuro</title>
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>anuncios.com</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000033; /* Azul oscuro */
+            color: white;
+        }
+        .header {
+            background-color: #000066; /* Un tono de azul mÃ¡s oscuro para el encabezado */
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .video-box {
+            background-color: #00004d; /* Un tono intermedio de azul para los cuadros */
+            border: 1px solid #1a1a4d; /* Borde sutil */
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .video-box h3 {
+            margin-top: 0;
+        }
+        .video-box video {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="header-azul-oscuro">
-        <div class="contenedor">
-            <h1 class="titulo-sitio">Mi Mundo Musical y Viral</h1>
-            <nav class="navegacion-principal">
-                <ul>
-                    <li><a href="#videos">Videos</a></li>
-                    <li><a href="#fotos">Fotos</a></li>
-                    <li><a href="#documentos">Documentos</a></li>
-                    <li><a href="#artistas">Artistas</a></li>
-                </ul>
-            </nav>
+    <div class="header">
+        <h1>anuncios.com</h1>
+    </div>
+
+    <div class="video-container">
+        <div class="video-box">
+            <h3>Video 1: Coca-ColaÂ® Obra de Arte</h3>
+            <video controls>
+                <source src="Coca-ColaÂ® Obra de Arte.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
         </div>
-    </header>
-
-    <main class="contenido-principal">
-        <section class="seccion-busqueda">
-            <div class="contenedor">
-                <form id="formularioBusqueda" class="barra-busqueda-azul-oscuro">
-                    <input type="text" id="campoBusqueda" placeholder="Buscar videos, fotos, documentos de Shakira, Bieber, Ozuna, TikTok..." aria-label="Campo de búsqueda">
-                    <button type="submit" id="botonBusqueda" aria-label="Buscar"><i class="fas fa-search"></i></button>
-                </form>
-                <div id="mensajeCargando" class="mensaje-carga" style="display:none;">
-                    <p>Está cargando videos y contenido...</p>
-                    <div class="spinner"></div> </div>
-            </div>
-        </section>
-
-        <section class="resultados-busqueda">
-            <div class="contenedor">
-                <div id="galeriaResultados" class="galeria-videos">
-                    <div class="item-contenido">
-                        <img src="https://via.placeholder.com/300x180?text=Miniatura+Video+1" alt="Descripción del Video 1">
-                        <h3>Título del Video Ejemplo 1</h3>
-                        <p>Breve descripción del video o artista.</p>
-                        <a href="#" class="boton-ver-mas">Ver Video</a>
-                    </div>
-                    <div class="item-contenido">
-                        <img src="https://via.placeholder.com/300x180?text=Miniatura+Video+2" alt="Descripción del Video 2">
-                        <h3>Título del Video Ejemplo 2</h3>
-                        <p>Breve descripción del video o artista.</p>
-                        <a href="#" class="boton-ver-mas">Ver Video</a>
-                    </div>
-                    </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer-azul-oscuro">
-        <div class="contenedor">
-            <p>&copy; 2025 Mi Mundo Musical y Viral. Todos los derechos reservados.</p>
-            <div class="enlaces-redes">
-                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
+        <div class="video-box">
+            <h3>Video 2: Juntos en todas _ Coca-Cola</h3>
+            <video controls>
+                <source src="Juntos en todas _ Coca-Cola.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
         </div>
-    </footer>
+        <div class="video-box">
+            <h3>Video 3: Tanda Comercial Jetix LA (Agosto 2005)</h3>
+            <video controls>
+                <source src="Tanda Comercial Jetix LA (Agosto 2005) Incompleto.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="video-box">
+            <h3>Video 4: CEV _ Spot publicitario ` CocaColaÂ´</h3>
+            <video controls>
+                <source src="CEV _ Spot publicitario ` CocaColaÂ´.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="video-box">
+            <h3>Video 5: Comerciales 80s - Gansito</h3>
+            <video controls>
+                <source src="Comerciales 80s - Gansito.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        
+        <div class="video-box">
+            <h3>Mi compa y yo primera vez acampando</h3>
+            <video controls>
+                <source src="Mi compa y yo primera vez acampando jajaja #comedia #latino #amigos #campo #acampar.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="video-box">
+            <h3>Cuando cocina tu hermana</h3>
+            <video controls>
+                <source src="Cuando cocina tu hermana.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="video-box">
+            <h3>Confirmen si sus madres son asiðŸ˜‚</h3>
+            <video controls>
+                <source src="Confirmen si sus madres son asiðŸ˜‚.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="video-box">
+            <h3>Humor y comedia</h3>
+            <video controls>
+                <source src="#humor #comedia.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="video-box">
+            <h3>La neta everytime</h3>
+            <video controls>
+                <source src="La neta everytime...#lasonideraparty #sonideraparty #cumbia #salsa #reggaeton #bachata #musica #.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="video-box">
+            <h3>Sin caÃ­das no hay aventura</h3>
+            <video controls>
+                <source src="Sin caÃ­das no hay aventura, y sin aventura no hay anÃ©cdotaðŸ˜------#senderismo #narizdeldiablo #e.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="video-box">
+            <h3>Tu cuerpo tiene su propio lenguaje</h3>
+            <video controls>
+                <source src="Tu cuerpo tiene su propio lenguaje, Â¡no esperes a que las cosas se compliquen! ðŸ¤£ðŸ«¡Ven a Be Huma.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
 
-    <script src="script.js"></script>
 </body>
 </html>

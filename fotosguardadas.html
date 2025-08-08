@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOTOS GUARDADAS</title>
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: #0d1117; /* Fondo azul oscuro */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #e6edf3; /* Texto claro */
+        }
+
+        /* Estilo del encabezado */
+        header {
+            background-color: #161b22; /* Tono más claro de azul oscuro para el encabezado */
+            color: #58a6ff; /* Azul brillante para el título */
+            padding: 30px;
+            text-align: center;
+            border-bottom: 2px solid #2f3336;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+            color: #8b949e;
+        }
+
+        /* Estilo del contenedor principal de fotos */
+        .photo-gallery {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Estilo de cada cuadro de foto */
+        .photo-card {
+            background-color: #1e262f; /* Fondo del cuadro */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid #2f3336;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-card-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .photo-card-info h3 {
+            margin: 0;
+            color: #58a6ff;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FOTOS GUARDADAS</h1>
+        <p>FOTOSGUARDADAS.COM</p>
+    </header>
+
+    <div class="photo-gallery">
+        
+        <div class="photo-card">
+            <img src="dfgkldfgldgldlggldfldf.jpg" alt="Foto guardada 1">
+            <div class="photo-card-info">
+                <h3>Vacaciones 2024</h3>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <img src="ghgfkkho5505404040044.jpg" alt="Foto guardada 2">
+            <div class="photo-card-info">
+                <h3>Viaje a la playa</h3>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <img src="fdfkdfkgdfgkldlg9594o40o4.jpg" alt="Foto guardada 3">
+            <div class="photo-card-info">
+                <h3>Recuerdos familiares</h3>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="ghhdfhdfhdf505049494.jpg" alt="Foto guardada 4">
+            <div class="photo-card-info">
+                <h3>Cena especial</h3>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <img src="rhrthtrhtrhtr67567575675675546.jpg" alt="Foto guardada 5">
+            <div class="photo-card-info">
+                <h3>Mi mascota</h3>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <img src="trhtrkhhtlhl505050544'4.jpg" alt="Foto guardada 6">
+            <div class="photo-card-info">
+                <h3>Paisaje increíble</h3>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <img src="fdvdfvdbddfbfd546754654.jpg" alt="Foto guardada 7">
+            <div class="photo-card-info">
+                <h3>Amigos</h3>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <img src="kjdgkdgkdskdskfds.jpg" alt="Foto guardada 8">
+            <div class="photo-card-info">
+                <h3>Momentos divertidos</h3>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <img src="ghgfhfghgfhfg5676756567575.jpg" alt="Foto guardada 9">
+            <div class="photo-card-info">
+                <h3>Caminata en la montaña</h3>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
