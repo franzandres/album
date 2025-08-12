@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Feisbuk Principal</title>
+  <style>
+    body { margin: 0; font-family: Arial; background-color: #001f3f; color: white; }
+    header { background-color: #0074D9; display: flex; justify-content: space-between; padding: 10px 20px; position: sticky; top: 0; z-index: 1000; }
+    nav button { margin: 0 5px; background-color: #005fa3; border: none; padding: 8px 12px; border-radius: 5px; color: white; cursor: pointer; }
+    .container { display: flex; margin-top: 20px; }
+    .sidebar-left, .sidebar-right { width: 20%; padding: 10px; background-color: #003366; }
+    .main-content { width: 60%; padding: 10px; background-color: #001a33; }
+    .post { background-color: #003366; padding: 15px; margin-bottom: 15px; border-radius: 10px; }
+    .chat-box { position: fixed; bottom: 0; right: 0; width: 300px; height: 200px; background-color: #0074D9; color: white; padding: 10px; overflow-y: scroll; border-radius: 10px 10px 0 0; }
+    .stories { background-color: #004080; padding: 10px; margin-bottom: 20px; border-radius: 10px; }
+    .live-btn, .add-friend-btn { background-color: #39CCCC; border: none; padding: 5px 10px; margin-top: 5px; border-radius: 5px; color: black; cursor: pointer; }
+    .comment-like { margin-top: 10px; }
+  body,td,th {
+	color: #FFF;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Feisbuk</h1>
+    <nav>
+      <button>🏠 Inicio</button>
+      <button>🎥 Videos</button>
+      <button>👥 Solicitudes</button>
+      <button>🔔 Notificaciones</button>
+      <button>📤 Crear</button>
+      <button>🔽 Menú</button>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="sidebar-left">
+      <ul>
+        <li>�<a href="index.html">� Amigos (29 en línea)</a></li>
+        <li>�<a href="grupos_whatsapp.html">�</a> <a href="grupos_whatsapp.html">Grupos</a></li>
+        <li>�<a href="../Documents/nuevas paginas web/www.Visitenuestrapagina.com.htm"> MarKetPlace</a></li>
+        <li>�<a href="../Documents/HIPERVINCULO COMO FOTO DE ENLACE/evento.html">� Eventos</a></li>
+        <li>�<a href="../Documents/nueva carpeta de hiperviculos/FEEDS.-.html">� Feeds</a></li>
+        <li>�<a href="../Documents/nueva carpeta de hiperviculos/Reels.html">� Reels</a></li>
+        <li>🕰<a href="../Documents/nueva carpeta de hiperviculos/RECUERDOS.html">️ Recuerdos</a></li>
+        <li>�<a href="../Documents/nueva carpeta de hiperviculos/fotosguardadas.html">� Guardado</a></li>
+        <li>�<a href="../Documents/nueva carpeta de hiperviculos/anuncios.html">� Anuncios</a></li>
+        <li>�<a href="../Documents/nueva carpeta de hiperviculos/anuncios y novedades.html">� Páginas</a></li>
+        <li>�<a href="../Documents/nueva carpeta de hiperviculos/descargarjuegos.html">� Juegos</a></li>
+        <li>�<a href="../Documents/nueva carpeta de hiperviculos/descubrimientos.html">� Descubrimiento</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="stories">
+        <h3>📸 Historias</h3>
+        <p>camila: Historia de viaje 🌍 
+          <button class="comment-like">👍 Me gusta</button> <button class="comment-like">💬 Comentar</button></p>
+      </div>
+      <div>
+        <h3>📝 Publicar</h3>
+        <textarea placeholder="¿Qué estás pensando?" rows="3" cols="50"></textarea><br>
+        <button class="live-btn">📸 Foto</button>
+        <button class="live-btn">🎥 Video</button>
+        <button class="live-btn">🔴 Transmitir en vivo</button>
+      </div>
+      <div id="posts">
+        <div class="post"><strong>jenifer</strong>: ¡Hola mundo!</div>
+        <div class="post"><strong>jenifer</strong>: Hoy me siento feliz 😊</div>
+      </div>
+      <script>
+        let postsDiv = document.getElementById("posts");
+        for (let i = 3; i <= 1000; i++) {
+          let post = document.createElement("div");
+          post.className = "post";
+          post.innerHTML = `<strong>Usuario${i}</strong>: Esta es una publicación de ejemplo número ${i}`;
+          postsDiv.appendChild(post);
+        }
+      </script>
+    </div>
+    <div class="sidebar-right">
+      <ul>
+        <li><strong>Chats (10,000 en línea)</strong></li>
+        <li>Juan Pérez</li>
+        <li>Ana María</li>
+      </ul>
+      <button class="add-friend-btn">➕ Agregar Amistad</button>
+    </div>
+  </div>
+  <div class="chat-box">
+    <p><strong>Juan:</strong> ¡Hola!</p>
+    <p><strong>Ana:</strong> ¿Cómo estás?</p>
+    <p><strong>damian:</strong> Hay 10.000 usuarios en línea</p>
+  </div>
+</body>
+</html>
