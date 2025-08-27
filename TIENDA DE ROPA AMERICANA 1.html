@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa y Belleza Americana</title>
+    <link rel="stylesheet" href="estilos.css">
+    </head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Tienda de Ropa Americana</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#ropa">Ropa</a></li>
+                <li><a href="#maquillaje">Maquillaje</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="ropa">
+            <h2>Ropa Americana</h2>
+            <div class="productos">
+                </div>
+        </section>
+
+        <section id="maquillaje">
+            <h2>Productos de Maquillaje</h2>
+            <div class="productos">
+                </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+            <div class="info-contacto">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Tienda de Ropa Americana. Todos los derechos reservados.</p>
+        <div class="redes-sociales">
+            </div>
+    </footer>
+
+</body>
+</html>
+
+<div class="producto">
+    <img src="imagen-producto1.jpg" alt="Descripción del producto 1">
+    <h3>Nombre del Producto</h3>
+    <p class="descripcion">Descripción detallada del producto. Aquí puedes mencionar los beneficios, el material, las tallas, etc.</p>
+    <p class="precio">$XX.XX</p>
+    <a href="#" class="boton-cta">Comprar ahora</a>
+</div>
+
+<div class="info-contacto">
+    <p><strong>Teléfono:</strong> +1 (123) 456-7890</p>
+    <p><strong>Correo electrónico:</strong> <a href="mailto:info@tienda.com">info@tienda.com</a></p>
+    <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+    <p>Síguenos en nuestras redes sociales:</p>
+    </div>
+	
+	<link rel="stylesheet" href="estilos.css">
+	
+	body {
+    font-family: Arial, sans-serif; /* Cambia la fuente de toda la página */
+    background-color: #f0f0f0;      /* Un fondo gris claro para que los productos destaquen */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #fff; /* Un fondo blanco para la cabecera */
+    padding: 20px;
+    border-bottom: 1px solid #ddd; /* Una línea para separar la cabecera del contenido */
+    display: flex; /* Alinea el logo y la navegación */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+nav ul {
+    list-style: none; /* Quita los puntos de la lista */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Pone los enlaces uno al lado del otro */
+}
+
+nav ul li a {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: #555;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Crea una cuadrícula adaptable */
+    gap: 20px;
+    padding: 20px;
+}
+
+.producto {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.producto img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: auto;
+}
+
+.producto h3 {
+    margin-top: 15px;
+}
+
+.boton-cta {
+    background-color: #007bff; /* Color azul para el botón */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block; /* Hace que el botón sea un bloque */
+    margin-top: 10px;
+}
+
+<link rel="stylesheet" href="estilos.css">
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Un fondo muy claro */
+    color: #333; /* Color de texto oscuro para que se lea bien */
+}
+
+/* Puedes usar el verde en una sección o en el encabezado */
+header {
+    background-color: #A1FF8F; /* Verde lechuga en el encabezado */
+    padding: 20px;
+    border-bottom: 1px solid #7DCC6D; /* Un borde más oscuro */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boton-cta {
+    background-color: #FF453A; /* Rojo para el botón */
+    color: #fff; /* Texto blanco en el botón */
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease; /* Efecto de transición al pasar el mouse */
+}
+
+.boton-cta:hover {
+    background-color: #CC362E; /* Un rojo un poco más oscuro al pasar el mouse */
+}
+
+.producto h3 {
+    color: #333;
+}
+
+.producto .precio {
+    color: #FF453A; /* Puedes usar el rojo para el precio */
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.descuento {
+    color: #FFE600; /* Amarillo para destacar un descuento */
+    font-weight: bold;
+    background-color: #333; /* Un fondo oscuro para que el amarillo resalte */
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
