@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadarma - Crear Cuenta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #8B4513;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Formulario de registro */
+        .registro-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .registro-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .crear-btn {
+            width: 100%;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .crear-btn:hover {
+            background: #45a049;
+        }
+
+        /* Pantalla de carga */
+        .loading-screen {
+            display: none;
+            background: #1a1a1a;
+            color: #8B6914;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading-screen h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .loading-screen p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .loading-content h3 {
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+
+        .loading-text {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .confirm-link {
+            color: #8B6914;
+            text-decoration: underline;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #333;
+            border-top: 5px solid #8B6914;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Gmail Interface */
+        .gmail-container {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background: #f6f8fc;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .gmail-header {
+            background: white;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .gmail-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gmail-logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .gmail-title {
+            font-size: 22px;
+            color: #5f6368;
+            font-weight: 400;
+        }
+
+        .gmail-search {
+            flex: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 50px 12px 50px;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            background: #f1f3f4;
+            font-size: 16px;
+        }
+
+        .gmail-user {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-email {
+            background: #ea4335;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .gmail-main {
+            display: flex;
+            height: calc(100vh - 64px);
+        }
+
+        .gmail-sidebar {
+            width: 256px;
+            background: white;
+            padding: 20px 0;
+            border-right: 1px solid #dadce0;
+        }
+
+        .compose-btn {
+            margin: 0 20px 30px;
+            background: #c2e7ff;
+            border: 1px solid #dadce0;
+            border-radius: 24px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .sidebar-item {
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #202124;
+        }
+
+        .sidebar-item:hover {
+            background: #f1f3f4;
+        }
+
+        .sidebar-item.active {
+            background: #fce8e6;
+            color: #d93025;
+            font-weight: 600;
+        }
+
+        .sidebar-item .count {
+            margin-left: auto;
+            font-weight: 600;
+        }
+
+        .gmail-content {
+            flex: 1;
+            background: white;
+        }
+
+        .content-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #dadce0;
+        }
+
+        .tab-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #5f6368;
+            border-bottom: 2px solid transparent;
+            margin-right: 20px;
+        }
+
+        .tab-item.active {
+            color: #1a73e8;
+            border-bottom-color: #1a73e8;
+        }
+
+        .email-list {
+            padding: 0 20px;
+        }
+
+        .email-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f3f4;
+            cursor: pointer;
+        }
+
+        .email-item:hover {
+            background: #f8f9fa;
+        }
+
+        .email-sender {
+            width: 200px;
+            font-weight: 600;
+            color: #202124;
+            font-size: 14px;
+        }
+
+        .email-subject {
+            flex: 1;
+            font-size: 14px;
+            color: #202124;
+        }
+
+        .email-preview {
+            color: #5f6368;
+            margin-left: 8px;
+        }
+
+        .email-time {
+            width: 80px;
+            text-align: right;
+            font-size: 12px;
+            color: #5f6368;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Formulario de Registro -->
+    <div class="registro-container" id="registroForm">
+        <h1>Crear Cuenta</h1>
+        <form id="crearCuentaForm">
+            <div class="form-group">
+                <label>Nombre:</label>
+                <input type="text" id="nombre" placeholder="Ingresa tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label>Apellido:</label>
+                <input type="text" id="apellido" placeholder="Ingresa tu apellido" required>
+            </div>
+            <div class="form-group">
+                <label>Correo:</label>
+                <input type="email" id="correo" placeholder="ejemplo@email.com" required>
+            </div>
+            <div class="form-group">
+                <label>Fecha de Nacimiento:</label>
+                <input type="date" id="fecha" required>
+            </div>
+            <div class="form-group">
+                <label>País:</label>
+                <select id="pais" required>
+                    <option value="">Selecciona...</option>
+                    <option value="AR">Argentina</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="BR">Brasil</option>
+                    <option value="CL">Chile</option>
+                    <option value="CO">Colombia</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="ES">España</option>
+                    <option value="MX">México</option>
+                    <option value="PE">Perú</option>
+                    <option value="UY">Uruguay</option>
+                    <option value="VE">Venezuela</option>
+                </select>
+            </div>
+            <button type="submit" class="crear-btn">Crear Cuenta</button>
+        </form>
+    </div>
+
+    <!-- Pantalla de Carga -->
+    <div class="loading-screen" id="loadingScreen">
+        <h2>Bienvenido a Zadarma</h2>
+        <p>Recibe tus correos de mensajes de confirmación aquí.</p>
+        
+        <div class="loading-content">
+            <h3>Confirmación de Registro en Zadarma</h3>
+            <p class="loading-text">Gracias por registrarte en Zadarma. Para completar tu proceso de registro, por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+            <div class="confirm-link" onclick="completarRegistro()">Confirmar mi cuenta</div>
+            <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+        </div>
+        
+        <div class="spinner"></div>
+        <p>Procesando confirmación...</p>
+    </div>
+
+    <!-- Interfaz Gmail -->
+    <div class="gmail-container" id="gmailInterface">
+        <!-- Header -->
+        <div class="gmail-header">
+            <div class="gmail-logo">
+                <svg width="32" height="32" viewBox="0 0 24 24">
+                    <path fill="#ea4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L24 5.457z"/>
+                    <path fill="#34a853" d="M1.636 4.545C.732 4.545 0 5.277 0 6.181v13.09c0 .904.732 1.636 1.636 1.636h3.819V11.73L0 5.457z"/>
+                    <path fill="#fbbc05" d="M18.545 11.73v9.273h3.819c.904 0 1.636-.732 1.636-1.636V5.457z"/>
+                    <path fill="#ea4335" d="M5.455 11.73v9.273H1.636C.732 21.003 0 20.271 0 19.367V5.457z"/>
+                    <path fill="#c5221f" d="M12 7.182L24 5.457v-.276C24 4.277 23.268 3.545 22.364 3.545H1.636C.732 3.545 0 4.277 0 5.181v.276L12 7.182z"/>
+                </svg>
+                <span class="gmail-title">Gmail</span>
+            </div>
+            
+            <div class="gmail-search">
+                <input type="text" class="search-box" placeholder="Buscar correo">
+            </div>
+            
+            <div class="gmail-user">
+                <div class="user-email" id="userIcon">U</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="gmail-main">
+            <!-- Sidebar -->
+            <div class="gmail-sidebar">
+                <div class="compose-btn">
+                    <span>??</span>
+                    <span>Redactar</span>
+                </div>
+                
+                <div class="sidebar-item active">
+                    <span>??</span>
+                    <span>Recibidos</span>
+                    <span class="count">688</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>?</span>
+                    <span>Destacados</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>?</span>
+                    <span>Pospuestos</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>?</span>
+                    <span>Enviados</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>???</span>
+                    <span>Borradores</span>
+                    <span class="count">15</span>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="gmail-content">
+                <!-- Content Header -->
+                <div class="content-header">
+                    <div class="tab-item active">Principal</div>
+                    <div class="tab-item">Promociones</div>
+                    <div class="tab-item">Social</div>
+                    <div class="tab-item">Notificaciones</div>
+                </div>
+
+                <!-- Email List -->
+                <div class="email-list">
+                    <div class="email-item">
+                        <div class="email-sender">yo, Mail 2</div>
+                        <div class="email-subject">
+                            francisco - No se ha encontrado la dirección Tu mensaje no se ha entregado a franzandre...
+                            <span class="email-preview"></span>
+                        </div>
+                        <div class="email-time">11:47</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-sender">The, yo 2</div>
+                        <div class="email-subject">
+                            You have 3 days to set up Google Workspace for franzandressalvatierrasamur.com - hola c...
+                        </div>
+                        <div class="email-time">20 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">The Google Workspace.</div>
+                        <div class="email-subject">
+                            Google Workspace Business Standard trial for pollosacom.biz has ended - Your Google Wor...
+                        </div>
+                        <div class="email-time">19 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">The Google Workspace.</div>
+                        <div class="email-subject">
+                            Google Workspace Business Starter trial for andresortiz.com has ended - Your Googl...
+                        </div>
+                        <div class="email-time">19 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">The Google Workspace.</div>
+                        <div class="email-subject">
+                            Set up billing for Google Workspace Business Standard for pollosacom.biz - You hav...
+                        </div>
+                        <div class="email-time">17 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">The Google Workspace.</div>
+                        <div class="email-subject">
+                            Set up billing for Google Workspace Business Starter for andresortiz.com - You have ...
+                        </div>
+                        <div class="email-time">17 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">Streamlabs</div>
+                        <div class="email-subject">
+                            ?? Just launched: Streamlabs Intelligent Streaming Agent - Get hyped! Now you can s...
+                        </div>
+                        <div class="email-time">17 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">El equipo de Google.</div>
+                        <div class="email-subject">
+                            Tus recomendaciones: Consigue un aspecto más profesional - Creemos que te encan...
+                        </div>
+                        <div class="email-time">17 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">The Google Workspace.</div>
+                        <div class="email-subject">
+                            Get help setting up Google Workspace for franzandressalvatierrasamur.com - We'll h...
+                        </div>
+                        <div class="email-time">17 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">María García López</div>
+                        <div class="email-subject">
+                            Entendemos que te de miedo... - ¡Saludos desde la UNAM! Soy María García, asesora en el...
+                            <span style="background: #ea4335; color: white; padding: 2px 6px; border-radius: 4px; font-size: 11px; margin-left: 8px;">UNAM_ADE_O...</span>
+                        </div>
+                        <div class="email-time">17 sept</div>
+                    </div>
+
+                    <div class="email-item">
+                        <div class="email-sender">Proton</div>
+                        <div class="email-subject">
+                            You have 2 new message(s) in your Proton Mail account c******* - Please log in at https://...
+                        </div>
+                        <div class="email-time">16 sept</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let userEmail = '';
+        let userName = '';
+
+        document.getElementById('crearCuentaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener datos del formulario
+            userName = document.getElementById('nombre').value;
+            userEmail = document.getElementById('correo').value;
+            
+            // Ocultar formulario y mostrar carga
+            document.getElementById('registroForm').classList.add('hidden');
+            document.getElementById('loadingScreen').style.display = 'block';
+            document.body.style.background = '#1a1a1a';
+        });
+
+        function completarRegistro() {
+            // Simular procesamiento
+            setTimeout(() => {
+                // Ocultar pantalla de carga
+                document.getElementById('loadingScreen').classList.add('hidden');
+                
+                // Mostrar Gmail
+                document.getElementById('gmailInterface').style.display = 'block';
+                
+                // Actualizar email en la interfaz
+                const userIcon = document.getElementById('userIcon');
+                if (userEmail) {
+                    userIcon.textContent = userEmail.charAt(0).toUpperCase();
+                    userIcon.title = userEmail;
+                }
+                
+                document.body.style.background = '#f6f8fc';
+            }, 2000);
+        }
+
+        // Auto-completar confirmación después de 3 segundos
+        setTimeout(() => {
+            if (document.getElementById('loadingScreen').style.display === 'block') {
+                completarRegistro();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

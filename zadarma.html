@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registro / Galería - Mejora</title>
+  <style>
+    :root{
+      --bg: #6f4f37; /* café */
+      --card: #ffffff;
+      --accent: #4CAF50;
+      --text: #000;
+      --maxw: 1100px;
+      --radius: 12px;
+      --gap: 16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .site {
+      width:100%;
+      max-width:var(--maxw);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.03));
+      padding:24px;
+      border-radius:16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+    header h1{
+      margin:0;
+      font-size:22px;
+    }
+    header p{margin:0; opacity:0.95}
+
+    /* Form */
+    .card {
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      margin-bottom:var(--gap);
+    }
+    .form-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    label{
+      display:block;
+      font-size:14px;
+      margin-bottom:6px;
+    }
+    input[type="text"], input[type="date"], select {
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      font-size:16px;
+    }
+    .two-cols > * { flex:1 1 240px; min-width:180px; }
+
+    input[type="submit"]{
+      background:var(--accent);
+      color:#fff;
+      padding:10px 18px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      margin-top:8px;
+    }
+    input[type="submit"]:hover{opacity:0.95}
+
+    input:focus, select:focus {
+      outline:2px solid rgba(76,175,80,0.18);
+      border-color:var(--accent);
+    }
+
+    /* Gallery */
+    .gallery-wrap {
+      margin-top: 6px;
+    }
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:12px;
+    }
+    .gallery-item{
+      background:#f6f6f6;
+      border-radius:10px;
+      overflow:hidden;
+      position:relative;
+      height:0;
+      padding-bottom:70%; /* default aspect ratio ~ 7:10 - keeps height stable */
+    }
+    .gallery-item img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover; /* This avoids images stretching and keeps them cropped nicely */
+      display:block;
+      transition: transform .35s ease;
+    }
+    .gallery-item:hover img{ transform: scale(1.04) }
+
+    /* small caption under images */
+    .caption{
+      padding:8px 6px 0;
+      font-size:13px;
+      color:#222;
+    }
+
+    /* Responsive tweaks */
+    @media (min-width:900px){
+      .gallery-item{ padding-bottom:56%; } /* wider items on desktop */
+    }
+    @media (max-width:520px){
+      header h1{ font-size:18px }
+      .card { padding:14px }
+    }
+
+    /* helper */
+    .muted{ color: #444; font-size:14px }
+  </style>
+</head>
+<body>
+  <main class="site" role="main">
+
+    <header>
+      <div>
+        <h1>Crear Cuenta — Zadarma (mejorada)</h1>
+        <p class="muted">Formulario y galería responsiva — reemplaza las imágenes en la carpeta <strong>images/</strong></p>
+      </div>
+    </header>
+
+    <!-- Form card -->
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title" style="margin-top:0">Crear Cuenta</h2>
+
+      <!-- Nota: el action es ejemplo; cámbialo a tu endpoint real si hace falta -->
+      <form action="https://www.zadarma.com/inbox" method="post" autocomplete="on">
+        <div class="form-row two-cols">
+          <div>
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" required placeholder="Escribe tu nombre" />
+          </div>
+
+          <div>
+            <label for="apellido">Apellido</label>
+            <input id="apellido" name="apellido" type="text" required placeholder="Escribe tu apellido" />
+          </div>
+        </div>
+
+        <div style="margin-top:10px;" class="form-row">
+          <div style="flex:1">
+            <label for="fecha">Fecha de Nacimiento</label>
+            <input id="fecha" name="fecha" type="date" required />
+          </div>
+
+          <div style="width:220px">
+            <label for="pais">País</label>
+            <select id="pais" name="pais" >
+              <option value="">Selecciona...</option>
+              <option value="bo">Bolivia</option>
+              <option value="pe">Perú</option>
+              <option value="ar">Argentina</option>
+              <option value="us">Estados Unidos</option>
+            </select>
+          </div>
+        </div>
+
+        <input type="submit" value="Crear Cuenta" />
+      </form>
+    </section>
+
+    <!-- Gallery card -->
+    <section class="card gallery-wrap" aria-labelledby="gallery-title">
+      <h2 id="gallery-title" style="margin-top:0">Galería de Fotos</h2>
+      <p class="muted">Usa imágenes reales en la carpeta <code>images/</code>. Los archivos en el ejemplo se llaman <code>photo1.jpg</code>, <code>photo2.jpg</code>, etc.</p>
+
+      <div class="gallery-grid" id="gallery">
+        <!-- Reemplaza src por tus imágenes. Mantén 'loading="lazy"' -->
+        <figure class="gallery-item">
+          <img src="images/photo1.jpg" alt="Foto 1" loading="lazy" />
+          <figcaption class="caption">Foto 1 — descripción</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="images/photo2.jpg" alt="Foto 2" loading="lazy" />
+          <figcaption class="caption">Foto 2 — descripción</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="images/photo3.jpg" alt="Foto 3" loading="lazy" />
+          <figcaption class="caption">Foto 3 — descripción</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="images/photo4.jpg" alt="Foto 4" loading="lazy" />
+          <figcaption class="caption">Foto 4 — descripción</figcaption>
+        </figure>
+
+        <!-- puedes duplicar/añadir más figuras según necesites -->
+      </div>
+    </section>
+
+    <footer style="margin-top:12px; text-align:right; color:#111; opacity:.8">
+      <small>Versión mejorada — responsive y estable</small>
+    </footer>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Zadarma - Registro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6f4f37, #3a2a20);
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container, .inbox, .compose {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      width: 100%;
+      max-width: 800px;
+      animation: fadeIn 0.7s ease;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #4CAF50;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin: 5px;
+    }
+    button:hover { background: #45a049; }
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      display: none;
+    }
+    .empty {
+      text-align: center;
+      padding: 40px;
+      color: #555;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      font-size: 18px;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Registro -->
+  <div class="container" id="registro">
+    <h2>Crear Cuenta</h2>
+    <form id="registroForm">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required>
+
+      <label for="apellido">Apellido:</label>
+      <input type="text" id="apellido" required>
+
+      <label for="email">Correo:</label>
+      <input type="email" id="email" required>
+
+      <label for="fecha">Fecha de Nacimiento:</label>
+      <input type="date" id="fecha" required>
+
+      <label for="pais">País:</label>
+      <select id="pais" required>
+        <option value="">Selecciona...</option>
+        <option>Bolivia</option>
+        <option>Perú</option>
+        <option>Argentina</option>
+        <option>Chile</option>
+        <option>Estados Unidos</option>
+      </select>
+
+      <button type="submit">Crear Cuenta</button>
+    </form>
+    <div id="mensaje" class="message">Cargando...</div>
+  </div>
+
+  <!-- Bandeja -->
+  <div class="inbox" id="bandeja" style="display:none;">
+    <div class="top-bar">
+      <h2>Bandeja de Entrada</h2>
+      <div>
+        <button onclick="mostrarRedaccion()">?? Redactar</button>
+        <button onclick="actualizarBandeja()">?? Actualizar</button>
+      </div>
+    </div>
+    <div class="empty" id="emptyInbox">?? Tu bandeja de entrada está vacía</div>
+    <div id="inboxMessage" class="message"></div>
+  </div>
+
+  <!-- Redacción -->
+  <div class="compose" id="compose" style="display:none;">
+    <h2>Redactar Correo</h2>
+    <form id="composeForm">
+      <label for="para">Para:</label>
+      <input type="email" id="para" required placeholder="destinatario@email.com">
+
+      <label for="asunto">Asunto:</label>
+      <input type="text" id="asunto" required placeholder="Escribe el asunto">
+
+      <label for="contenido">Mensaje:</label>
+      <textarea id="contenido" required placeholder="Escribe tu mensaje..."></textarea>
+
+      <button type="submit">Enviar</button>
+      <button type="button" onclick="volverBandeja()">Cancelar</button>
+    </form>
+    <div id="composeMessage" class="message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("registroForm");
+    const registro = document.getElementById("registro");
+    const bandeja = document.getElementById("bandeja");
+    const mensaje = document.getElementById("mensaje");
+    const compose = document.getElementById("compose");
+    const composeForm = document.getElementById("composeForm");
+    const composeMessage = document.getElementById("composeMessage");
+    const inboxMessage = document.getElementById("inboxMessage");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      mensaje.style.display = "block";
+      setTimeout(() => {
+        registro.style.display = "none";
+        bandeja.style.display = "block";
+        mensaje.style.display = "none";
+      }, 2000);
+    });
+
+    function mostrarRedaccion() {
+      bandeja.style.display = "none";
+      compose.style.display = "block";
+    }
+
+    function volverBandeja() {
+      compose.style.display = "none";
+      bandeja.style.display = "block";
+    }
+
+    composeForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      composeMessage.textContent = "?? Correo enviado (simulado)";
+      composeMessage.style.display = "block";
+      setTimeout(() => {
+        composeMessage.style.display = "none";
+        volverBandeja();
+      }, 2000);
+    });
+
+    function actualizarBandeja() {
+      inboxMessage.textContent = "?? Bandeja actualizada (sin correos nuevos)";
+      inboxMessage.style.display = "block";
+      setTimeout(() => {
+        inboxMessage.style.display = "none";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

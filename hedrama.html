@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Zadarma - Bandeja</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #8b5a2b;
+      padding: 20px;
+    }
+    .container, .inbox {
+      max-width: 800px;
+      margin: auto;
+      background: transparent;
+      animation: fadeIn 0.7s ease;
+    }
+    h1, h2 {
+      color: #8b5a2b;
+    }
+    a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .email {
+      border-bottom: 1px solid #333;
+      padding: 20px 0;
+    }
+    .email:last-child { border: none; }
+    .email p {
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+    .form-box {
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      max-width: 420px;
+      margin: 60px auto;
+    }
+    label { display:block; margin:10px 0 5px; font-weight:bold; }
+    input, select {
+      width:100%;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      margin-bottom:12px;
+      font-size:15px;
+    }
+    button {
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:8px;
+      background:#4CAF50;
+      color:#fff;
+      font-size:16px;
+      cursor:pointer;
+    }
+    button:hover { background:#45a049; }
+    #mensaje {
+      display:none;
+      text-align:center;
+      margin-top:10px;
+      font-weight:bold;
+      color:#fff;
+    }
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(-20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Registro -->
+  <div id="registro" class="form-box">
+    <h2>Crear Cuenta Zadarma</h2>
+    <form id="registroForm">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required>
+
+      <label for="apellido">Apellido:</label>
+      <input type="text" id="apellido" required>
+
+      <label for="email">Correo:</label>
+      <input type="email" id="email" required>
+
+      <label for="fecha">Fecha de Nacimiento:</label>
+      <input type="date" id="fecha" required>
+
+      <label for="pais">País:</label>
+      <select id="pais" required>
+        <option value="">Selecciona...</option>
+        <option>Bolivia</option>
+        <option>Perú</option>
+        <option>Argentina</option>
+        <option>Chile</option>
+        <option>Estados Unidos</option>
+      </select>
+
+      <button type="submit">Crear Cuenta</button>
+    </form>
+    <div id="mensaje">Cargando...</div>
+  </div>
+
+  <!-- Bandeja -->
+  <div id="bandeja" class="container" style="display:none;">
+    <h1>Bienvenido a Zadarma</h1>
+    <p>Recibe tus correos de mensajes de confirmación aquí.</p>
+
+    <div class="email">
+      <h2>Confirmación de Registro en Zadarma</h2>
+      <p>Gracias por registrarte en Zadarma. Para completar tu proceso de registro, por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+      <p><a href="#">Confirmar mi cuenta</a></p>
+      <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+    </div>
+
+    <div class="email">
+      <h2>Confirmación de Registro en Zadarma</h2>
+      <p>Gracias por registrarte en Zadarma. Para completar tu proceso de registro, por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+      <p><a href="#">Confirmar mi cuenta</a></p>
+      <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+    </div>
+
+    <div class="email">
+      <h2>Confirmación de Registro en Zadarma</h2>
+      <p>Gracias por registrarte en Zadarma. Para completar tu proceso de registro, por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+      <p><a href="#">Confirmar mi cuenta</a></p>
+      <p>Si no solicitaste este registro, puedes ignorar este correo.</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("registroForm");
+    const registro = document.getElementById("registro");
+    const bandeja = document.getElementById("bandeja");
+    const mensaje = document.getElementById("mensaje");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      mensaje.style.display = "block";
+      setTimeout(() => {
+        registro.style.display = "none";
+        bandeja.style.display = "block";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
