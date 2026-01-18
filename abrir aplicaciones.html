@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Abrir Aplicaciones - GUÍA CLARA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f8ff;
+            padding: 15px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        h2 {
+            color: #3498db;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        .aviso-importante {
+            background-color: #ffdddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-left: 5px solid #f44336;
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            margin: 8px 5px;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            width: calc(100% - 10px);
+            max-width: 300px;
+        }
+        .btn-android { background-color: #2ecc71; }
+        .btn-ios { background-color: #9b59b6; }
+        .btn-apps { background-color: #1abc9c; }
+        .btn-volver { background-color: #95a5a6; }
+        .btn-paso { 
+            background-color: #3498db; 
+            width: auto;
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        .contenido-paso {
+            display: none;
+            margin-top: 10px;
+            padding: 12px;
+            background-color: #e3f2fd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .sistema-seccion {
+            display: none;
+            margin-top: 15px;
+        }
+        .nota {
+            background-color: #fff3cd;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 15px;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .btn-area {
+            text-align: center;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>?? CÓMO ABRIR APLICACIONES</h1>
+
+        <!-- AVISO CLARO -->
+        <div class="aviso-importante">
+            ?? LAS APLICACIONES NO SE PUEDEN ABRIR DESDE EL NAVEGADOR WEB ??<br>
+            Debes instalarlas primero en tu celular o tablet
+        </div>
+
+        <!-- BOTONES PRINCIPALES -->
+        <div class="btn-area">
+            <button class="btn btn-android" onclick="mostrarAndroid()">PARA DISPOSITIVOS ANDROID</button>
+            <button class="btn btn-ios" onclick="mostrarIOS()">PARA DISPOSITIVOS iOS</button>
+            <button class="btn btn-apps" onclick="mostrarInfoApps()">INFORMACIÓN DE LAS APPS</button>
+        </div>
+
+        <!-- SECCIÓN ANDROID -->
+        <div id="seccion-android" class="sistema-seccion">
+            <h2>?? CÓMO ABRIR APPS EN ANDROID</h2>
+            <button class="btn btn-volver" onclick="ocultarTodo()">VOLVER</button>
+
+            <div>
+                <p><strong>1. Desde la pantalla principal:</strong></p>
+                <button class="btn-paso" onclick="mostrarContenido('paso-android-1')">VER PASOS</button>
+                <div id="paso-android-1" class="contenido-paso">
+                    <p>? Desliza hacia arriba desde la parte inferior de la pantalla</p>
+                    <p>? Busca el ícono de la app que instalaste</p>
+                    <p>? Toca el ícono con tu dedo para abrirla</p>
+                </div>
+            </div>
+
+            <div>
+                <p><strong>2. Desde accesos directos:</strong></p>
+                <button class="btn-paso" onclick="mostrarContenido('paso-android-2')">VER PASOS</button>
+                <div id="paso-android-2" class="contenido-paso">
+                    <p>? Si la app tiene ícono en la pantalla de inicio</p>
+                    <p>? Toca directamente el ícono para abrirla</p>
+                    <p>? O mantén presionado para ver opciones</p>
+                </div>
+            </div>
+
+            <div>
+                <p><strong>3. Desde apps recientes:</strong></p>
+                <button class="btn-paso" onclick="mostrarContenido('paso-android-3')">VER PASOS</button>
+                <div id="paso-android-3" class="contenido-paso">
+                    <p>? Desliza hacia arriba desde abajo y suelta</p>
+                    <p>? Verás las apps que usaste antes</p>
+                    <p>? Toca la que quieras abrir</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN iOS -->
+        <div id="seccion-ios" class="sistema-seccion">
+            <h2>?? CÓMO ABRIR APPS EN iOS (iPhone/iPad)</h2>
+            <button class="btn btn-volver" onclick="ocultarTodo()">VOLVER</button>
+
+            <div>
+                <p><strong>1. Desde la pantalla de inicio:</strong></p>
+                <button class="btn-paso" onclick="mostrarContenido('paso-ios-1')">VER PASOS</button>
+                <div id="paso-ios-1" class="contenido-paso">
+                    <p>? Desliza hacia arriba desde el borde inferior (si no tienes botón)</p>
+                    <p>? O pulsa el botón de inicio (si lo tienes)</p>
+                    <p>? Busca el ícono de la app instalada y tócalo</p>
+                </div>
+            </div>
+
+            <div>
+                <p><strong>2. Desde la biblioteca de apps:</strong></p>
+                <button class="btn-paso" onclick="mostrarContenido('paso-ios-2')">VER PASOS</button>
+                <div id="paso-ios-2" class="contenido-paso">
+                    <p>? Desliza hacia la izquierda en la pantalla de inicio</p>
+                    <p>? Busca la app por categoría o escribe su nombre</p>
+                    <p>? Toca el ícono para abrirla</p>
+                </div>
+            </div>
+
+            <div>
+                <p><strong>3. Desde Spotlight:</strong></p>
+                <button class="btn-paso" onclick="mostrarContenido('paso-ios-3')">VER PASOS</button>
+                <div id="paso-ios-3" class="contenido-paso">
+                    <p>? Desliza hacia abajo desde la parte superior</p>
+                    <p>? Escribe el nombre de la app</p>
+                    <p>? Toca la app en los resultados</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFORMACIÓN DE LAS APPS -->
+        <div id="info-apps" class="sistema-seccion">
+            <h2>?? APPS DE BIENESTAR</h2>
+            <button class="btn btn-volver" onclick="ocultarTodo()">VOLVER</button>
+
+            <div class="nota">
+                <p><strong>?? IMPORTANTE:</strong></p>
+                <p>Estas apps aún no están disponibles en tiendas públicas</p>
+                <p>No se pueden abrir desde el navegador ni descargar aún</p>
+                <p>Cuando estén listas, te avisaremos para instalarlas en tu celular</p>
+            </div>
+
+            <ul style="margin: 15px; line-height: 2;">
+                <li>?? <strong>CALMA</strong> - Reducir estrés y meditar</li>
+                <li>?? <strong>REPOSO</strong> - Mejorar el sueño</li>
+                <li>?? <strong>ACTIVA</strong> - Ejercicios y movimiento</li>
+                <li>?? <strong>NUTRE</strong> - Hábitos alimenticios saludables</li>
+                <li>?? <strong>CONECTA</strong> - Comunidades seguras</li>
+                <li>?? <strong>BIENESTAR UNIDO</strong> - Organizar tu rutina</li>
+            </ul>
+        </div>
+
+        <!-- NOTA FINAL -->
+        <div class="nota">
+            <p>?? RECUERDA:</p>
+            <p>- Las apps se instalan en tu dispositivo móvil</p>
+            <p>- No se pueden abrir ni usar desde páginas web o navegadores</p>
+            <p>- Cuando estén disponibles, te diremos cómo instalarlas</p>
+        </div>
+
+        <div class="footer">
+            <p>Guía para usuarios | 2026</p>
+        </div>
+    </div>
+
+    <script>
+        // FUNCIONES SIMPLES Y FUNCIONALES
+        function mostrarAndroid() {
+            ocultarTodo();
+            document.getElementById('seccion-android').style.display = 'block';
+        }
+
+        function mostrarIOS() {
+            ocultarTodo();
+            document.getElementById('seccion-ios').style.display = 'block';
+        }
+
+        function mostrarInfoApps() {
+            ocultarTodo();
+            document.getElementById('info-apps').style.display = 'block';
+        }
+
+        function ocultarTodo() {
+            // Ocultar todas las secciones
+            document.getElementById('seccion-android').style.display = 'none';
+            document.getElementById('seccion-ios').style.display = 'none';
+            document.getElementById('info-apps').style.display = 'none';
+            
+            // Ocultar todos los pasos
+            var todosPasos = document.getElementsByClassName('contenido-paso');
+            for (var i = 0; i < todosPasos.length; i++) {
+                todosPasos[i].style.display = 'none';
+            }
+        }
+
+        function mostrarContenido(id) {
+            // Ocultar todos los pasos primero
+            var todosPasos = document.getElementsByClassName('contenido-paso');
+            for (var i = 0; i < todosPasos.length; i++) {
+                todosPasos[i].style.display = 'none';
+            }
+            // Mostrar el paso seleccionado
+            document.getElementById(id).style.display = 'block';
+        }
+
+        // MENSAJE DE BIENVENIDA
+        window.onload = function() {
+            alert("?? IMPORTANTE: Las apps no se pueden abrir desde el navegador. Debes instalarlas primero en tu celular.");
+        }
+    </script>
+</body>
+</html>
