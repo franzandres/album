@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Abrir Aplicaciones - Guía Completamente Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #3498db;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            margin-left: 0;
+            line-height: 1.8;
+            color: #34495e;
+        }
+        li {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        .android {
+            background-color: #2ecc71;
+        }
+        .ios {
+            background-color: #9b59b6;
+        }
+        .paso-btn {
+            background-color: #3498db;
+            padding: 8px 15px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .nota {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 25px;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .contenido-paso {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-radius: 5px;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .activo {
+            border-left: 4px solid #3498db;
+            background-color: #e3f2fd;
+        }
+        .sistema-seccion {
+            display: none;
+            margin-top: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .mostrar {
+            display: block;
+        }
+        .contacto-btn {
+            background-color: #e74c3c;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .recursos-btn {
+            background-color: #f39c12;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-contenido {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .cerrar {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .cerrar:hover,
+        .cerrar:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .volver-btn {
+            background-color: #95a5a6;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .app-list-btn {
+            background-color: #1abc9c;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .app-modal-contenido {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>?? CÓMO ABRIR APLICACIONES EN TU DISPOSITIVO</h1>
+
+        <p style="text-align: center; color: #34495e; margin-bottom: 20px;">Elige tu sistema operativo para ver los pasos:</p>
+        <div style="text-align: center;">
+            <button class="btn android" onclick="mostrarSistema('android')">Android</button>
+            <button class="btn ios" onclick="mostrarSistema('ios')">iOS (iPhone)</button>
+            <button class="btn app-list-btn" onclick="abrirModal('modal-apps')">Conocer apps de bienestar</button>
+        </div>
+
+        <!-- Sección Android -->
+        <div id="seccion-android" class="sistema-seccion">
+            <h2>?? PARA DISPOSITIVOS ANDROID</h2>
+            <button class="btn volver-btn" onclick="ocultarSistemas()">Volver a elegir sistema</button>
+            <ul>
+                <li>
+                    <strong>1. Desde cualquier pantalla</strong>
+                    <button class="btn paso-btn" onclick="mostrarPaso('paso-android-1')">Ver instrucciones</button>
+                    <div id="paso-android-1" class="contenido-paso">
+                        <p>Desliza hacia arriba desde la parte inferior de la pantalla hasta la parte superior.</p>
+                        <p>Si aparece el botón "Todas las aplicaciones", tócalo para ver el listado completo.</p>
+                        <p>Busca el ícono de la app que quieras abrir y tócalo.</p>
+                        <img src="https://via.placeholder.com/300x150?text=Android+Pantalla+Principal" alt="Ilustración Android pantalla principal" style="width: 100%; max-width: 300px; margin: 10px auto; display: block; border-radius: 5px;">
+                    </div>
+                </li>
+                <li>
+                    <strong>2. Desde accesos directos</strong>
+                    <button class="btn paso-btn" onclick="mostrarPaso('paso-android-2')">Ver instrucciones</button>
+                    <div id="paso-android-2" class="contenido-paso">
+                        <p>Encuentra el ícono de la app en tu pantalla de inicio.</p>
+                        <p>Mantén presionado el ícono por 2-3 segundos.</p>
+                        <p>En el menú que aparece, selecciona la opción "Abrir".</p>
+                        <img src="https://via.placeholder.com/300x150?text=Android+Acceso+Directo" alt="Ilustración Android acceso directo" style="width: 100%; max-width: 300px; margin: 10px auto; display: block; border-radius: 5px;">
+                    </div>
+                </li>
+                <li>
+                    <strong>3. Desde apps recientes</strong>
+                    <button class="btn paso-btn" onclick="mostrarPaso('paso-android-3')">Ver instrucciones</button>
+                    <div id="paso-android-3" class="contenido-paso">
+                        <p>Desliza hacia arriba desde la parte inferior de la pantalla, mantén presionado por 1 segundo y suelta.</p>
+                        <p>Verás el listado de apps que has usado recientemente.</p>
+                        <p>Desliza hacia la izquierda o derecha para encontrar la app que buscas y tócala para abrirla.</p>
+                        <img src="https://via.placeholder.com/300x150?text=Android+Apps+Recientes" alt="Ilustración Android apps recientes" style="width: 100%; max-width: 300px; margin: 10px auto; display: block; border-radius: 5px;">
+                    </div>
+                </li>
+                <li>
+                    <strong>4. Usando el buscador</strong>
+                    <button class="btn paso-btn" onclick="mostrarPaso('paso-android-4')">Ver instrucciones</button>
+                    <div id="paso-android-4" class="contenido-paso">
+                        <p>Desliza hacia abajo desde la parte superior de la pantalla para abrir el buscador.</p>
+                        <p>Escribe el nombre de la app que quieres abrir.</p>
+                        <p>Toca el ícono de la app en los resultados para abrirla.</p>
+                        <img src="https://via.placeholder.com/300x150?text=Android+Buscador" alt="Ilustración Android buscador" style="width: 100%; max-width: 300px; margin: 10px auto; display: block; border-radius: 5px;">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección iOS -->
+        <div id="seccion-ios" class="sistema-seccion">
+            <h2>?? PARA DISPOSITIVOS iOS (iPhone)</h2>
+            <button class="btn volver-btn" onclick="ocultarSistemas()">Volver a elegir sistema</button>
+            <ul>
+                <li>
+                    <strong>1. Desde la pantalla de inicio</strong>
+                    <button class="btn paso-btn" onclick="mostrarPaso('paso-ios-1')">Ver instrucciones</button>
+                    <div id="paso-ios-1" class="contenido-paso">
+                        <p>Si tu iPhone tiene Face ID: Desliza un dedo hacia arriba desde el borde inferior de la pantalla.</p>
+                        <p>Si tiene botón de inicio: Pulsa el botón de inicio una vez para acceder a la pantalla de inicio.</p>
+                        <p>Busca el ícono de la app que quieras abrir y tócalo con un dedo.</p>
+                        <img src="https://via.placeholder.com/300x150?text=iOS+Pantalla+Principal" alt="Ilustración iOS pantalla principal" style="width: 100%; max-width: 300px; margin: 10px auto; display: block; border-radius: 5px;">
+                    </div>
+                </li>
+                <li>
+                    <strong>2. Desde la biblioteca de apps</strong>
+                    <button class="btn paso-btn" onclick="mostrarPaso('paso-ios-2')">Ver instrucciones</button>
+                    <div id="paso-ios-2" class="contenido-paso">
+                        <p>En la pantalla de inicio, desliza hacia la izquierda hasta pasar todas las páginas.</p>
+                        <p>Entrarás en la biblioteca de apps, donde están organizadas por categorías (Productividad, Juegos, Entretenimiento, etc.).</p>
+                        <p>Busca la categoría o escribe el nombre de la app en el buscador superior.</p>
+                        <p>Toca el ícono de la app para abrirla.</p>
+                        <img src="https://via.placeholder.com/300x150?text=iOS+Biblioteca+Apps" alt="Ilustración iOS biblioteca de apps" style="width: 100%; max-width: 300px; margin: 10px auto; display: block; border-radius: 5px;">
+                    </div>
+                </li>
+                <li>
+                    <strong>3. Desde Spotlight</strong>
+                    <button class="btn paso-btn" onclick="mostrarPaso('paso-ios-3')">Ver instrucciones</button>
+                    <div id="paso-ios-3" class="contenido-paso">
+                        <p>Desde la pantalla de inicio o bloqueo, desliza hacia abajo desde la parte superior central.</p>
+                        <p>Escribe el nombre de la app en el cuadro de búsqueda.</p>
+                        <p>En los resultados que aparecen, tócalo el ícono de la app para abrirla.</p>
+                        <img src="https://via.placeholder.com/300x150?text=iOS+Spotlight" alt="Ilustración iOS Spotlight" style="width: 100%; max-width: 300px; margin: 10px auto; display: block; border-radius: 5px;">
+                    </div>
+                </li>
+                <li>
+                    <strong>4. Desde el Centro de Control</strong>
+                    <button class="btn paso-btn" onclick="mostrarPaso('paso-ios-4')">Ver instrucciones</button>
+                    <div id="paso-ios-4" class="contenido-paso">
+                        <p>Si has añadido accesos directos a apps en el Centro de Control:</p>
+                        <p>En iPhone X o superior: Desliza hacia abajo desde la esquina superior derecha.</p>
+                        <p>En modelos anteriores: Desliza hacia arriba desde el borde inferior.</p>
+                        <p>Toca el ícono de la app que has añadido para abrirla rápidamente.</p>
+                        <img src="https://via.placeholder.com/300x150?text=iOS+Centro+Control" alt="Ilustración iOS Centro de Control" style="width: 100%; max-width: 300px; margin: 10px auto; display: block; border-radius: 5px;">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nota">
+            <strong>?? NOTA IMPORTANTE:</strong><br>
+            Las apps de la línea de bienestar aún no están disponibles en tiendas públicas, pero puedes solicitar acceso anticipado.
+        </div>
+
+        <!-- Botones de acción adicionales -->
+        <button class="btn contacto-btn" onclick="abrirModal('modal-contacto')">Contactar con TiendaDeAplicacionesStore</button>
+        <button class="btn recursos-btn" onclick="abrirModal('modal-recursos')">Ver recursos para profesores/padres</button>
+
+        <div class="footer">
+            <p>Guía interactiva creada para usuarios móviles | 2026</p>
+        </div>
+    </div>
+
+    <!-- Modal de Contacto -->
+    <div id="modal-contacto" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('modal-contacto')">&times;</span>
+            <h2>?? CONTACTO</h2>
+            <p>

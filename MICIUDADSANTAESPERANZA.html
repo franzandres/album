@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciudad Santa Esperanza - Santa Cruz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f5e4;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background-image: url('https://images.unsplash.com/photo-1583328558452-023c19d82848?q=80&w=1000&auto=format');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        #header {
+            background-color: #d62828;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        #header h1 {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #header p {
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        #mapa-ciudad {
+            position: relative;
+            width: 100vw;
+            min-height: 90vh;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* Estilos generales de elementos */
+        .elemento {
+            position: relative;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            min-width: 280px;
+            max-width: 350px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background-color: white;
+            border-top: 5px solid #f77f00;
+        }
+
+        .elemento:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .elemento img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Colores por categorías */
+        .mercado-super { border-top-color: #2a9d8f; }
+        .hospedaje { border-top-color: #0077b6; }
+        .residencial { border-top-color: #264653; }
+        .servicios { border-top-color: #8ac926; }
+
+        /* Persona y taxi animados */
+        #persona {
+            position: fixed;
+            width: 45px;
+            height: 65px;
+            background-color: #8d6e63;
+            border-radius: 22px 22px 0 0;
+            bottom: 20px;
+            left: 20px;
+            transition: all 4s ease-in-out;
+            z-index: 10;
+        }
+
+        #persona::before {
+            content: "";
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            top: 10px;
+            left: 11px;
+        }
+
+        #persona::after {
+            content: "";
+            position: absolute;
+            width: 35px;
+            height: 20px;
+            background-color: #f77f00;
+            border-radius: 5px;
+            bottom: 0;
+            left: 5px;
+        }
+
+        #taxi {
+            position: fixed;
+            width: 90px;
+            height: 55px;
+            background-color: #ffd700;
+            border-radius: 12px;
+            bottom: 20px;
+            left: 80px;
+            transition: all 5s ease-in-out;
+            z-index: 10;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+
+        #taxi::before {
+            content: "TAXI";
+            color: black;
+            text-align: center;
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        #taxi::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 15px;
+            background-color: #003049;
+            border-radius: 3px;
+            top: 5px;
+            left: 32px;
+        }
+
+        /* Controles */
+        #controles {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 20;
+        }
+
+        button {
+            padding: 10px 14px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-mover { background-color: #f77f00; color: white; }
+        .btn-mover:hover { background-color: #e76f00; }
+        .btn-info { background-color: #0077b6; color: white; }
+        .btn-info:hover { background-color: #006699; }
+        .btn-contacto { background-color: #d62828; color: white; }
+        .btn-contacto:hover { background-color: #b52222; }
+
+        /* Ventana de información */
+        #info {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255,255,255,0.98);
+            color: #333;
+            padding: 25px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            display: none;
+            z-index: 30;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            border-top: 8px solid #f77f00;
+        }
+
+        #cerrar-info {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #d62828;
+            color: white;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+
+        /* Sección de contacto */
+        #contacto {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-top: 5px solid #d62828;
+        }
+
+        #contacto h2 {
+            color: #d62828;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        #contacto p {
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #controles {
+                bottom: 10px;
+                right: 10px;
+                padding: 10px;
+            }
+
+            button {
+                padding: 8px 10px;
+                margin: 3px;
+                font-size: 0.8rem;
+            }
+
+            #header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado visible al cargar -->
+    <div id="header">
+        <h1>CIUDAD SANTA ESPERANZA</h1>
+        <p>Inspirada en Santa Cruz de la Sierra - Tierra de sol y alegría</p>
+    </div>
+
+    <!-- Contenido principal visible al cargar -->
+    <div id="mapa-ciudad">
+        <!-- Mercado y Supermercado -->
+        <div class="elemento mercado-super" id="mercado">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format" alt="Mercado Municipal">
+            <h3>MERCADO SANTA CRUZ (3 HECTÁREAS)</h3>
+            <p>?? Zona Centro - Av. 24 de Septiembre</p>
+            <p>Tiendas abiertas diariamente - Productos: Aceite de soya, arroz criollo, yuca santiagueña y más!</p>
+        </div>
+
+        <div class="elemento mercado-super" id="supermercado">
+            <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=1000&auto=format" alt="Supermercado Central">
+            <h3>SUPERMERCADO "EL CHACO"</h3>
+            <p>?? Av. Andrés Ibáñez N° 1234</p>
+            <p>Todos los productos de almacén + sección de alimentos típicos cruceños</p>
+        </div>
+
+        <!-- Hospedaje -->
+        <div class="elemento hospedaje" id="hotel-7estrellas">
+            <img src="https://images.unsplash.com/photo-1560409479-22a9c6cf0968?q=80&w=1000&auto=format" alt="Hotel 7 Estrellas">
+            <h3>HOTEL "CERRO VERDE" 7 ESTRELLAS</h3>
+            <p>?? Zona Camba - Av. Los Heroes</p>
+            <p>? Inscripción GRATUITA - Spa, restaurante de comida cruceña y vistas al lago</p>
+        </div>
+
+        <div class="elemento hospedaje" id="hotel-6estrellas">
+            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1000&auto=format" alt="Hotel 6 Estrellas">
+            <h3>HOTEL "SANTA MONICA" 6 ESTRELLAS</h3>
+            <p>?? Proximo al aeropuerto - Av. Aeropuerto N° 567</p>
+            <p>Servicios premium + tours a la reserva natural de Amboro</p>
+        </div>
+
+        <div class="elemento hospedaje" id="hotel-5estrellas">
+            <img src="https://images.unsplash.com/photo-1549189145-343518905c58?q=80&w=1000&auto=format" alt="Hotel 5 Estrellas">
+            <h3>HOTEL "LA CANDELARIA" 5 ESTRELLAS</h3>
+            <p>?? Zona Norte - Av. Mariscal Santa Cruz</p>
+            <p>Piscina climatizada + desayuno con chipa y api</p>
+        </div>
+
+        <div class="elemento hospedaje" id="cabañas">
+            <img src="https://images.unsplash.com/photo-1585088762211-7a4b192135cc?q=80&w=1000&auto=format" alt="Cabañas">
+            <h3>CABAÑAS "RÍO GRANDE"</h3>
+            <p>?? Bajo el Puente - Av. Río Piray</p>
+            <p>? Acceso GRATUITO - Ubicadas en la orilla del río Piray</p>
+        </div>
+
+        <!-- Residencial y Balneario -->
+        <div class="elemento residencial" id="casas-piscina">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format" alt="Casas con piscina">
+            <h3>RESIDENCIAL "LAS PALMERAS"</h3>
+            <p>?? Zona Sur - Av. Las Palmeras N° 890</p>
+            <p>Casas con piscina privada y jardín con palmeras</p>
+        </div>
+
+        <div class="elemento servicios" id="balneario">
+            <img src="https://images.unsplash.com/photo-1534531173927-aeb928d52f65?q=80&w=1000&auto=format" alt="Balneario">
+            <h3>BALNEARIO "PLAYA AZUL"</h3>
+            <p>?? Cerca del lago Yapacani - Av. Lago Yapacani</p>
+            <p>Piscinas, áreas de juegos y venta de refrescos típicos</p>
+        </div>
+
+        <!-- Nuevos lugares inspirados en Santa Cruz -->
+        <div class="elemento servicios" id="plaza-culturas">
+            <img src="https://images.unsplash.com/photo-1591769225663-0ee48ec13b50?q=80&w=1000&auto=format" alt="Plaza de Culturas">
+            <h3>PLAZA DE LAS CULTURAS CAMBAS</h3>
+            <p>?? Centro Histórico - Av. 9 de Mayo</p>
+            <p>Eventos culturales y venta de artesanías locales</p>
+        </div>
+
+        <div class="elemento servicios" id="parque-bosque">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1000&auto=format" alt="Parque Bosque">
+            <h3>PARQUE BOSQUE URUBICHÁ</h3>
+            <p>?? Zona Oriental - Av. Bosque Urbano</p>
+            <p>Área natural protegida con senderos para caminatas</p>
+        </div>
+
+        <!-- Persona y Taxi visibles al cargar -->
+        <div id="persona"></div>
+        <div id="taxi"></div>
+    </div>
+
+    <!-- Controles con botones que redirigen a páginas específicas -->
+    <div id="controles">
+        <h4>??? Servicios y Movilidad:</h4>
+        <button class="btn-contacto" onclick="window.open('radiotaxi-santa-esperanza.html', '_blank')">?? Llamar Radio Taxi</button>
+        <button class="btn-contacto" onclick="window.open('servicio-casa.html', '_blank')">?? Servicio a Domicilio</button>
+        <button class="btn-info" onclick="window.open('mapa-completo-ciudad.html

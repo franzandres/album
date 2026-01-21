@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaoke Franzandres Canta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: fondoAnimado 15s ease infinite;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            padding-bottom: 30px;
+            /* Evita que la página cargue en blanco */
+            display: block !important;
+            opacity: 1 !important;
+        }
+
+        @keyframes fondoAnimado {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Encabezado */
+        #header-karaoke {
+            background-color: rgba(0,0,0,0.7);
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 3px 20px rgba(0,0,0,0.5);
+            /* Asegura que se vea al cargar */
+            display: block;
+        }
+
+        #header-karaoke h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+            margin-bottom: 10px;
+        }
+
+        #header-karaoke p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Sección de control */
+        #panel-control {
+            background-color: rgba(0,0,0,0.6);
+            width: 95%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            text-align: center;
+            /* Asegura que se vea al cargar */
+            display: block;
+        }
+
+        .btn-control {
+            background-color: #ff3f34;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px 10px 10px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #ff3f34;
+            /* Mejora la interacción */
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        .btn-control:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff3f34;
+            background-color: #ff5252;
+        }
+
+        .btn-control:active {
+            transform: scale(0.98);
+        }
+
+        .btn-cancion {
+            background-color: #0abde3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px #0abde3;
+            /* Mejora la interacción */
+            touch-action: manipulation;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .btn-cancion:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #0abde3;
+            background-color: #1dd1e1;
+        }
+
+        .btn-cancion:active {
+            transform: scale(0.98);
+        }
+
+        #selector-canciones {
+            margin: 15px 0;
+            /* Asegura que los botones no se desordenen */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #volumen {
+            width: 200px;
+            margin: 10px;
+            /* Mejora el estilo del control */
+            accent-color: #feca57;
+        }
+
+        /* Sección de letra */
+        #panel-letra {
+            background-color: rgba(0,0,0,0.8);
+            width: 95%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Asegura que se vea al cargar */
+            display: flex;
+        }
+
+        #letra-cancion {
+            font-size: 1.5rem;
+            line-height: 2.5;
+            text-align: center;
+            transition: all 0.5s ease;
+            padding: 10px;
+        }
+
+        .letra-normal {
+            color: #ffffff;
+        }
+
+        .letra-actual {
+            color: #feca57;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #feca57;
+        }
+
+        /* Sección de efectos */
+        #efectos-especiales {
+            text-align: center;
+            margin-top: 20px;
+            /* Asegura que se vea al cargar */
+            display: block;
+        }
+
+        .luz {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            animation: parpadear 1s infinite alternate;
+        }
+
+        .luz-roja { background-color: #ff0000; box-shadow: 0 0 10px #ff0000; }
+        .luz-azul { background-color: #0000ff; box-shadow: 0 0 10px #0000ff; }
+        .luz-verde { background-color: #00ff00; box-shadow: 0 0 10px #00ff00; }
+        .luz-amarilla { background-color: #ffff00; box-shadow: 0 0 10px #ffff00; }
+
+        @keyframes parpadear {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Responsive - Ajustes para que se vea bien en móviles */
+        @media (max-width: 768px) {
+            #header-karaoke h1 {
+                font-size: 2rem;
+            }
+
+            .btn-control {
+                display: block;
+                margin: 10px auto;
+                width: 90%;
+            }
+
+            .btn-cancion {
+                width: 90%;
+                margin: 8px auto;
+                display: block;
+            }
+
+            #letra-cancion {
+                font-size: 1.2rem;
+            }
+
+            .letra-actual {
+                font-size: 1.5rem;
+            }
+
+            #selector-canciones {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-karaoke">
+        <h1>?? KARAOKE FRANZANDRES CANTA ??</h1>
+        <p>¡Canta como una estrella en el corazón de la ciudad!</p>
+    </div>
+
+    <div id="panel-control">
+        <h2>?? ELIGE TU CANCIÓN Y CONTROLA LA REPRODUCCIÓN</h2>
+        
+        <div id="selector-canciones">
+            <button class="btn-cancion" onclick="cargarCancion('cancion1')">???? "Soy Boliviano" - Los Kjarkas</button>
+            <button class="btn-cancion" onclick="cargarCancion('cancion2')">?? "Despacito" - Luis Fonsi ft. Daddy Yankee</button>
+            <button class="btn-cancion" onclick="cargarCancion('cancion3')">?? "Hasta la Raíz" - Natalia Lafourcade</button>
+            <button class="btn-cancion" onclick="cargarCancion('cancion4')">?? "La Gozadera" - Gente de Zona ft. Marc Anthony</button>
+        </div>
+
+        <button class="btn-control" onclick="reproducirPausar()">?? REPRODUCIR / PAUSAR</button>
+        <button class="btn-control" onclick="reiniciarCancion()">?? REINICIAR CANCIÓN</button>
+        <button class="btn-control" onclick="modoKaraoke()">? MODO KARAOKE</button>
+
+        <div>
+            <p>?? AJUSTA EL VOLUMEN:</p>
+            <input type="range" id="volumen" min="0" max="100" value="50" oninput="cambiarVolumen(this.value)">
+        </div>
+    </div>
+
+    <div id="efectos-especiales">
+        <div class="luz luz-roja"></div>
+        <div class="luz luz-azul"></div>
+        <div class="luz luz-verde"></div>
+        <div class="luz luz-amarilla"></div>
+        <div class="luz luz-roja"></div>
+        <div class="luz luz-azul"></div>
+        <div class="luz luz-verde"></div>
+        <div class="luz luz-amarilla"></div>
+    </div>
+
+    <div id="panel-letra">
+        <div id="letra-cancion">
+            ¡ELIGE UNA CANCIÓN PARA EMPEZAR A CANTAR! ??<br><br>
+            Cuando pulses reproducir, la letra se sincronizará con la música
+        </div>
+    </div>
+
+    <!-- Elemento audio cerrado correctamente -->
+    <audio id="reproductor" hidden>
+        <source src="musica/cancion.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    
+
+    <script>
+        // Variables globales
+        const reproductor = document.getElementById('reproductor');
+        const letraElemento = document.getElementById('letra-cancion');
+        let cancionActual = null;
+        let modoKaraokeActivo = false;
+        let intervaloSincronizacion = null;
+
+        // Base de datos de canciones con su letra y tiempos (segundos)
+        const canciones = {
+            cancion1: {
+                nombre: "Soy Boliviano",
+                ruta: "musica/soy-boliviano.mp3",
+                letra: [
+                    { texto: "Soy boliviano, corazón de América", tiempo: 2 },
+                    { texto: "De la altura nacido, con gran dignidad", tiempo: 6 },
+                    { texto: "Soy boliviano, tierra de sol y paz", tiempo: 10 },
+                    { texto: "Donde el cóndor vuela, libre y feliz", tiempo: 14 },
+                    { texto: "En la cordillera, donde el sol se alza", tiempo: 18 },
+                    { texto: "Están mis raíces, mi verdadera faz", tiempo: 22 },
+                    { texto: "Soy boliviano, con mucho amor", tiempo: 26 },
+                    { texto: "Por mi patria querida, daría mi corazón", tiempo: 30 }
+                ]
+            },
+            cancion2: {
+                nombre: "Despacito",
+                ruta: "musica/despacito.mp3",
+                letra: [
+                    { texto: "Ay, vamos a hacerlo en una playa en Puerto Rico", tiempo: 3 },
+                    { texto: "Hasta que las olas griten '¡ay, bendito!'", tiempo: 7 },
+                    { texto: "Para que mi sello se quede contigo", tiempo: 11 },
+                    { texto: "Despacito", tiempo: 15 },
+                    { texto: "Quiero respirar tu cuello despacito", tiempo: 18 },
+                    { texto: "Deja que te diga cosas al oído", tiempo: 22 },
+                    { texto: "Para que te acuerdes si no estás conmigo", tiempo: 26 },
+                    { texto: "Despacito", tiempo: 30 }
+                ]
+            },
+            cancion3: {
+                nombre: "Hasta la Raíz",
+                ruta: "musica/hasta-la-raiz.mp3",
+                letra: [
+                    { texto: "Tus manos en mi cara y el humo de tu boca", tiempo: 4 },
+                    { texto: "Ese fuego que me da tanto frío", tiempo: 8 },
+                    { texto: "Esa lluvia mojándome la voz", tiempo: 12 },
+                    { texto: "Me enseñaste a decir lo que siento", tiempo: 16 },
+                    { texto: "Hasta la raíz de mis sueños", tiempo: 20 },
+                    { texto: "Hasta donde llega el dolor", tiempo: 24 },
+                    { texto: "Me enseñaste a decir lo que siento", tiempo: 28 },
+                    { texto: "Hasta la raíz de mis sueños", tiempo: 32 }
+                ]
+            },
+            cancion4: {
+                nombre: "La Gozadera",
+                ruta: "musica/la-gozadera.mp3",
+                letra: [
+                    { texto: "¡Eeh! ¡Gente de Zona! ¡Marc Anthony! ¡Olé!", tiempo: 2 },
+                    { texto: "¡La gozadera, la gozadera, la gozadera!", tiempo: 6 },
+                    { texto: "Pa' gozar la vida, mi gente, que se va", tiempo: 10 },
+                    { texto: "¡La gozadera, la gozadera, la gozadera!", tiempo: 14 },
+                    { texto: "Pa' gozar la vida, mi gente, que se va", tiempo: 18 },
+                    { texto: "De La Habana a Puerto Rico", tiempo: 22 },
+                    { texto: "Pa' Colombia, México, Argentina", tiempo: 26 },
+                    { texto: "¡Todos juntos vamos a gozar!", tiempo: 30 }
+                ]
+            }
+        };
+
+        // Función para cargar la canción seleccionada
+        function cargarCancion(idCancion) {
+            try {
+                cancionActual = canciones[idCancion];
+                reproductor.src = cancionActual.ruta;
+                reproductor.load();
+                
+                // Mostrar letra inicial formateada
+                let letraHTML = `<strong>?? ${cancionActual.nombre} ??</strong><br><br>`;
+                cancionActual.letra.forEach((linea, index) => {
+                    letraHTML += `<span class="letra-normal" id="linea-${index}">${linea.texto}</span><br>`;
+                });
+                letraElemento.innerHTML = letraHTML;
+
+                // Detener intervalo anterior si existe
+                if (intervaloSincronizacion) clearInterval(intervaloSincronizacion);
+
+                alert(`¡Canción "${cancionActual.nombre}" cargada! Pulsa reproducir para empezar.`);
+            } catch (error) {
+                alert("Error al cargar la canción. Asegúrate de que los archivos de música estén en la carpeta 'musica'.");
+                console.log(error);
+            }
+        }
+
+        // Función para reproducir o pausar
+        function reproducirPausar() {
+            if (!cancionActual) {

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnVivoNow - Bolivia en Directo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d62828; /* Rojo boliviano */
+        }
+        .logo span {
+            color: #003049; /* Azul boliviano */
+        }
+        .logo small {
+            font-size: 10px;
+            display: block;
+            color: #f77f00; /* Amarillo boliviano */
+            font-weight: normal;
+        }
+        .btn-transmitir-principal {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: #d62828;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-transmitir-principal:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Sección de Configuración Previa */
+        .config-container {
+            padding: 15px;
+            background-color: #fff;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .config-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #003049;
+            margin-bottom: 15px;
+        }
+        .config-group {
+            margin-bottom: 15px;
+        }
+        .config-label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .camera-selector {
+            display: flex;
+            gap: 10px;
+        }
+        .camera-btn {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+            text-align: center;
+        }
+        .camera-btn.active {
+            background-color: #d62828;
+            color: #fff;
+            border-color: #d62828;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag-btn {
+            padding: 5px 12px;
+            border: 1px solid #f77f00;
+            border-radius: 20px;
+            background-color: #fff;
+            color: #f77f00;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .tag-btn.active {
+            background-color: #f77f00;
+            color: #fff;
+        }
+        .btn-comenzar-config {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            background-color: #003049;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Sección de Transmisión */
+        .stream-container {
+            padding: 15px;
+            display: none; /* Oculto por defecto */
+        }
+        .stream-player {
+            width: 100%;
+            background-color: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .stream-player video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .stream-status-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .status-envivo {
+            background-color: #ff2d55;
+        }
+        .status-publicado {
+            background-color: #4cd964;
+        }
+        .stream-watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .stream-tag-display {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(247,127,0,0.9);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .stream-controls {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .stream-title-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        .btn-terminar {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: #ff3b30;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-reproducir {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: #007aff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            display: none; /* Oculto por defecto */
+        }
+        .stream-info-text {
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #003049;
+        }
+
+        /* Sección de Contenido Publicado */
+        .publicado-container {
+            padding: 15px;
+            display: none; /* Oculto por defecto */
+        }
+        .publicado-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #d62828;
+        }
+        .publicado-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .publicado-card video {
+            width: 100%;
+            height: auto;
+        }
+        .publicado-info {
+            padding: 15px;
+        }
+        .publicado-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .publicado-status {
+            font-size: 13px;
+            color: #4cd964;
+        }
+        .publicado-lugar {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .publicado-tag {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 3px 10px;
+            background-color: #f77f00;
+            color: #fff;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        /* Pie de Página */
+        footer {
+            background-color: #003049;
+            color: #fff;
+            padding: 20px 15px;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+        .footer-text {
+            color: #f77f00;
+        }
+    </style>
+    <!-- Íconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">
+            EnVivo<span>Now</span>
+            <small>Santa Cruz - Bolivia</small>
+        </div>
+        <button id="btnIniciarTransmision" class="btn-transmitir-principal">
+            <i class="fas fa-circle"></i> Transmitir en Directo
+        </button>
+    </header>
+
+    <!-- Contenedor de Configuración Previa -->
+    <div id="configContainer" class="config-container">
+        <div class="config-title">Configura tu Transmisión</div>
+        
+        <div class="config-group">
+            <div class="config-label">Elige tu cámara</div>
+            <div class="camera-selector">
+                <button class="camera-btn active" data-camera="user">
+                    <i class="fas fa-user"></i> Frontal
+                </button>
+                <button class="camera-btn" data-camera="environment">
+                    <i class="fas fa-camera"></i> Trasera
+                </button>
+            </div>
+        </div>
+        
+        <div class="config-group">
+            <div class="config-label">Tema de tu transmisión</div>
+            <div class="tags-container">
+                <button class="tag-btn" data-tag="Salteñas & Gastronomía">Salteñas</button>
+                <button class="tag-btn" data-tag="Música Folclórica">Folclore</button>
+                <button class="tag-btn" data-tag="Fiestas Típicas">Fiestas</button>
+                <button class="tag-btn" data-tag="Turismo en SCZ">Turismo</button>
+                <button class="tag-btn" data-tag="Emprendimiento Local">Emprendimiento</button>
+                <button class="tag-btn" data-tag="Deportes Bolivianos">Deportes</button>
+            </div>
+        </div>
+        
+        <input type="text" id="streamTitleConfig" class="stream-title-input" placeholder="Ej: Preparando Salteñas Caseras...">
+        <button id="btnComenzarTransmision" class="btn-comenzar-config">
+            <i class="fas fa-circle"></i> Comenzar Transmisión
+        </button>
+    </div>
+
+    <!-- Contenedor de Transmisión en Vivo -->
+    <div id="streamContainer" class="stream-container">
+        <div class="stream-player">
+            <div id="streamStatusBadge" class="stream-status-badge status-envivo">EN VIVO</div>
+            <div class="stream-watermark">Santa Cruz - BO</div>
+            <div id="streamTagDisplay" class="stream-tag-display"></div>
+            <video id="streamVideo" autoplay muted playsinline></video>
+        </div>
+        <div class="stream-controls">
+            <p class="stream-info-text" id="streamInfo">Transmitiendo desde Andrés Ibáñez, Santa Cruz</p>
+            <button id="btnTerminarTransmision" class="btn-terminar">
+                <i class="fas fa-stop-circle"></i> Terminar Transmisión
+            </button>
+            <button id="btnReproducirGrabacion" class="btn-reproducir">
+                <i class="fas fa-play-circle"></i> Reproducir Grabación
+            </button>
+        </div>
+    </div>
+
+    <!-- Contenedor de Contenido Publicado -->
+    <div id="publicadoContainer" class="publicado-container">
+        <div class="publicado-title">Publicado Recientemente - Bolivia</div>
+        <div class="publicado-card">
+            <video id="publicadoVideo" controls playsinline>
+                <source src="" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="publicado-info">
+                <div id="publicadoName" class="publicado-name"></div>
+                <div class="publicado-status">Publicado el día de hoy</div>
+                <div class="publicado-lugar">Grabado en Santa Cruz, Departamento de Santa Cruz</div>
+                <div id="publicadoTag" class="publicado-tag"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer>
+        <div class="footer-text">Tu mundo boliviano en pantalla grande © 2026 EnVivoNow</div>
+    </footer>
+
+    <script>
+        // Elementos del DOM
+        const btnIniciarTransmision = document.getElementById('btnIniciarTransmision');
+        const configContainer = document.getElementById('configContainer');
+        const cameraBtns = document.querySelectorAll('.camera-btn');
+        const tagBtns = document.querySelectorAll('.tag-btn');
+        const btnComenzarTransmision = document.getElementById('btnComenzarTransmision');
+        const streamContainer = document.getElementById('streamContainer');
+        const publicadoContainer = document.getElementById('publicadoContainer');
+        const streamVideo = document.getElementById('streamVideo');
+        const streamStatusBadge = document.getElementById('streamStatusBadge');
+        const streamTagDisplay = document.getElementById('streamTagDisplay');
+        const streamTitleConfig = document.getElementById('streamTitleConfig');
+        const btnTerminarTransmision = document.getElementById('btnTerminarTransmision');
+        const btnReproducirGrabacion = document.getElementById('btnReproducirGrabacion');
+        const publicadoVideo = document.getElementById('publicadoVideo');
+        const publicadoName = document.getElementById('publicadoName');
+        const publicadoTag = document.getElementById('publicadoTag');
+
+        // Variables de configuración
+        let cameraType = 'user'; // Frontal por defecto
+        let selectedTag = 'Salteñas & Gastronomía'; // Tema por defecto
+        const VIDEO_BOLIVIA = 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4';
+        let currentStream = null;
+
+        // Selección de cámara
+        cameraBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                cameraBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                cameraType = btn.dataset.camera;
+            });
+        });
+
+        // Selección de etiqueta temática
+        tagBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tagBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedTag = btn.dataset.tag;
+                // Actualizar título si está vacío
+                if (streamTitleConfig.value === '') {
+                    streamTitleConfig.value = `Transmisión de ${selectedTag}`;
+                }
+            });
+        });
+
+        // Abrir pantalla de configuración
+        btnIniciarTransmision.addEventListener('click', () => {
+            btnIniciarTransmision.disabled = true;
+            configContainer.style.display = 'block';
+            streamContainer.style.display = 'none';
+            publicadoContainer.style.display = 'none';
+            
+            // Título por defecto
+            if (streamTitleConfig.value === '') {
+                streamTitleConfig.value = `Transmisión de ${selectedTag}`;
+            }
+        });
