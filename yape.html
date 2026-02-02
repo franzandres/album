@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yape para PC (Simulado)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px; /* Ancho máximo para pantallas grandes */
+            margin: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        input[type="email"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #fca311;
+            color: white;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #e58e0b;
+        }
+        .qr-code {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #qr-video, #qr-video-cobrar {
+            width: 100%;
+            max-width: 300px; /* Ajuste para pantallas más pequeñas */
+            margin: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Yape para PC (Simulado)</h1>
+
+        <h2>Pagar con QR</h2>
+        <input type="number" id="montoPagar" placeholder="Monto a pagar">
+        <video id="qr-video"></video>
+        <p id="qr-result"></p>
+        <button onclick="escanearQR('pagar')">Pagar con QR</button>
+
+        <h2>Cobrar con QR</h2>
+        <input type="number" id="montoCobrar" placeholder="Monto a cobrar">
+        <video id="qr-video-cobrar"></video>
+        <p id="qr-result-cobrar"></p>
+        <button onclick="escanearQR('cobrar')">Cobrar con QR</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+    <script>
+        function escanearQR(tipo) {
+            const video = document.getElementById(tipo === 'pagar' ? 'qr-video' : 'qr-video-cobrar');
+            const resultElement = document.getElementById(tipo === 'pagar' ? 'qr-result' : 'qr-result-cobrar');
+            const monto = document.getElementById(tipo === 'pagar' ? 'montoPagar' : 'montoCobrar').value;
+
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                    video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+                    video.play();
+                    requestAnimationFrame(tick);
+                });
+
+            function tick() {
+                if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                    const canvasElement = document.createElement('canvas');
+                    canvasElement.width = video.videoWidth;
+                    canvasElement.height = video.videoHeight;
+                    const canvas = canvasElement.getContext('2d');
+                    canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+                    const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+                    const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                        inversionAttempts: "dontInvert",
+                    });
+
+                    if (code) {
+                        resultElement.innerText = "QR detectado: " + code.data;
+                        video.pause();
+                        video.srcObject.getTracks().forEach(track => track.stop());
+                        alert(`Simulando ${tipo}: Monto: ${monto}, Datos QR: ${code.data}`);
+                    } else {
+                        requestAnimationFrame(tick);
+                    }
+                } else {
+                    requestAnimationFrame(tick);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
