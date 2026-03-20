@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trámites Constitución Empresas - Santa Cruz</title>
+    <style>
+        body {
+            background-color: yellow;
+            color: orange;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid orange;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #fff350;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 15px;
+            border: 2px solid orange;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid orange;
+            background-color: #fff350;
+            color: orange;
+            font-size: 1em;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #ffb347;
+        }
+        button {
+            background-color: orange;
+            color: yellow;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>TRÁMITES PARA CONSTITUCIÓN DE EMPRESAS EN SANTA CRUZ DE LA SIERRA</h1>
+
+    <!-- Sección Trámite Unipersonal (Rellenado) -->
+    <div class="section">
+        <h2>TRÁMITE EMPRESA UNIPERSONAL - DATOS RELLENADOS</h2>
+        <div class="form-group">
+            <label for="uni-name">Nombre de la empresa registrada:</label>
+            <input type="text" id="uni-name" value="Servicios Técnicos Eléctricos López S.R.L." readonly>
+        </div>
+        <div class="form-group">
+            <label for="uni-owner">Titular de la empresa:</label>
+            <input type="text" id="uni-owner" value="Carlos Alberto López Mendoza" readonly>
+        </div>
+        <div class="form-group">
+            <label for="uni-id">Cédula de identidad del titular:</label>
+            <input type="text" id="uni-id" value="1234567890" readonly>
+        </div>
+        <div class="form-group">
+            <label for="uni-start">Fecha de inicio del trámite:</label>
+            <input type="date" id="uni-start" value="2026-02-15" readonly>
+        </div>
+        <div class="form-group">
+            <label for="uni-end">Fecha de conclusión:</label>
+            <input type="date" id="uni-end" value="2026-03-05" readonly>
+        </div>
+        <div class="form-group">
+            <label for="uni-status">Estado del trámite:</label>
+            <select id="uni-status" readonly>
+                <option value="aprobado" selected>APROBADO</option>
+                <option value="proceso">EN PROCESO</option>
+                <option value="rechazado">RECHAZADO</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="uni-reg">Número de registro mercantil:</label>
+            <input type="text" id="uni-reg" value="SC-EMP-UNI-26-00189" readonly>
+        </div>
+        <div class="form-group">
+            <label for="uni-docs">Documentos entregados y verificados:</label>
+            <textarea id="uni-docs" rows="3" readonly>- Cédula de identidad original y copia legalizada
+- Plan de negocio detallado con proyecciones financieras
+- Declaración jurada de domicilio fiscal (Av. Las Palmeras N° 456, Barrio Industrial)
+- Certificado de reservación de nombre de empresa
+- Pago de derechos de registro (Bs. 1.250)</textarea>
+        </div>
+        <div class="form-group">
+            <label for="uni-activity">Actividad económica principal:</label>
+            <input type="text" id="uni-activity" value="Instalación, mantenimiento y reparación de sistemas eléctricos industriales y residenciales" readonly>
+        </div>
+        <div class="form-group">
+            <label for="uni-capital">Capital social declarado:</label>
+            <input type="text" id="uni-capital" value="Bs. 25.000" readonly>
+        </div>
+    </div>
+
+    <!-- Sección Trámite Jurídica (Rellenado) -->
+    <div class="section">
+        <h2>TRÁMITE EMPRESA JURÍDICA - DATOS RELLENADOS</h2>
+        <div class="form-group">
+            <label for="jur-name">Nombre de la empresa registrada:</label>
+            <input type="text" id="jur-name" value="Comercializadora Agrícola Santa Cruz S.A." readonly>
+        </div>
+        <div class="form-group">
+            <label for="jur-socios">Socios fundadores:</label>
+            <textarea id="jur-socios" rows="2" readonly>- María Fernanda Gómez Ruiz (C.I. 0987654321) - 40% de participaciones
+- Juan Carlos Torres Aguilar (C.I. 1122334455) - 35% de participaciones
+- Empresa Inversiones Agropecuarias del Oriente Ltda. - 25% de participaciones</textarea>
+        </div>
+        <div class="form-group">
+            <label for="jur-start">Fecha de inicio del trámite:</label>
+            <input type="date" id="jur-start" value="2026-01-20" readonly>
+        </div>
+        <div class="form-group">
+            <label for="jur-end">Fecha de conclusión:</label>
+            <input type="date" id="jur-end" value="2026-02-28" readonly>
+        </div>
+        <div class="form-group">
+            <label for="jur-status">Estado del trámite:</label>
+            <select id="jur-status" readonly>
+                <option value="aprobado" selected>APROBADO</option>
+                <option value="proceso">EN PROCESO</option>
+                <option value="rechazado">RECHAZADO</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="jur-reg">Número de registro mercantil:</label>
+            <input type="text" id="jur-reg" value="SC-EMP-JUR-26-00076" readonly>
+        </div>
+        <div class="form-group">
+            <label for="jur-docs">Documentos entregados y verificados:</label>
+            <textarea id="jur-docs" rows="4" readonly>- Acta constitutiva autorizada por notario público
+- Cédulas de identidad de los socios naturales y documentos legales de la sociedad participante
+- Poder notarial para representación en el trámite
+- Certificado de domicilio social (Calle 9 de Octubre N° 789, Edificio Empresarial Centro)
+- Certificado de reservación de nombre
+- Declaración jurada de actividad económica
+- Pago de derechos de registro (Bs. 3.800)
+- Certificado de inscripción en la Superintendencia de Economía Popular y Solidaria</textarea>
+        </div>
+        <div class="form-group">
+            <label for="jur-activity">Actividad económica principal:</label>
+            <input type="text" id="jur-activity" value="Compra, venta y distribución de productos agrícolas, ganaderos y forestales a nivel nacional e internacional" readonly>
+        </div>
+        <div class="form-group">
+            <label for="jur-capital">Capital social suscrito y pagado:</label>
+            <input type="text" id="jur-capital" value="Bs. 150.000 (Bs. 120.000 pagados)" readonly>
+        </div>
+        <div class="form-group">
+            <label for="jur-rep">Representante legal:</label>
+            <input type="text" id="jur-rep" value="María Fernanda Gómez Ruiz - Cargo: Presidenta del Directorio" readonly>
+        </div>
+    </div>
+
+    <!-- Sección Otros Trámites (Tabla Rellenada) -->
+    <div class="section">
+        <h2>REGISTRO COMPLETO DE TRÁMITES RESUELTOS Y EN PROCESO</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>N° de Trámite</th>
+                    <th>Tipo de Empresa</th>
+                    <th>Nombre Comercial</th>
+                    <th>Titular/Socios</th>
+                    <th>Estado</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Resolución</th>
+                    <th>Número de Registro</th>
+                    <th>Costo Total (Bs.)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>26-001</td>
+                    <td>Unipersonal</td>
+                    <td>Servicios Técnicos Eléctricos López S.R.L.</td>
+                    <td>Carlos Alberto López Mendoza</td>
+                    <td>APROBADO</td>
+                    <td>15/02/2026</td>
+                    <td>05/03/2026</td>
+                    <td>SC-EMP-UNI-26-00189</td>
+                    <td>1.250</td>
+                </tr>
+                <tr>
+                    <td>26-002</td>
+                    <td>Jurídica</td>
+                    <td>Comercializadora Agrícola Santa Cruz S.A.</td>
+                    <td>Gómez R., Torres A., Empresa Agropecuaria Oriente</td>
+                    <td>APROBADO</td>
+                    <td>20/01/2026</td>
+                    <td>28/02/2026</td>
+                    <td>SC-EMP-JUR-26-00076</td>
+                    <td>3.800</td>
+                </tr>
+                <tr>
+                    <td>26-003</td>
+                    <td>Unipersonal</td>
+                    <td>Diseño Gráfico Creativo Mendez</td>
+                    <td>Ana Sofía Méndez Castro</td>
+                    <td>APROBADO</td>
+                    <td>01/03/2026</td>
+                    <td>10/03/2026</td>
+                    <td>SC-EMP-UNI-26-00195</td>
+                    <td>1.250</td>
+                </tr>
+                <tr>
+                    <td>26-004</td>
+                    <td>Jurídica</td>
+                    <td>Inversiones Inmobiliarias del Sur Limitada</td>
+                    <td>Pedro Sánchez L., Rosa María Díaz P.</td>
+                    <td>EN PROCESO</td>
+                    <td>08/03/2026</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>3.800 (pendiente de pago completo)</td>
+                </tr>
+                <tr>
+                    <td>26-005</td>
+                    <td>Unipersonal</td>
+                    <td>Transporte y Logística Pérez</td>
+                    <td>José Luis Pérez Quispe</td>
+                    <td>RECHAZADO</td>
+                    <td>25/02/2026</td>
+                    <td>08/03/2026</td>
+                    <td>-</td>
+                    <td>450 (derechos de gestión no reembolsables)</td>
+                </tr>
+                <tr>
+                    <td>26-006</td>
+                    <td>Jurídica</td>
+                    <td>Tecnologías de la Información y Comunicación SC</td>
+                    <td>Diego Morales C., Luisa Fernández M., Sistemas Pro Ltda.</td>
+                    <td>APROBADO</td>
+                    <td>10/02/2026</td>
+                    <td>02/03/2026</td>
+                    <td>SC-EMP-JUR-26-00082</td>
+                    <td>3.800</td>
+                </tr>
+                <tr>
+                    <td>26-007</td>
+                    <td>Unipersonal</td>
+                    <td>Consultoría Empresarial Rojas</td>
+                    <td>Miguel Ángel Rojas Vásquez</td>
+                    <td>APROBADO</td>
+                    <td>28/02/2026</td>
+                    <td>01/03/2026</td>
+                    <td>SC-EMP-UNI-26-00187</td>
+                    <td>1.250</td>
+                </tr>
+                <tr>
+                    <td>26-008</td>
+                    <td>Jurídica</td>
+                    <td>Productos Alimenticios Naturales del Valle S.A.</td>
+                    <td>Elena Rodríguez T., Carlos Fuentes M., Cooperativa Agroalimentaria</td>
+                    <td>APROBADO</td>
+                    <td>15/01/2026</td>
+                    <td>25/02/2026</td>
+                    <td>SC-EMP-JUR-26-00069</td>
+                    <td>3.800</td>
+                </tr>
+                <tr>
+                    <td>26-009</td>
+                    <td>Unipersonal</td>
+                    <td>Servicios de Limpieza y Mantenimiento Ortiz</td>
+                    <td>Beatriz Ortiz González</td>
+                    <td>APROBADO</td>
+                    <td>05/03/2026</td>
+                    <td>12/03/2026</td>
+                    <td>SC-EMP-UNI-26-00201</td>
+                    <td>1.250</td>
+                </tr>
+                <tr>
+                    <td>26-010</td>
+                    <td>Jurídica</td>
+                    <td>Constructora Urbana y Rural del Este Limitada</td>
+                    <td>Jorge Castillo P., Marta Soto L., Inversiones CMR S.A.</td>
+                    <td>EN PROCESO</td>
+                    <td>10/03/2026</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>3.800 (pendiente de entrega de documentos)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección Instrucciones y Contacto (Rellenado) -->
+    <div class="section">
+        <h2>INSTRUCCIONES Y DATOS DE CONTACTO</h2>
+        <div class="form-group">
+            <label for="instructions">Instrucciones para trámites en proceso:</label>
+            <textarea id="instructions" rows="
