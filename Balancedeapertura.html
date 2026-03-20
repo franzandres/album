@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance de Apertura - Empresas Bolivia</title>
+    <style>
+        body {
+            background-color: #007E33; /* Color verde bandera de Bolivia */
+            color: #FF0000; /* Color rojo */
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            margin-top: 0;
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 2px solid #FF0000;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #009933; /* Verde más claro para encabezados */
+            font-weight: bold;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 3px solid #FF0000;
+            border-radius: 10px;
+        }
+        .data-group {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #FF0000;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #FF0000;
+            background-color: #009933;
+            color: #FF0000;
+            font-size: 1em;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <h1>BALANCE DE APERTURA</h1>
+    <h2>ENTIDAD: COMERCIALIZADORA AGRÍCOLA SANTA CRUZ S.A.</h2>
+    <h3>FECHA DE APERTURA: 01/01/2026</h3>
+
+    <!-- Sección Datos Generales de la Empresa -->
+    <div class="section">
+        <h2>DATOS GENERALES DE LA EMPRESA</h2>
+        <div class="data-group">
+            <label for="company-name">Nombre registrado de la empresa:</label>
+            <input type="text" id="company-name" value="COMERCIALIZADORA AGRÍCOLA SANTA CRUZ SOCIEDAD ANÓNIMA" readonly>
+        </div>
+        <div class="data-group">
+            <label for="registry-number">Número de registro mercantil:</label>
+            <input type="text" id="registry-number" value="SC-EMP-JUR-26-00076" readonly>
+        </div>
+        <div class="data-group">
+            <label for="tax-id">Número de identificación tributaria (NIT):</label>
+            <input type="text" id="tax-id" value="1234567890123" readonly>
+        </div>
+        <div class="data-group">
+            <label for="address">Domicilio social:</label>
+            <input type="text" id="address" value="Calle 9 de Octubre N° 789, Edificio Empresarial Centro, Santa Cruz de la Sierra - Bolivia" readonly>
+        </div>
+        <div class="data-group">
+            <label for="representative">Representante legal:</label>
+            <input type="text" id="representative" value="María Fernanda Gómez Ruiz - Presidenta del Directorio" readonly>
+        </div>
+        <div class="data-group">
+            <label for="capital">Capital social suscrito y pagado:</label>
+            <input type="text" id="capital" value="Bs. 150.000,00 (Bs. 120.000,00 pagados al momento de apertura)" readonly>
+        </div>
+        <div class="data-group">
+            <label for="activity">Actividad económica principal:</label>
+            <textarea id="activity" rows="2" readonly>Compra, venta y distribución de productos agrícolas, ganaderos y forestales a nivel nacional e internacional. Actividades secundarias: comercialización de insumos agropecuarios y asesoría técnica agrícola.</textarea>
+        </div>
+    </div>
+
+    <!-- Sección Activos -->
+    <div class="section">
+        <h2>ACTIVOS</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código Cuenta</th>
+                    <th>Denominación de Cuenta</th>
+                    <th>Saldo Inicial (Bs.)</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>101</td>
+                    <td>Caja y Equivalentes de Caja</td>
+                    <td>35.250,00</td>
+                    <td>Efectivo en caja y depósitos en cuentas corrientes bancarias</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>Cuentas por Cobrar - Clientes</td>
+                    <td>18.750,00</td>
+                    <td>Créditos otorgados a clientes por ventas realizadas antes de apertura</td>
+                </tr>
+                <tr>
+                    <td>103</td>
+                    <td>Inventarios</td>
+                    <td>42.500,00</td>
+                    <td>Granos básicos, productos ganaderos y materias primas almacenadas</td>
+                </tr>
+                <tr>
+                    <td>104</td>
+                    <td>Activos Corrientes por Pagar a Favor</td>
+                    <td>3.200,00</td>
+                    <td>Anticipos a proveedores y gastos pagados por anticipado</td>
+                </tr>
+                <tr>
+                    <td>110</td>
+                    <td>Inmovilizado Material - Terrenos</td>
+                    <td>25.000,00</td>
+                    <td>Terreno de almacén y oficinas administrativas en zona industrial</td>
+                </tr>
+                <tr>
+                    <td>111</td>
+                    <td>Inmovilizado Material - Edificaciones</td>
+                    <td>38.500,00</td>
+                    <td>Edificio de oficinas y galpón de almacenamiento</td>
+                </tr>
+                <tr>
+                    <td>112</td>
+                    <td>Inmovilizado Material - Maquinaria y Equipo</td>
+                    <td>22.800,00</td>
+                    <td>Camiones de transporte, equipos de carga y oficina</td>
+                </tr>
+                <tr>
+                    <td>113</td>
+                    <td>Inmovilizado Material - Mobiliario y Utensilios</td>
+                    <td>4.500,00</td>
+                    <td>Mobiliario de oficinas y equipamiento de áreas de trabajo</td>
+                </tr>
+                <tr>
+                    <td>115</td>
+                    <td>Activos Intangibles</td>
+                    <td>6.000,00</td>
+                    <td>Marca registrada y software de gestión empresarial</td>
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td>Activos Diferidos</td>
+                    <td>2.300,00</td>
+                    <td>Gastos de constitución y tramites de registro mercantil</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>TOTAL ACTIVOS</strong></td>
+                    <td><strong>198.800,00</strong></td>
+                    <td><strong>Saldo consolidado de activos al inicio de operaciones</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección Pasivos -->
+    <div class="section">
+        <h2>PASIVOS</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código Cuenta</th>
+                    <th>Denominación de Cuenta</th>
+                    <th>Saldo Inicial (Bs.)</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>201</td>
+                    <td>Cuentas por Pagar - Proveedores</td>
+                    <td>21.300,00</td>
+                    <td>Deudas por compras de mercadería y servicios</td>
+                </tr>
+                <tr>
+                    <td>202</td>
+                    <td>Impuestos por Pagar</td>
+                    <td>4.800,00</td>
+                    <td>Impuestos sobre ventas y retenciones pendientes de pago</td>
+                </tr>
+                <tr>
+                    <td>203</td>
+                    <td>Salarios y Beneficios por Pagar</td>
+                    <td>3.250,00</td>
+                    <td>Remuneraciones acordadas con personal contratado antes de apertura</td>
+                </tr>
+                <tr>
+                    <td>204</td>
+                    <td>Pasivos Corrientes por Cobrar a Favor</td>
+                    <td>1.500,00</td>
+                    <td>Anticipos recibidos de clientes para pedidos futuros</td>
+                </tr>
+                <tr>
+                    <td>210</td>
+                    <td>Préstamos a Plazo Corto</td>
+                    <td>15.000,00</td>
+                    <td>Crédito bancario para financiamiento de inventarios</td>
+                </tr>
+                <tr>
+                    <td>220</td>
+                    <td>Préstamos a Plazo Largo</td>
+                    <td>35.000,00</td>
+                    <td>Crédito para adquisición de maquinaria y equipo</td>
+                </tr>
+                <tr>
+                    <td>225</td>
+                    <td>Pasivos Diferidos</td>
+                    <td>2.150,00</td>
+                    <td>Subvenciones gubernamentales recibidas por anticipado</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>TOTAL PASIVOS</strong></td>
+                    <td><strong>83.000,00</strong></td>
+                    <td><strong>Saldo consolidado de pasivos al inicio de operaciones</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección Patrimonio Neto -->
+    <div class="section">
+        <h2>PATRIMONIO NETO</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código Cuenta</th>
+                    <th>Denominación de Cuenta</th>
+                    <th>Saldo Inicial (Bs.)</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>301</td>
+                    <td>Capital Suscrito</td>
+                    <td>150.000,00</td>
+                    <td>Capital autorizado en acta constitutiva</td>
+                </tr>
+                <tr>
+                    <td>302</td>
+                    <td>Capital Pagado</td>
+                    <td>(120.000,00)</td>
+                    <td>Parte del capital suscrito efectivamente abonada por los socios</td>
+                </tr>
+                <tr>
+                    <td>303</td>
+                    <td>Reservas Legales</td>
+                    <td>3.000,00</td>
+                    <td>Reserva constituida según disposiciones legales bolivianas</td>
+                </tr>
+                <tr>
+                    <td>304</td>
+                    <td>Reservas Voluntarias</td>
+                    <td>5.000,00</td>
+                    <td>Reserva para inversiones futuras en infraestructura</td>
+                </tr>
+                <tr>
+                    <td>305</td>
+                    <td>Utilidades Acumuladas Iniciales</td>
+                    <td>7.800,00</td>
+                    <td>Utilidades generadas en operaciones previas a la formalización</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>TOTAL PATRIMONIO NETO</strong></td>
+                    <td><strong>115.800,00</strong></td>
+                    <td><strong>Saldo consolidado de patrimonio neto al inicio de operaciones</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección Verificación y Firmas -->
+    <div class="section">
+        <h2>VERIFICACIÓN Y FIRMAS</h2>
+        <div class="data-group">
+            <label for="balance-check">Verificación de la ecuación contable:</label>
+            <input type="text" id="balance-check" value="ACTIVOS (Bs. 198.800,00) = PASIVOS (Bs. 83.000,00) + PATRIMONIO NETO (Bs. 115.800,00) - ECUACIÓN CUMPLIDA" readonly>
+        </div>
+        <div class="data-group">
+            <label for="accountant">Contador Responsable:</label>
+            <input type="text" id="accountant" value="Lic. Juan Carlos Méndez Paredes - Cédula Profesional N° 0012345" readonly>
+        </div>
+        <div class="data-group">
+            <label for="signature-date">Fecha de elaboración y firma:</label>
+            <input type="text" id="signature-date" value="Santa Cruz de la Sierra, 28 de febrero de 2026" readonly>
+        </div>
+        <div class="data-group">
+            <label for="observations">Observaciones finales:</label>
+            <textarea id="observations" rows="2" readonly>El presente balance de apertura ha sido elaborado conforme a las Normas de Contabilidad General Aplicables en Bolivia (NCGAB) y registrado ante la Superintendencia de Economía Popular y Solidaria (SEPS). Los saldos reflejados corresponden al estado financiero de la empresa al inicio de sus operaciones oficiales el 01 de enero de 2026.</textarea>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <input type="text" value="_______________________________________" readonly style="text-align: center; border: none; font-size: 1.2em;">
+            <p><strong>María Fernanda Gómez Ruiz - Representante Legal</strong></p>
+            <input type="text" value="_______________________________________" readonly style="text-align: center; border: none; font-size: 1.2em;">
+            <p><strong>Lic. Juan Carlos Méndez Paredes - Contador Responsable</strong></p>
+        </div>
+    </div>
+</body>
+</html>
