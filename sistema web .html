@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Profesional - Prellenado</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        .container { display: flex; min-height: 100vh; }
+        .sidebar { width: 220px; background: #2c3e50; color: white; padding: 20px; }
+        .main { flex: 1; background: #ecf0f1; padding: 30px; }
+        .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .stat-item { text-align: center; padding: 15px; background: #3498db; color: white; border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #2c3e50; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Barra lateral -->
+        <aside class="sidebar">
+            <h2>Sistema Web</h2>
+            <nav style="margin-top: 30px;">
+                <p style="margin: 10px 0; cursor: pointer;">Dashboard</p>
+                <p style="margin: 10px 0; cursor: pointer;">Clientes</p>
+                <p style="margin: 10px 0; cursor: pointer;">Productos</p>
+                <p style="margin: 10px 0; cursor: pointer;">Reportes</p>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main">
+            <h1>Dashboard de Gestión</h1>
+            
+            <!-- Tarjetas de estadísticas -->
+            <div class="card stats">
+                <div class="stat-item">
+                    <h3>Ventas Totales</h3>
+                    <p>$125,400</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Clientes Activos</h3>
+                    <p>287</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Productos en Stock</h3>
+                    <p>1,452</p>
+                </div>
+            </div>
+
+            <!-- Tabla de clientes prellenada -->
+            <div class="card">
+                <h2>Lista de Clientes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Fecha de Registro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>María López</td>
+                            <td>maria@empresa.com</td>
+                            <td>591 620 1234</td>
+                            <td>15/01/2026</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Juan Pérez</td>
+                            <td>juan@empresa.com</td>
+                            <td>591 630 5678</td>
+                            <td>22/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Ana Torres</td>
+                            <td>ana@empresa.com</td>
+                            <td>591 640 9012</td>
+                            <td>05/03/2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Interacción básica: resaltar ítems de menú al hacer clic
+        const menuItems = document.querySelectorAll('.sidebar nav p');
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuItems.forEach(i => i.style.background = 'transparent');
+                item.style.background = '#34495e';
+            });
+        });
+    </script>
+</body>
+</html>
+Franz Andres
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Médico Integral - Clínica Santa Cruz</title>
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background-color: #f0f2f5; color: #333; }
+
+        /* Barra lateral */
+        .sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background-color: #0056b3;
+            color: white;
+            padding: 25px;
+            transition: width 0.3s ease;
+        }
+        .sidebar .logo { display: flex; align-items: center; margin-bottom: 40px; }
+        .sidebar .logo i { font-size: 2rem; margin-right: 10px; }
+        .sidebar nav a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        .sidebar nav a i { width: 20px; margin-right: 15px; }
+        .sidebar nav a.ac

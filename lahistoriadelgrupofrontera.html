@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de Grupo Frontera - Fiesta Cerveza</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: rgba(0,0,0,0.8);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 3px solid #ffd700;
+        }
+
+        .titulo-historia {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 42px;
+            color: #ffd700;
+            text-shadow: 3px 3px 0px #ff0080;
+            margin: 0;
+        }
+
+        .contenedor-historia {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Diseño de la Línea de Tiempo */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: #ffd700;
+            transform: translateX(-50%);
+        }
+
+        .evento {
+            margin-bottom: 50px;
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .evento:nth-child(odd) { left: 0; text-align: right; }
+        .evento:nth-child(even) { left: 50%; text-align: left; }
+
+        .contenido-evento {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #444;
+            transition: 0.3s;
+        }
+
+        .evento:hover .contenido-evento {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .año {
+            color: #ff0080;
+            font-weight: bold;
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        h3 { color: #ffd700; margin: 0 0 10px 0; }
+        p { line-height: 1.6; color: #ccc; }
+
+        .btn-inicio {
+            display: block;
+            width: fit-content;
+            margin: 40px auto;
+            padding: 15px 30px;
+            background: #ffd700;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .btn-inicio:hover { transform: scale(1.1); background: #ff0080; color: white; }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 40px; }
+            .evento { width: 100%; padding-left: 80px; text-align: left !important; }
+            .evento:nth-child(even) { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="titulo-historia">LA HISTORIA DE GRUPO FRONTERA</h1>
+    <p>De un pasatiempo en Texas a la cima del mundo</p>
+</header>
+
+<div class="contenedor-historia">
+    <div class="timeline">
+        
+        <div class="evento">
+            <div class="contenido-evento">
+                <span class="año">2022</span>
+                <h3>El Comienzo</h3>
+                <p>Seis amigos en Edinburg, Texas, deciden formar una banda para tocar en bodas y fiestas locales. Su único objetivo era disfrutar de la música norteña.</p>
+            </div>
+        </div>
+
+        <div class="evento">
+            <div class="contenido-evento">
+                <span class="año">SEP 2022</span>
+                <h3>El fenómeno "No se va"</h3>
+                <p>Lanzan un cover del grupo Morat. Gracias a un video viral de un hombre bailando en TikTok, la canción llega a los charts de Billboard, algo histórico para un grupo nuevo.</p>
+            </div>
+        </div>
+
+        <div class="evento">
+            <div class="contenido-evento">
+                <span class="año">2023</span>
+                <h3>Alianza con Bad Bunny</h3>
+                <p>Sorprenden al mundo con "Un x100to". Esta colaboración con el "Conejo Malo" los posiciona como los líderes del movimiento Regional Mexicano moderno.</p>
+            </div>
+        </div>
+
+        <div class="evento">
+            <div class="contenido-evento">
+                <span class="año">HOY</span>
+                <h3>Iconos Globales</h3>
+                <p>Han llenado arenas en todo el continente y siguen rompiendo récords con colaboraciones con Shakira y Peso Pluma. ¡Y su música es el alma de nuestra fiesta!</p>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="btn-inicio"><i class="fas fa-beer"></i> VOLVER A LA FIESTA</a>
+</div>
+
+</body>
+</html>

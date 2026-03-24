@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Videos - Fiesta Cerveza y Poco Más</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: 'Arial Black', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .titulo {
+            color: #ffd700;
+            font-size: 36px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        /* Contenedor de los videos */
+        .grid-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tarjeta-video {
+            background: #2d2d2d;
+            border: 3px solid #ffd700;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .nombre-video {
+            margin-top: 10px;
+            color: #ff0000;
+            font-size: 18px;
+        }
+
+        .boton-volver {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 30px;
+            background: #ffd700;
+            color: black;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="titulo">NUESTROS MEJORES MOMENTOS</h1>
+
+    <div class="grid-videos">
+        <div class="tarjeta-video">
+            <video controls>
+                <source src="35816281-5820-42eb-9958-add6a961e862.mp4" type="video/mp4">
+            </video>
+            <p class="nombre-video">GRUPO FRONTERA</p>
+        </div>
+
+        <div class="tarjeta-video">
+            <video controls>
+                <source src="65f8a831-2a09-4d9b-93ce-74a7911ca62d.mp4" type="video/mp4">
+            </video>
+            <p class="nombre-video">JBL BASS LIVE 1</p>
+        </div>
+
+        <div class="tarjeta-video">
+            <video controls>
+                <source src="104ae8ba-ee6d-4dd7-950f-d58105d96b98.mp4" type="video/mp4">
+            </video>
+            <p class="nombre-video">JBL BASS LIVE 2</p>
+        </div>
+
+        <div class="tarjeta-video">
+            <video controls>
+                <source src="41860086-b718-4769-8199-c6ea9632ea98.mp4" type="video/mp4">
+            </video>
+            <p class="nombre-video">JBL BASS LIVE 3</p>
+        </div>
+
+        <div class="tarjeta-video">
+            <video controls>
+                <source src="104ae8ba-ee6d-4dd7-950f-d58105d96b98 (1).mp4" type="video/mp4">
+            </video>
+            <p class="nombre-video">AMBIENTE VIP A</p>
+        </div>
+
+        <div class="tarjeta-video">
+            <video controls>
+                <source src="41860086-b718-4769-8199-c6ea9632ea98 (1).mp4" type="video/mp4">
+            </video>
+            <p class="nombre-video">AMBIENTE VIP B</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="boton-volver">VOLVER AL INICIO</a>
+
+</body>
+</html>
