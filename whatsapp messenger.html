@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Messenger BNS - Mensajería Segura & Profesional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Paleta de colores inspirada en WhatsApp + toques profesionales */
+        :root {
+            --verde-whats: #25D366;
+            --verde-oscuro: #128C7E;
+            --azul-profesional: #075E54;
+            --gris-claro: #ECE5DD;
+            --blanco: #FFFFFF;
+            --gris-texto: #3C4A49;
+            --azul-acento: #34B7F1;
+            --gris-oscuro: #1C1E21;
+        }
+
+        body {
+            background-color: var(--gris-claro);
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+
+        /* Banner superior */
+        .banner-superior {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 0.8rem 5%;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        /* Navegación */
+        nav {
+            background-color: var(--azul-profesional);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo i {
+            color: var(--verde-whats);
+            font-size: 2.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--verde-whats);
+        }
+
+        .btn-descarga {
+            background-color: var(--verde-whats);
+            color: var(--blanco);
+            padding: 0.6rem 1.8rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-left: 2rem;
+        }
+
+        .btn-descarga:hover {
+            background-color: #1EBE58;
+        }
+
+        /* Menú hamburguesa */
+        .menu-hamburguesa {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--blanco);
+            cursor: pointer;
+        }
+
+        /* Sección Hero */
+        .hero {
+            padding: 7rem 5% 5rem;
+            background: linear-gradient(rgba(7, 94, 84, 0.9), rgba(18, 140, 126, 0.8)), url('https://images.unsplash.com/photo-1551009175-15bdf9dcb580?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--blanco);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-texto {
+            flex: 1 1 400px;
+        }
+
+        .hero-texto h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-texto h1 span {
+            color: var(--verde-whats);
+        }
+
+        .hero-texto p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-imagen {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .hero-imagen img {
+            max-width: 80%;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background-color: var(--verde-whats);
+            color: var(--blanco);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s;
+            box-shadow: 0 3px
+			

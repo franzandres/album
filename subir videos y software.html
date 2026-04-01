@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaUpload - Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- ESTILOS CSS --- */
+        :root {
+            --azul-principal: #0d47a1;
+            --celeste-fondo: #e3f2fd;
+            --amarillo-accion: #ffeb3b;
+            --blanco: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--celeste-fondo);
+            color: #333;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--azul-principal);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--amarillo-accion);
+        }
+
+        .logo h1 { margin: 0; font-size: 24px; }
+        .logo span { color: var(--amarillo-accion); }
+
+        nav ul { list-style: none; display: flex; gap: 20px; margin: 0; }
+        nav a { color: white; text-decoration: none; font-weight: bold; font-size: 14px; }
+
+        /* Contenedor Principal */
+        .main-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Tarjeta de Carga */
+        .upload-card {
+            background: var(--blanco);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .drop-zone {
+            border: 3px dashed #90caf9;
+            padding: 40px;
+            border-radius: 10px;
+            background-color: #f8fbff;
+            margin: 20px 0;
+        }
+
+        .drop-zone i { font-size: 50px; color: var(--azul-principal); }
+
+        .btn-upload {
+            background-color: var(--amarillo-accion);
+            color: var(--azul-principal);
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 15px;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-upload:hover { background-color: #fdd835; transform: scale(1.05); }
+
+        /* Barra de Progreso */
+        .progress-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .progress-bg {
+            background: #eee;
+            height: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--amarillo-accion);
+            transition: width 0.2s;
+        }
+
+        /* Tabla de Historial */
+        .history-card {
+            background: var(--blanco);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--amarillo-accion);
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: var(--celeste-fondo); color: var(--azul-principal); padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #eee; font-size: 14px; }
+
+        .icon-v { color: #e53935; margin-right: 8px; } /* Video */
+        .icon-s { color: #1e88e5; margin-right: 8px; } /* Software */
+        .icon-j { color: #43a047; margin-right: 8px; } /* Juego */
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><h1><span>MEDIA</span>UPLOAD</h1></div>
+        <nav>
+            <ul>
+                <li><a href="#">VIDEOS</a></li>
+                <li><a href="#">SOFTWARE</a></li>
+                <li><a href="#">JUEGOS</a></li>
+                <li><a href="#">DOCUMENTOS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        
+        <section class="upload-card">
+            <h2>Subir Videos Pesados y Software</h2>
+            <p>Soporta archivos de gran tamaño (GB) con alta velocidad</p>
+            
+            <div class="drop-zone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Arrastra tus archivos aquí o</p>
+                <input type="file" id="inputArchivos" hidden>
+                <label for="inputArchivos" class="btn-upload">SELECCIONAR ARCHIVO</label>
+            </div>
+
+            <div id="progreso-box" class="progress-container">
+                <p id="nombre-archivo" style="font-weight: bold;"></p>
+                <div class="progress-bg">
+                    <div id="barra-llenado" class="progress-fill"></div>
+                </div>
+                <p id="porcentaje">0%</p>
+            </div>
+        </section>
+
+        <section class="history-card">
+            <h3><i class="fas fa-history"></i> Historial de archivos subidos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre del Archivo</th>
+                        <th>Tamaño</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-file-video icon-v"></i> Gameplay_Final_Boss.mp4</td>
+                        <td>12.4 GB</td>
+                        <td style="color: green;">Completado</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-file-code icon-s"></i> Photoshop_2026_Full.exe</td>
+                        <td>4.2 GB</td>
+                        <td style="color: green;">Completado</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-gamepad icon-j"></i> Cyberpunk_Redemption.zip</td>
+                        <td>58.1 GB</td>
+                        <td style="color: orange;">En la nube</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <script>
+        /* --- LÓGICA JAVASCRIPT --- */
+        const input = document.getElementById('inputArchivos');
+        const boxProgreso = document.getElementById('progreso-box');
+        const barra = document.getElementById('barra-llenado');
+        const textoPorcentaje = document.getElementById('porcentaje');
+        const textoNombre = document.getElementById('nombre-archivo');
+
+        input.addEventListener('change', function() {
+            const archivo = this.files[0];
+            if (archivo) {
+                boxProgreso.style.display = 'block';
+                textoNombre.innerText = "Subiendo: " + archivo.name;
+                
+                let progreso = 0;
+                const intervalo = setInterval(() => {
+                    progreso += Math.random() * 8; // Simulación de subida
+                    
+                    if (progreso >= 100) {
+                        progreso = 100;
+                        clearInterval(intervalo);
+                        textoNombre.innerText = "¡Archivo subido con éxito!";
+                        alert("El software/video se ha subido correctamente.");
+                    }
+                    
+                    barra.style.width = progreso + '%';
+                    textoPorcentaje.innerText = Math.round(progreso) + '%';
+                }, 200);
+            }
+        });
+    </script>
+
+</body>
+</html>

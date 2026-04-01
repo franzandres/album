@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Galería de Imágenes</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Un fondo gris claro suave */
+    color: #333;
+  }
+  .contenedor-principal {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #2c3e50; /* Azul oscuro para el título principal */
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+  }
+  .galeria-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas que se ajustan */
+    gap: 30px; /* Espacio entre categorías */
+  }
+  .categoria {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Para que los bordes redondeados funcionen bien */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .categoria:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+  .categoria h2 {
+    text-align: center;
+    color: #34495e; /* Azul un poco más claro para el título de categoría */
+    padding: 20px 15px;
+    margin: 0;
+    font-size: 1.6em;
+    background-color: #ecf0f1; /* Fondo gris muy claro para el título */
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .imagenes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; /* Espacio entre las imágenes individuales */
+    padding: 20px;
+  }
+  .imagen-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  .imagen-item:hover {
+    transform: scale(1.03); /* Efecto de zoom leve */
+  }
+  .imagen-item img {
+    width: 100%;
+    height: 220px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Cubre el área manteniendo la proporción, recorta si es necesario */
+    display: block; /* Elimina espacio extra debajo de la imagen */
+    border-top-left-radius: 8px; /* Alinea con el borde del item */
+    border-top-right-radius: 8px;
+  }
+  .imagen-item p {
+    margin: 15px 10px 10px 10px; /* Espaciado para el texto */
+    font-size: 0.95em;
+    color: #555;
+    text-align: center;
+  }
+
+  /* Estilos para hacerla responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .galeria-categorias {
+      grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    }
+    .categoria h2 {
+      font-size: 1.4em;
+    }
+    .imagenes-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Imágenes un poco más pequeñas */
+      padding: 15px;
+    }
+    .imagen-item img {
+      height: 180px;
+    }
+    .imagen-item p {
+      font-size: 0.9em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contenedor-principal {
+      margin: 20px auto;
+      padding: 15px;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 25px;
+    }
+    .categoria h2 {
+      font-size: 1.2em;
+      padding: 15px 10px;
+    }
+    .imagenes-grid {
+      grid-template-columns: 1fr; /* Una sola columna para imágenes en pantallas muy pequeñas */
+      padding: 10px;
+    }
+    .imagen-item img {
+      height: 160px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="contenedor-principal">
+  <h1>Galería de Inspiración</h1>
+
+  <div class="galeria-categorias">
+
+    <div class="categoria">
+      <h2>Revistas</h2>
+      <div class="imagenes-grid">
+        <div class="imagen-item">
+          <img src="ruta/a/tu/revista_moda.jpg" alt="Portada Revista de Moda">
+          <p>Revista de Moda de Alta Costura</p>
+        </div>
+        <div class="imagen-item">
+          <img src="ruta/a/tu/revista_belleza.jpg" alt="Portada Revista de Belleza">
+          <p>Revista de Belleza con Maquillaje</p>
+        </div>
+        <div class="imagen-item">
+          <img src="ruta/a/tu/revista_estilo_vida.jpg" alt="Portada Revista de Estilo de Vida">
+          <p>Revista de Estilo de Vida</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h2>Accesorios</h2>
+      <div class="imagenes-grid">
+        <div class="imagen-item">
+          <img src="ruta/a/tu/collar_diamantes.jpg" alt="Collar de Diamantes">
+          <p>Collar de Oro y Diamantes</p>
+        </div>
+        <div class="imagen-item">
+          <img src="ruta/a/tu/bolso_cuero.jpg" alt="Bolso de Cuero Borgoña">
+          <p>Bolso de Cuero de Diseñador</p>
+        </div>
+        <div class="imagen-item">
+          <img src="ruta/a/tu/gafas_sol.jpg" alt="Gafas de Sol Aviador">
+          <p>Gafas de Sol Estilo Aviador</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h2>Peluquería</h2>
+      <div class="imagenes-grid">
+        <div class="imagen-item">
+          <img src="ruta/a/tu/corte_bob.jpg" alt="Corte de Pelo Bob Asimétrico">
+          <p>Corte de Pelo Bob Moderno</p>
+        </div>
+        <div class="imagen-item">
+          <img src="ruta/a/tu/peinado_recogido.jpg" alt="Peinado Recogido Elegante">
+          <p>Peinado Recogido Elegante</
