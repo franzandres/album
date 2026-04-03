@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebFix Pro - Análisis y Optimización Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD100', // Amarillo vibrante
+                        secondary: '#0F0F0F', // Negro profundo
+                        dark: '#1A1A1A',
+                        light_text: '#D1D1D1', // Gris claro para texto secundario
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow-primary {
+                text-shadow: 0px 0px 10px rgba(255, 209, 0, 0.5);
+            }
+            .glow-primary {
+                box-shadow: 0 0 15px rgba(255, 209, 0, 0.4);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 30px rgba(255, 209, 0, 0.2);
+            }
+            .bg-grid-pattern {
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                                  linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                background-size: 20px 20px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-secondary text-white font-sans overflow-x-hidden">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-secondary/90 backdrop-blur-md border-b border-primary/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-3xl font-black text-primary tracking-tighter">
+                    WEB<span class="text-white">FIX</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="hover:text-primary transition-colors">Inicio</a>
+                    <a href="#analisis" class="hover:text-primary transition-colors">Análisis</a>
+                    <a href="#optimizacion" class="hover:text-primary transition-colors">Optimización</a>
+                    <a href="#configuracion" class="hover:text-primary transition-colors">Configuración</a>
+                    <a href="#descarga" class="hover:text-primary transition-colors">Descarga HTML</a>
+                </div>
+                <button class="bg-primary text-secondary font-bold px-6 py-2 rounded-full hover:glow-primary transition-all">
+                    INICIAR ANÁLISIS
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-32 pb-20 relative bg-grid-pattern">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_#FFD100_0%,_transparent_30%)] opacity-10"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-[clamp(2.5rem,6vw,5rem)] font-black leading-tight mb-6">
+                TU WEB, <span class="text-primary text-shadow-primary">PERFECTA</span>.
+            </h1>
+            <p class="text-light_text text-xl max-w-3xl mx-auto mb-10">
+                La plataforma inteligente para analizar, corregir y optimizar tu sitio web, dejándolo listo para el éxito y con HTML limpio para descargar.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button class="bg-primary text-secondary text-lg font-bold px-8 py-4 rounded-full hover:glow-primary transition-all">
+                    <i class="fa fa-stethoscope mr-2"></i> ANÁLISIS GRATUITO
+                </button>
+                <button class="border border-primary text-primary text-lg font-bold px-8 py-4 rounded-full hover:bg-primary/10 transition-all">
+                    <i class="fa fa-info-circle mr-2"></i> ¿CÓMO FUNCIONA?
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Entrada de URL -->
+    <section class="py-20 bg-dark">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-black mb-8">
+                INICIA LA <span class="text-primary">AUDITORÍA</span>
+            </h2>
+            <p class="text-light_text text-xl mb-10 max-w-2xl mx-auto">
+                Pega la URL de tu sitio web y nuestra IA avanzada detectará cada error, oportunidad de mejora y problemas de rendimiento.
+            </p>
+            <div class="max-w-3xl mx-auto bg-secondary p-4 rounded-full border border-primary/30 flex items-center">
+                <i class="fa fa-link text-primary text-xl ml-4"></i>
+                <input type="url" placeholder="https://tu-sitio-web.com" class="bg-transparent border-none outline-none text-white w-full px-4 py-3 text-lg" />
+                <button class="bg-primary text-secondary font-bold px-8 py-3 rounded-full hover:glow-primary transition-all whitespace-nowrap">
+                    <i class="fa fa-play mr-2"></i> ANALIZAR
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades Clave -->
+    <section id="analisis" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16">
+                NUESTRAS <span class="text-primary">FUNCIONES</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Tarjeta 1: Análisis Profundo -->
+                <div class="bg-dark p-8 rounded-2xl border border-primary/20 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa fa-bug"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Análisis de Errores</h3>
+                    <p class="text-light_text">Identifica y clasifica errores HTML, CSS, JavaScript, SEO, accesibilidad y rendimiento con reportes detallados.</p>
+                </div>
+
+                <!-- Tarjeta 2: Eliminación Inteligente -->
+                <div id="optimizacion" class="bg-dark p-8 rounded-2xl border border-primary/20 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa fa-eraser"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Corrección Automatizada</h3>
+                    <p class="text-light_text">Elimina código obsoleto, arregla enlaces rotos, optimiza imágenes y minifica archivos CSS/JS automáticamente.</p>
+                </div>
+
+                <!-- Tarjeta 3: Configuración Avanzada -->
+                <div id="configuracion" class="bg-dark p-8 rounded-2xl border border-primary/20 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Configuración Optima</h3>
+                    <p class="text-light_text">Ajusta metadatos, optimiza la estructura para SEO, configura caché y CDN para una carga ultrarrápida.</p>
+                </div>
+
+                <!-- Tarjeta 4: Previsualización -->
+                <div class="bg-dark p-8 rounded-2xl border border-primary/20 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Previsualización en Vivo</h3>
+                    <p class="text-light_text">Visualiza los cambios y las mejoras en tiempo real antes de descargar tu nueva versión optimizada.</p>
+                </div>
+
+                <!-- Tarjeta 5: Reportes Detallados -->
+                <div class="bg-dark p-8 rounded-2xl border border-primary/20 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa fa-line-chart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Reportes de Rendimiento</h3>
+                    <p class="text-light_text">Obtén métricas claras sobre la velocidad de carga, interactividad y estabilidad de tu sitio antes y después.</p>
+                </div>
+
+                <!-- Tarjeta 6: Descarga HTML Limpio -->
+                <div id="descarga" class="bg-dark p-8 rounded-2xl border border-primary/20 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa fa-download"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Descarga HTML Limpio</h3>
+                    <p class="text-light_text">Recibe el código HTML, CSS y JS optimizado y listo para ser subido a cualquier servidor o CMS.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Resultado / CTA Final -->
+    <section class="py-20 bg-secondary relative">
+        <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,209,0,0.05)_0%,transparent_50%)]"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-black mb-8">
+                TU WEB, <span class="text-primary">EN SU MEJOR VERSIÓN</span>
+            </h2>
+            <p class="text-light_text text-xl mb-10 max-w-3xl mx-auto">
+                No más errores, no más lentitud. Configura, optimiza y descarga el HTML de tu sitio listo para brillar.
+            </p>
+            <button class="bg-primary text-secondary text-lg font-bold px-10 py-5 rounded-full hover:glow-primary transition-all">
+                <i class="fa fa-cloud-download mr-3"></i> OBTENER HTML OPTIMIZADO
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 border-t border-primary/20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-black text-primary mb-4">
+                WEB<span class="text-white">FIX</span> PRO
+            </div>
+            <p class="text-gray-500">© 2026 WebFix Pro. Tu aliado para una web impecable.</p>
+            <div class="mt-6 space-x-4">
+                <a href="#" class="text-primary hover:text-white"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="text-primary hover:text-white"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="text-primary hover:text-white"><i class="fa fa-linkedin"></i></a>
+                <a href="#" class="text-primary hover:text-white"><i class="fa fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Efecto de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
