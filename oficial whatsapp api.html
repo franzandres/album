@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integración Oficial - WhatsApp API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wa_green: '#25D366',
+                        wa_dark: '#128C7E',
+                        text_dark: '#212121',
+                        text_light: '#757575',
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .badge-shadow {
+                box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+            }
+            .icon-box {
+                background: #F5F5F5;
+                border: 1px solid #E0E0E0;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-text_dark font-sans overflow-x-hidden">
+
+    <!-- Sección Principal -->
+    <main class="container mx-auto px-6 py-16">
+        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
+            
+            <!-- Zona de Logos y Herramientas -->
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-8 mb-10">
+                
+                <!-- Icono/Logo Principal -->
+                <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                    <i class="fa fa-whatsapp text-4xl text-wa_green"></i>
+                </div>
+
+                <!-- Flecha de Reemplazo -->
+                <div class="flex items-center text-text_light text-lg">
+                    <span>Replaces</span>
+                    <i class="fa fa-long-arrow-right mx-3 text-xl"></i>
+                </div>
+
+                <!-- Iconos de Herramientas que integra o sustituye -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="icon-box rounded-lg px-4 py-2 flex items-center gap-2">
+                        <i class="fa fa-whatsapp text-2xl text-wa_green"></i>
+                        <span class="font-semibold">wati</span>
+                    </div>
+                    <div class="icon-box rounded-lg px-4 py-2 flex items-center gap-2">
+                        <i class="fa fa-bolt text-2xl text-blue-500"></i>
+                        <span class="font-semibold">AiSensy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etiqueta de Oficialidad -->
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-wa_green text-white rounded-full p-1 badge-shadow">
+                    <i class="fa fa-check"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-text_dark">Official WhatsApp API</h2>
+            </div>
+
+            <!-- Descripción -->
+            <div class="space-y-6 text-lg text-gray-700 mb-10">
+                <p>
+                    Migra y escala tus comunicaciones con la <strong class="text-wa_dark">API Oficial de WhatsApp</strong>. 
+                    Nuestra solución está diseñada para reemplazar y mejorar herramientas como Wati, AiSensy y otras plataformas de automatización, ofreciéndote una integración directa, segura y certificada por Meta.
+                </p>
+                <p>
+                    Disfruta de todas las funcionalidades que ya conoces y más: envío de mensajes masivos, automatización con inteligencia artificial, gestión de agentes, plantillas aprobadas y cumplimiento total con las normativas de privacidad y seguridad.
+                </p>
+            </div>
+
+            <!-- Características Clave -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                    <i class="fa fa-check-circle text-wa_green text-3xl mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Integración Oficial</h3>
+                    <p class="text-gray-600">Conectividad directa y autorizada, evitando limitaciones o bloqueos.</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <i class="fa fa-exchange text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Reemplazo Perfecto</h3>
+                    <p class="text-gray-600">Sustituye tus herramientas actuales sin perder funcionalidades ni datos.</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                    <i class="fa fa-rocket text-purple-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Escalabilidad Total</h3>
+                    <p class="text-gray-600">Desde pequeñas empresas hasta grandes corporaciones, adaptamos el servicio a tu volumen.</p>
+                </div>
+            </div>
+
+            <!-- Llamada a la Acción -->
+            <div class="text-center">
+                <button class="bg-wa_green hover:bg-wa_dark text-white font-bold text-xl px-10 py-4 rounded-full transition-all shadow-lg">
+                    SOLICITAR INTEGRACIÓN AHORA
+                </button>
+                <p class="text-text_light mt-4">¿Listo para dar el salto a la API Oficial?</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 py-8 mt-10">
+        <div class="container mx-auto px-6 text-center text-text_light">
+            <p>&copy; 2026 Servicios de Integración - WhatsApp API Oficial. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
