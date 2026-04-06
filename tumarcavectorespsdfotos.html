@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos Gráficos y Plantillas | TuMarca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D47A1', // Azul oscuro principal
+                        secondary: '#29B6F6', // Azul claro / Cyan
+                        dark_bg: '#101828', // Fondo oscuro
+                        card_bg: '#F9FAFB',
+                        text_light: '#E0E0E0',
+                        text_dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero-pattern {
+            background-color: #101828;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2329B6F6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-text_dark font-sans overflow-x-hidden">
+
+    <!-- Barra de Navegación Superior -->
+    <header class="bg-dark_bg text-text_light shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-white flex items-center">
+                <i class="fa fa-leaf text-secondary mr-2"></i> TuMarca
+            </a>
+
+            <!-- Menú de Navegación -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm">
+                <a href="#" class="hover:text-secondary transition-colors">Vectores</a>
+                <a href="#" class="hover:text-secondary transition-colors">Fotos</a>
+                <a href="#" class="hover:text-secondary transition-colors">PSD</a>
+                <a href="#" class="hover:text-secondary transition-colors">Iconos</a>
+                <a href="#" class="hover:text-secondary transition-colors font-bold text-yellow-400">Premium</a>
+                <a href="#" class="hover:text-secondary transition-colors">Colecciones</a>
+            </nav>
+
+            <!-- Acciones del Usuario -->
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-sm hover:text-secondary">Inicia sesión</a>
+                <button class="bg-secondary hover:bg-blue-400 text-dark_bg px-4 py-2 rounded text-sm font-bold transition-colors">
+                    Regístrate
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Hero (Banner Principal) -->
+    <section class="hero-pattern py-16 md:py-24 text-center text-white relative overflow-hidden">
+        <!-- Efecto de hojas/elementos decorativos -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80'); background-size: cover; background-position: center;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Recursos gráficos para todos</h1>
+            <p class="text-xl text-text_light mb-8">Encuentra Vectores, Fotos de Stock, PSD e Iconos Gratis</p>
+
+            <!-- Barra de Búsqueda -->
+            <div class="max-w-3xl mx-auto relative">
+                <div class="flex bg-white rounded-lg overflow-hidden shadow-xl">
+                    <select class="px-4 py-4 text-text_dark border-r border-gray-200 focus:outline-none">
+                        <option>Todos los recursos</option>
+                        <option>Vectores</option>
+                        <option>Fotos</option>
+                        <option>PSD</option>
+                        <option>Iconos</option>
+                    </select>
+                    <input type="text" placeholder="Buscar todos los recursos..." class="flex-grow px-4 py-4 text-text_dark focus:outline-none">
+                    <button class="bg-primary hover:bg-blue-800 px-6 text-white font-bold">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div class="flex justify-center mt-4 space-x-3">
+                    <button class="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Populares</button>
+                    <button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Recientes</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Categorías / Filtros -->
+    <section class="bg-white py-4 border-b border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap items-center gap-3 text-sm">
+                <span class="font-bold">Selección de TuMarca:</span>
+                <a href="#" class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Vectores</a>
+                <a href="#" class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Fotos</a>
+                <a href="#" class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">PSD</a>
+                <a href="#" class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Iconos</a>
+                <a href="#" class="px-3 py-1 bg-secondary/20 text-primary rounded-full hover:bg-secondary/30 font-bold">Más populares</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería / Cuadrícula de Imágenes -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            
+            <!-- Item 1 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1513151227369-96212db68145?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Diseño floral" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white text-xs font-bold">Vectores</span>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1556742039-c16119787949?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Banner oferta" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white text-xs font-bold">Plantillas</span>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1617791160505-6f00507e8eac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Inteligencia Artificial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white text-xs font-bold">Fotos</span>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mujer en oficina" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white text-xs font-bold">Fotos</span>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Decoración" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white text-xs font-bold">PSD</span>
+                </div>
+            </div>
+            
+            <!-- Item 6 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Fiesta" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white text-xs font-bold">Vectores</span>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1550684846-343f9f4c0a47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Abstracto verde" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white text-xs font-bold">Fondos</span>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Tecnología" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-white text-xs font-bold">3D</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botón Ver Más -->
+        <div class="text-center mt-10">
+            <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-bold transition-all">
+                Ver más resultados
+            </button>
+        </div>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-dark_bg text-text_light py-12 mt-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-bold mb-4">Categorías</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-secondary">Vectores</a></li>
+                        <li><a href="#" class="hover:text-secondary">Fotos</a></li>
+                        <li><a href="#" class="hover:text-secondary">PSD</a></li>
+                        <li><a href="#" class="hover:text-secondary">Iconos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Empresa</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-secondary">Sobre nosotros</a></li>
+                        <li><a href="#" class="hover:text-secondary">Blog</a></li>
+                        <li><a href="#" class="hover:text-secondary">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Legal</h4>
