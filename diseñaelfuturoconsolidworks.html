@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolidWorks | Diseño 3D e Ingeniería Avanzada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        solid_blue: '#2A5D8A', // Azul principal de SolidWorks
+                        solid_dark: '#1A2E3E', // Azul oscuro para fondos y texto
+                        light_bg: '#F3F6F9', // Fondo claro principal
+                        text_gray: '#6B7A8C', // Gris para texto secundario
+                        accent_teal: '#00BCD4', // Verde azulado para acentos de tecnología
+                        white_text: '#FFFFFF', // Texto blanco
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'Arial', 'sans-serif'], // Fuente moderna y legible
+                        heading: ['Montserrat', 'sans-serif'], // Para títulos grandes
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light_bg text-solid_dark font-sans overflow-x-hidden">
+
+    <!-- Navegación -->
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="#" class="text-3xl font-heading font-extrabold text-solid_blue">
+                <i class="fa fa-cubes mr-2 text-accent_teal"></i>SolidWorks Pro
+            </a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#introduccion" class="text-solid_dark hover:text-solid_blue transition-colors">Inicio</a></li>
+                    <li><a href="#capacidades" class="text-solid_dark hover:text-solid_blue transition-colors">Capacidades</a></li>
+                    <li><a href="#servicios" class="text-solid_dark hover:text-solid_blue transition-colors">Servicios</a></li>
+                    <li><a href="#formacion" class="text-solid_dark hover:text-solid_blue transition-colors">Formación</a></li>
+                    <li><a href="#contacto" class="text-solid_dark hover:text-solid_blue transition-colors">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="bg-solid_blue hover:bg-blue-700 text-white_text px-5 py-2 rounded-lg font-bold transition-all">
+                Solicitar Demo
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="introduccion" class="relative py-20 md:py-32 text-center bg-cover bg-center" 
+             style="background-image: url('https://images.unsplash.com/photo-1542838183-494b15096b79?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+        <div class="absolute inset-0 bg-solid_dark opacity-75"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="font-heading text-5xl md:text-6xl font-extrabold mb-4 leading-tight text-white_text">
+                Diseña el Futuro con <span class="text-solid_blue">SolidWorks</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto mb-10">
+                La solución líder para diseño CAD 3D, ingeniería, simulación y gestión de datos de producto.
+            </p>
+            <button class="bg-solid_blue hover:bg-blue-700 text-white_text text-xl px-10 py-5 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-all">
+                Conocer Más
+            </button>
+        </div>
+    </section>
+
+    <!-- Sección de Capacidades Clave -->
+    <section id="capacidades" class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-12 text-solid_dark">Capacidades que Transforman</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-light_bg p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-solid_blue">
+                    <i class="fa fa-cube text-5xl text-solid_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Diseño CAD 3D Intuitivo</h3>
+                    <p class="text-text_gray">Crea diseños complejos de piezas y ensamblajes con una interfaz amigable y potente.</p>
+                </div>
+                <div class="bg-light_bg p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-solid_blue">
+                    <i class="fa fa-calculator text-5xl text-solid_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Simulación Avanzada</h3>
+                    <p class="text-text_gray">Valida el rendimiento y la fiabilidad de tus diseños antes de la fabricación física.</p>
+                </div>
+                <div class="bg-light_bg p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-solid_blue">
+                    <i class="fa fa-print text-5xl text-solid_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Fabricación Asistida (CAM)</h3>
+                    <p class="text-text_gray">Genera trayectorias de herramientas para mecanizado CNC directamente desde tus modelos 3D.</p>
+                </div>
+                <div class="bg-light_bg p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-solid_blue">
+                    <i class="fa fa-file-text-o text-5xl text-solid_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Documentación Técnica</h3>
+                    <p class="text-text_gray">Crea planos 2D detallados, listas de materiales y manuales de producto eficientemente.</p>
+                </div>
+                <div class="bg-light_bg p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-solid_blue">
+                    <i class="fa fa-database text-5xl text-solid_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Gestión de Datos (PDM)</h3>
+                    <p class="text-text_gray">Organiza y controla todas las versiones de tus diseños, facilitando la colaboración segura.</p>
+                </div>
+                <div class="bg-light_bg p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-solid_blue">
+                    <i class="fa fa-bolt text-5xl text-solid_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Automatización del Diseño</h3>
+                    <p class="text-text_gray">Acelera el proceso de diseño con herramientas para la automatización de tareas repetitivas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios de Implementación/Soporte -->
+    <section id="servicios" class="py-16 bg-solid_dark text-white_text">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-12 text-accent_teal">Nuestros Servicios SolidWorks</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-solid_blue p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <i class="fa fa-wrench text-5xl text-white_text mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Instalación y Configuración</h3>
+                    <p class="text-gray-200">Asistencia experta para una implementación fluida y configuración óptima de SolidWorks.</p>
+                </div>
+                <div class="bg-solid_blue p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <i class="fa fa-headphones text-5xl text-white_text mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Soporte Técnico Especializado</h3>
+                    <p class="text-gray-200">Resolución rápida de incidencias y asesoramiento continuo por parte de ingenieros certificados.</p>
+                </div>
+                <div class="bg-solid_blue p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <i class="fa fa-lightbulb-o text-5xl text-white_text mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Consultoría de Diseño</h3>
+                    <p class="text-gray-200">Optimización de procesos de diseño y desarrollo de productos con mejores prácticas en SolidWorks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Formación y Capacitación -->
+    <section id="formacion" class="py-16 bg-light_bg">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-12 text-solid_dark">Capacitación y Certificación SolidWorks</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-solid_blue/30 transition-shadow border-t-4 border-solid_blue">
+                    <h3 class="font-heading text-3xl font-bold mb-4 text-solid_blue">SolidWorks Esencial</h3>
+                    <p class="text-text_gray mb-6">Aprende a dominar las herramientas básicas para crear piezas y ensamblajes desde cero.</p>
+                    <ul class="list-disc pl-5 text-text_gray text-left mb-6 space-y-1">
+                        <li>Conceptos básicos de CAD 3D.</li>
+                        <li>Creación de croquis y operaciones de extrusión.</li>
+                        <li>Diseño de piezas paramétricas.</li>
+                        <li>Ensamblajes simples.</li>
+                    </ul>
+                    <button class="bg-solid_blue hover:bg-blue-700 text-white_text px-8 py-3 rounded-lg font-bold transform hover:scale-105 transition-all">
+                        Ver Programa Completo
+                    </button>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-solid_blue/30 transition-shadow border-t-4 border-solid_blue">
+                    <h3 class="font-heading text-3xl font-bold mb-4 text-solid_blue">SolidWorks Avanzado & Certificación</h3>
+                    <p class="text-text_gray mb-6">Profundiza en funcionalidades avanzadas y prepárate para las certificaciones CSWA/CSWP.</p>
+                    <ul class="list-disc pl-5 text-text_gray text-left mb-6 space-y-1">
+                        <li>Superficies, chapa metálica y soldaduras.</li>
+                        <li>Simulación FEA básica.</li>
+                        <li>Modelado de grandes ensamblajes.</li>
+                        <li>Preparación para exámenes de certificación.</li>
+                    </ul>
+                    <button class="bg-solid_blue hover:bg-blue-700 text-white_text px-8 py-3 rounded-lg font-bold transform hover:scale-105 transition-all">
+                        Inscribirme
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamada a la Acción Final / Contacto -->
+    <section id="contacto" class="bg-accent_teal py-20 text-center text-white_text">
+        <div class="container mx-auto px-6">
+            <h2 class="font-heading text-4xl md:text-5xl font-extrabold mb-6">¿Listo para Llevar tus Diseños al Siguiente Nivel?</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-10">
+                Contáctanos para una demo personalizada, información sobre licenciamiento o para inscribirte en nuestros cursos.
+            </p>
+            <a href="mailto:info@tudominio.com" class="bg-white_text hover:bg-gray-200 text-solid_dark text-xl px-10 py-4 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-all">
+                HABLA CON UN EXPERTO
+            </a>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="bg-solid_dark py-8 text-gray-300 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2026 SolidWorks Pro | [Tu Empresa]. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="text-gray-300 hover:text-accent_teal transition-colors"><i class="fa fa-facebook-square text-2xl"></i></a>
+                <a href="#" class="text-gray-300 hover:text-accent_teal transition-colors"><i class="fa fa-twitter-square text-2xl"></i></a>
+                <a href="#" class="text-gray-300 hover:text-accent_teal transition-colors"><i class="fa fa-linkedin-square text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

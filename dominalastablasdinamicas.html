@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas Dinámicas | Domina el Análisis de Datos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary_blue: '#2563EB', // Azul vibrante para el branding y acentos
+                        dark_blue_bg: '#1E3A8A', // Azul oscuro para fondos de secciones
+                        light_gray_bg: '#F3F4F6', // Fondo claro principal
+                        text_dark: '#1F2937',    // Texto oscuro para legibilidad
+                        text_light: '#4B5563',   // Texto secundario
+                        accent_orange: '#F59E0B', // Naranja para llamadas a la acción
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Fuente moderna y limpia
+                        heading: ['Montserrat', 'sans-serif'], // Fuente para títulos impactantes
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light_gray_bg text-text_dark font-sans overflow-x-hidden">
+
+    <!-- Navegación -->
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="#" class="text-3xl font-heading font-extrabold text-primary_blue">
+                <i class="fa fa-table mr-2 text-accent_orange"></i>Tablas Dinámicas
+            </a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#introduccion" class="text-text_light hover:text-primary_blue transition-colors">¿Qué Son?</a></li>
+                    <li><a href="#beneficios" class="text-text_light hover:text-primary_blue transition-colors">Beneficios</a></li>
+                    <li><a href="#ejemplos" class="text-text_light hover:text-primary_blue transition-colors">Ejemplos</a></li>
+                    <li><a href="#cursos" class="text-text_light hover:text-primary_blue transition-colors">Cursos</a></li>
+                    <li><a href="#contacto" class="text-text_light hover:text-primary_blue transition-colors">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="bg-accent_orange hover:bg-yellow-600 text-white px-5 py-2 rounded-lg font-bold transition-all">
+                Inscribirme
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 md:py-32 text-center bg-gradient-to-r from-dark_blue_bg to-primary_blue text-white">
+        <div class="container mx-auto px-6">
+            <h1 class="font-heading text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+                Domina las <span class="text-accent_orange">Tablas Dinámicas</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10">
+                Transforma montañas de datos en información valiosa y toma decisiones estratégicas con facilidad.
+            </p>
+            <button class="bg-accent_orange hover:bg-yellow-600 text-white text-xl px-10 py-5 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-all">
+                Explora Nuestros Cursos
+            </button>
+        </div>
+    </section>
+
+    <!-- Sección de Introducción: ¿Qué son las Tablas Dinámicas? -->
+    <section id="introduccion" class="py-16 bg-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="font-heading text-4xl font-bold mb-6 text-text_dark">¿Qué Son las Tablas Dinámicas?</h2>
+                <p class="text-lg text-text_light mb-4">
+                    Las Tablas Dinámicas (o Pivot Tables) son una herramienta poderosa que te permite resumir, analizar, explorar y presentar datos de forma rápida y eficiente en hojas de cálculo como Excel o Google Sheets.
+                </p>
+                <p class="text-lg text-text_light">
+                    Son ideales para identificar patrones, tendencias y realizar comparaciones complejas con solo arrastrar y soltar campos, sin necesidad de escribir fórmulas complicadas.
+                </p>
+                <ul class="list-disc pl-5 mt-6 text-text_light space-y-2">
+                    <li><strong class="text-primary_blue">Resumen Rápido:</strong> Agrupa y totaliza grandes volúmenes de datos.</li>
+                    <li><strong class="text-primary_blue">Análisis Flexible:</strong> Reorganiza la vista de los datos con facilidad.</li>
+                    <li><strong class="text-primary_blue">Toma de Decisiones:</strong> Obtén insights clave para tu negocio.</li>
+                </ul>
+            </div>
+            <div class="flex justify-center">
+                <img src="https://images.unsplash.com/photo-1551288259-0a996f429671?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Análisis de datos con gráficos" class="rounded-lg shadow-xl border-4 border-primary_blue w-full max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Beneficios Clave -->
+    <section id="beneficios" class="py-16 bg-light_gray_bg">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-12 text-text_dark">Beneficios de Usar Tablas Dinámicas</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-primary_blue">
+                    <i class="fa fa-line-chart text-5xl text-primary_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Análisis Profundo</h3>
+                    <p class="text-text_light">Descubre relaciones ocultas y tendencias en tus datos rápidamente.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-primary_blue">
+                    <i class="fa fa-rocket text-5xl text-primary_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Eficiencia Aumentada</h3>
+                    <p class="text-text_light">Reduce horas de trabajo manual en minutos con automatización de reportes.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-primary_blue">
+                    <i class="fa fa-flask text-5xl text-primary_blue mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Flexibilidad Total</h3>
+                    <p class="text-text_light">Adapta tus reportes a cualquier pregunta de negocio con solo unos clics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Ejemplos de Uso -->
+    <section id="ejemplos" class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-12 text-text_dark">Aplicaciones Prácticas</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-light_gray_bg p-6 rounded-lg shadow-sm border border-gray-200">
+                    <i class="fa fa-money text-4xl text-accent_orange mb-3"></i>
+                    <h3 class="font-heading text-xl font-bold mb-2">Análisis de Ventas</h3>
+                    <p class="text-text_light text-sm">Identifica los productos más vendidos, las regiones con mayor rendimiento y el desempeño de los vendedores.</p>
+                </div>
+                <div class="bg-light_gray_bg p-6 rounded-lg shadow-sm border border-gray-200">
+                    <i class="fa fa-users text-4xl text-accent_orange mb-3"></i>
+                    <h3 class="font-heading text-xl font-bold mb-2">Gestión de RRHH</h3>
+                    <p class="text-text_light text-sm">Analiza la demografía de la fuerza laboral, la rotación de personal y el rendimiento por departamento.</p>
+                </div>
+                <div class="bg-light_gray_bg p-6 rounded-lg shadow-sm border border-gray-200">
+                    <i class="fa fa-pie-chart text-4xl text-accent_orange mb-3"></i>
+                    <h3 class="font-heading text-xl font-bold mb-2">Presupuestos y Finanzas</h3>
+                    <p class="text-text_light text-sm">Compara gastos reales vs. presupuestados, y genera reportes financieros detallados.</p>
+                </div>
+                <div class="bg-light_gray_bg p-6 rounded-lg shadow-sm border border-gray-200">
+                    <i class="fa fa-shopping-cart text-4xl text-accent_orange mb-3"></i>
+                    <h3 class="font-heading text-xl font-bold mb-2">Inventario y Logística</h3>
+                    <p class="text-text_light text-sm">Optimiza niveles de stock, rastrea envíos y analiza la eficiencia de la cadena de suministro.</p>
+                </div>
+                <div class="bg-light_gray_bg p-6 rounded-lg shadow-sm border border-gray-200">
+                    <i class="fa fa-graduation-cap text-4xl text-accent_orange mb-3"></i>
+                    <h3 class="font-heading text-xl font-bold mb-2">Análisis Académico</h3>
+                    <p class="text-text_light text-sm">Evalúa el rendimiento estudiantil, la efectividad de programas y la distribución de calificaciones.</p>
+                </div>
+                <div class="bg-light_gray_bg p-6 rounded-lg shadow-sm border border-gray-200">
+                    <i class="fa fa-comments text-4xl text-accent_orange mb-3"></i>
+                    <h3 class="font-heading text-xl font-bold mb-2">Comentarios de Clientes</h3>
+                    <p class="text-text_light text-sm">Agrupa y analiza feedback para mejorar productos y servicios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Cursos y Capacitación -->
+    <section id="cursos" class="py-16 bg-dark_blue_bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-12 text-accent_orange">Nuestros Cursos y Capacitaciones</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-white p-8 rounded-lg shadow-xl text-text_dark hover:shadow-primary_blue/50 transition-shadow">
+                    <h3 class="font-heading text-3xl font-bold mb-4 text-primary_blue">Tabla Dinámica Esencial</h3>
+                    <p class="text-text_light mb-6">Desde lo básico hasta la creación de tus primeros reportes interactivos.</p>
+                    <ul class="list-disc pl-5 text-text_light text-left mb-6 space-y-1">
+                        <li>Creación de tablas dinámicas.</li>
+                        <li>Filtrado y ordenación de datos.</li>
+                        <li>Configuración de campos y cálculos.</li>
+                        <li>Gráficos dinámicos.</li>
+                    </ul>
+                    <button class="bg-primary_blue hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transform hover:scale-105 transition-all">
+                        Inscribirme al Curso Básico
+                    </button>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-xl text-text_dark hover:shadow-primary_blue/50 transition-shadow">
+                    <h3 class="font-heading text-3xl font-bold mb-4 text-primary_blue">Master en Tablas Dinámicas</h3>
+                    <p class="text-text_light mb-6">Explora funciones avanzadas, Power Pivot y automatización para expertos en datos.</p>
+                    <ul class="list-disc pl-5 text-text_light text-left mb-6 space-y-1">
+                        <li>Campos y elementos calculados.</li>
+                        <li>Conexión a múltiples fuentes de datos.</li>
+                        <li>Power Pivot y modelos de datos.</li>
+                        <li>Introducción a Macros para automatización.</li>
+                    </ul>
+                    <button class="bg-primary_blue hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transform hover:scale-105 transition-all">
+                        Ver Curso Avanzado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamada a la Acción Final -->
+    <section id="contacto" class="bg-primary_blue py-20 text-center text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="font-heading text-4xl md:text-5xl font-extrabold mb-6">¡Transforma tus Datos Hoy Mismo!</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-10">
+                Contacta a nuestros expertos para una consulta personalizada o para inscribirte en el curso que impulse tu carrera.
+            </p>
+            <button class="bg-accent_orange hover:bg-yellow-600 text-white text-xl px-10 py-4 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-all">
+                SOLICITAR INFORMACIÓN
+            </button>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="bg-dark_blue_bg py-8 text-blue-100 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2026 Tablas Dinámicas Expertos. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="text-blue-100 hover:text-accent_orange transition-colors"><i class="fa fa-facebook-square text-2xl"></i></a>
+                <a href="#" class="text-blue-100 hover:text-accent_orange transition-colors"><i class="fa fa-twitter-square text-2xl"></i></a>
+                <a href="#" class="text-blue-100 hover:text-accent_orange transition-colors"><i class="fa fa-linkedin-square text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

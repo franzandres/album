@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCAD 2D | Dominio del Diseño Preciso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary_red: '#DC2626', // Rojo vibrante
+                        dark_gray: '#1F2937', // Gris oscuro casi negro
+                        light_gray: '#4B5563', // Gris claro para texto secundario
+                        bg_black: '#0A0A0A', // Negro puro para fondos
+                        text_white: '#F9FAFB', // Blanco casi puro
+                        android_green_custom: '#3DDC84', // Un verde para Android que resalte sobre el negro/rojo
+                    },
+                    fontFamily: {
+                        sans: ['Roboto Mono', 'sans-serif'], // Fuente monospaced para un toque técnico
+                        heading: ['Montserrat', 'sans-serif'], // Fuente para títulos más impactantes
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-bg_black text-text_white font-sans overflow-x-hidden">
+
+    <!-- Navegación -->
+    <header class="bg-dark_gray shadow-lg py-4 border-b-2 border-primary_red sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="#" class="text-3xl font-heading font-extrabold text-primary_red">
+                <i class="fa fa-pencil-square-o mr-2"></i>AutoCAD 2D
+            </a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#introduccion" class="text-text_white hover:text-primary_red transition-colors">Inicio</a></li>
+                    <li><a href="#caracteristicas" class="text-text_white hover:text-primary_red transition-colors">Características</a></li>
+                    <li><a href="#cursos" class="text-text_white hover:text-primary_red transition-colors">Cursos</a></li>
+                    <li><a href="#app_movil" class="text-text_white hover:text-primary_red transition-colors">App Móvil</a></li>
+                    <li><a href="#contacto" class="text-text_white hover:text-primary_red transition-colors">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="bg-primary_red hover:bg-red-700 text-text_white px-5 py-2 rounded-lg font-bold transition-all">
+                Prueba Gratis
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 md:py-32 text-center bg-bg_black overflow-hidden">
+        <!-- Imagen de fondo con opacidad baja -->
+        <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1542744094-152e7379766e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="font-heading text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+                Diseño <span class="text-primary_red">Preciso.</span> Resultados <span class="text-primary_red">Perfectos.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-light_gray max-w-4xl mx-auto mb-10">
+                Domina la herramienta esencial para arquitectos, ingenieros y diseñadores. Crea planos técnicos impecables con AutoCAD 2D.
+            </p>
+            <button class="bg-primary_red hover:bg-red-700 text-text_white text-xl px-10 py-5 rounded-lg font-bold shadow-2xl transform hover:scale-105 transition-all">
+                Empieza a Diseñar Ahora
+            </button>
+        </div>
+    </section>
+
+    <!-- Sección de Introducción a AutoCAD -->
+    <section id="introduccion" class="py-16 bg-dark_gray text-text_white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="font-heading text-4xl font-bold mb-6 text-primary_red">¿Qué es AutoCAD 2D?</h2>
+                <p class="text-lg text-text_white mb-4">
+                    AutoCAD 2D es el estándar de la industria para el diseño y dibujo asistido por computadora (CAD) en dos dimensiones. Permite crear, modificar y documentar diseños técnicos con una precisión inigualable.
+                </p>
+                <p class="text-lg text-text_white">
+                    Desde planos arquitectónicos y diagramas de ingeniería hasta diseños de productos, AutoCAD 2D es la herramienta fundamental para llevar tus ideas del concepto a la realidad tangible.
+                </p>
+                <ul class="list-disc pl-5 mt-6 text-text_white space-y-2">
+                    <li><strong class="text-primary_red">Precisión:</strong> Dibuja con exactitud milimétrica.</li>
+                    <li><strong class="text-primary_red">Eficiencia:</strong> Acelera tus flujos de trabajo de diseño.</li>
+                    <li><strong class="text-primary_red">Estándar Industrial:</strong> La herramienta más reconocida globalmente.</li>
+                </ul>
+            </div>
+            <div class="flex justify-center">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e1ed41767?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diseño CAD en pantalla" class="rounded-lg shadow-2xl border-2 border-primary_red w-full max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Características Clave -->
+    <section id="caracteristicas" class="py-16 bg-bg_black text-text_white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-12 text-primary_red">Características Avanzadas</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark_gray p-8 rounded-lg shadow-xl hover:shadow-primary_red/30 transition-shadow border-t-4 border-primary_red">
+                    <i class="fa fa-arrows-alt text-5xl text-primary_red mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Interfaz Intuitiva</h3>
+                    <p class="text-light_gray">Herramientas organizadas para un flujo de trabajo eficiente y fácil de aprender.</p>
+                </div>
+                <div class="bg-dark_gray p-8 rounded-lg shadow-xl hover:shadow-primary_red/30 transition-shadow border-t-4 border-primary_red">
+                    <i class="fa fa-object-group text-5xl text-primary_red mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Gestión de Capas</h3>
+                    <p class="text-light_gray">Control total sobre la visibilidad y propiedades de los elementos de tu diseño.</p>
+                </div>
+                <div class="bg-dark_gray p-8 rounded-lg shadow-xl hover:shadow-primary_red/30 transition-shadow border-t-4 border-primary_red">
+                    <i class="fa fa-cloud-download text-5xl text-primary_red mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Compatibilidad DWG</h3>
+                    <p class="text-light_gray">Estándar de archivo global para compartir y colaborar sin problemas.</p>
+                </div>
+                <div class="bg-dark_gray p-8 rounded-lg shadow-xl hover:shadow-primary_red/30 transition-shadow border-t-4 border-primary_red">
+                    <i class="fa fa-terminal text-5xl text-primary_red mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Línea de Comandos</h3>
+                    <p class="text-light_gray">Acceso rápido y potente a todas las funciones mediante comandos de texto.</p>
+                </div>
+                <div class="bg-dark_gray p-8 rounded-lg shadow-xl hover:shadow-primary_red/30 transition-shadow border-t-4 border-primary_red">
+                    <i class="fa fa-clone text-5xl text-primary_red mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Bloques Dinámicos</h3>
+                    <p class="text-light_gray">Creación de componentes reutilizables y adaptables para mayor agilidad.</p>
+                </div>
+                <div class="bg-dark_gray p-8 rounded-lg shadow-xl hover:shadow-primary_red/30 transition-shadow border-t-4 border-primary_red">
+                    <i class="fa fa-file-pdf-o text-5xl text-primary_red mb-6"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-4">Exportación a PDF</h3>
+                    <p class="text-light_gray">Genera documentos profesionales para compartir o imprimir tus proyectos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Cursos y Formación -->
+    <section id="cursos" class="py-16 bg-dark_gray text-text_white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-12 text-primary_red">Lleva tus Habilidades al Siguiente Nivel</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-bg_black p-8 rounded-lg shadow-xl border-2 border-primary_red hover:border-red-700 transition-colors">
+                    <h3 class="font-heading text-3xl font-bold mb-4 text-primary_red">Curso Básico de AutoCAD 2D</h3>
+                    <p class="text-text_white mb-6">Aprende desde cero a crear y editar dibujos técnicos. Ideal para principiantes.</p>
+                    <ul class="list-disc pl-5 text-light_gray text-left mb-6 space-y-1">
+                        <li>Interfaz y configuración</li>
+                        <li>Herramientas de dibujo básicas</li>
+                        <li>Edición y modificación de objetos</li>
+                        <li>Gestión de capas y textos</li>
+                    </ul>
+                    <button class="bg-primary_red hover:bg-red-700 text-text_white px-8 py-3 rounded-lg font-bold transform hover:scale-105 transition-all">
+                        Ver Detalles del Curso
+                    </button>
+                </div>
+                <div class="bg-bg_black p-8 rounded-lg shadow-xl border-2 border-primary_red hover:border-red-700 transition-colors">
+                    <h3 class="font-heading text-3xl font-bold mb-4 text-primary_red">Curso Avanzado de AutoCAD 2D</h3>
+                    <p class="text-text_white mb-6">Domina funciones avanzadas, automatización y personalización para proyectos complejos.</p>
+                    <ul class="list-disc pl-5 text-light_gray text-left mb-6 space-y-1">
+                        <li>Bloques dinámicos y atributos</li>
+                        <li>Xrefs y referencias externas</li>
+                        <li>Configuración de ploteo avanzada</li>
+                        <li>Automatización con macros y scripts</li>
+                    </ul>
+                    <button class="bg-primary_red hover:bg-red-700 text-text_white px-8 py-3 rounded-lg font-bold transform hover:scale-105 transition-all">
+                        Inscribirse Ahora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamada a la Acción Final -->
+    <section id="contacto" class="bg-primary_red py-20 text-center text-text_white">
+        <div class="container mx-auto px-6">
+            <h2 class="font-heading text-4xl md:text-5xl font-extrabold mb-6">¿Listo para Transformar tus Diseños?</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-10">
+                Contacta a nuestro equipo para obtener más información sobre AutoCAD 2D o nuestros programas de formación.
+            </p>
+            <button class="bg-text_white hover:bg-gray-200 text-dark_gray text-xl px-10 py-4 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-all">
+                CONTÁCTANOS
+            </button>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: Descarga de Aplicación Móvil para AutoCAD 2D con JavaScript -->
+    <section id="app_movil" class="py-20 bg-dark_gray text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="font-heading text-4xl font-bold mb-6 text-primary_red">Lleva AutoCAD 2D a tu Bolsillo</h2>
+            <p class="text-lg text-light_gray max-w-3xl mx-auto mb-8">
+                Accede a tus proyectos, revisa diseños y haz anotaciones rápidas en cualquier lugar con nuestra aplicación móvil para AutoCAD 2D.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+                <!-- Botón de descarga para Android (APK directo) -->
+                <a href="#" id="apkDownloadButton"
+                   data-apk-url="URL_DE_TU_ARCHIVO_APK_AQUI"
+                   class="bg-android_green_custom hover:bg-green-700 text-dark_gray text-xl px-8 py-4 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-all flex items-center">
+                    <i class="fa fa-android text-2xl mr-3"></i> Descargar APK (Android)
+                </a>
+
+                <!-- Opcional: Enlace a Google Play Store -->
+                <a href="URL_A_GOOGLE_PLAY_STORE_AQUI" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="bg-dark_gray hover:bg-bg_black border-2 border-android_green_custom text-android_green_custom text-xl px-8 py-4 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-all flex items-center">
+                    <i class="fa fa-google-play text-2xl mr-3"></i> Google Play
+                </a>
+
+                <!-- Opcional: Para iOS (si tuvieras) -->
+                <a href="URL_A_APPLE_APP_STORE_AQUI" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="bg-dark_gray hover:bg-bg_black border-2 border-text_white text-text_white text-xl px-8 py-4 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-all flex items-center">
+                    <i class="fa fa-apple text-2xl mr-3"></i> App Store
+                </a>
+            </div>
