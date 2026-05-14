@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Conocimientos Empresariales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36BFFA',
+                        dark: '#1D2129',
+                        light: '#F7F8FA',
+                        success: '#00B42A',
+                        warning: '#FF7D00',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- Barra de Navegación -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+            <a href="#" class="flex items-center gap-2 text-primary font-bold text-xl">
+                <i class="fa fa-book text-2xl"></i>
+                <span>Centro de Conocimientos</span>
+            </a>
+
+            <!-- Botón Menú Móvil -->
+            <button id="menuBtn" class="md:hidden text-dark text-xl">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Menú Escritorio -->
+            <div class="hidden md:flex gap-6 mt-0 w-auto">
+                <a href="analisis de paginas webs.html" class="font-medium hover:text-primary transition-colors">Inicio</a>
+                <a href="portalconocimiento.html" class="font-medium hover:text-primary transition-colors">Temas</a>
+                <a href="nuestra empresa.html" class="font-medium hover:text-primary transition-colors">Sobre Nosotros</a>
+                <a href="contacto.html" class="font-medium hover:text-primary transition-colors">Contacto</a>            </div>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white w-full shadow-lg">
+            <div class="flex flex-col gap-3 px-4 py-4">
+                <a href="impulsatunegociosinigualdad.html" class="font-medium hover:text-primary transition-colors py-2">Inicio</a>
+                <a href="tienda profesional.html" class="font-medium hover:text-primary transition-colors py-2">Temas</a>
+                <a href="nuestra empresa.html" class="font-medium hover:text-primary transition-colors py-2">Sobre Nosotros</a>
+                <a href="contacto.html" class="font-medium hover:text-primary transition-colors py-2">Contacto</a>            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Principal / Inicio -->
+    <section id="inicio" class="pt-28 pb-16 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/2">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow mb-4">
+                        Aprende y Crece en el <span class="text-primary">Mundo Empresarial</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Accede a conocimientos avanzados sobre gestión, operaciones, estrategia, emprendimiento, comercio exterior y más. Todo lo que necesitas para desarrollarte profesionalmente en un solo lugar.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#temas" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl">
+                            Ver Temas
+                        </a>
+                        <a href="#sobre" class="bg-white border border-gray-300 hover:border-primary text-dark font-medium py-3 px-8 rounded-lg transition-all">
+                            Conocer Más
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Conocimiento empresarial" 
+                         class="rounded-2xl shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Temas -->
+    <section id="temas" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-bold mb-4">Temas Avanzados</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Explora nuestro catálogo de conocimientos organizados por áreas, diseñados para fortalecer tus habilidades y conocimientos profesionales.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tarjeta: Recursos Humanos -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-5">
+                        <i class="fa fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Recursos Humanos</h3>
+                    <p class="text-gray-600 mb-4">
+                        Gestión de personas, selección, capacitación, evaluación de desempeño y creación de ambientes laborales positivos.
+                    </p>
+                    <a href="#rh" class="text-primary font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                        Leer más <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta: Operaciones / Producción -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-secondary/10 text-secondary rounded-lg flex items-center justify-center mb-5">
+                        <i class="fa fa-cogs text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Operaciones / Producción</h3>
+                    <p class="text-gray-600 mb-4">
+                        Procesos de transformación de recursos, planificación, control de calidad, logística y distribución de productos y servicios.
+                    </p>
+                    <a href="#operaciones" class="text-primary font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                        Leer más <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta: Dirección Estratégica -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-warning/10 text-warning rounded-lg flex items-center justify-center mb-5">
+                        <i class="fa fa-sitemap text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Dirección Estratégica</h3>
+                    <p class="text-gray-600 mb-4">
+                        Definición de visión, misión, objetivos, estrategias y políticas empresariales para guiar el crecimiento y desarrollo de la organización.
+                    </p>
+                    <a href="#estrategica" class="text-primary font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                        Leer más <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta: Emprendimiento -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-success/10 text-success rounded-lg flex items-center justify-center mb-5">
+                        <i class="fa fa-lightbulb-o text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Emprendimiento y Planes de Negocio</h3>
+                    <p class="text-gray-600 mb-4">
+                        Cómo identificar oportunidades, desarrollar ideas, elaborar planes de negocio y gestionar proyectos exitosos.
+                    </p>
+                    <a href="#emprendimiento" class="text-primary font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                        Leer más <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta: Economía Internacional -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-5">
+                        <i class="fa fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Economía Internacional</h3>
+                    <p class="text-gray-600 mb-4">
+                        Comercio exterior, intercambios entre países, tratados comerciales, divisas y relaciones económicas globales.
+                    </p>
+                    <a href="#economia" class="text-primary font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                        Leer más <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta: Ética Profesional -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-secondary/10 text-secondary rounded-lg flex items-center justify-center mb-5">
+                        <i class="fa fa-handshake-o text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Ética Profesional</h3>
+                    <p class="text-gray-600 mb-4">
+                        Valores, principios, responsabilidad social, respeto, transparencia y comportamiento adecuado en el ámbito laboral.
+                    </p>
+                    <a href="#etica" class="text-primary font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                        Leer más <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta: Seminarios y Tesis -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-warning/10 text-warning rounded-lg flex items-center justify-center mb-5">
+                        <i class="fa fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Seminarios y Proyectos</h3>
+                    <p class="text-gray-600 mb-4">
+                        Espacios de aprendizaje, investigación, elaboración de tesis, proyectos de grado y desarrollo de habilidades prácticas.
+                    </p>
+                    <a href="#seminarios" class="text-primary font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+                        Leer más <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Detalle de Temas -->
+    <section id="detalles" class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-bold text-center mb-12">Contenido Detallado</h2>
+
+            <!-- Recursos Humanos -->
+            <div id="rh" class="bg-white rounded-xl shadow-md p-8 mb-10 scroll-mt-28">
+                <h3 class="text-2xl font-bold text-primary mb-4 flex items-center gap-2">
+                    <i class="fa fa-users"></i> Recursos Humanos
+                </h3>
+                <p class="text-gray-600 mb-4">
+                    Es el área encargada de gestionar todo lo relacionado con las personas que trabajan en una organización, desde la selección y contratación hasta el desarrollo y bienestar laboral.
+                </p>
+                <h4 class="font-bold text-lg mb-2">Principales áreas:</h4>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1 mb-4">
+                    <li>Reclutamiento y selección de personal</li>
+                    <li>Capacitación y desarrollo profesional</li>
+                    <li>Administración de nóminas y beneficios</li>
+                    <li>Gestión de relaciones laborales</li>
+                    <li>Evaluación de desempeño</li>
+                </ul>
+            </div>
+
+            <!-- Operaciones / Producción -->
+            <div id="operaciones" class="bg-white rounded-xl shadow-md p-8 mb-10 scroll-mt-28">
+                <h3 class="text-2xl font-bold text-secondary mb-4 flex items-center gap-2">
+                    <i class="fa fa-cogs"></i> Operaciones / Producción
+                </h3>
+                <p class="text-gray-600 mb-4">
+                    Conjunto de procesos para transformar recursos en bienes o servicios, garantizando eficiencia, calidad y cumplimiento de objetivos.
+                </p>
+                <h4 class="font-bold text-lg mb-2">Procesos principales:</h4>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1 mb-4">
+                    <li>Planificación de la producción</li>
+                    <li>Diseño de productos y procesos</li>
+                    <li>Gestión de inventarios</li>
+                    <li>Control de calidad</li>
+                    <li>Distribución y logística</li>
+                </ul>
+            </div>
+
+            <!-- Dirección Estratégica -->
+            <div id="estrategica" class="bg-white rounded-xl shadow-md p-8 mb-10 scroll-mt-28">
+                <h3 class="text-2xl font-bold text-warning mb-4 flex items-center gap-2">
+                    <i class="fa fa-sitemap"></i> Dirección Estratégica
+                </h3>
+                <p class="text-gray-600 mb-4">
+                    Proceso de definición de objetivos a largo plazo, selección de caminos de acción y establecimiento de normas para guiar el desarrollo de la organización.
+                </p>
+                <h4 class="font-bold text-lg mb-2">Elementos clave:</h4>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1 mb-4">
+                    <li>Visión y misión</li>
+                    <li>Definición de objetivos</li>
+                    <li>Desarrollo de estrategias</li>
+                    <li>Establecimiento de políticas empresariales</li>
+                </ul>
+            </div>
+
+            <!-- Emprendimiento -->
+            <div id="emprendimiento" class="bg-white rounded-xl shadow-md p-8 mb-10 scroll-mt-28">
+                <h3
