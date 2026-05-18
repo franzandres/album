@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Entretenimiento - Pel�culas, Juegos y Recargas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        principal: '#2563eb',
+                        secundario: '#f59e0b',
+                        oscuro: '#1e293b',
+                        claro: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .contenedor {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            .sombra-suave {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+            .sombra-fuerte {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            }
+        }
+    </style>
+</head>
+<body class="bg-claro font-sans text-oscuro">
+
+    <!-- Barra de Navegaci�n -->
+    <nav class="bg-principal text-white py-4 sticky top-0 z-50 sombra-fuerte">
+        <div class="contenedor flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-2">
+                <i class="fa fa-gamepad text-3xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold">Tienda de Entretenimiento</h1>
+            </div>
+            <div class="flex gap-4 flex-wrap justify-center">
+                <a href="#productos" class="hover:text-secundario transition-colors">Productos</a>
+                <a href="#promociones" class="hover:text-secundario transition-colors">Promociones</a>
+                <a href="#horarios" class="hover:text-secundario transition-colors">Horarios</a>
+                <a href="#ubicacion" class="hover:text-secundario transition-colors">Ubicaci�n</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Secci�n de Portada -->
+    <header class="bg-gradient-to-r from-principal/90 to-principal py-16 md:py-24 text-white">
+        <div class="contenedor flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">�Diversi�n al mejor precio!</h2>
+                <p class="text-lg md:text-xl mb-6 text-white/90">Encuentra pel�culas, videojuegos, recargas y bebidas con ofertas especiales todos los d�as.</p>
+                <a href="#productos" class="bg-secundario hover:bg-secundario/90 text-white font-semibold py-3 px-8 rounded-lg transition-all transform hover:scale-105 inline-block">
+                    Ver Productos
+                </a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="bg-white/10 p-8 rounded-2xl sombra-fuerte backdrop-blur-sm">
+                    <i class="fa fa-film text-7xl md:text-9xl text-secundario"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secci�n de Productos -->
+    <section id="productos" class="py-16 bg-white">
+        <div class="contenedor">
+            <h2 class="text-3xl font-bold text-center mb-12">Nuestros Productos</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Producto 1: Pel�culas -->
+                <div class="bg-claro rounded-xl p-6 sombra-suave hover:sombra-fuerte transition-all transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-principal/10 text-principal rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa fa-film"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2"><a href="sulp enic.html">Pel�culas</a></h3>
+                    <p class="text-center text-gray-600 mb-4">Calidad Full HD y Blu-ray de todos los g�neros</p>
+                    <p class="text-center text-2xl font-bold text-principal">1 Bs. <span class="text-sm text-gray-500 line-through">1,20 Bs.</span></p>
+                </div>
+
+                <!-- Producto 2: Videojuegos -->
+                <div class="bg-claro rounded-xl p-6 sombra-suave hover:sombra-fuerte transition-all transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-principal/10 text-principal rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2"><a href="juegos de terror para pc.html">Videojuegos</a></h3>
+                    <p class="text-center text-gray-600 mb-4">Para todas las consolas y computadoras</p>
+                    <p class="text-center text-2xl font-bold text-principal">10 Bs. <span class="text-sm text-secundario font-normal">?? 2x1</span></p>
+                </div>
+
+                <!-- Producto 3: Recargas -->
+                <div class="bg-claro rounded-xl p-6 sombra-suave hover:sombra-fuerte transition-all transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-principal/10 text-principal rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa fa-mobile"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Recargas</h3>
+                    <p class="text-center text-gray-600 mb-4">Viva, Entel y Tigo al mejor precio</p>
+                    <p class="text-center text-2xl font-bold text-principal">12 Bs. <span class="text-sm text-gray-500">cada una</span></p>
+                </div>
+
+                <!-- Producto 4: Bebidas -->
+                <div class="bg-claro rounded-xl p-6 sombra-suave hover:sombra-fuerte transition-all transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-principal/10 text-principal rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa fa-glass"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Bebidas</h3>
+                    <p class="text-center text-gray-600 mb-4">Pilfrut, Soda y Refresco de todos los sabores</p>
+                    <p class="text-center text-2xl font-bold text-principal">Desde 3 Bs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secci�n de Promociones -->
+    <section id="promociones" class="py-16 bg-principal/5">
+        <div class="contenedor">
+            <h2 class="text-3xl font-bold text-center mb-12">Promociones por D�a</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Lunes -->
+                <div class="bg-white rounded-xl p-6 sombra-suave">
+                    <h3 class="text-xl font-bold text-secundario mb-3 flex items-center gap-2">
+                        <i class="fa fa-calendar"></i> LUNES
+                    </h3>
+                    <p class="text-lg">Pel�culas a <span class="font-bold text-principal">0,80 Bs.</span></p>
+                </div>
+
+                <!-- Martes -->
+                <div class="bg-white rounded-xl p-6 sombra-suave">
+                    <h3 class="text-xl font-bold text-secundario mb-3 flex items-center gap-2">
+                        <i class="fa fa-calendar"></i> MARTES
+                    </h3>
+                    <p class="text-lg">2x1 en todos los videojuegos</p>
+                </div>
+
+                <!-- Mi�rcoles -->
+                <div class="bg-white rounded-xl p-6 sombra-suave">
+                    <h3 class="text-xl font-bold text-secundario mb-3 flex items-center gap-2">
+                        <i class="fa fa-calendar"></i> MI�RCOLES
+                    </h3>
+                    <p class="text-lg">Descuento del <span class="font-bold text-principal">10%</span> en todas las bebidas</p>
+                </div>
+
+                <!-- Jueves -->
+                <div class="bg-white rounded-xl p-6 sombra-suave">
+                    <h3 class="text-xl font-bold text-secundario mb-3 flex items-center gap-2">
+                        <i class="fa fa-calendar"></i> JUEVES
+                    </h3>
+                    <p class="text-lg">Regalo al comprar cualquier recarga</p>
+                </div>
+
+                <!-- Viernes -->
+                <div class="bg-white rounded-xl p-6 sombra-suave">
+                    <h3 class="text-xl font-bold text-secundario mb-3 flex items-center gap-2">
+                        <i class="fa fa-calendar"></i> VIERNES
+                    </h3>
+                    <p class="text-lg">Paquete especial: 2 juegos + 1 bebida = <span class="font-bold text-principal">18 Bs.</span></p>
+                </div>
+
+                <!-- Fin de Semana -->
+                <div class="bg-white rounded-xl p-6 sombra-suave">
+                    <h3 class="text-xl font-bold text-secundario mb-3 flex items-center gap-2">
+                        <i class="fa fa-calendar"></i> S�BADO & DOMINGO
+                    </h3>
+                    <p class="text-lg">S�bado: Regalo sorpresa por compras mayores a 20 Bs.</p>
+                    <p class="text-lg mt-2">Domingo: Combinaciones econ�micas desde <span class="font-bold text-principal">4 Bs.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secci�n de Horarios y Ubicaci�n -->
+    <section id="horarios" class="py-16 bg-white">
+        <div class="contenedor grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Horarios -->
+            <div class="bg-claro rounded-xl p-8 sombra-suave">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fa fa-clock-o text-principal"></i> Horarios de Atenci�n
+                </h2>
+                <ul class="space-y-3">
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span>Lunes a Viernes</span>
+                        <span class="font-semibold">14:00 - 20:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span>S�bado</span>
+                        <span class="font-semibold">10:00 - 20:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span>Domingo</span>
+                        <span class="font-semibold">11:00 - 18:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Ubicaci�n -->
+            <div id="ubicacion" class="bg-claro rounded-xl p-8 sombra-suave">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fa fa-map-marker text-principal"></i> Ubicaci�n y Contacto
+                </h2>
+                <p class="mb-4"><strong>Direcci�n:</strong> _________________________</p>
+                <p class="mb-4"><strong>Tel�fono / WhatsApp:</strong> _________________________</p>
+                <p class="mb-6"><strong>Correo electr�nico:</strong> _________________________</p>
+                <p class="text-gray-600">�Te esperamos con la mejor atenci�n y los mejores productos!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secci�n de Agradecimiento -->
+    <section class="py-12 bg-principal text-white text-center">
+        <div class="contenedor">
+            <h2 class="text-2xl font-bold mb-4">�Gracias por tu visita!</h2>
+            <p class="text-lg text-white/90">Tu preferencia es lo que nos motiva a seguir mejorando cada d�a.<br>�Vuelve pronto!</p>
+        </div>
+    </section>
+
+    <!-- Pie de P�gina -->
+    <footer class="bg-oscuro text-white py-6 text-center">
+        <div class="contenedor">
+            <p>&copy; 2024 Tienda de Entretenimiento. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

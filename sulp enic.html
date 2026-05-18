@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinePlus - Películas Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        oscuro: '#0f172a',
+                        rojo: '#dc2626',
+                        gris: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-oscuro text-white font-sans">
+
+    <!-- Header -->
+    <header class="bg-gris py-6 shadow-lg">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center gap-2 mb-4 md:mb-0">
+                <i class="fa fa-film text-rojo text-3xl"></i>
+                <h1 class="text-2xl font-bold">CinePlus</h1>
+            </div>
+            <nav class="flex gap-6">
+                <a href="#terror" class="hover:text-rojo transition">Terror</a>
+                <a href="#accion" class="hover:text-rojo transition">Acción</a>
+                <a href="#suspenso" class="hover:text-rojo transition">Suspenso</a>
+                <a href="#drama" class="hover:text-rojo transition">Drama</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-b from-gris to-oscuro">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">?? Disfruta las mejores películas</h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">Accede a películas de terror, acción, suspenso y drama con un solo mensaje por WhatsApp.</p>
+        </div>
+    </section>
+
+    <!-- Películas Terror -->
+    <section id="terror" class="py-16">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-8 text-center text-rojo">Terror</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/B7n8rN2.png" alt="La Última Casa" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">La Última Casa</h4>
+                        <p class="text-gray-400 text-sm mb-4">Sobrevivir no será suficiente.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://image.tmdb.org/t/p/w500/8Z9kL3T4qX7yS8uV9wR2t.jpg" alt="Película Terror" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Noche de Miedo</h4>
+                        <p class="text-gray-400 text-sm mb-4">Un grupo de amigos enfrenta sus peores pesadillas.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://image.tmdb.org/t/p/w500/9Y7mN2P6qR4sT8vX1zW3.jpg" alt="Película Terror" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">El Exorcismo</h4>
+                        <p class="text-gray-400 text-sm mb-4">Un sacerdote lucha contra fuerzas sobrenaturales.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://image.tmdb.org/t/p/w500/7rU6tK2OQbK8XfJqYjX9zW.jpg" alt="La Casa Maldita" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">La Casa Maldita</h4>
+                        <p class="text-gray-400 text-sm mb-4">Una casa antigua esconde secretos oscuros.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Películas Acción -->
+    <section id="accion" class="py-16 bg-gris/20">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-8 text-center text-blue-500">Acción</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/vH9j2B6.png" alt="Misión Imposible" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Misión Imposible</h4>
+                        <p class="text-gray-400 text-sm mb-4">Una operación peligrosa al límite.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/kY7qW4s.png" alt="Guerra Total" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Guerra Total</h4>
+                        <p class="text-gray-400 text-sm mb-4">La ciudad se convierte en un campo de batalla.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://image.tmdb.org/t/p/w500/5Ub8kL3zX7wQ9eR2tY1m.jpg" alt="El Último Agente" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">El Último Agente</h4>
+                        <p class="text-gray-400 text-sm mb-4">Un agente secreto contra el tiempo.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/2XWqG9P.png" alt="Carrera Mortal" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Carrera Mortal</h4>
+                        <p class="text-gray-400 text-sm mb-4">Velocidad, adrenalina y peligro.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Películas Suspenso -->
+    <section id="suspenso" class="py-16">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-8 text-center text-purple-500">Suspenso</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/uFhB1L9.png" alt="El Secreto" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">El Secreto</h4>
+                        <p class="text-gray-400 text-sm mb-4">Una verdad que cambiará todo.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/V9wWJ3l.png" alt="Mentiras Ocultas" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Mentiras Ocultas</h4>
+                        <p class="text-gray-400 text-sm mb-4">Nadie es quien parece ser.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/rM7Yg7M.png" alt="La Sospecha" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">La Sospecha</h4>
+                        <p class="text-gray-400 text-sm mb-4">Una investigación llena de giros inesperados.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/a9c12Ww.png" alt="Sin Salida" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Sin Salida</h4>
+                        <p class="text-gray-400 text-sm mb-4">Un juego mortal de supervivencia.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Películas Drama -->
+    <section id="drama" class="py-16 bg-gris/20">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-8 text-center text-yellow-500">Drama</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.imgur.com/r6E7h7O.png" alt="El Camino" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">El Camino</h4>
+                        <p class="text-gray-400 text-sm mb-4">Una historia de superación y esperanza.</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 py-2 rounded-lg font-medium">
+                            <i class="fa fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gris rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://image.tmdb.org/t/p/w500/5Pp1cO7qP3rT4wE8sY6u.jpg" alt="Drama Ejemplo" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2
+

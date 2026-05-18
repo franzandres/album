@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos de Terror para PC - Elige tu aventura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        oscuro: '#0a0a0f',
+                        primario: '#7e22ce',
+                        secundario: '#ef4444',
+                        gris: '#1f2937',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .contenedor {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            .tarjeta {
+                transition: all 0.3s ease;
+            }
+            .tarjeta:hover {
+                transform: translateY(-8px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-oscuro text-white font-sans">
+
+    <!-- Encabezado -->
+    <header class="bg-gris py-6 shadow-lg">
+        <div class="contenedor flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <i class="fa fa-gamepad text-4xl text-secundario"></i>
+                <h1 class="text-2xl md:text-3xl font-bold">Juegos de Terror para PC</h1>
+            </div>
+            <p class="text-gray-300 text-center md:text-right">Los mejores títulos de miedo, suspenso y supervivencia. Consíguelos ahora.</p>
+        </div>
+    </header>
+
+    <!-- Sección de Presentación -->
+    <section class="py-12 bg-gradient-to-b from-gris/50 to-oscuro">
+        <div class="contenedor text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">¡Disfruta de la mejor experiencia de terror!</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Explora mundos oscuros, enfrenta criaturas sobrenaturales y vive historias inolvidables. Todos los juegos están disponibles para tu computadora.</p>
+        </div>
+    </section>
+
+    <!-- Lista de Videojuegos -->
+    <section class="py-16">
+        <div class="contenedor">
+            <h3 class="text-3xl font-bold text-center mb-12 text-secundario">Catálogo de Juegos</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                <!-- Juego 1 -->
+                <div class="tarjeta bg-gris rounded-xl overflow-hidden shadow-xl">
+                    <div class="w-full aspect-square overflow-hidden">
+                        <img src="https://i.imgur.com/9X7Z8Lb.png" alt="Cruce de Sombras" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Cruce de Sombras</h4>
+                        <p class="text-gray-400 text-sm mb-4">Explora una ciudad abandonada llena de secretos oscuros y criaturas que acechan en la oscuridad.</p>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20juego%20Cruce%20de%20Sombras" 
+                           target="_blank" 
+                           class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            <i class="fa fa-whatsapp text-xl"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Juego 2 -->
+                <div class="tarjeta bg-gris rounded-xl overflow-hidden shadow-xl">
+                    <div class="w-full aspect-square overflow-hidden">
+                        <img src="https://i.imgur.com/6QZ9XaL.png" alt="Laberinto del Miedo" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Laberinto del Miedo</h4>
+                        <p class="text-gray-400 text-sm mb-4">Navega por pasillos interminables donde nada es lo que parece y el miedo está en cada esquina.</p>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20juego%20Laberinto%20del%20Miedo" 
+                           target="_blank" 
+                           class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            <i class="fa fa-whatsapp text-xl"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Juego 3 -->
+                <div class="tarjeta bg-gris rounded-xl overflow-hidden shadow-xl">
+                    <div class="w-full aspect-square overflow-hidden">
+                        <img src="https://i.imgur.com/6QZ9XaL.png" alt="El Último Refugio" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">El Último Refugio</h4>
+                        <p class="text-gray-400 text-sm mb-4">Sobrevive en un mundo apocalíptico donde la supervivencia depende de tu inteligencia y tus reflejos.</p>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20juego%20El%20%C3%9Altimo%20Refugio" 
+                           target="_blank" 
+                           class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            <i class="fa fa-whatsapp text-xl"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Juego 4 -->
+                <div class="tarjeta bg-gris rounded-xl overflow-hidden shadow-xl">
+                    <div class="w-full aspect-square overflow-hidden">
+                        <img src="https://i.imgur.com/9X7Z8Lb.png" alt="Proyecto Oscuridad" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Proyecto Oscuridad</h4>
+                        <p class="text-gray-400 text-sm mb-4">Investigaciones secretas que salieron mal. Descubre la verdad detrás de experimentos prohibidos.</p>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20juego%20Proyecto%20Oscuridad" 
+                           target="_blank" 
+                           class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            <i class="fa fa-whatsapp text-xl"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Juego 5 -->
+                <div class="tarjeta bg-gris rounded-xl overflow-hidden shadow-xl">
+                    <div class="w-full aspect-square overflow-hidden">
+                        <img src="https://i.imgur.com/6QZ9XaL.png" alt="Mansión de los Susurros" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Mansión de los Susurros</h4>
+                        <p class="text-gray-400 text-sm mb-4">Una antigua mansión llena de misterios y espíritus que te harán dudar de tu propia cordura.</p>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20juego%20Mansi%C3%B3n%20de%20los%20Susurros" 
+                           target="_blank" 
+                           class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            <i class="fa fa-whatsapp text-xl"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Juego 6 -->
+                <div class="tarjeta bg-gris rounded-xl overflow-hidden shadow-xl">
+                    <div class="w-full aspect-square overflow-hidden">
+                        <img src="https://i.imgur.com/9X7Z8Lb.png" alt="Ritual de la Noche" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Ritual de la Noche</h4>
+                        <p class="text-gray-400 text-sm mb-4">Descubre rituales olvidados que despiertan fuerzas antiguas y peligrosas en la noche.</p>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20juego%20Ritual%20de%20la%20Noche" 
+                           target="_blank" 
+                           class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            <i class="fa fa-whatsapp text-xl"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Juego 7 -->
+                <div class="tarjeta bg-gris rounded-xl overflow-hidden shadow-xl">
+                    <div class="w-full aspect-square overflow-hidden">
+                        <img src="https://i.imgur.com/6QZ9XaL.png" alt="El Silencio de los Muertos" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">El Silencio de los Muertos</h4>
+                        <p class="text-gray-400 text-sm mb-4">Un pueblo maldito donde los muertos no descansan y te seguirán a cualquier lugar.</p>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20juego%20El%20Silencio%20de%20los%20Muertos" 
+                           target="_blank" 
+                           class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            <i class="fa fa-whatsapp text-xl"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Juego 8 -->
+                <div class="tarjeta bg-gris rounded-xl overflow-hidden shadow-xl">
+                    <div class="w-full aspect-square overflow-hidden">
+                        <img src="https://i.imgur.com/9X7Z8Lb.png" alt="Sombras en el Agua" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Sombras en el Agua</h4>
+                        <p class="text-gray-400 text-sm mb-4">Explora lugares acuáticos olvidados donde acechan seres que no pertenecen a este mundo.</p>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20juego%20Sombras%20en%20el%20Agua" 
+                           target="_blank" 
+                           class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                            <i class="fa fa-whatsapp text-xl"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Información -->
+    <section class="py-16 bg-gris/30">
+        <div class="contenedor text-center">
+            <h3 class="text-2xl font-bold mb-6">¿Por qué elegirnos?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <i class="fa fa-check-circle text-5xl text-secundario mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Archivos Seguros</h4>
+                    <p class="text-gray-400">Todos los juegos están libres de virus y listos para instalar en tu computadora.</p>
+                </div>
+                <div>
+                    <i class="fa fa-clock-o text-5xl text-secundario mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Entrega Rápida</h4>
+                    <p class="text-gray-400">Recibe toda la información y descarga inmediatamente por WhatsApp.</p>
+                </div>
+                <div>
+                    <i class="fa fa-headphones text-5xl text-secundario mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Soporte 24/7</h4>
+                    <p class="text-gray-400">Estamos disponibles para resolver cualquier duda o problema que tengas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="py-8 bg-oscuro border-t border-gris">
+        <div class="contenedor text-center text-gray-400">
+            <p class="mb-4">© 2024 Juegos de Terror para PC. Todos los derechos reservados.</p>
+            <p>Contáctanos directamente por WhatsApp: <strong class="text-white">60943737</strong></p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
