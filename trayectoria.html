@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorías Profesionales - Javier López</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a202c',     // Gris oscuro casi negro para texto principal
+                        secondary: '#3182ce',   // Azul profesional y confiable
+                        accent: '#ecc94b',      // Amarillo dorado para acentos, transmite optimismo
+                        light: '#f7fafc',       // Fondo claro para secciones
+                        whiteBg: '#ffffff',     // Fondo blanco puro
+                        grayText: '#4a5568',    // Gris medio para texto secundario
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'], // Fuente moderna y legible
+                        serif: ['Merriweather', 'serif'], // Para títulos o elementos distintivos
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Para usar las fuentes Roboto y Merriweather, puedes agregarlas desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: theme('fontFamily.sans');
+                color: theme('colors.primary');
+                background-color: theme('colors.whiteBg');
+            }
+        }
+        @layer components {
+            .container-custom {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            .btn-primary {
+                @apply bg-secondary text-whiteBg py-3 px-8 rounded-full font-semibold transition-all duration-300 hover:bg-blue-700 shadow-md;
+            }
+            .btn-secondary {
+                @apply border-2 border-secondary text-secondary py-3 px-8 rounded-full font-semibold transition-all duration-300 hover:bg-secondary hover:text-whiteBg shadow-md;
+            }
+            .card {
+                @apply bg-whiteBg p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300;
+            }
+        }
+    </style>
+</head>
+<body class="bg-whiteBg">
+
+    <!-- Barra de Navegación -->
+    <nav class="bg-whiteBg shadow-sm py-4 sticky top-0 z-50">
+        <div class="container-custom flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-serif font-bold text-primary">Javier López</a>
+            <div class="flex gap-6">
+                <a href="#about" class="text-primary hover:text-secondary transition-colors">Sobre Mí</a>
+                <a href="#services" class="text-primary hover:text-secondary transition-colors">Servicios</a>
+                <a href="#testimonials" class="text-primary hover:text-secondary transition-colors">Testimonios</a>
+                <a href="#contact" class="text-primary hover:text-secondary transition-colors">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero/Inicio -->
+    <section id="hero" class="relative bg-light py-20 md:py-32 overflow-hidden">
+        <div class="container-custom flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div class="flex-shrink-0">
+                <!-- URL de la imagen que proporcionaste -->
+                <img src="https://i.imgur.com/your_image_link_here.png" alt="Javier López - Consultor de Negocios" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-xl border-4 border-secondary">
+                <!-- Reemplazar "https://i.imgur.com/your_image_link_here.png" con la URL directa de la imagen -->
+            </div>
+            <div class="text-center md:text-left">
+                <p class="text-accent text-lg font-semibold mb-2">Experiencia y Confianza a Tu Servicio</p>
+                <h1 class="text-4xl md:text-6xl font-bold font-serif leading-tight mb-4">Javier López</h1>
+                <p class="text-xl md:text-2xl text-grayText max-w-2xl mx-auto md:mx-0">
+                    Consultor estratégico con más de 15 años de experiencia, ayudando a empresas a escalar, innovar y alcanzar sus objetivos con soluciones personalizadas.
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start gap-4">
+                    <a href="#services" class="btn-primary">Mis Servicios</a>
+                    <a href="#contact" class="btn-secondary">Agenda una Consulta</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección "Sobre Mí" -->
+    <section id="about" class="py-16 md:py-24 bg-whiteBg">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10">Mi Trayectoria y Pasión</h2>
+            <div class="max-w-3xl mx-auto text-lg leading-relaxed text-grayText">
+                <p class="mb-6">
+                    Desde el inicio de mi carrera, he estado comprometido con el desarrollo y crecimiento de organizaciones, desde startups hasta grandes corporaciones. Mi enfoque es pragmático y orientado a resultados, siempre buscando la solución más eficiente para cada desafío único.
+                </p>
+                <p>
+                    Creo firmemente que el éxito empresarial se construye sobre una base de estrategia sólida, innovación constante y, sobre todo, una comunicación clara y efectiva. Mi pasión es transformar ideas complejas en planes de acción ejecutables y rentables.
+                </p>
+            </div>
+            <div class="mt-12 flex justify-center gap-6">
+                <a href="#" class="text-primary hover:text-secondary transition-colors"><i class="fa fa-linkedin-square text-3xl"></i></a>
+                <a href="#" class="text-primary hover:text-secondary transition-colors"><i class="fa fa-twitter-square text-3xl"></i></a>
+                <a href="#" class="text-primary hover:text-secondary transition-colors"><i class="fa fa-envelope-square text-3xl"></i></a>
+                <!-- Agrega o quita iconos de redes sociales según necesites -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="services" class="py-16 md:py-24 bg-light">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10">Soluciones que Impulsan tu Negocio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Servicio 1 -->
+                <div class="card">
+                    <i class="fa fa-line-chart text-5xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">Consultoría Estratégica</h3>
+                    <p class="text-grayText">Desarrollo de planes de negocio, expansión de mercado y optimización de rendimiento.</p>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="card">
+                    <i class="fa fa-lightbulb-o text-5xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">Innovación y Transformación Digital</h3>
+                    <p class="text-grayText">Guía en la adopción de nuevas tecnologías y procesos para una mayor eficiencia.</p>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="card">
+                    <i class="fa fa-users text-5xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">Liderazgo y Desarrollo de Equipos</h3>
+                    <p class="text-grayText">Coaching ejecutivo y programas de formación para potenciar a tu capital humano.</p>
+                </div>
+                <!-- Puedes añadir más servicios aquí -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section id="testimonials" class="py-16 md:py-24 bg-secondary text-whiteBg">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10">Lo que Dicen Mis Clientes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Testimonio 1 -->
+                <div class="bg-blue-800 p-6 rounded-lg shadow-lg">
+                    <p class="italic mb-4">"Javier transformó nuestra visión en una estrategia clara y factible. Su experiencia fue clave para nuestro crecimiento."</p>
+                    <p class="font-semibold">- Ana G., CEO de TechSolutions</p>
+                </div>
+                <!-- Testimonio 2 -->
+                <div class="bg-blue-800 p-6 rounded-lg shadow-lg">
+                    <p class="italic mb-4">"Un verdadero líder. Nos ayudó a optimizar procesos y a construir un equipo más cohesionado y productivo."</p>
+                    <p class="font-semibold">- Carlos M., Director de Operaciones</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contact" class="py-16 md:py-24 bg-whiteBg">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10">Inicia tu Transformación Hoy</h2>
+            <p class="text-lg text-grayText mb-8 max-w-2xl mx-auto">
+                ¿Listo para llevar tu negocio al siguiente nivel? Contáctame para una conversación exploratoria y veamos cómo puedo ayudarte.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-8 items-center">
+                <div class="flex items-center gap-4 text-left">
+                    <i class="fa fa-envelope text-3xl text-secondary"></i>
+                    <div>
+                        <p class="font-semibold">Correo Electrónico:</p>
+                        <a href="mailto:contacto@javierlopezconsultor.com" class="text-primary hover:underline text-lg">contacto@javierlopezconsultor.com</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 text-left mt-6 md:mt-0">
+                    <i class="fa fa-phone text-3xl text-secondary"></i>
+                    <div>
+                        <p class="font-semibold">Teléfono:</p>
+                        <a href="tel:+59178901234" class="text-primary hover:underline text-lg">+591 78901234</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 max-w-md mx-auto">
+                <p class="text-grayText mb-4">O llena el siguiente formulario y me pondré en contacto contigo:</p>
+                <form class="flex flex-col gap-4">
+                    <input type="text" placeholder="Tu Nombre Completo" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                    <input type="email" placeholder="Tu Correo Electrónico" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                    <input type="text" placeholder="Nombre de tu Empresa (Opcional)" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                    <textarea placeholder="¿En qué puedo ayudarte?" rows="5" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                    <button type="submit" class="btn-primary w-full">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="py-8 bg-primary text-whiteBg text-center text-sm">
+        <div class="container-custom">
+            <p>&copy; 2024 Javier López - Consultor. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+

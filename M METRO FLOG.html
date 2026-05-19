@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Espacio Digital Profesional - (Tu Nombre o Marca)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        metroBgLight: '#e0f2f7', /* Fondo azul claro como la imagen */
+                        metroPanelBg: '#ffe0e6', /* Fondo rosa claro para paneles */
+                        metroHeaderBg: '#ffc0cb', /* Rosa más oscuro para el header interno */
+                        metroAccentText: '#8b0000', /* Rojo oscuro para títulos principales */
+                        metroLink: '#00008b',    /* Azul marino para enlaces */
+                        metroTextDark: '#333333', /* Texto general oscuro */
+                        metroBorder: '#ffb6c1', /* Borde rosa suave */
+                        metroGrayText: '#6c757d' /* Texto gris para fechas, descripciones */
+                    },
+                    fontFamily: {
+                        sans: ['Verdana', 'Arial', 'Helvetica', 'sans-serif'], /* Fuente clásica y legible */
+                        title: ['Impact', 'Arial Black', 'sans-serif'], /* Para el título principal, imitando el estilo fuerte */
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                background-color: theme('colors.metroBgLight');
+                color: theme('colors.metroTextDark');
+                font-family: theme('fontFamily.sans');
+            }
+            a {
+                color: theme('colors.metroLink');
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+                color: theme('colors.metroAccentText');
+            }
+            /* Opcional: Estilos para barras de scroll estilo antiguo */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+            ::-webkit-scrollbar-track {
+                background: theme('colors.metroBgLight');
+                border-left: 1px solid theme('colors.metroPanelBg');
+            }
+            ::-webkit-scrollbar-thumb {
+                background: theme('colors.metroHeaderBg');
+                border: 1px solid theme('colors.metroBorder');
+            }
+        }
+        @layer components {
+            .container-metro {
+                max-width: 980px; /* Ancho típico de páginas antiguas */
+                margin: 0 auto;
+                background-color: theme('colors.metroBgLight'); /* Fondo claro para el contenedor */
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            .panel-metro {
+                background-color: theme('colors.metroPanelBg');
+                border: 1px solid theme('colors.metroBorder');
+                padding: 0.8rem;
+                margin-bottom: 1rem;
+            }
+            .panel-metro-header {
+                background-color: theme('colors.metroHeaderBg');
+                border-bottom: 1px solid theme('colors.metroBorder');
+                padding: 0.5rem 0.8rem;
+                margin: -0.8rem -0.8rem 0.8rem -0.8rem; /* Ajustar padding para que ocupe todo el ancho */
+                font-weight: bold;
+                color: theme('colors.metroTextDark');
+            }
+            .button-whatsapp {
+                background-color: #25d366; /* Color oficial de WhatsApp */
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 0.25rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: bold;
+                transition: background-color 0.2s;
+            }
+            .button-whatsapp:hover {
+                background-color: #1da851;
+            }
+        }
+    </style>
+</head>
+<body class="bg-metroBgLight text-metroTextDark">
+
+    <!-- Barra de Navegación Superior -->
+    <header class="bg-metroHeaderBg py-2 text-sm border-b border-metroBorder">
+        <div class="container-metro flex justify-between items-center px-4">
+            <nav class="flex gap-4">
+                <a href="#" class="font-bold">TuUsuario</a> <!-- Tu nombre de perfil -->
+                <a href="#muro">Muro</a>
+                <a href="#fotos">Fotos</a>
+                <a href="#favoritos">Favoritos</a>
+                <a href="#contacto">MP</a>
+                <a href="#">Configuración</a>
+                <a href="#">Invitar</a>
+                <a href="#">Salir</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal de la Página -->
+    <div class="container-metro p-4 grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+
+        <!-- Columna Izquierda (Menú, Info de Usuario, Anuncios) -->
+        <aside class="md:col-span-1">
+            <!-- Logo Metroflog (simulado) -->
+            <div class="flex items-center gap-2 mb-4">
+                <div class="bg-metroPanelBg border border-metroBorder p-2 text-3xl font-bold text-metroAccentText">M</div>
+                <span class="text-3xl font-bold text-metroTextDark">METRO FLOG</span>
+            </div>
+
+            <!-- Panel de Archivo por Fecha -->
+            <div class="panel-metro">
+                <div class="panel-metro-header">2024</div>
+                <ul class="text-sm">
+                    <li><a href="#" class="text-metroLink hover:text-metroAccentText">Enero <span class="text-metroGrayText">(4)</span></a></li>
+                    <li><a href="#" class="text-metroLink hover:text-metroAccentText">Febrero <span class="text-metroGrayText">(8)</span></a></li>
+                    <li><a href="#" class="text-metroLink hover:text-metroAccentText">Marzo <span class="text-metroGrayText">(12)</span></a></li>
+                    <li><a href="#" class="text-metroLink hover:text-metroAccentText">Abril <span class="text-metroGrayText">(10)</span></a></li>
+                    <!-- Añade más meses si lo necesitas -->
+                </ul>
+                <div class="panel-metro-header mt-4">2023</div>
+                 <ul class="text-sm">
+                    <li><a href="#" class="text-metroLink hover:text-metroAccentText">Diciembre <span class="text-metroGrayText">(25)</span></a></li>
+                    <!-- Añade más meses/años -->
+                </ul>
+            </div>
+
+            <!-- Panel de Ingreso/Registro (funcionalidad simulada, solo estético) -->
+            <div class="panel-metro">
+                <div class="panel-metro-header">USUARIOS</div>
+                <form class="flex flex-col gap-2">
+                    <label for="user" class="text-xs">Usuario:</label>
+                    <input type="text" id="user" class="input-metro w-full border border-metroBorder bg-metroBgLight" value="TuUsuario" disabled>
+                    <label for="pass" class="text-xs">Contraseña:</label>
+                    <input type="password" id="pass" class="input-metro w-full border border-metroBorder bg-metroBgLight" value="********" disabled>
+                    <div class="flex items-center gap-2 text-xs">
+                        <input type="checkbox" id="remember" disabled>
+                        <label for="remember">Recordar usuario</label>
+                    </div>
+                    <button type="submit" class="button-metro bg-metroHeaderBg text-metroTextDark hover:bg-metroAccentText text-sm mt-2" disabled>Ingresar</button>
+                    <p class="text-xs text-center text-metroGrayText mt-2">¿Olvidaste tu contraseña?</p>
+                </form>
+            </div>
+
+            <!-- Panel de Anuncios (simulados) -->
+            <div class="panel-metro text-xs text-center">
+                <p class="text-metroGrayText mb-2">Anuncios de nuestros patrocinadores</p>
+                <div class="w-full h-24 bg-gray-200 flex items-center justify-center border border-gray-400 text-gray-600 mb-2">
+                    Banner Publicitario 1
+                </div>
+                <div class="w-full h-24 bg-gray-200 flex items-center justify-center border border-gray-400 text-gray-600">
+                    Banner Publicitario 2
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Columna Central (Publicación Principal y Miniaturas) -->
+        <main class="md:col-span-2">
+            <h1 class="text-3xl md:text-4xl font-title text-center text-metroAccentText mb-6">Tu Espacio Digital</h1>
+            <!-- Pequeñas miniaturas de publicaciones recientes -->
+            <div class="bg-metroPanelBg panel-metro flex justify-center gap-2 p-2">
+                <a href="#img-1" class="w-20 h-20 overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/vHq06f9.jpg" alt="Miniatura 1" class="w-full h-full object-cover"></a>
+                <a href="#img-2" class="w-20 h-20 overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/vHq06f9.jpg" alt="Miniatura 2" class="w-full h-full object-cover"></a>
+                <a href="#img-3" class="w-20 h-20 overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/vHq06f9.jpg" alt="Miniatura 3" class="w-full h-full object-cover"></a>
+                <a href="#img-4" class="w-20 h-20 overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/vHq06f9.jpg" alt="Miniatura 4" class="w-full h-full object-cover"></a>
+                <a href="#img-5" class="w-20 h-20 overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/vHq06f9.jpg" alt="Miniatura 5" class="w-full h-full object-cover"></a>
+            </div>
+            <div class="text-center text-sm mb-4">
+                <a href="#" class="text-metroLink hover:text-metroAccentText"><i class="fa fa-arrow-left"></i> Anterior</a>
+                <span class="mx-2 text-metroGrayText">Archivo de fotos</span>
+                <a href="#" class="text-metroLink hover:text-metroAccentText">Siguiente <i class="fa fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Publicación Principal (Imagen Grande) -->
+            <div id="muro" class="panel-metro p-4">
+                <div class="relative w-full aspect-square overflow-hidden border-2 border-metroAccentText mb-4">
+                    <!-- Aquí va tu imagen principal grande -->
+                    <img src="https://i.imgur.com/vHq06f9.jpg" alt="Publicación principal" class="w-full h-full object-cover">
+                    <!-- Puedes añadir un título o fecha superpuesto si quieres -->
+                    <div class="absolute bottom-2 right-2 bg-metroHeaderBg text-metroTextDark text-xs px-2 py-1">20/04/2024</div>
+                </div>
+
+                <p class="text-sm mb-4">
+                    ¡Bienvenidos a mi espacio digital! Aquí comparto momentos, proyectos y algunas reflexiones.
+                    Es un placer tenerte por aquí, explorando lo que he estado haciendo.
+                </p>
+
+                <div class="flex gap-4 text-xs text-metroGrayText mb-4">
+                    <span><i class="fa fa-heart"></i> 123 Likes</span>
+                    <span><i class="fa fa-comment"></i> 45 Comentarios</span>
+                    <a href="#" class="text-metroLink hover:text-metroAccentText">Compartir</a>
+                </div>
+
+                <!-- Formulario de "Firma" o Comentario -->
+                <div class="panel-metro bg-metroBgLight">
+                    <h3 class="font-bold text-metroAccentText mb-2">Deja tu Firma</h3>
+                    <form class="flex flex-col gap-2">
+                        <input type="text" placeholder="Tu nombre o nick" class="input-metro w-full">
+                        <textarea placeholder="Tu comentario o mensaje profesional..." class="input-metro w-full h-20"></textarea>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20vi%20tu%20pagina%20web%20y%20quiero%20contactarte." 
+                           target="_blank" 
+                           class="button-whatsapp hover:text-white justify-center">
+                            <i class="fa fa-whatsapp text-lg"></i> Contactar por WhatsApp
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Columna Derecha (Favoritos, Amigos, Widgets) -->
+        <aside class="md:col-span-1">
+            <!-- Panel de Favoritos / Contactos Importantes -->
+            <div id="favoritos" class="panel-metro">
+                <div class="panel-metro-header">Conexiones Destacadas</div>
+                <div class="grid grid-cols-2 gap-2">
+                    <!-- Fila 1 de Favoritos -->
+                    <div class="text-center">
+                        <img src="https://i.imgur.com/vHq06f9.jpg" alt="Conexión 1" class="w-16 h-16 object-cover mx-auto border border-metroBorder">
+                        <p class="text-xs text-metroGrayText mt-1">por <a href="#" class="text-metroLink hover:text-metroAccentText">@CreativoAmigo</a></p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://i.imgur.com/vHq06f9.jpg" alt="Conexión 2" class="w-16 h-16 object-cover mx-auto border border-metroBorder">
+                        <p class="text-xs text-metroGrayText mt-1">por <a href="#" class="text-metroLink hover:text-metroAccentText">@ProyectoColab</a></p>
+                    </div>
+                    <!-- Fila 2 de Favoritos -->
+                    <div class="text-center">
+                        <img src="https://i.imgur.com/vHq06f9.jpg" alt="Conexión 3" class="w-16 h-16 object-cover mx-auto border border-metroBorder">
+                        <p class="text-xs text-metroGrayText mt-1">por <a href="#" class="text-metroLink hover:text-metroAccentText">@InfluencerTech</a></p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://i.imgur.com/vHq06f9.jpg" alt="Conexión 4" class="w-16 h-16 object-cover mx-auto border border-metroBorder">
+                        <p class="text-xs text-metroGrayText mt-1">por <a href="#" class="text-metroLink hover:text-metroAccentText">@MentorDigital</a></p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="link-metro text-xs"><i class="fa
+

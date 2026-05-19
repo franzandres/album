@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesoría Profesional - Franz Salvatierra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#1a202c', // Gris oscuro casi negro
+                        secundario: '#b91c1c', // Rojo oscuro de la corbata
+                        acento: '#3b82f6', // Azul del reloj para detalles
+                        claro: '#f8fafc', // Blanco roto
+                        intermedio: '#4a5568', // Gris medio para fondos
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'], // Fuente profesional y legible
+                        serif: ['Georgia', 'serif'], // Para títulos o elementos destacados
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+        @layer utilities {
+            .contenedor-personal {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            .sombra-profesional {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            .boton-whatsapp {
+                background-color: #25d366; /* Color oficial de WhatsApp */
+                transition: background-color 0.3s ease;
+            }
+            .boton-whatsapp:hover {
+                background-color: #1da851;
+            }
+        }
+    </style>
+</head>
+<body class="bg-claro text-primario font-sans">
+
+    <!-- Barra de Navegación -->
+    <nav class="bg-primario text-claro py-4 sticky top-0 z-50 sombra-profesional">
+        <div class="contenedor-personal flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="#inicio" class="text-2xl font-serif font-bold text-secundario hover:text-claro transition-colors">Franz andres Salvatierra</a>
+            Samur
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#sobre-mi" class="hover:text-secundario transition-colors">Sobre Mí</a>
+                <a href="#servicios" class="hover:text-secundario transition-colors">Servicios</a>
+                <a href="#contacto" class="hover:text-secundario transition-colors">Contacto</a>
+                <a href="https://wa.me/59160943737" target="_blank" class="flex items-center gap-2 boton-whatsapp text-white py-2 px-4 rounded-full text-sm font-semibold">
+                    <i class="fa fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Inicio/Héroe -->
+    <header id="inicio" class="relative bg-primario text-claro py-20 md:py-32 overflow-hidden">
+        <!-- Imagen de fondo con efecto -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center opacity-30" style="background-image: url('https://i.imgur.com/your_image_link_here.jpg'); background-position: top center;"></div>
+        <!-- Asegúrate de reemplazar 'https://i.imgur.com/your_image_link_here.jpg' con el enlace directo de la imagen del hombre.
+        Para que quede como el hombre de la imagen puedes usar: https://i.imgur.com/L79pM90.jpg -->
+        
+        <div class="contenedor-personal relative z-10 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div class="flex-shrink-0">
+                <img src="https://i.imgur.com/L79pM90.jpg" alt="Franz Salvatierra - Consultor" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-secundario sombra-profesional">
+            </div>
+            <div class="text-center md:text-left">
+                <p class="text-acento text-lg font-semibold mb-2">Asesoría Profesional y Estratégica</p>
+                <h1 class="text-4xl md:text-6xl font-bold font-serif leading-tight mb-4">Franz Andres Salvatierra Samur </h1>
+                <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto md:mx-0">
+                    Tu aliado para alcanzar tus metas y potenciar tu proyecto con estrategias claras y resultados tangibles.
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start gap-4">
+                    <a href="#servicios" class="bg-secundario hover:bg-secundario/80 text-claro py-3 px-8 rounded-full font-semibold sombra-profesional transition-all">
+                        Mis Servicios
+                    </a>
+                    <a href="https://wa.me/59160943737" target="_blank" class="flex items-center gap-2 boton-whatsapp text-white py-3 px-8 rounded-full font-semibold sombra-profesional transition-all">
+                        <i class="fa fa-whatsapp text-xl"></i> Contactar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección "Sobre Mí" -->
+    <section id="sobre-mi" class="py-16 md:py-24 bg-claro">
+        <div class="contenedor-personal text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10 text-primario">Un Enfoque Sólido y Confiable</h2>
+            <div class="max-w-3xl mx-auto text-lg leading-relaxed text-intermedio">
+                <p class="mb-6">
+                    Con años de experiencia en el sector de la asesoría estratégica, mi misión es simple: brindarte las herramientas y el conocimiento necesarios para superar desafíos y capitalizar oportunidades. Mi compromiso es con tus resultados, ofreciendo un servicio personalizado, ético y de la más alta calidad.
+                </p>
+                <p>
+                    Creo firmemente en la importancia de una visión clara y una ejecución impecable. Te guiaré paso a paso, asegurando que cada decisión te acerque más a tus objetivos.
+                </p>
+            </div>
+            <div class="mt-12 flex justify-center gap-6">
+                <a href="#" class="text-intermedio hover:text-secundario transition-colors"><i class="fa fa-linkedin-square text-3xl"></i></a>
+                <a href="#" class="text-intermedio hover:text-secundario transition-colors"><i class="fa fa-facebook-square text-3xl"></i></a>
+                <a href="#" class="text-intermedio hover:text-secundario transition-colors"><i class="fa fa-twitter-square text-3xl"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="servicios" class="py-16 md:py-24 bg-intermedio text-claro">
+        <div class="contenedor-personal">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif text-center mb-12 text-secundario">Mis Servicios Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="bg-primario p-8 rounded-xl sombra-profesional text-center">
+                    <i class="fa fa-line-chart text-5xl text-acento mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3">Estrategia Empresarial</h3>
+                    <p class="text-gray-300">Desarrollo de planes estratégicos personalizados para el crecimiento y expansión de tu negocio.</p>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="bg-primario p-8 rounded-xl sombra-profesional text-center">
+                    <i class="fa fa-lightbulb-o text-5xl text-acento mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3">Optimización de Procesos</h3>
+                    <p class="text-gray-300">Análisis y mejora de la eficiencia operativa para maximizar la productividad.</p>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="bg-primario p-8 rounded-xl sombra-profesional text-center">
+                    <i class="fa fa-users text-5xl text-acento mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3">Desarrollo de Liderazgo</h3>
+                    <p class="text-gray-300">Formación y coaching para líderes que buscan inspirar y dirigir equipos de alto rendimiento.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="https://wa.me/59160943737?text=Me%20interesan%20sus%20servicios%20de%20asesor%C3%ADa." target="_blank" class="flex items-center justify-center gap-2 boton-whatsapp text-white py-3 px-8 rounded-full font-semibold sombra-profesional inline-flex">
+                    <i class="fa fa-whatsapp text-xl"></i> Consultar Ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-16 md:py-24 bg-claro">
+        <div class="contenedor-personal text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10 text-primario">Hablemos de Tu Próximo Éxito</h2>
+            <p class="text-lg text-intermedio mb-8 max-w-2xl mx-auto">
+                ¿Listo para transformar tus ideas en resultados? Contacta directamente y empecemos a construir la estrategia perfecta para ti.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-8 items-center">
+                <div class="flex items-center gap-4 text-left">
+                    <i class="fa fa-phone text-3xl text-secundario"></i>
+                    <div>
+                        <p class="font-semibold">Teléfono / WhatsApp:</p>
+                        <a href="https://wa.me/59160943737" target="_blank" class="text-acento hover:underline text-lg">60943737</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 text-left mt-6 md:mt-0">
+                    <i class="fa fa-envelope text-3xl text-secundario"></i>
+                    <div>
+                        <p class="font-semibold">Correo Electrónico:</p>
+                        <a href="mailto:info@franzsalvatierra.com" class="text-acento hover:underline text-lg">info@franzsalvatierra.com</a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-sm text-gray-500 mt-10">
+                Respondo a todas las consultas en un plazo de 24 horas.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="py-8 bg-primario text-claro text-center border-t border-intermedio">
+        <div class="contenedor-personal">
+            <p>&copy; 2024 Franz Salvatierra. Asesoría Profesional. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talento Vocal - Tu Nombre Artístico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2d3748',     // Gris azulado oscuro para texto y fondos
+                        secondary: '#81e6d9',   // Turquesa vibrante para acentos, transmite creatividad
+                        accent: '#ecc94b',      // Amarillo para destacar elementos
+                        light: '#f7fafc',       // Fondo claro para secciones
+                        whiteBg: '#ffffff',     // Fondo blanco puro
+                        grayText: '#718096',    // Gris medio para texto secundario
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'], // Fuente moderna y amigable
+                        display: ['Great Vibes', 'cursive'], // Fuente cursiva para un toque artístico
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Para usar las fuentes Poppins y Great Vibes, puedes agregarlas desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: theme('fontFamily.sans');
+                color: theme('colors.primary');
+                background-color: theme('colors.whiteBg');
+            }
+        }
+        @layer components {
+            .container-custom {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            .btn-primary {
+                @apply bg-secondary text-primary py-3 px-8 rounded-full font-semibold transition-all duration-300 hover:bg-teal-400 shadow-md;
+            }
+            .btn-secondary {
+                @apply border-2 border-secondary text-secondary py-3 px-8 rounded-full font-semibold transition-all duration-300 hover:bg-secondary hover:text-primary shadow-md;
+            }
+            .video-responsive {
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                height: 0;
+                overflow: hidden;
+                max-width: 100%;
+                background: #000;
+            }
+            .video-responsive iframe,
+            .video-responsive object,
+            .video-responsive embed {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-whiteBg">
+
+    <!-- Barra de Navegación -->
+    <nav class="bg-whiteBg shadow-sm py-4 sticky top-0 z-50">
+        <div class="container-custom flex justify-between items-center">
+            <a href="#hero" class="text-3xl font-display font-bold text-primary">sahira</a>
+            <div class="flex gap-6">
+                <a href="#about" class="text-primary hover:text-secondary transition-colors">Sobre Mí</a>
+                <a href="#music" class="text-primary hover:text-secondary transition-colors">Música</a>
+                <a href="#videos" class="text-primary hover:text-secondary transition-colors">Videos</a>
+                <a href="#contact" class="text-primary hover:text-secondary transition-colors">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero/Inicio -->
+    <section id="hero" class="relative bg-light py-20 md:py-32 overflow-hidden">
+        <div class="container-custom flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div class="flex-shrink-0">
+                <!-- URL de la imagen principal -->
+                <img src="https://i.imgur.com/your_image_link_here.png" alt="Tu Nombre Artístico - Cantante" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-xl border-4 border-secondary">
+                <!-- Reemplazar "https://i.imgur.com/your_image_link_here.png" con la URL directa de la imagen de perfil que elijas -->
+            </div>
+            <div class="text-center md:text-left">
+                <p class="text-accent text-lg font-semibold mb-2">La Música es el Lenguaje del Alma</p>
+                <h1 class="text-4xl md:text-6xl font-bold font-display leading-tight mb-4">Tu Voz, Tu Pasión</h1>
+                <p class="text-xl md:text-2xl text-grayText max-w-2xl mx-auto md:mx-0">
+                    Soy [Tu Nombre Artístico], una cantante y creadora de covers dedicada a compartir mi pasión por la música y conectar a través de cada nota.
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start gap-4">
+                    <a href="#music" class="btn-primary">Escucha Mi Música</a>
+                    <a href="#contact" class="btn-secondary">Contáctame</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección "Sobre Mí" -->
+    <section id="about" class="py-16 md:py-24 bg-whiteBg">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10">Mi Historia Musical</h2>
+            <div class="max-w-3xl mx-auto text-lg leading-relaxed text-grayText">
+                <p class="mb-6">
+                    Desde pequeña, la música ha sido mi refugio y mi mayor fuente de inspiración. Lo que comenzó como un pasatiempo, se ha convertido en una vocación, permitiéndome explorar géneros, interpretar canciones que me conmueven y, sobre todo, compartirlas con ustedes.
+                </p>
+                <p>
+                    Mi objetivo es crear versiones únicas de mis canciones favoritas, añadiéndoles mi propio estilo y sentimiento. Cada cover es un nuevo desafío y una oportunidad para crecer como artista. ¡Espero que disfrutes de este viaje musical conmigo!
+                </p>
+            </div>
+            <div class="mt-12 flex justify-center gap-6">
+                <a href="#" class="text-primary hover:text-secondary transition-colors"><i class="fa fa-instagram text-3xl"></i></a>
+                <a href="#" class="text-primary hover:text-secondary transition-colors"><i class="fa fa-youtube-play text-3xl"></i></a>
+                <a href="#" class="text-primary hover:text-secondary transition-colors"><i class="fa fa-tiktok text-3xl"></i></a>
+                <!-- Agrega o quita iconos de redes sociales según necesites -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Música (Audios) -->
+    <section id="music" class="py-16 md:py-24 bg-light">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10">Mis Últimos Covers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cover de Audio 1 -->
+                <div class="bg-whiteBg rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-3">Nos Iremos Contigo - (Cover)</h3>
+                    <p class="text-grayText text-sm mb-4">Versión acústica y emotiva de este gran éxito.</p>
+                    <audio controls class="w-full">
+                        <source src="URL_DE_TU_AUDIO_1.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    
+                    <a href="#" class="text-secondary hover:underline font-semibold text-sm mt-4 block">Ver Video <i class="fa fa-youtube-play ml-1"></i></a>
+                </div>
+                <!-- Cover de Audio 2 -->
+                <div class="bg-whiteBg rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-3">Yo Soy La Ofrenda - (Cover)</h3>
+                    <p class="text-grayText text-sm mb-4">Una interpretación llena de fe y sentimiento.</p>
+                    <audio controls class="w-full">
+                        <source src="URL_DE_TU_AUDIO_2.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    
+                    <a href="#" class="text-secondary hover:underline font-semibold text-sm mt-4 block">Ver Video <i class="fa fa-youtube-play ml-1"></i></a>
+                </div>
+                <!-- Puedes añadir más covers de audio aquí -->
+                <div class="bg-whiteBg rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-3">Título de Otro Cover</h3>
+                    <p class="text-grayText text-sm mb-4">Descripción breve de la canción o el estilo.</p>
+                    <audio controls class="w-full">
+                        <source src="URL_DE_TU_AUDIO_3.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    
+                    <a href="#" class="text-secondary hover:underline font-semibold text-sm mt-4 block">Ver Video <i class="fa fa-youtube-play ml-1"></i></a>
+                </div>
+            </div>
+            <div class="mt-12">
+                <a href="#" class="btn-primary">Ver Todos los Audios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Videos (destacando los de las imágenes) -->
+    <section id="videos" class="py-16 md:py-24 bg-whiteBg">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10">Videos Destacados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Video 1 - Cover de 'Nos Iremos Contigo' -->
+                <div class="bg-light rounded-lg shadow-md overflow-hidden p-4">
+                    <h3 class="text-xl font-semibold mb-3">Cover de 'Nos Iremos Contigo'</h3>
+                    <p class="text-grayText text-sm mb-4">Tutorial de Guitarra en TikTok</p>
+                    <div class="video-responsive mb-4">
+                        <!-- Inserta el embed de YouTube/TikTok aquí. Ejemplo de YouTube: -->
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <!-- Si es de TikTok, puedes usar un embed o un link directo al perfil -->
+                    </div>
+                    <a href="URL_DEL_VIDEO_TIKTOK_1" target="_blank" class="btn-secondary">Ver en TikTok</a>
+                </div>
+                <!-- Video 2 - Yo Soy La Ofrenda -->
+                <div class="bg-light rounded-lg shadow-md overflow-hidden p-4">
+                    <h3 class="text-xl font-semibold mb-3">Yo Soy La Ofrenda - Covers y Adoraciones Cristianas</h3>
+                    <p class="text-grayText text-sm mb-4">Un momento de adoración con mi voz.</p>
+                    <div class="video-responsive mb-4">
+                        <!-- Inserta el embed de YouTube/TikTok aquí. Ejemplo de YouTube: -->
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <!-- Si es de TikTok, puedes usar un embed o un link directo al perfil -->
+                    </div>
+                    <a href="URL_DEL_VIDEO_TIKTOK_2" target="_blank" class="btn-secondary">Ver en TikTok</a>
+                </div>
+            </div>
+            <div class="mt-12">
+                <a href="#" class="btn-primary">Ver Todos los Videos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contact" class="py-16 md:py-24 bg-light">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-10">Conéctate Conmigo</h2>
+            <p class="text-lg text-grayText mb-8 max-w-2xl mx-auto">
+                ¿Tienes una sugerencia de cover, quieres colaborar o simplemente saludar? ¡Me encantaría saber de ti!
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-8 items-center">
+                <div class="flex items-center gap-4 text-left">
+                    <i class="fa fa-envelope text-3xl text-secondary"></i>
+                    <div>
+                        <p class="font-semibold">Correo Electrónico:</p>
+                        <a href="mailto:tunombre@email.com" class="text-primary hover:underline text-lg">tunombre@email.com</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 text-left mt-6 md:mt-0">
+                    <i class="fa fa-instagram text-3xl text-secondary"></i>
+                    <div>
+                        <p class="font-semibold">Instagram:</p>
+                        <a href="https://www.instagram.com/tu_usuario" target="_blank" class="text-primary hover:underline text-lg">@tu_usuario</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 max-w-md mx-auto">
+                <p class="text-grayText mb-4">Envía un mensaje directo:</p>
+                <form class="flex flex-col gap-4">
+                    <input type="text" placeholder="Tu Nombre" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                    <input type="email" placeholder="Tu Email" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                    <textarea placeholder="Tu Mensaje" rows="5" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                    <button type="submit" class="btn-primary w-full">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="py-8 bg-primary text-whiteBg text-center text-sm">
+        <div class="container-custom">
+            <p>&copy; 2024 Tu Nombre Artístico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+

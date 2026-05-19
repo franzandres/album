@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria Pixelada - Portafolio Creativo Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        metroBg: '#2a0050', /* Fondo principal púrpura oscuro */
+                        metroHeader: '#1a0033', /* Fondo del header un poco más oscuro */
+                        metroAccent: '#ff00cc', /* Rosa/fucsia vibrante de Metroflog */
+                        metroText: '#f0f0f0', /* Blanco casi puro para el texto */
+                        metroBorder: '#6a0080', /* Borde sutil para elementos */
+                        metroLink: '#00ccff', /* Azul cian para enlaces */
+                        metroGray: '#808080' /* Gris para texto secundario */
+                    },
+                    fontFamily: {
+                        sans: ['Arial', 'Helvetica', 'sans-serif'], /* Fuente legible, recordando esa época */
+                        pixel: ['"Press Start 2P"', 'cursive'], /* Opcional: para un toque más pixelado en títulos */
+                        // Para usar 'Press Start 2P', necesitarías importar la fuente desde Google Fonts:
+                        // <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                background-color: theme('colors.metroBg');
+                color: theme('colors.metroText');
+                font-family: theme('fontFamily.sans');
+            }
+            /* Opcional: Estilos para barras de scroll como las de Windows XP si quieres máxima nostalgia */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+            ::-webkit-scrollbar-track {
+                background: theme('colors.metroBg');
+                border: 1px solid theme('colors.metroBorder');
+            }
+            ::-webkit-scrollbar-thumb {
+                background: theme('colors.metroAccent');
+                border: 1px solid theme('colors.metroBorder');
+            }
+        }
+        @layer components {
+            .container-metro {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 1rem;
+            }
+            .panel-metro {
+                background-color: theme('colors.metroHeader');
+                border: 1px solid theme('colors.metroBorder');
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            .link-metro {
+                color: theme('colors.metroLink');
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .link-metro:hover {
+                color: theme('colors.metroAccent');
+                text-decoration: underline;
+            }
+            .input-metro {
+                background-color: theme('colors.metroBg');
+                border: 1px solid theme('colors.metroBorder');
+                padding: 0.5rem;
+                color: theme('colors.metroText');
+            }
+            .button-metro {
+                background-color: theme('colors.metroAccent');
+                color: theme('colors.metroText');
+                padding: 0.5rem 1rem;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.2s;
+            }
+            .button-metro:hover {
+                background-color: theme('colors.metroLink');
+            }
+        }
+    </style>
+</head>
+<body class="bg-metroBg text-metroText">
+
+    <!-- Header / Barra Superior Metroflog-style -->
+    <header class="bg-metroHeader py-3 border-b-2 border-metroBorder">
+        <div class="container-metro flex justify-between items-center text-sm">
+            <div class="flex items-center gap-2">
+                <i class="fa fa-th-large text-metroAccent"></i>
+                <span class="font-bold">METRO FLOG</span>
+            </div>
+            <nav class="hidden md:flex gap-4">
+                <a href="#portfolio" class="link-metro">Mi Archivo</a>
+                <a href="#about" class="link-metro">Sobre Mí</a>
+                <a href="#contacto" class="link-metro">Contacto MP</a>
+                <a href="#" class="link-metro">Configuración</a>
+                <a href="#" class="link-metro">Salir</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Principal - Contenido al estilo Metroflog -->
+    <main class="container-metro grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+
+        <!-- Columna Izquierda (Perfil, Menú de Fechas) -->
+        <aside class="md:col-span-1">
+            <!-- Panel de Perfil/Acerca de -->
+            <div class="panel-metro">
+                <h3 class="text-lg font-bold text-metroAccent mb-3">¿Quién soy?</h3>
+                <img src="https://i.imgur.com/L79pM90.jpg" alt="Perfil del Creador" class="w-full h-auto object-cover border-2 border-metroAccent mb-4">
+                <p class="text-sm text-metroGray mb-2">Un creador apasionado por el arte digital y la nostalgia.</p>
+                <p class="text-xs text-metroGray">Miembro desde: 2005 (virtualmente)</p>
+                <div class="mt-4 flex flex-col gap-2">
+                    <a href="#contacto" class="link-metro text-sm"><i class="fa fa-envelope-o mr-2"></i>Enviar Mensaje Privado</a>
+                    <a href="#" class="link-metro text-sm"><i class="fa fa-external-link mr-2"></i>Ver mi Blog (Link)</a>
+                </div>
+            </div>
+
+            <!-- Panel de Archivo por Fecha (como el de Metroflog) -->
+            <div class="panel-metro">
+                <h3 class="text-lg font-bold text-metroAccent mb-3">Archivo de Publicaciones</h3>
+                <ul class="text-sm">
+                    <li class="mb-1"><a href="#" class="link-metro">2024 <span class="text-metroGray">(15)</span></a></li>
+                    <ul class="ml-4">
+                        <li><a href="#" class="link-metro">Enero <span class="text-metroGray">(3)</span></a></li>
+                        <li><a href="#" class="link-metro">Febrero <span class="text-metroGray">(5)</span></a></li>
+                        <li><a href="#" class="link-metro">Marzo <span class="text-metroGray">(7)</span></a></li>
+                    </ul>
+                    <li class="mb-1"><a href="#" class="link-metro">2023 <span class="text-metroGray">(42)</span></a></li>
+                    <li class="mb-1"><a href="#" class="link-metro">2022 <span class="text-metroGray">(30)</span></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Columna Central (Galería de Fotos Principal) -->
+        <section id="portfolio" class="md:col-span-2">
+            <div class="panel-metro">
+                <h2 class="text-2xl font-bold text-metroAccent mb-4 text-center">tTtTt.qQ.mMm.</h2>
+                <p class="text-center text-sm text-metroGray mb-6">"El arte de recordar es como la vida misma."</p>
+
+                <!-- Navegación de Fotos -->
+                <div class="flex justify-center items-center gap-4 mb-6">
+                    <a href="#" class="link-metro"><i class="fa fa-arrow-left mr-1"></i> Anterior</a>
+                    <span class="text-metroGray">Archivo de fotos</span>
+                    <a href="#" class="link-metro">Siguiente <i class="fa fa-arrow-right ml-1"></i></a>
+                </div>
+
+                <!-- Imagen Principal (simulando una publicación grande) -->
+                <div class="relative w-full aspect-square overflow-hidden border-2 border-metroAccent mb-6">
+                    <img src="https://i.imgur.com/r6E7h7O.png" alt="Obra de Arte Digital 1" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 right-0 p-2 bg-metroAccent text-xs font-bold text-metroText">27/11/2023</div>
+                </div>
+
+                <!-- Galería de Miniaturas Recientes (simulando firmas o fotos relacionadas) -->
+                <div class="grid grid-cols-5 gap-2 mb-6">
+                    <div class="w-full aspect-square overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/L79pM90.jpg" alt="Miniatura 1" class="w-full h-full object-cover"></div>
+                    <div class="w-full aspect-square overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/9X7Z8Lb.png" alt="Miniatura 2" class="w-full h-full object-cover"></div>
+                    <div class="w-full aspect-square overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/6QZ9XaL.png" alt="Miniatura 3" class="w-full h-full object-cover"></div>
+                    <div class="w-full aspect-square overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/L79pM90.jpg" alt="Miniatura 4" class="w-full h-full object-cover"></div>
+                    <div class="w-full aspect-square overflow-hidden border border-metroBorder"><img src="https://i.imgur.com/r6E7h7O.png" alt="Miniatura 5" class="w-full h-full object-cover"></div>
+                </div>
+
+                <!-- Espacio para "Comentarios" o "Descripción de la Obra" -->
+                <div class="panel-metro text-sm">
+                    <p class="mb-2"><strong class="text-metroAccent">Título:</strong> La Odisea Digital</p>
+                    <p class="mb-4">Una exploración sobre la intersección entre la nostalgia del internet temprano y las complejidades del mundo digital actual. Cada pixel cuenta una historia.</p>
+                    <a href="#" class="link-metro text-xs"><i class="fa fa-share-alt mr-1"></i> Compartir</a>
+                    <span class="text-metroGray ml-4">|</span>
+                    <a href="#" class="link-metro text-xs"><i class="fa fa-heart-o mr-1"></i> Favorito (123)</a>
+                </div>
+
+                <!-- Formulario de Contacto Rápido / "Firmas" -->
+                <div id="contacto" class="panel-metro mt-8">
+                    <h3 class="text-lg font-bold text-metroAccent mb-4">Deja tu "Firma" o Consulta Profesional</h3>
+                    <form class="flex flex-col gap-3">
+                        <input type="text" placeholder="Tu Nombre de Usuario" class="input-metro w-full">
+                        <textarea placeholder="Tu mensaje / consulta profesional..." class="input-metro w-full h-24"></textarea>
+                        <a href="https://wa.me/59160943737?text=Hola%2C%20quisiera%20consultar%20algo%20sobre%20tu%20portafolio%20digital." target="_blank" class="button-metro flex items-center justify-center gap-2">
+                            <i class="fa fa-whatsapp text-lg"></i> Enviar por WhatsApp
+                        </a>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Columna Derecha (Amigos/Recomendados, Widgets) -->
+        <aside class="md:col-span-1">
+            <!-- Panel de Amigos/Seguidores -->
+            <div class="panel-metro">
+                <h3 class="text-lg font-bold text-metroAccent mb-3">Mis Conexiones Creativas</h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <!-- Ejemplo de "Amigo" o "Conexión" -->
+                    <div class="text-center">
+                        <img src="https://i.imgur.com/L79pM90.jpg" alt="Conexión 1" class="w-16 h-16 object-cover rounded-full mx-auto border border-metroBorder mb-1">
+                        <p class="text-xs text-metroGray">@ArtistaDigitalX</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://i.imgur.com/9X7Z8Lb.png" alt="Conexión 2" class="w-16 h-16 object-cover rounded-full mx-auto border border-metroBorder mb-1">
+                        <p class="text-xs text-metroGray">@PhotoNostalgia</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://i.imgur.com/6QZ9XaL.png" alt="Conexión 3" class="w-16 h-16 object-cover rounded-full mx-auto border border-metroBorder mb-1">
+                        <p class="text-xs text-metroGray">@DisenadorRetro</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://i.imgur.com/r6E7h7O.png" alt="Conexión 4" class="w-16 h-16 object-cover rounded-full mx-auto border border-metroBorder mb-1">
+                        <p class="text-xs text-metroGray">@PixelArtist</p>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <a href="#" class="link-metro text-sm"><i class="fa fa-users mr-1"></i> Ver todas las conexiones</a>
+                </div>
+            </div>
+
+            <!-- Panel de Anuncios / Widgets (como el de los banners) -->
+            <div class="panel-metro text-center text-sm">
+                <h3 class="text-lg font-bold text-metroAccent mb-3">Mis Recomendaciones</h3>
+                <a href="#" class="block w-full border border-metroBorder p-2 mb-2 bg-metroBg text-metroText hover:text-metroLink transition-colors">Herramientas de Diseño Retro</a>
+                <a href="#" class="block w-full border border-metroBorder p-2 mb-2 bg-metroBg text-metroText hover:text-metroLink transition-colors">Tutoriales de Pixel Art</a>
+                <a href="#" class="block w-full border border-metroBorder p-2 bg-metroBg text-metroText hover:text-metroLink transition-colors">Comunidades de Artistas</a>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Footer - Pie de página minimalista -->
+    <footer class="bg-metroHeader text-metroGray text-center py-4 mt-6 border-t-2 border-metroBorder">
+        <div class="container-metro text-xs">
+            <p>&copy; 2024 Memoria Pixelada. Todos los derechos reservados. | Inspirado en la era digital.</p>
+            <div class="mt-2">
+                <a href="#" class="link-metro text-xs">Política de Privacidad</a>
+                <span class="mx-
+
+
