@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp - Paisaje de Montañas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // ?? PALETA EXACTA EXTRAÍDA DE LA IMAGEN
+                    colors: {
+                        cieloOscuro: '#2B4865',
+                        cieloMedio: '#426789',
+                        cieloClaro: '#7A93AC',
+                        verdeBosque: '#3A704E',
+                        verdeIntenso: '#4A855E',
+                        verdeSuave: '#85B394',
+                        grisRoca: '#6B7280',
+                        grisClaro: '#B8BFC7',
+                        blancoGris: '#E8EEF2',
+                        burbujaEnviado: '#94B9D2',
+                        burbujaRecibido: '#F2F7F9',
+                        cabecera: 'linear-gradient(180deg, #2B4865 0%, #3A704E 100%)',
+                    },
+                    fontFamily: {
+                        whatsapp: ['Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-paisaje {
+                background-image: url('https://i.imgur.com/7Z9X8kL.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            .burbuja-envio {
+                @apply bg-burbujaEnviado rounded-3xl rounded-tr-none px-4 py-2.5 max-w-[78%] shadow-sm border-l-2 border-cieloOscuro/20;
+            }
+            .burbuja-recepcion {
+                @apply bg-burbujaRecibido rounded-3xl rounded-tl-none px-4 py-2.5 max-w-[78%] shadow-sm border-r-2 border-verdeBosque/20;
+            }
+
+            .ocultar-desplazamiento::-webkit-scrollbar { display: none; }
+            .ocultar-desplazamiento { -ms-overflow-style: none; scrollbar-width: none; }
+
+            .sombra-texto { text-shadow: 0px 1px 2px rgba(0,0,0,0.12); }
+            .boton-interactivo { @apply transition-all duration-200 hover:bg-white/20 rounded-full w-9 h-9 flex items-center justify-center; }
+        }
+    </style>
+</head>
+
+<body class="bg-paisaje font-whatsapp flex items-center justify-center min-h-screen p-4">
+
+    <!-- ?? VENTANA COMPLETA DE WHATSAPP -->
+    <div class="w-full max-w-md h-[92vh] max-h-[750px] bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col border-[3px] border-cieloClaro/40">
+
+        <!-- ?? CABECERA -->
+        <header class="bg-cabecera text-white p-4 flex items-center gap-3 shadow-lg">
+            <button class="boton-interactivo text-lg">
+                <i class="fa fa-arrow-left"></i>
+            </button>
+
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-blancoGris shadow-md">
+                <img src="https://i.imgur.com/7Z9X8kLb.png" alt="Perfil Montaña" class="w-full h-full object-cover">
+            </div>
+
+            <div class="flex-1">
+                <h2 class="font-semibold text-lg sombra-texto">Amigos de la Montaña</h2>
+                <p class="text-xs text-blancoGris/90">
+                    <span class="inline-block w-2 h-2 bg-verdeSuave rounded-full mr-1 animate-pulse"></span>
+                    Activo hace 5 min
+                </p>
+            </div>
+
+            <div class="flex gap-3 text-lg">
+                <button class="boton-interactivo">
+                    <i class="fa fa-camera"></i>
+                </button>
+                <button class="boton-interactivo">
+                    <i class="fa fa-phone"></i>
+                </button>
+                <button class="boton-interactivo">
+                    <i class="fa fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- ?? ZONA DE MENSAJES -->
+        <main class="flex-1 p-4 overflow-y-auto ocultar-desplazamiento bg-cieloClaro/10 backdrop-blur-[2px]">
+
+            <div class="mb-6 flex">
+                <div class="burbuja-recepcion">
+                    <p class="text-gray-800 leading-relaxed">¡Mira qué vista tan espectacular! ?? ¿No te parece que es el lugar más hermoso que hemos visitado?</p>
+                    <span class="text-[11px] text-grisRoca text-right block mt-1">11:02</span>
+                </div>
+            </div>
+
+            <div class="mb-6 flex justify-end">
+                <div class="burbuja-envio">
+                    <p class="text-gray-900 leading-relaxed">¡Totalmente! Las montañas se ven imponentes, los colores del cielo y los bosques se mezclan perfectamente. Me transmite mucha paz.</p>
+                    <span class="text-[11px] text-cieloOscuro text-right block mt-1">11:04 <i class="fa fa-check-double text-cieloOscuro"></i></span>
+                </div>
+            </div>
+
+            <div class="mb-6 flex">
+                <div class="burbuja-recepcion">
+                    <p class="text-gray-800 leading-relaxed">Sí, se respira aire puro y se siente una energía increíble. ¿Te animas a subir hasta el pico más alto mañana temprano?</p>
+                    <span class="text-[11px] text-grisRoca text-right block mt-1">11:06</span>
+                </div>
+            </div>
+
+            <div class="mb-6 flex justify-end">
+                <div class="burbuja-envio">
+                    <p class="text-gray-900 leading-relaxed">¡Por supuesto! Llevaré agua, comida y la cámara fotográfica para capturar todo este paisaje único. Será inolvidable ?????</p>
+                    <span class="text-[11px] text-cieloOscuro text-right block mt-1">11:07 <i class="fa fa-check-double text-cieloOscuro"></i></span>
+                </div>
+            </div>
+
+            <div class="mb-6 flex">
+                <div class="burbuja-recepcion">
+                    <p class="text-gray-800 leading-relaxed">¡Excelente! Solo ten en cuenta que en la cima hace más frío y a veces hay niebla, mejor lleva ropa abrigadora y ropa extra.</p>
+                    <span class="text-[11px] text-grisRoca text-right block mt-1">11:09</span>
+                </div>
+            </div>
+
+            <div class="mb-6 flex justify-end">
+                <div class="burbuja-envio">
+                    <p class="text-gray-900 leading-relaxed">¡No te preocupes! Ya estoy preparado. Gracias por avisarme, nos vemos muy temprano para aprovechar la luz del sol. ¡Vamos a disfrutar! ??</p>
+                    <span class="text-[11px] text-cieloOscuro text-right block mt-1">11:10 <i class="fa fa-check-double text-cieloOscuro"></i></span>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ?? BARRA DE ESCRITURA -->
+        <footer class="bg-blancoGris/95 p-3.5 flex items-center gap-3 border-t border-cieloClaro/30 shadow-inner">
+            <button class="text-verdeBosque text-xl hover:text-cieloOscuro transition-colors">
+                <i class="fa fa-smile-o"></i>
+            </button>
+            <button class="text-verdeBosque text-xl hover:text-cieloOscuro transition-colors">
+                <i class="fa fa-paperclip"></i>
+            </button>
+
+            <input 
+                type="text" 
+                placeholder="Escribe tu mensaje..." 
+                class="flex-1 px-5 py-2.5 rounded-full border border-cieloClaro/40 focus:outline-none focus:border-verdeIntenso focus:ring-1 focus:ring-verdeSuave bg-white text-gray-700"
+            >
+
+            <button class="bg-verdeBosque text-white w-11 h-11 rounded-full flex items-center justify-center text-lg hover:bg-cieloOscuro transition-all shadow-md">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+

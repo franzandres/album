@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias Artesanales - Sistema Completo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #fef6f0;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h1, h2, h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .seccion {
+            background: #fff;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f8e2d0;
+            color: #8b4513;
+        }
+        .texto-centrado {
+            text-align: center;
+        }
+        .resaltado {
+            background-color: #fff3cd;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .check::before {
+            content: "? ";
+        }
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>?? DELICIAS ARTESANALES ??</h1>
+    <p class="texto-centrado">Sistema Completo de Administración, Producción y Ventas</p>
+
+    <!-- ============================================== -->
+    <!-- 1. HOJAS TÉCNICAS DE RECETAS -->
+    <!-- ============================================== -->
+    <div class="seccion">
+        <h2>?? HOJAS TÉCNICAS DE RECETA</h2>
+
+        <!-- Receta N°47 -->
+        <h3>Receta N°47 - Pastel de Leche Condensada</h3>
+        <table>
+            <tr>
+                <th>Categoría</th>
+                <td>? Clásico</td>
+            </tr>
+            <tr>
+                <th>Ingredientes (peso exacto)</th>
+                <td>
+                    • 1 lata leche condensada (397?g)<br>
+                    • 4 huevos<br>
+                    • 200?g harina de trigo<br>
+                    • 100?g mantequilla<br>
+                    • 1 cdita. polvo de hornear
+                </td>
+            </tr>
+            <tr>
+                <th>Preparación y Tiempos</th>
+                <td>
+                    Preparación: 15?min<br>
+                    Horneado: 180?°C / 35?min<br>
+                    Enfriado: 20?min<br>
+                    <em>Pasos:</em> Mezclar todo suavemente hasta integrar bien. Verter en molde engrasado. Hornear, dejar enfriar antes de desmoldar.
+                </td>
+            </tr>
+            <tr>
+                <th>Costos y Precios</th>
+                <td>
+                    Materia prima: <strong>Bs 18,61</strong><br>
+                    Gas + Empaque: <strong>Bs 5,50</strong><br>
+                    Mano de obra: <strong>Bs 4,00</strong><br>
+                    COSTO TOTAL: <strong class="resaltado">Bs 30,11</strong><br>
+                    PRECIO VENTA: <strong class="resaltado">Bs 46,00</strong><br>
+                    Ganancia unidad: <strong>Bs 15,89</strong>
+                </td>
+            </tr>
+            <tr>
+                <th>Peso / Empaque</th>
+                <td>850?g | ? Caja estándar</td>
+            </tr>
+        </table>
+
+        <!-- Receta N°48 -->
+        <h3>Receta N°48 - Pastel Empapado de Naranja</h3>
+        <table>
+            <tr>
+                <th>Categoría</th>
+                <td>? Empapado</td>
+            </tr>
+            <tr>
+                <th>Ingredientes (peso exacto)</th>
+                <td>
+                    • 240?g harina<br>
+                    • 190?g azúcar<br>
+                    • 4 huevos<br>
+                    • 100?ml leche entera<br>
+                    • 90?g mantequilla<br>
+                    • Ralladura + jugo de 1 naranja<br>
+                    • 1 cdita. polvo de hornear<br>
+                    • Almíbar: 100?g azúcar + 80?ml agua + jugo de 1 naranja extra
+                </td>
+            </tr>
+            <tr>
+                <th>Preparación y Tiempos</th>
+                <td>
+                    Preparación: 20?min<br>
+                    Horneado: 180?°C / 30?min<br>
+                    Enfriado: 10?min + baño caliente<br>
+                    <em>Pasos:</em> Hacer bizcocho de naranja. Al sacar del horno, bañar inmediatamente con el almíbar caliente. Dejar reposar para que absorba todo.
+                </td>
+            </tr>
+            <tr>
+                <th>Costos y Precios</th>
+                <td>
+                    Materia prima: <strong>Bs 13,45</strong><br>
+                    Gas + Empaque: <strong>Bs 5,50</strong><br>
+                    Mano de obra: <strong>Bs 4,00</strong><br>
+                    COSTO TOTAL: <strong class="resaltado">Bs 24,95</strong><br>
+                    PRECIO VENTA: <strong class="resaltado">Bs 38,00</strong><br>
+                    Ganancia unidad: <strong>Bs 13,05</strong>
+                </td>
+            </tr>
+            <tr>
+                <th>Peso / Empaque</th>
+                <td>900?g | ? Caja estándar</td>
+            </tr>
+        </table>
+
+        <!-- Receta N°56 -->
+        <h3>Receta N°56 - Tarta de Queso Clásica</h3>
+        <table>
+            <tr>
+                <th>Categoría</th>
+                <td>? Queso</td>
+            </tr>
+            <tr>
+                <th>Ingredientes (peso exacto)</th>
+                <td>
+                    • 300?g galletas dulces<br>
+                    • 100?g mantequilla derretida<br>
+                    • 500?g queso crema<br>
+                    • 200?g azúcar<br>
+                    • 3 huevos<br>
+                    • 150?ml crema de leche<br>
+                    • 1 cdita. esencia de vainilla
+                </td>
+            </tr>
+            <tr>
+                <th>Preparación y Tiempos</th>
+                <td>
+                    Preparación: 25?min<br>
+                    Horneado: 160?°C / 50?min<br>
+                    Enfriado/Reposo: 4?h (frío)<br>
+                    <em>Pasos:</em> Triturar galletas, mezclar con mantequilla y formar base. Batir queso con azúcar, agregar huevos, crema y vainilla. Verter sobre base y hornear. Enfriar lentamente.
+                </td>
+            </tr>
+            <tr>
+                <th>Costos y Precios</th>
+                <td>
+                    Materia prima: <strong>Bs 23,40</strong><br>
+                    Gas + Empaque: <strong>Bs 5,50</strong><br>
+                    Mano de obra: <strong>Bs 4,00</strong><br>
+                    COSTO TOTAL: <strong class="resaltado">Bs 34,90</strong><br>
+                    PRECIO VENTA: <strong class="resaltado">Bs 53,00</strong><br>
+                    Ganancia unidad: <strong>Bs 18,10</strong>
+                </td>
+            </tr>
+            <tr>
+                <th>Peso / Empaque</th>
+                <td>1100?g | ? Caja estándar</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 2. LIBRO DE CONTROL DIARIO -->
+    <!-- ============================================== -->
+    <div class="seccion">
+        <h2>?? LIBRO DE GESTIÓN DIARIA</h2>
+        <p><strong>Empresa:</strong> Delicias Artesanales | <strong>Fecha:</strong> ____ / ____ / 20____ | <strong>Día:</strong> _______________</p>
+
+        <h3>?? Ventas del día</h3>
+        <table>
+            <tr>
+                <th>Producto N° / Nombre</th>
+                <th>Cantidad</th>
+                <th>Importe Bs</th>
+            </tr>
+            <tr>
+                <td>47 - Leche Condensada</td>
+                <td>2</td>
+                <td>92,00</td>
+            </tr>
+            <tr>
+                <td>48 - Empapado Naranja</td>
+                <td>1</td>
+                <td>38,00</td>
+            </tr>
+            <tr>
+                <td>56 - Tarta Queso Clásica</td>
+                <td>2</td>
+                <td>106,00</td>
+            </tr>
+            <tr>
+                <td>11 - Doble Chocolate</td>
+                <td>1</td>
+                <td>46,00</td>
+            </tr>
+            <tr>
+                <td>96 - Magdalenas Vainilla</td>
+                <td>6</td>
+                <td>27,00</td>
+            </tr>
+            <tr>
+                <th colspan="2">? TOTAL VENTAS</th>
+                <th>309,00</th>
+            </tr>
+        </table>
+
+        <h3>?? Gastos del día</h3>
+        <table>
+            <tr>
+                <th>Concepto</th>
+                <th>Monto Bs</th>
+            </tr>
+            <tr>
+                <td>Insumos / Compras</td>
+                <td>112,50</td>
+            </tr>
+            <tr>
+                <td>Luz / Agua / Gas</td>
+                <td>15,00</td>
+            </tr>
+            <tr>
+                <td>Empaques / Materiales</td>
+                <td>8,00</td>
+            </tr>
+            <tr>
+                <td>Sueldos / Mano de obra</td>
+                <td>40,00</td>
+            </tr>
+            <tr>
+                <td>Otros</td>
+                <td>0,00</td>
+            </tr>
+            <tr>
+                <th>? TOTAL GASTOS</th>
+                <th>175,50</th>
+            </tr>
+        </table>
+
+        <h3>?? Balance del día</h3>
+        <table>
+            <tr>
+                <td>?? Ventas</td>
+                <td><strong>309,00</strong></td>
+            </tr>
+            <tr>
+                <td>?? Gastos</td>
+                <td><strong>175,50</strong></td>
+            </tr>
+            <tr>
+                <th>? GANANCIA NETA</th>
+                <th class="resaltado">133,50</th>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 3. CONTROL DE INVENTARIO Y COMPRAS -->
+    <!-- ============================================== -->
+    <div class="seccion">
+        <h2>?? ALMACÉN Y LISTA DE COMPRAS</h2>
+        <table>
+            <tr>
+                <th>Insumo</th>
+                <th>Cant. Actual</th>
+                <th>Mínimo a tener</th>
+                <th>Precio Actual</th>
+                <th>Proveedor</th>
+            </tr>
+            <tr>
+                <td>Harina</td>
+                <td>12?kg</td>
+                <td>5?kg</td>
+                <td>Bs 6,50/kg</td>
+                <td>Mayorista</td>
+            </tr>
+            <tr>
+                <td>Azúcar</td>
+                <td>8?kg</td>
+                <td>3?kg</td>
+                <td>Bs 5,50/kg</td>
+                <td>Mayorista</td>
+            </tr>
+            <tr>
+                <td>Huevos</td>
+                <td>80?unid</td>
+                <td>30?unid</td>
+                <td>Bs 0,90/u</td>
+                <td>Mercado</td>
+            </tr>
+            <tr>
+                <td>Mantequilla</td>
+                <td>2,5?kg</td>
+                <td>1?kg</td>
+                <td>Bs 42,00/kg</td>
+                <td>Lácteos</td>
+            </tr>
+            <tr>
+                <td>Cacao</td>
+                <td>600?g</td>
+                <td>200?g</td>
+                <td>Bs 60,00/kg</td>
+                <td>Especial</td>
+            </tr>
+            <tr>
+                <td>Leche Condensada</td>
+                <td>12?latas</td>
+                <td>4?latas</td>
+                <td>Bs 9,50/u</td>
+                <td>Mayorista</td>
+            </tr>
+            <tr>
+                <td>Leche Entera</td>
+                <td>7?litros</td>
+                <td>2?litros</td>
+                <td>Bs 8,50/l</td>
+                <td>Mayorista</td>
+            </tr>
+            <tr>
+                <td>Queso Crema</td>
+                <td>3?kg</td>
+                <td>1?kg</td>
+                <td>Bs 25,00/kg</td>
+                <td>Lácteos</td>
+            </tr>
+            <tr>
+                <td>Galletas</td>
+                <td>2?kg</td>
+                <td>500?g</td>
+                <td>Bs 12,00/kg</td>
+                <td>Mayorista</td>
+            </tr>
+            <tr>
+                <td>Chocolate</td>
+                <td>1,2?kg</td>
+                <td>300?g</td>
+                <td>Bs 38,00/kg</td>
+                <td>Especial</td>
+            </tr>
+        </table>
+
+        <h3>?? Compras para hoy / mañana:</h3>
+        <p class="check">Reponer Huevos: 2 cajas</p>
+        <p class="check">Comprar Naranjas, Limones y Plátanos frescos</p>
+        <p class="check">Completar stock de Queso Crema</p>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 4. LISTA DE PRECIOS 47 a 100 -->
+    <!-- ============================================== -->
+    <div class="seccion">
+        <h2>??? LISTA DE PRECIOS • RECETAS 47 a 100</h2>
+
+        <h3>?? Clásicos y Cremosos</h3>
+        <table>
+            <tr><td>47. Leche Condensada</td><td><strong>Bs 46,00</strong></td></tr>
+            <tr><td>48. Empapado de Naranja</td><td><strong>Bs 38,00</strong></td></tr>
+            <tr><td>49. Empapado de Limón</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>50. Coco y Leche</td><td><strong>Bs 39,00</strong></td></tr>
+            <tr><td>51. Café con Leche</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>52. Ron (adultos)</td><td><strong>Bs 39,00</strong></td></tr>
+            <tr><td>53. Vainilla con Almíbar</td><td><strong>Bs 36,00</strong></td></tr>
+            <tr><td>54. Miel</td><td><strong>Bs 41,00</strong></td></tr>
+            <tr><td>55. Dulce de Leche</td><td><strong>Bs 43,00</strong></td></tr>
+        </table>
+
+        <h3>?? Tartas de Queso</h3>
+        <table>
+            <tr><td>56. Clásica</td><td><strong>Bs 53,00</strong></td></tr>
+            <tr><td>57. Sin Horno</td><td><strong>Bs 55,00</strong></td></tr>
+            <tr><td>58. Con Fresas</td><td><strong>Bs 57,00</strong></td></tr>
+            <tr><td>59. Chocolate</td><td><strong>Bs 59,00</strong></td></tr>
+            <tr><td>60. Limón</td><td><strong>Bs 54,00</strong></td></tr>
+            <tr><td>61. Naranja</td><td><strong>Bs 54,00</strong></td></tr>
+            <tr><td>62. Arándanos</td><td><strong>Bs 58,00</strong></td></tr>
+            <tr><td>63. Coco</td><td><strong>Bs 55,00</strong></td></tr>
+            <tr><td>64. Dulce de Leche</td><td><strong>Bs 58,00</strong></td></tr>
+            <tr><td>65. Queso de Cabra</td><td><strong>Bs 60,00</strong></td></tr>
+        </table>
+
+        <h3>?? Especiales y Regionales</h3>
+        <table>
+            <tr><td>66. Sacher</td><td><strong>Bs 48,00</strong></td></tr>
+            <tr><td>67. Selva Negra</td><td><strong>Bs 50,00</strong></td></tr>
+            <tr><td>68. Operá</td><td><strong>Bs 52,00</strong></td></tr>
+            <tr><td>69. Mil Hojas</td><td><strong>Bs 50,00</strong></td></tr>
+            <tr><td>70. Chajá</td><td><strong>Bs 47,00</strong></td></tr>
+            <tr><td>71. Rogel</td><td><strong>Bs 49,00</strong></td></tr>
+            <tr><td>72. Balcarce</td><td><strong>Bs 48,00</strong></td></tr>
+            <tr><td>73. Elote</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>74. Yuca</td><td><strong>Bs 38,00</strong></td></tr>
+            <tr><td>75. Camote</td><td><strong>Bs 36,00</strong></td></tr>
+        </table>
+
+        <h3>?? Sin Gluten / Dietéticos</h3>
+        <table>
+            <tr><td>76. Almendras</td><td><strong>Bs 44,00</strong></td></tr>
+            <tr><td>77. Coco</td><td><strong>Bs 40,00</strong></td></tr>
+            <tr><td>78. Maicena</td><td><strong>Bs 35,00</strong></td></tr>
+            <tr><td>79. Harina Integral</td><td><strong>Bs 36,00</strong></td></tr>
+            <tr><td>80. Con Stevia</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>81. Avena</td><td><strong>Bs 36,00</strong></td></tr>
+            <tr><td>82. Harina de Arroz</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>83. Trigo Sarraceno</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>84. Quinoa</td><td><strong>Bs 38,00</strong></td></tr>
+            <tr><td>85. Bajo en Grasa</td><td><strong>Bs 33,00</strong></td></tr>
+        </table>
+
+        <h3>?? Sabores Especiales</h3>
+        <table>
+            <tr><td>86. Té Matcha</td><td><strong>Bs 39,00</strong></td></tr>
+            <tr><td>87. Té Negro</td><td><strong>Bs 36,00</strong></td></tr>
+            <tr><td>88. Vainilla + Cardamomo</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>89. Jengibre</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>90. Clavo y Canela</td><td><strong>Bs 36,00</strong></td></tr>
+            <tr><td>91. Anís</td><td><strong>Bs 36,00</strong></td></tr>
+            <tr><td>92. Miel y Canela</td><td><strong>Bs 40,00</strong></td></tr>
+            <tr><td>93. Chocolate y Chile</td><td><strong>Bs 39,00</strong></td></tr>
+            <tr><td>94. Café y Nuez Moscada</td><td><strong>Bs 37,00</strong></td></tr>
+            <tr><td>95. Vainilla y Rosas</td><td><strong>Bs 38,00</strong></td></tr>
+        </table>
+
+        <h3>?? Individuales / Pequeños (por unidad)</h3>
+        <table>
+            <tr><td>96. Magdalenas Vainilla</td><td><strong>Bs 4,50</strong></td></tr>
+            <tr><td>97. Magdalenas Chocolate</td><td><strong>Bs 5,50</strong></td></tr>
+            <tr><td>98. Magdalenas Frutas</td><td><strong>Bs 5,00</strong></td></tr>
+            <tr><td>99. Pastelitos de Coco</td><td><strong>Bs 5,00</strong></td></tr>
+            <tr><td>100. Pastelitos de Nuez</td><td><strong>Bs 6,00</strong></td></tr>
+        </table>
+
+        <p class="texto-centrado" style="margin-top:15px;"><em>? Todos con garantía de calidad • Hechos artesanalmente<br>?? Santa Cruz • ?? WhatsApp: 7XXXXXXX</em></p>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 5. HOJA DE PRODUCCIÓN DIARIA -->
+    <!-- ============================================== -->
+    <div class="seccion">
+        <h2>?? HOJA DE PRODUCCIÓN DIARIA</h2>
+        <p><strong>Empresa:</strong> Delicias Artesanales | <strong>Fecha:</strong> ____ / ____ / 20____ | <strong>Día:</strong> LUNES</p>
+
+        <h3>? Lista de lo que voy a producir hoy</h3>
+        <table>
+            <tr>
+                <th>N° Receta</th>
+                <th>Nombre del Producto</th>
+                <th>Cantidad a hacer</th>
+                <th>? Hecho</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Vainilla Clásico</td>
+                <td>8</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Chocolate Básico</td>
+                <td>8</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>47</td>
+                <td>Leche Condensada</td>
+                <td>6</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>50</td>
+                <td>Coco y Leche</td>
+                <td>6</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>Limón (Ralladura + Jugo)</td>
+                <td>6</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>96</td>
+                <td>Magdalenas Vainilla</td>
+                <td>20</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <th colspan="2">TOTAL UNIDADES DEL DÍA</th>
+                <th>54</th>
+                <th></th>
+            </tr>
+        </table>
+
+        <h3>?? Lista de ingredientes necesarios</h3>
+        <table>
+            <tr>
+                <th>Ingrediente</th>
+                <th>Cantidad Necesaria</th>
+                <th>¿Hay Stock?</th>
+     

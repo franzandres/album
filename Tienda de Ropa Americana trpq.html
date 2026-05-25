@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración I y II - Tienda de Ropa Americana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        success: '#00B42A',
+                        warning: '#FF7D00',
+                        danger: '#F53F3F',
+                        neutral: '#F2F3F5',
+                        dark: '#1D2129',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .table-header {
+                @apply bg-primary text-white font-semibold text-center p-2;
+            }
+            .table-cell {
+                @apply border border-gray-300 p-2 text-center;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-dark mb-4 flex items-center gap-2;
+            }
+            .subsection-title {
+                @apply text-xl font-semibold text-primary mb-3;
+            }
+            .card {
+                @apply bg-white rounded-lg shadow-md p-5 mb-6;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-neutral font-sans text-dark min-h-screen content-auto">
+    <div class="container mx-auto max-w-6xl px-4 py-8">
+
+        <!-- Encabezado Principal -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-dark mb-2">?? ADMINISTRACIÓN I Y II</h1>
+            <h2 class="text-2xl font-semibold text-primary">TIENDA DE ROPA AMERICANA</h2>
+            <p class="text-gray-600 mt-2">Documento completo con registros, balances e informes</p>
+        </header>
+
+
+        <!-- 1. HOJA DE CONTROL DIARIO -->
+        <section class="card">
+            <h2 class="section-title">
+                <i class="fa fa-list-alt"></i>
+                HOJA DE CONTROL DIARIO DE VENTAS Y EXISTENCIAS
+            </h2>
+            <div class="mb-4 flex flex-wrap gap-x-6 gap-y-2 text-gray-700">
+                <p><strong>Fecha:</strong> 21 de mayo de 2026</p>
+                <p><strong>Día:</strong> Jueves</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="table-header">Categoría</th>
+                            <th class="table-header">Producto</th>
+                            <th class="table-header">Precio Unitario (Bs.)</th>
+                            <th class="table-header">Existencia Inicial</th>
+                            <th class="table-header">Cantidad Vendida</th>
+                            <th class="table-header">Cantidad Ingresada</th>
+                            <th class="table-header">Existencia Final</th>
+                            <th class="table-header">Total Vendido (Bs.)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ropa de Hombre -->
+                        <tr>
+                            <td class="table-cell" rowspan="4">Ropa de Hombre</td>
+                            <td class="table-cell">Polera</td>
+                            <td class="table-cell">80</td>
+                            <td class="table-cell">28</td>
+                            <td class="table-cell">7</td>
+                            <td class="table-cell">12</td>
+                            <td class="table-cell">33</td>
+                            <td class="table-cell">560</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Camisa</td>
+                            <td class="table-cell">140</td>
+                            <td class="table-cell">22</td>
+                            <td class="table-cell">4</td>
+                            <td class="table-cell">8</td>
+                            <td class="table-cell">26</td>
+                            <td class="table-cell">560</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Camisa de color</td>
+                            <td class="table-cell">300</td>
+                            <td class="table-cell">15</td>
+                            <td class="table-cell">2</td>
+                            <td class="table-cell">5</td>
+                            <td class="table-cell">18</td>
+                            <td class="table-cell">600</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Pantalón</td>
+                            <td class="table-cell">280</td>
+                            <td class="table-cell">20</td>
+                            <td class="table-cell">3</td>
+                            <td class="table-cell">6</td>
+                            <td class="table-cell">23</td>
+                            <td class="table-cell">840</td>
+                        </tr>
+
+                        <!-- Ropa de Niño -->
+                        <tr>
+                            <td class="table-cell" rowspan="2">Ropa de Niño</td>
+                            <td class="table-cell">Pantalón para niño</td>
+                            <td class="table-cell">30</td>
+                            <td class="table-cell">45</td>
+                            <td class="table-cell">14</td>
+                            <td class="table-cell">20</td>
+                            <td class="table-cell">51</td>
+                            <td class="table-cell">420</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Polera para niño / pelau</td>
+                            <td class="table-cell">30</td>
+                            <td class="table-cell">50</td>
+                            <td class="table-cell">16</td>
+                            <td class="table-cell">25</td>
+                            <td class="table-cell">59</td>
+                            <td class="table-cell">480</td>
+                        </tr>
+
+                        <!-- Ropa de Niña -->
+                        <tr>
+                            <td class="table-cell" rowspan="2">Ropa de Niña</td>
+                            <td class="table-cell">Pantalón para niña</td>
+                            <td class="table-cell">80</td>
+                            <td class="table-cell">32</td>
+                            <td class="table-cell">8</td>
+                            <td class="table-cell">12</td>
+                            <td class="table-cell">36</td>
+                            <td class="table-cell">640</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Polera para niña / pelada</td>
+                            <td class="table-cell">50</td>
+                            <td class="table-cell">38</td>
+                            <td class="table-cell">11</td>
+                            <td class="table-cell">18</td>
+                            <td class="table-cell">45</td>
+                            <td class="table-cell">550</td>
+                        </tr>
+
+                        <!-- Ropa de Mujer -->
+                        <tr>
+                            <td class="table-cell" rowspan="2">Ropa de Mujer</td>
+                            <td class="table-cell">Blusa</td>
+                            <td class="table-cell">100</td>
+                            <td class="table-cell">30</td>
+                            <td class="table-cell">9</td>
+                            <td class="table-cell">15</td>
+                            <td class="table-cell">36</td>
+                            <td class="table-cell">900</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Polera</td>
+                            <td class="table-cell">90</td>
+                            <td class="table-cell">35</td>
+                            <td class="table-cell">10</td>
+                            <td class="table-cell">16</td>
+                            <td class="table-cell">41</td>
+                            <td class="table-cell">900</td>
+                        </tr>
+
+                        <!-- Calzado -->
+                        <tr>
+                            <td class="table-cell" rowspan="4">Calzado</td>
+                            <td class="table-cell">Zapatos</td>
+                            <td class="table-cell">280</td>
+                            <td class="table-cell">18</td>
+                            <td class="table-cell">3</td>
+                            <td class="table-cell">7</td>
+                            <td class="table-cell">22</td>
+                            <td class="table-cell">840</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Zapatos</td>
+                            <td class="table-cell">140</td>
+                            <td class="table-cell">22</td>
+                            <td class="table-cell">5</td>
+                            <td class="table-cell">10</td>
+                            <td class="table-cell">27</td>
+                            <td class="table-cell">700</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Zapatos deportivos</td>
+                            <td class="table-cell">100</td>
+                            <td class="table-cell">28</td>
+                            <td class="table-cell">8</td>
+                            <td class="table-cell">15</td>
+                            <td class="table-cell">35</td>
+                            <td class="table-cell">800</td>
+                        </tr>
+                        <tr>
+                            <td class="table-cell">Zapatos de vestir</td>
+                            <td class="table-cell">500</td>
+                            <td class="table-cell">12</td>
+                            <td class="table-cell">1</td>
+                            <td class="table-cell">3</td>
+                            <td class="table-cell">14</td>
+                            <td class="table-cell">500</td>
+                        </tr>
+
+                        <!-- Ropa para Bebé -->
+                        <tr>
+                            <td class="table-cell">Ropa para Bebé</td>
+                            <td class="table-cell">Ropa para bebé</td>
+                            <td class="table-cell">35</td>
+                            <td class="table-cell">42</td>
+                            <td class="table-cell">13</td>
+                            <td class="table-cell">22</td>
+                            <td class="table-cell">51</td>
+                            <td class="table-cell">455</td>
+                        </tr>
+
+                        <!-- Totales -->
+                        <tr class="bg-gray-100 font-semibold">
+                            <td class="table-cell" colspan="7">TOTALES</td>
+                            <td class="table-cell font-bold">Bs. 9.545</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Resumen del día -->
+            <div class="mt-6 grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="subsection-title">?? RESUMEN DEL DÍA</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><strong>Total en efectivo:</strong> 7.200 Bs.</li>
+                        <li><strong>Total en pagos con tarjeta / transferencia:</strong> 2.345 Bs.</li>
+                        <li><strong>Gastos del día:</strong> 850 Bs.</li>
+                        <li class="text-success font-bold text-lg"><strong>GANANCIA NETA DEL DÍA:</strong> 8.695 Bs.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="subsection-title">?? OBSERVACIONES / NOVEDADES</h3>
+                    <p class="text-gray-700 italic">
+                        • Se recibieron nuevos modelos de poleras para mujer y ropa de bebé.<br>
+                        • Los productos más vendidos fueron blusas, poleras y ropa infantil.<br>
+                        • Se reabastecieron existencias de pantalones y calzado deportivo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2. BALANCE GENERAL -->
+        <section class="card">
+            <h2 class="section-title">
+                <i class="fa fa-balance-scale"></i>
+                BALANCE GENERAL
+            </h2>
+            <div class="mb-4 flex flex-wrap gap-x-6 gap-y-2 text-gray-700">
+                <p><strong>Fecha:</strong> 31 de mayo de 2026</p>
+                <p><strong>Moneda:</strong> Bolivianos (Bs.)</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300 mb-6">
+                    <thead>
+                        <tr>
+                            <th class="bg-green-600 text-white p-3 text-left" colspan="2">?? ACTIVOS (Lo que tiene y posee la tienda)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="bg-green-50">
+                            <td class="p-3 font-semibold" colspan="2">ACTIVO CORRIENTE</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-b">Dinero en caja y cuentas</td>
+                            <td class="p-3 border-b text-right">4.200,00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-b">Inventario de mercadería:</td>
+                            <td class="p-3 border-b text-right"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-b pl-6">• Ropa de hombre</td>
+                            <td class="p-3 border-b text-right">12.600,00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-b pl-6">• Ropa infantil y para niñas</td>
+                            <td class="p-3 border-b text-right">7.450,00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-b pl-6">• Ropa de mujer</td>
+                            <td class="p-3 border-b text-right">6.200,00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-b pl-6">• Calzado</td>
+                            <td class="p-3 border-b text-right">14.800,00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-b pl-6">• Ropa para bebés</td>
+                            <td class="p-3 border-b text-right">2.950,00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border-b">Cuentas por cobrar a clientes</td>
+                            <td class="p-3 border-b text-right">1.200,00</td>
+                        </tr>
+                        <tr class="font-bold bg-green-100">
+                            <td class="p-3 border-b">Total Activo Corriente</td>
+                            <td class="p-3 border-b text-right">49.400,00</td>
+                        </tr>
+
+                        <tr class="bg-green-50">
+                            <td class="p-3 font-semibold" colspan="2">ACTIVO NO CORRIENTE</td>
+                        </tr>
+                        <tr>
+

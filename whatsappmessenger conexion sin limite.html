@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Messenger - Conexión en Todo Lugar ???</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        whatsapp: {
+                            green: '#25D366',
+                            darkGreen: '#128C7E',
+                            teal: '#075E54',
+                            light: '#DCF8C6',
+                            gray: '#ECE5DD',
+                            white: '#FFFFFF',
+                            dark: '#000000CC'
+                        },
+                        nature: {
+                            blueSky: '#0A74DA',
+                            greenField: '#3A9E41',
+                            darkForest: '#1E5128',
+                            snowWhite: '#F8FBFC',
+                            rockGray: '#5C6E70'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+            .shadow-wpp {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            }
+            .bg-gradient-nature {
+                background: linear-gradient(180deg, rgba(10, 116, 218, 0.92) 0%, rgba(58, 158, 65, 0.85) 65%, rgba(30, 81, 40, 0.9) 100%);
+            }
+            .bg-overlay {
+                background-color: rgba(0,0,0,0.35);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+            }
+            .nav-link {
+                position: relative;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -4px;
+                left: 0;
+                background-color: #25D366;
+                transition: width 0.3s ease;
+            }
+            .nav-link:hover::after {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-whatsapp-gray font-sans scroll-smooth">
+
+    <!-- Barra de Navegación Principal -->
+    <nav class="fixed w-full z-50 bg-whatsapp-teal text-white shadow-wpp">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fa fa-whatsapp text-3xl text-whatsapp-green"></i>
+                <h1 class="text-2xl font-bold">WhatsApp Messenger</h1>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#inicio" class="nav-link font-medium">Inicio</a>
+                <a href="#caracteristicas" class="nav-link font-medium">Características</a>
+                <a href="#experiencia" class="nav-link font-medium">Experiencia</a>
+                <a href="#galeria" class="nav-link font-medium">Galería</a>
+                <a href="#descargar" class="nav-link font-medium">Descargar</a>
+            </div>
+            <div class="md:hidden text-2xl">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Principal / Cabecera con Imagen de Fondo -->
+    <section id="inicio" class="relative w-full h-screen flex items-center justify-center overflow-hidden pt-16">
+        <img 
+            src="https://i.imgur.com/L4Kz0Yk.jpg" 
+            alt="Volcán con cumbre nevada, praderas verdes y cielo azul" 
+            class="absolute inset-0 w-full h-full object-cover"
+        >
+        <div class="absolute inset-0 bg-overlay"></div>
+        <div class="relative z-10 container mx-auto px-6 text-center text-white">
+            <h2 class="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-lg">Conecta con el Mundo</h2>
+            <p class="text-xl md:text-2xl max-w-4xl mx-auto mb-10 leading-relaxed drop-shadow-md">
+                Mantente cerca de quienes te importan, desde los valles más verdes hasta las cumbres más altas. Mensajería rápida, segura y disponible en cualquier rincón del planeta ?????
+            </p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="#descargar" class="bg-whatsapp-green hover:bg-whatsapp-darkGreen text-white font-semibold py-4 px-10 rounded-full shadow-lg transition-all duration-300 text-lg">
+                    <i class="fa fa-download mr-2"></i> Descargar Ahora
+                </a>
+                <a href="#caracteristicas" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-semibold py-4 px-10 rounded-full border-2 border-white/60 transition-all duration-300 text-lg">
+                    <i class="fa fa-info-circle mr-2"></i> Conocer Más
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: ¿Qué es WhatsApp Messenger? -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto text-center mb-16">
+                <h3 class="text-4xl font-bold text-whatsapp-teal mb-6">Más que una aplicación, una conexión sin límites</h3>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Al igual que este majestuoso volcán que se levanta firme entre praderas infinitas, WhatsApp se mantiene como el puente confiable que une personas, sin importar la distancia, el lugar o el momento. Diseñada para ser sencilla, potente y siempre accesible.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h4 class="text-3xl font-semibold text-nature-darkForest mb-5">Nature Conectivity ?????</h4>
+                    <p class="text-gray-700 mb-6 leading-relaxed text-lg">
+                        Inspirada en la belleza pura y la estabilidad de la naturaleza: claridad como el cielo azul, frescura como los prados verdes y solidez como las rocas que sostienen la montaña.
+                    </p>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-whatsapp-green text-xl mt-1"></i>
+                            <span>Comunicación fluida y estable, incluso en zonas alejadas</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-whatsapp-green text-xl mt-1"></i>
+                            <span>Interfaz limpia, ordenada y agradable a la vista</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-whatsapp-green text-xl mt-1"></i>
+                            <span>Seguridad sólida como la montaña: cifrado de extremo a extremo</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-whatsapp-green text-xl mt-1"></i>
+                            <span>Crece y evoluciona, igual que la naturaleza a su alrededor</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl">
+                    <img 
+                        src="https://i.imgur.com/L4Kz0Yk.jpg" 
+                        alt="Monte Taranaki con praderas verdes" 
+                        class="w-full h-full object-cover"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Características Principales -->
+    <section id="caracteristicas" class="py-20 bg-gradient-nature text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold mb-4">Características que inspiran confianza</h3>
+                <p class="text-lg max-w-3xl mx-auto">Al igual que este paisaje tiene todo lo necesario para ser perfecto, WhatsApp te brinda todo lo que necesitas para comunicarte sin límites.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tarjeta 1 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-wpp card-hover border border-white/20">
+                    <i class="fa fa-comments text-4xl text-whatsapp-green mb-5"></i>
+                    <h4 class="text-2xl font-semibold mb-3">Mensajería Instantánea</h4>
+                    <p class="leading-relaxed">Envía mensajes, fotos, videos y notas de voz al instante. Tan rápido como el viento que recorre los valles, tan claro como el agua de montaña.</p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-wpp card-hover border border-white/20">
+                    <i class="fa fa-lock text-4xl text-whatsapp-green mb-5"></i>
+                    <h4 class="text-2xl font-semibold mb-3">Seguridad Absoluta</h4>
+                    <p class="leading-relaxed">Cifrado de extremo a extremo. Tus conversaciones están tan protegidas como la cumbre nevada, intacta y segura frente a cualquier elemento.</p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-wpp card-hover border border-white/20">
+                    <i class="fa fa-video-camera text-4xl text-whatsapp-green mb-5"></i>
+                    <h4 class="text-2xl font-semibold mb-3">Llamadas y Videollamadas</h4>
+                    <p class="leading-relaxed">Calidad nítida y estable, como la vista panorámica desde lo más alto. Conéctate cara a cara sin importar cuán lejos estés.</p>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-wpp card-hover border border-white/20">
+                    <i class="fa fa-users text-4xl text-whatsapp-green mb-5"></i>
+                    <h4 class="text-2xl font-semibold mb-3">Grupos y Comunidades</h4>
+                    <p class="leading-relaxed">Reúne a tu familia, amigos o equipo. Tan organizado y armonioso como los bosques que cubren las laderas de la montaña.</p>
+                </div>
+
+                <!-- Tarjeta 5 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-wpp card-hover border border-white/20">
+                    <i class="fa fa-paperclip text-4xl text-whatsapp-green mb-5"></i>
+                    <h4 class="text-2xl font-semibold mb-3">Compartir Archivos</h4>
+                    <p class="leading-relaxed">Envía documentos, archivos y enlaces con facilidad. Sin complicaciones, directo y seguro, como el camino que lleva a la cima.</p>
+                </div>
+
+                <!-- Tarjeta 6 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-wpp card-hover border border-white/20">
+                    <i class="fa fa-globe text-4xl text-whatsapp-green mb-5"></i>
+                    <h4 class="text-2xl font-semibold mb-3">Disponibilidad Global</h4>
+                    <p class="leading-relaxed">Funciona en casi cualquier parte del mundo. Al igual que la naturaleza no conoce fronteras, WhatsApp llega a todos los rincones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Experiencia de Uso -->
+    <section id="experiencia" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <h3 class="text-4xl font-bold text-center text-whatsapp-teal mb-12">Una experiencia que fluye como la naturaleza</h3>
+                
+                <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                    <div class="flex flex-col md:flex-row gap-10 items-center">
+                        <div class="w-full md:w-1/2">
+                            <div class="bg-whatsapp-gray rounded-3xl p-4 shadow-inner">
+                                <!-- Vista previa de la interfaz -->
+                                <div class="bg-whatsapp-teal text-white rounded-t-2xl p-4 flex items-center gap-3">
+                                    <i class="fa fa-whatsapp text-xl"></i>
+                                    <span class="font-semibold">WhatsApp</span>
+                                </div>
+                                <div class="p-4 space-y-4">
+                                    <div class="flex gap-3 items-center">
+                                        <div class="w-12 h-12 rounded-full bg-nature-greenField flex items-center justify-center text-white font-bold">A</div>
+                                        <div>
+                                            <p class="font-medium">Aventureros de la Naturaleza ???</p>
+                                            <p class="text-sm text-gray-600">¡Qué belleza de lugar! ??</p>
+                                        </div>
+                                        <div class="ml-auto text-xs text-gray-500">10:45</div>
+                                    </div>
+                                    <div class="flex gap-3 items-center">
+                                        <div class="w-12 h-12 rounded-full bg-nature-blueSky flex items-center justify-center text-white font-bold">L</div>
+                                        <div>
+                                            <p class="font-medium">Luis</p>
+                                            <p class="text-sm text-gray-600">Ya casi llego a la cima ????</p>
+                                        </div>
+                                        <div class="ml-auto text-xs text-gray-500">10:42</div>
+                                    </div>
+                                    <div class="flex gap-3 items-center">
+                                        <div class="w-12 h-12 rounded-full bg-nature-darkForest flex items-center justify-center text-white font-bold">M</div>
+                                        <div>
+                                            <p class="font-medium">María</p>
+                                            <p class="text-sm text-gray-600">Mirren esta foto increíble ????</p>
+                                        </div>
+                                        <div class="ml-auto text-xs text-gray-500">10:38</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 space-y-6">
+                            <h4 class="text-3xl font-semibold text-nature-darkForest">Sencilla, rápida y hermosa</h4>
+                            <p class="text-gray-700 text-lg leading-relaxed">
+                                La interfaz de WhatsApp está diseñada pensando en la claridad y la armonía, tal como este paisaje que combina montaña, cielo y prado en una sola obra maestra. Todo está en su lugar, fácil de encontrar y usar.
+                            </p>
+                            <p class="text-gray-700 text-lg leading-relaxed">
+                                Los colores verdes, blancos y azules evocan tranquilidad y confianza, igual que la sensación de paz que se siente al contemplar este volcán imponente.
+                            </p>
+                            <div class="pt-4">
+                                <a href="#descargar" class="inline-block bg-whatsapp-green hover:bg-whatsapp-darkGreen text-white font-semibold py-3 px-8 rounded-full shadow-md transition-all duration-300">
+                                    Probar la experiencia
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Galería Visual -->
+    <section id="galeria" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center text-whatsapp-teal mb-16">La naturaleza inspira nuestro diseño</h3>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="rounded-xl overflow-hidden shadow-lg card-hover">
+                    <img src="https://i.imgur.com/L4Kz0Yk.jpg" alt="Volcán y praderas" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h5 class="font-semibold text-lg text-nature-darkForest">Fuerza y Belleza</h5>
+                        <p class="text-gray-600">Estabilidad como la montaña, frescura como el valle</p>
+                    </div>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg card-hover">
+                    <img src="https://i.imgur.com/L4Kz0Yk.jpg" alt="Cielo azul y cumbre nevada" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h5 class="font-semibold text-lg text-nature-darkForest">Claridad y Pureza</h5>
+                        <p class="text-gray-600">Transparencia y seguridad en cada conversación</p>
+                    </div>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg card-hover">
+                    <img src="https://i.imgur.com/L4Kz0Yk.jpg" alt="Verde y armonía" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h5 class="font-semibold text-lg text-nature-darkForest">Crecimiento y Conexión</h5>
+                        <p class="text-gray-600">Uniendo vidas, creciendo juntos como la naturaleza</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Descargar Aplicación -->
+    <section id="descargar" class="py-20 bg-gradient-to-br from-whatsapp-teal to-whatsapp-darkGreen text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-4xl font-bold mb-6">Empieza tu aventura de conexión hoy mismo</h3>
+            <p class="text-xl max-w-4xl mx-auto mb-12 leading-relaxed">
+                Descarga WhatsApp Messenger y lleva contigo la facilidad, seguridad y belleza de comunicarte, estés donde estés, al igual que este paisaje siempre está aquí, esperando ser descubierto.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-8 mb-16">
+                <a href="#" class="bg-white text-whatsapp-teal font-semibold py-5 px-10 rounded-full shadow-xl hover:bg-gray-100 transition-all duration-300 flex items-center gap-3">
+                    <i class="fa fa-android text-2xl"></i>
+                    <div class="text-left">
+                        <div class="text-sm">Disponible en</div>
+                        <div class="font-bold text-lg">Google Play</div>
+                    </div>
+                </a>
+                <a href="#" class="bg-white text-whatsapp-teal font-semibold py-5 px-10 rounded-full shadow-xl hover:bg-gray-100 transition-all duration-300 flex items-center gap-3">
+                    <i class="fa fa-apple text-2xl"></i>
+                    <div class="text-left">
+                        

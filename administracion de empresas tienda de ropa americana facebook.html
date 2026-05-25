@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Empresas - Tienda en Facebook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1877F2',
+                        secondary: '#42B72A',
+                        accent: '#FF7D00',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                        success: '#22C55E',
+                        warning: '#F59E0B',
+                        danger: '#EF4444',
+                    },
+                    fontFamily: {
+                        admin: ['Segoe UI', 'Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-pattern {
+                background-color: #F0F7FF;
+                background-image: radial-gradient(#BFDBFE 2px, transparent 2px);
+                background-size: 30px 30px;
+            }
+            .card {
+                @apply bg-white rounded-xl shadow-lg p-5 border-l-4 border-primary;
+            }
+            .table-header {
+                @apply bg-primary text-white font-semibold p-3 text-left;
+            }
+            .table-cell {
+                @apply p-3 border-b border-gray-200;
+            }
+            .nav-item {
+                @apply px-4 py-2 rounded-lg hover:bg-primary/10 transition-all cursor-pointer;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-pattern font-admin min-h-screen">
+    <!-- Encabezado Principal -->
+    <header class="bg-gradient-to-r from-primary to-secondary text-white py-8 px-6 shadow-xl">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl font-bold flex items-center gap-3">
+                <i class="fa fa-facebook-square"></i>
+                Administración de Empresas
+            </h1>
+            <h2 class="text-2xl mt-2 opacity-90 flex items-center gap-2">
+                <i class="fa fa-shopping-bag"></i>
+                Tienda de Ropa - Página en Facebook
+            </h2>
+            <p class="mt-2 opacity-85">Ubicación: Santa Cruz de la Sierra, Bolivia ???? | Moneda: Bolivianos (Bs.)</p>
+            <p class="mt-1 opacity-80">Propietario: [Tu Nombre Completo] | Fecha de inicio: 22 de Mayo de 2026</p>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap gap-2">
+            <span class="nav-item font-medium" onclick="mostrarSeccion('presentacion')">Presentación</span>
+            <span class="nav-item font-medium" onclick="mostrarSeccion('catalogo')">Catálogo de Productos</span>
+            <span class="nav-item font-medium" onclick="mostrarSeccion('materias')">Aplicación de Materias</span>
+            <span class="nav-item font-medium" onclick="mostrarSeccion('inventario')">Inventario</span>
+            <span class="nav-item font-medium" onclick="mostrarSeccion('ventas')">Registro de Ventas</span>
+            <span class="nav-item font-medium" onclick="mostrarSeccion('finanzas')">Finanzas y Metas</span>
+            <span class="nav-item font-medium" onclick="mostrarSeccion('estrategias')">Estrategias en Redes</span>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- ?? SECCIÓN: PRESENTACIÓN DEL NEGOCIO -->
+        <section id="presentacion" class="seccion">
+            <div class="card mb-8">
+                <h3 class="text-2xl font-bold text-dark mb-4 flex items-center gap-2">
+                    <i class="fa fa-building text-primary"></i>
+                    1. Presentación del Negocio
+                </h3>
+                <div class="space-y-3 text-gray-700">
+                    <p><strong>Nombre del negocio:</strong> Tienda de Ropa en Facebook</p>
+                    <p><strong>Giro comercial:</strong> Venta y comercialización de ropa, calzado y artículos para toda la familia, mediante publicación y difusión en la red social Facebook.</p>
+                    <p><strong>Forma de venta:</strong> Atención por mensajería, pedidos, entregas a domicilio y retiro en punto acordado.</p>
+                    <p><strong>Objetivo principal:</strong> Administrar eficientemente todos los recursos, controlar costos, dar a conocer los productos, aumentar las ventas, generar ganancias y consolidar la tienda como una opción confiable y accesible para los clientes.</p>
+                    <p><strong>Misión:</strong> Ofrecer prendas de buena calidad, variedad y precios justos, facilitando la compra desde Facebook con atención amable y rápida.</p>
+                    <p><strong>Visión:</strong> Ser la página de venta de ropa más reconocida y confiable de la zona, ampliar la variedad de productos y crecer en cantidad de seguidores y clientes satisfechos.</p>
+                    <p><strong>Valores:</strong> Honestidad, puntualidad, responsabilidad, buen trato, transparencia, calidad y precios accesibles.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ?? SECCIÓN: CATÁLOGO DE PRODUCTOS Y PRECIOS -->
+        <section id="catalogo" class="seccion hidden">
+            <div class="card mb-8">
+                <h3 class="text-2xl font-bold text-dark mb-6 flex items-center gap-2">
+                    <i class="fa fa-list-alt text-primary"></i>
+                    2. Catálogo Completo de Productos y Precios - Publicados en Facebook
+                </h3>
+
+                <!-- Ropa para Hombre -->
+                <h4 class="text-xl font-semibold text-secondary mt-4 mb-3 flex items-center gap-2">
+                    <i class="fa fa-male"></i> Ropa para Hombre
+                </h4>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full bg-gray-50 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="table-header">Código</th>
+                                <th class="table-header">Nombre del Producto</th>
+                                <th class="table-header text-center">Precio de Venta (Bs.)</th>
+                                <th class="table-header text-center">Costo de Compra (Bs.)</th>
+                                <th class="table-header text-center">Ganancia Unitaria (Bs.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="table-cell">H01</td><td class="table-cell">Polera</td><td class="table-cell text-center font-medium">80</td><td class="table-cell text-center">42</td><td class="table-cell text-center text-success font-medium">38</td></tr>
+                            <tr><td class="table-cell">H02</td><td class="table-cell">Camisa</td><td class="table-cell text-center font-medium">140</td><td class="table-cell text-center">74</td><td class="table-cell text-center text-success font-medium">66</td></tr>
+                            <tr><td class="table-cell">H03</td><td class="table-cell">Camisa de color</td><td class="table-cell text-center font-medium">300</td><td class="table-cell text-center">160</td><td class="table-cell text-center text-success font-medium">140</td></tr>
+                            <tr><td class="table-cell">H04</td><td class="table-cell">Pantalones</td><td class="table-cell text-center font-medium">280</td><td class="table-cell text-center">150</td><td class="table-cell text-center text-success font-medium">130</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Ropa para Mujer -->
+                <h4 class="text-xl font-semibold text-secondary mt-6 mb-3 flex items-center gap-2">
+                    <i class="fa fa-female"></i> Ropa para Mujer
+                </h4>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full bg-gray-50 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="table-header">Código</th>
+                                <th class="table-header">Nombre del Producto</th>
+                                <th class="table-header text-center">Precio de Venta (Bs.)</th>
+                                <th class="table-header text-center">Costo de Compra (Bs.)</th>
+                                <th class="table-header text-center">Ganancia Unitaria (Bs.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="table-cell">M01</td><td class="table-cell">Blusa para mujeres</td><td class="table-cell text-center font-medium">100</td><td class="table-cell text-center">53</td><td class="table-cell text-center text-success font-medium">47</td></tr>
+                            <tr><td class="table-cell">M02</td><td class="table-cell">Polera para mujeres</td><td class="table-cell text-center font-medium">90</td><td class="table-cell text-center">48</td><td class="table-cell text-center text-success font-medium">42</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Ropa para Niños y Niñas -->
+                <h4 class="text-xl font-semibold text-secondary mt-6 mb-3 flex items-center gap-2">
+                    <i class="fa fa-child"></i> Ropa para Niños, Niñas y Bebés
+                </h4>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full bg-gray-50 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="table-header">Código</th>
+                                <th class="table-header">Nombre del Producto</th>
+                                <th class="table-header text-center">Precio de Venta (Bs.)</th>
+                                <th class="table-header text-center">Costo de Compra (Bs.)</th>
+                                <th class="table-header text-center">Ganancia Unitaria (Bs.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="table-cell">N01</td><td class="table-cell">Pantalones para niño</td><td class="table-cell text-center font-medium">30</td><td class="table-cell text-center">16</td><td class="table-cell text-center text-success font-medium">14</td></tr>
+                            <tr><td class="table-cell">N02</td><td class="table-cell">Pantalones para niña</td><td class="table-cell text-center font-medium">80</td><td class="table-cell text-center">43</td><td class="table-cell text-center text-success font-medium">37</td></tr>
+                            <tr><td class="table-cell">N03</td><td class="table-cell">Poleras para niña</td><td class="table-cell text-center font-medium">50</td><td class="table-cell text-center">27</td><td class="table-cell text-center text-success font-medium">23</td></tr>
+                            <tr><td class="table-cell">N04</td><td class="table-cell">Polera para niño</td><td class="table-cell text-center font-medium">30</td><td class="table-cell text-center">16</td><td class="table-cell text-center text-success font-medium">14</td></tr>
+                            <tr><td class="table-cell">N05</td><td class="table-cell">Ropa para bebé</td><td class="table-cell text-center font-medium">35</td><td class="table-cell text-center">19</td><td class="table-cell text-center text-success font-medium">16</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Calzado -->
+                <h4 class="text-xl font-semibold text-secondary mt-6 mb-3 flex items-center gap-2">
+                    <i class="fa fa-shoe-prints"></i> Calzado
+                </h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-gray-50 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="table-header">Código</th>
+                                <th class="table-header">Nombre del Producto</th>
+                                <th class="table-header text-center">Precio de Venta (Bs.)</th>
+                                <th class="table-header text-center">Costo de Compra (Bs.)</th>
+                                <th class="table-header text-center">Ganancia Unitaria (Bs.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="table-cell">C01</td><td class="table-cell">Zapatos comunes</td><td class="table-cell text-center font-medium">280</td><td class="table-cell text-center">150</td><td class="table-cell text-center text-success font-medium">130</td></tr>
+                            <tr><td class="table-cell">C02</td><td class="table-cell">Zapatos sencillos</td><td class="table-cell text-center font-medium">140</td><td class="table-cell text-center">75</td><td class="table-cell text-center text-success font-medium">65</td></tr>
+                            <tr><td class="table-cell">C03</td><td class="table-cell">Zapatos deportivos</td><td class="table-cell text-center font-medium">100</td><td class="table-cell text-center">54</td><td class="table-cell text-center text-success font-medium">46</td></tr>
+                            <tr><td class="table-cell">C04</td><td class="table-cell">Zapatos de vestir</td><td class="table-cell text-center font-medium">500</td><td class="table-cell text-center">270</td><td class="table-cell text-center text-success font-medium">230</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ?? SECCIÓN: APLICACIÓN DE MATERIAS DE ADMINISTRACIÓN -->
+        <section id="materias" class="seccion hidden">
+            <div class="card mb-8">
+                <h3 class="text-2xl font-bold text-dark mb-6 flex items-center gap-2">
+                    <i class="fa fa-book text-primary"></i>
+                    3. Aplicación de las Materias de Administración
+                </h3>
+
+                <div class="space-y-6">
+                    <!-- Contabilidad General -->
+                    <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-primary">
+                        <h4 class="font-bold text-lg text-dark flex items-center gap-2">
+                            <i class="fa fa-calculator"></i> Contabilidad General
+                        </h4>
+                        <p class="mt-2 text-gray-700"><strong>Definición:</strong> Registra, clasifica y resume todas las operaciones de dinero que ocurren en el negocio.</p>
+                        <p class="mt-2 text-gray-700"><strong>Aplicación en mi tienda de Facebook:</strong> Anoto cada venta que se concreta por mensajes, cada compra de mercadería y cada gasto que hago, para saber exactamente cuánto entra y cuánto sale.</p>
+                        <p class="mt-2 text-gray-700"><strong>Ejemplo real:</strong> Venta realizada por Facebook: 1 camisa de color 300 Bs. + 2 poleras 80 c/u + 3 pantalones de niño 30 c/u = <span class="font-semibold">Total: 550 Bs.</span> Queda registrado como ingreso.</p>
+                    </div>
+
+                    <!-- Contabilidad de Costos -->
+                    <div class="p-4 bg-green-50 rounded-lg border-l-4 border-success">
+                        <h4 class="font-bold text-lg text-dark flex items-center gap-2">
+                            <i class="fa fa-money"></i> Contabilidad de Costos
+                        </h4>
+                        <p class="mt-2 text-gray-700"><strong>Definición:</strong> Permite saber cuánto cuesta cada artículo y cuánto se gana realmente al venderlo.</p>
+                        <p class="mt-2 text-gray-700"><strong>Aplicación en mi tienda:</strong> Calculo el costo y la ganancia para fijar los precios que publico en Facebook y no perder dinero.</p>
+                        <div class="mt-3 grid md:grid-cols-2 gap-3">
+                            <div>? <strong>Polera:</strong> Venta 80 Bs. | Costo 42 Bs. | Ganancia: 38 Bs.</div>
+                            <div>? <strong>Camisa de color:</strong> Venta 300 Bs. | Costo 160 Bs. | Ganancia: 140 Bs.</div>
+                            <div>? <strong>Zapatos de vestir:</strong> Venta 500 Bs. | Costo 270 Bs. | Ganancia: 230 Bs.</div>
+                            <div>? <strong>Pantalón de niño:</strong> Venta 30 Bs. | Costo 16 Bs. | Ganancia: 14 Bs.</div>
+                        </div>
+                    </div>
+
+                    <!-- Mercadotecnia y Ventas -->
+                    <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-accent">
+                        <h4 class="font-bold text-lg text-dark flex items-center gap-2">
+                            <i class="fa fa-bullhorn"></i> Mercadotecnia y Ventas
+                        </h4>
+                        <p class="mt-2 text-gray-700"><strong>Definición:</strong> Conjunto de estrategias para dar a conocer el negocio, atraer clientes y vender más.</p>
+                        <p class="mt-2 text-gray-700"><strong>Aplicación en mi tienda de Facebook:</strong> Uso las publicaciones, fotos, videos y recomendaciones para mostrar los productos. Identifiqué:</p>
+                        <ul class="mt-2 text-gray-700 list-disc pl-5 space-y-1">
+                            <li>?? <strong>Productos más buscados:</strong> Poleras 80 Bs., pantalones de niño 30 Bs., ropa de bebé 35 Bs. — se consultan más por mensajes.</li>
+                            <li>?? <strong>Productos que dejan mayor ganancia:</strong> Camisa de color 300 Bs., zapatos de vestir 500 Bs., pantalones 280 Bs.</li>
+                            <li>?? <strong>Promociones que publico:</strong> “2 poleras por 150 Bs.”, “3 prendas infantiles por 90 Bs.”, “Envío gratis por compras mayores a 250 Bs.”</li>
+                        </ul>
+                    </div>
+
+                    <!-- Administración General -->
+                    <div class="p-4 bg-cyan-50 rounded-lg border-l-4 border-secondary">
+                        <h4 class="font-bold text-lg text-dark flex items-center gap-2">
+                            <i class="fa fa-sitemap"></i> Administración y Organización
+                        </h4>
+                        <p class="mt-2 text-gray-700"><strong>Definición:</strong> Ordenar y usar bien los recursos para cumplir las metas.</p>
+                        <p class="mt-2 text-gray-700"><strong>Organización de mi trabajo:</strong> Tengo organizadas las fotos y precios por categorías: Ropa de Hombre, Mujer, Niños, Calzado, para responder rápido a los mensajes y mantener todo en orden.</p>
+                    </div>
+
+                    <!-- Finanzas -->
+                    <div class="p-4 bg-amber-50 rounded-lg border-l-4 border-warning">
+                        <h4 class="font-bold text-lg text-dark flex items-center gap-2">
+                            <i class="fa fa-line-chart"></i> Finanzas Empresariales
+                        </h4>
+                        <p class="mt-2 text-gray-700"><strong>Definición:</strong> Manejo correcto del dinero, inversiones y gastos.</p>
+                        <p class="mt-2 text-gray-700"><strong>Aplicación:</strong> Cada mes invierto <span class="font-semibold">12.800 Bs.</span> en comprar nueva mercadería y separo dinero para gastos de transporte y publicidad en la página.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ?? SECCIÓN: INVENTARIO -->
+        <section id="inventario" class="seccion hidden">
+            <div class="card mb-8">
+                <h3 class="text-2xl font-bold text-dark mb-6 flex items-center gap-2">
+                    <i class="fa fa-archive text-primary"></i>
+                    4. Inventario Actualizado
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-gray-50 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="table-header">Código</th>
+                                <th class="table-header">Producto</th>
+                                <th class="table-header text-center">Cantidad Disponible</th>
+                                <th class="table-header text-center">Precio Venta (Bs.)</th>
+                                <th class="table-header text-center">Valor Total (Bs.)</th>
+                                <th class="table-header text-center">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="table-cell">H01</td><td class="table-cell">Polera</td><td class="table-cell text-center">30</td><td class="table-cell text-center">80</td><td class="table-cell text-center font-medium">2.400</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">H02</td><td class="table-cell">Camisa</td><td class="table-cell text-center">22</td><td class="table-cell text-center">140</td><td class="table-cell text-center font-medium">3.080</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">H03</td><td class="table-cell">Camisa de color</td><td class="table-cell text-center">15</td><td class="table-cell text-center">300</td><td class="table-cell text-center font-medium">4.500</td><td class="table-cell text-center text-warning font-medium">?? Por reponer</td></tr>
+                            <tr><td class="table-cell">H04</td><td class="table-cell">Pantalones</td><td class="table-cell text-center">25</td><td class="table-cell text-center">280</td><td class="table-cell text-center font-medium">7.000</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">M01</td><td class="table-cell">Blusa para mujeres</td><td class="table-cell text-center">32</td><td class="table-cell text-center">100</td><td class="table-cell text-center font-medium">3.200</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">M02</td><td class="table-cell">Polera para mujeres</td><td class="table-cell text-center">28</td><td class="table-cell text-center">90</td><td class="table-cell text-center font-medium">2.520</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">N01</td><td class="table-cell">Pantalones para niño</td><td class="table-cell text-center">50</td><td class="table-cell text-center">30</td><td class="table-cell text-center font-medium">1.500</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">N02</td><td class="table-cell">Pantalones para niña</td><td class="table-cell text-center">38</td><td class="table-cell text-center">80</td><td class="table-cell text-center font-medium">3.040</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">N03</td><td class="table-cell">Poleras para niña</td><td class="table-cell text-center">45</td><td class="table-cell text-center">50</td><td class="table-cell text-center font-medium">2.250</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">N04</td><td class="table-cell">Polera para niño</td><td class="table-cell text-center">55</td><td class="table-cell text-center">30</td><td class="table-cell text-center font-medium">1.650</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">N05</td><td class="table-cell">Ropa para bebé</td><td class="table-cell text-center">60</td><td class="table-cell text-center">35</td><td class="table-cell text-center font-medium">2.100</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">C01</td><td class="table-cell">Zapatos comunes</td><td class="table-cell text-center">20</td><td class="table-cell text-center">280</td><td class="table-cell text-center font-medium">5.600</td><td class="table-cell text-center text-warning font-medium">?? Por reponer</td></tr>
+                            <tr><td class="table-cell">C02</td><td class="table-cell">Zapatos sencillos</td><td class="table-cell text-center">24</td><td class="table-cell text-center">140</td><td class="table-cell text-center font-medium">3.360</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">C03</td><td class="table-cell">Zapatos deportivos</td><td class="table-cell text-center">32</td><td class="table-cell text-center">100</td><td class="table-cell text-center font-medium">3.200</td><td class="table-cell text-center text-success font-medium">? Suficiente</td></tr>
+                            <tr><td class="table-cell">C04</td><td class="table-cell">Zapatos de vestir</td><td class="table-cell text-center">12</td><td class="table-cell text-center">500</td><td class="table-cell text-center font-medium">6.000</td><td class="table-cell text-center text-danger font-medium">?? Poco stock</td></tr>
+                            <tr class="bg-primary/10 font-bold">
+                                <td class="table-cell" colspan="4">VALOR TOTAL DEL INVENTARIO</td>
+                                <td class="table-cell text-center text-lg text-primary">53.000 Bs.</td>
+                                <td class="table-cell"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ?? SECCIÓN: REGISTRO DE VENTAS -->
+        <section id="ventas" class="seccion hidden">
+            <div class="card mb-8">
+                <h3 class="text-2xl font-bold text-dark mb-6 flex items-center gap-2">
+                    <i class="fa fa-file-text text-primary"></i>
+                    5. Registro de Ventas Realizadas por Facebook
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-gray-50 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="table-header">N.º Venta</th>
+                                <th class="table-header">Producto Vendido</th>
+                                <th class="table-header text-center">Cantidad</th>
+                                <th class="table-header text-center">Precio Unitario (Bs.)</th>
+                                <th class="table-header text-center">Total Venta (Bs.)</th>
+                                <th class="table-header text-center">Ganancia Obtenida (Bs.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="table-cell">001</td><td class="table-cell">Polera</td><td class="table-cell text-center">2</td><td class="table-cell text-center">80</td><td class="table-cell text-center font-medium">160</td><td class="table-cell text-center text-success font-medium">76</td></tr>
+                            <tr><td class="table-cell">002</td><td class="table-cell">Camisa de color</td><td class="table-cell text-center">1</td><td class="table-cell text-center">300</td><td class="table-cell text-center font-medium">300</td><td class="table-cell text-center text-success font-medium">140</td></tr>
+                            <tr><td class="table-cell">003</td><td class="table-cell">Pantalones para niño</td><td class="table-cell text-center">3</td><td class="table-cell text-center">30</td><td class="table-cell text-center font-medium">90</td><td class="table-cell text-center text-success font-medium">42</td></tr>
+                            <tr><td class="table-cell">004</td><td class="table-cell">Blusa para mujeres</td><td class="table-cell text-center">2</td><td class="table-cell text-center">100</td><td class="table-cell text-center font-medium">200</td><td class="table-cell text-center text-success font-medium">94</td></tr>
+                            <tr><td class="table-cell">005</td><td class="table-cell">Zapatos deportivos</td><td class="table-cell text-center">1</td><td class="table-cell text-center">100</td><td class="table-cell text-center font-medium">100</td><td class="table-cell text-center text-success font-medium">46</td></tr>
+                            <tr><td class="table-cell">006</td><td class="table-cell">Ropa para bebé</td><td class="table-cell text-center">4</td><td class="table-cell text-center">35</td><td class="table-cell text-center font-medium">140</td><td class="table-cell text-center text-success font-medium">64</td></tr>
+                            <tr><td class="table-cell">007</td><td class="table-cell">Zapatos de vestir</td><td class="table-cell text-center">1</td><td class="table-cell text-center">500</td><td class="table-cell text-center font-medium">500</td><td class="table-cell text-center text-success font-medium">230</td></tr>
+                            <tr><td class="table-cell">008</td><td class="table-cell">Poleras para niña</td><td class="table-cell text-center">3</td><td class="table-cell text-center">50</td><td class="table-cell text-center font-medium">150</td><td class="table-cell text-center text-success font-medium">69</td></tr>
+                            <tr class="bg-primary/10 font-bold">
+                                <td class="table-cell" colspan="4">TOTALES DEL DÍA</td>
+                                <td class="table-cell text-center text-lg text-primary">1.640 Bs.</td>
+                                <td class="table-cell text-center text-lg text-success">761 Bs.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ?? SECCIÓN: FINANZAS Y METAS -->
+        <section id="finanzas" class="seccion hidden">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-dark mb-5 flex items-center gap-2">
+                        <i class="fa fa-calculator text-primary"></i>
+                        6. Cálculo Mensual de Ganancias
+                    </h3>
+                    <div class="space-y-4 text-gray-700">
+                        <div class="flex justify-between py-2 border-b">
+                            <span>Ingresos totales por ventas</span>
+                            <span class="font-medium">26.800 Bs.</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span>Costo total de mercadería vendida</span>
+                            <span class="font-medium">- 14.600 Bs.</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b font-bold text-lg text-success">
+                            <span>Ganancia Bruta</span>
+                            <span>12.200 Bs.</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span>Gastos Operativos:</span>
+                        </div>
+                        <div class="pl-4 flex justify-between py-1">
+                            <span>• Transporte y entregas</span>
+                            <span class="font-medium">800 Bs.</span>
+                        </div>
+                        <div class="pl-4 flex justify-between py-1">
+                            <span>• Publicidad en Facebook</span>
+                            <span class="font-medium">600 Bs.</span>
+                        </div>
+                        <div class="pl-4 flex justify-between py-1">
+                            <span>• Otros gastos</span>
+                            <span class="font-medium">400 Bs.</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b font-semibold">
+                            <span>Total Gastos</span>
+                            <span>- 1.800 Bs.</span>
+                        </div>
+                        <div class="flex justify-between py-3 font-bold text-xl text-primary bg-primary/5 rounded-lg px-3">
+                            <span>Ganancia NETA DEL MES</span>
+                            <span>10.400 Bs.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-dark mb-5 flex items-center gap-2">
+                        <i class="fa fa-bullseye text-primary"></i>
+                        7. Metas y Objetivos
+                    </h3>
+                    <div class="mb-5">
+                        <h4 class="font-semibold text-lg text-secondary mb-2">?? Metas de Ventas</h4>
+                        <ul class="space-y-2 pl-5 list-disc text-gray-700">
+                            <li>Meta diaria: <span class="font-semibold">1.500 Bs.</span> ? Alcanzada</li>
+                            <li>Meta semanal: <span class="font-semibold">10.000 Bs.</span> ? Alcanzada</li>
+                            <li>Meta mensual: <span class="font-semibold">38.000 Bs.</span> ? En proceso</li>
+                            <li>Meta anual: <span class="font-semibold">450.000 Bs.</span> ?? Objetivo principal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ?? SECCIÓN: ESTRATEGIAS -->
+        <section id="estrategias" class="seccion hidden">
+            <div class="card">
+                <h3 class="text-2xl font-bold text-dark mb-6 flex items-center gap-2">
+                    <i class="fa fa-facebook-square text-primary"></i>
+                    8. Estrategias para Crecer en Facebook
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-primary">
+                        <h4 class="font-bold text-lg text-dark">?? Publicaciones Efectivas</h4>
+                        <p class="mt-2 text-gray-700">Publico fotos claras, precios visibles y descripciones breves: <strong>Polera 80 Bs. - Camisa 140 Bs. - Camisa de color 300 Bs. - Pantalones 280 Bs.</strong> Así los clientes ven rápido lo que buscan.</p>
+                    </div>
+                    <div class="p-4 bg-green-50 rounded-lg border-l-4 border-success">
+                        <h4 class="font-bold text-lg text-dark">?? Atención Rápida</h4>
+                        <p class="mt-2 text-gray-700">Responder los mensajes en menos de 2 horas aumenta mucho las ventas. Siempre tengo listos los precios: <strong>Pantalón niño 30 Bs., niña 80 Bs., blusa 100 Bs., polera mujer 90 Bs., ropa bebé 35 Bs.</strong></p>
+                    </div>
+                    <div class="p-4 bg-amber-50 rounded-lg border-l-4 border-warning">
+                        <h4 class="font-bold text-lg text-dark">?? Ofertas que más gustan</h4>
+                        <p class="mt-2 text-gray-700">Las que más comparten: “Polera para niña 50 Bs., polera niño 30 Bs., zapatos desde 100 Bs.”, “Envío gratis al comprar zapatos de vestir de 500 Bs.”</p>
+                    </div>
+                    <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-accent">
+                        <h4 class="font-bold text-lg text-dark">?? Fidelización</h4>
+                        <p class="mt-2 text-gray-700">Invito a seguir la página y recomendar: “Por cada amigo que se una y compre, tienes un descuento del 10% en tu próxima compra”. Así crece la cantidad de clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-dark text-white py-6 text-center mt-10">
+        <p>?? Administración de Empresas aplicada a la Tienda en Facebook | Santa Cruz, Bolivia ????</p>
+        <p class="text-gray-400 text-sm mt-1">Trabajo completo con todos los productos y precios proporcionados</p>
+    </footer>
+
+    <!-- Script para navegar entre secciones -->
+    <script>
+        function mostrarSeccion(idSeccion) {
+            document.querySelectorAll('.seccion').forEach(seccion => {
+                seccion.classList.add('hidden');
+            });
+            document.getElementById(idSeccion).classList.remove('hidden');
+        }
+        mostrarSeccion('presentacion');
+    </script>
+
+</body>
+</html>
+
