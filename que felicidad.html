@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>? Página Aprobada | Chatbots y Palabra de Dios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* Encabezado Oficial */
+        .header-oficial {
+            background: linear-gradient(135deg, #004080 0%, #0059b3 100%);
+            color: white;
+            padding: 18px 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .header-oficial h1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .header-oficial p {
+            font-size: 15px;
+            opacity: 0.92;
+            margin-top: 5px;
+        }
+
+        /* Banner Principal */
+        .banner-principal {
+            background: #ffffff;
+            padding: 35px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), 
+                        url('https://images.unsplash.com/photo-1532629345221-70c65f3231b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .frase-felicidad {
+            font-size: 26px;
+            font-weight: bold;
+            color: #b37400;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .trabajo-chatbots {
+            background: linear-gradient(135deg, #2a9d8f 0%, #21867a 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .emocion {
+            font-size: 22px;
+            color: #d62828;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Navegación */
+        .navegacion {
+            display: flex;
+            justify-content: space-around;
+            background-color: #004080;
+            color: white;
+            padding: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            text-align: center;
+            padding: 10px 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background-color: #006699;
+        }
+
+        /* Secciones */
+        .seccion {
+            padding: 30px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .seccion h2 {
+            color: #004080;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2a9d8f;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Chatbot - Mensajes */
+        .chat-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #008080;
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mensaje-chatbot, .mensaje-usuario {
+            padding: 12px 18px;
+            margin: 8px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+        }
+
+        .mensaje-chatbot {
+            background-color: #e8f4f8;
+            border-bottom-left-radius: 4px;
+            margin-right: auto;
+        }
+
+        .mensaje-usuario {
+            background-color: #004080;
+            color: white;
+            border-bottom-right-radius: 4px;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        /* Agenda */
+        .tabla-agenda {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .tabla-agenda th {
+            background-color: #004080;
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        .tabla-agenda td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tabla-agenda tr:hover {
+            background-color: #f1f8ff;
+        }
+
+        /* Pie */
+        .footer {
+            background-color: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .frase-felicidad { font-size: 20px; }
+            .trabajo-chatbots { font-size: 20px; padding: 12px 20px; }
+            .emocion { font-size: 19px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header class="header-oficial">
+        <h1>??? GOBIERNO DEPARTAMENTAL DE SANTA CRUZ</h1>
+        <p>? PÁGINA WEB APROBADA Y VÁLIDA | ?? Segura · Autorizada · Confiable</p>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="banner-principal">
+        <div class="frase-felicidad">
+            ?? ¡Qué felicidad estar compartiendo la Palabra del Señor! ?
+        </div>
+
+        <div class="trabajo-chatbots">
+            ?? Respondiendo mensajes y agendando contacto en chatbots ??
+        </div>
+
+        <p class="emocion">?? ¡YA ESTOY ANOTADO PARA EL RETIRO! ¡QUÉ EMOCIÓN! ??</p>
+    </section>
+
+    <!-- Navegación -->
+    <nav class="navegacion">
+        <div class="nav-item">?? Chat Activo</div>
+        <div class="nav-item">?? Agenda de Contactos</div>
+        <div class="nav-item">? Validación</div>
+        <div class="nav-item">?? Mi Perfil</div>
+    </nav>
+
+    <!-- Sección Chatbot: Respondiendo Mensajes -->
+    <section class="seccion">
+        <h2>?? Centro de Atención - Chatbots</h2>
+        <div class="chat-container">
+            <div class="chat-header">
+                <span>??</span> Conversaciones Recientes
+            </div>
+
+            <div class="mensaje-chatbot">
+                <strong>Chatbot:</strong> ¡Hola! ¿En qué puedo ayudarte hoy? ??
+            </div>
+
+            <div class="mensaje-usuario">
+                <strong>Tú:</strong> Quiero agendar una reunión de información, por favor.
+            </div>
+
+            <div class="mensaje-chatbot">
+                <strong>Chatbot:</strong> ¡Claro que sí! ?? Te ayudo a agendar el contacto ahora mismo. ¿Qué día prefieres?
+            </div>
+
+            <div class="mensaje-usuario">
+                <strong>Tú:</strong> Este viernes por la tarde, gracias. ¡Qué felicidad compartir la Palabra! ??
+            </div>
+
+            <div class="mensaje-chatbot">
+                <strong>Chatbot:</strong> ? ¡Listo! Contacto agendado exitosamente. Gracias por participar. ??
+            </div>
+        </div>
+    </section>
+
+    <!-- Agenda de Contactos -->
+    <section class="seccion">
+        <h2>?? Agenda: Contactos Agendados</h2>
+        <table class="tabla-agenda">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha y Hora</th>
+                    <th>Motivo / Mensaje</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>María Fernández</td>
+                    <td>05/06/2026 - 16:00</td>
+                    <td>Información sobre retiro y Palabra de Dios ??</td>
+                    <td>? Confirmado</td>
+                </tr>
+                <tr>
+                    <td>Carlos Méndez</td>
+                    <td>06/06/2026 - 10:30</td>
+                    <td>Consulta por trabajo con chatbots ??</td>
+                    <td>? Agendado</td>
+                </tr>
+                <tr>
+                    <td>Ana Lucía Torres</td>
+                    <td>07/06/2026 - 18:00</td>
+                    <td>Compartir enseñanzas y fe ?</td>
+                    <td>? Confirmado</td>
+                </tr>
+                <tr>
+                    <td>Javier Ruiz</td>
+                    <td>08/06/2026 - 11:15</td>
+                    <td>Agendar participación y saludo ??</td>
+                    <td>? Agendado</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="margin-top:12px; color:#555; font-size:15px;">
+            ?? Total: 47 contactos agendados | ?? Chatbots trabajando 24/7
+        </p>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <p>??? GOBIERNO DEPARTAMENTAL DE SANTA CRUZ | BOLIVIA - 2026</p>
+        <p>? PÁGINA WEB APROBADA Y VÁLIDA | Respondiendo mensajes y agendando contacto en chatbots</p>
+        <p>?? "¡Qué felicidad estar compartiendo la Palabra del Señor!" ??</p>
+    </footer>
+
+</body>
+</html>
+

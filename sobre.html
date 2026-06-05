@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSolutions | Soluciones Tecnológicas Empresariales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#0F52BA',
+                        secundario: '#0A3D80',
+                        claro: '#E8F0FE',
+                        gris: '#4B5563',
+                        fondo: '#FFFFFF',
+                        fondoOscuro: '#111827'
+                    },
+                    fontFamily: {
+                        principal: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .contenedor {
+                @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+            }
+            .efecto-sombra {
+                @apply shadow-md hover:shadow-lg transition-all duration-300;
+            }
+            .efecto-escala {
+                @apply hover:scale-105 transition-transform duration-300;
+            }
+        }
+    </style>
+</head>
+<body class="font-principal bg-fondo text-gray-800">
+
+    <!-- Barra de Navegación -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="contenedor py-4 flex justify-between items-center">
+            <a href="#inicio" class="flex items-center gap-2">
+                <i class="fa fa-microchip text-primario text-3xl"></i>
+                <span class="font-bold text-2xl text-secundario">TechSolutions</span>
+            </a>
+
+            <!-- Menú para escritorio -->
+            <div class="hidden md:flex gap-8">
+                <a href="#inicio" class="font-medium hover:text-primario transition-colors">Inicio</a>
+                <a href="#servicios" class="font-medium hover:text-primario transition-colors">Servicios</a>
+                <a href="#nosotros" class="font-medium hover:text-primario transition-colors">Nosotros</a>
+                <a href="#portafolio" class="font-medium hover:text-primario transition-colors">Portafolio</a>
+                <a href="#contacto" class="font-medium hover:text-primario transition-colors">Contacto</a>
+            </div>
+
+            <!-- Botón menú móvil -->
+            <button class="md:hidden text-2xl" id="botonMenu">
+                <i class="fa fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Menú para móviles -->
+        <div class="md:hidden hidden bg-white" id="menuMovil">
+            <div class="flex flex-col gap-3 px-4 py-5 border-t">
+                <a href="#inicio" class="font-medium py-2 hover:text-primario transition-colors">Inicio</a>
+                <a href="#servicios" class="font-medium py-2 hover:text-primario transition-colors">Servicios</a>
+                <a href="#nosotros" class="font-medium py-2 hover:text-primario transition-colors">Nosotros</a>
+                <a href="#portafolio" class="font-medium py-2 hover:text-primario transition-colors">Portafolio</a>
+                <a href="#contacto" class="font-medium py-2 hover:text-primario transition-colors">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="bg-claro py-16 md:py-24">
+        <div class="contenedor grid md:grid-cols-2 gap-10 items-center">
+            <div>
+                <h1 class="text-[clamp(2rem,6vw,3.5rem)] font-bold text-secundario mb-4 leading-tight">
+                    Transformamos tus ideas en soluciones tecnológicas reales
+                </h1>
+                <p class="text-gris text-lg mb-8 max-w-xl">
+                    Ofrecemos servicios de desarrollo de software, consultoría tecnológica, transformación digital y soporte especializado para ayudar a tu empresa a crecer y ser más competitiva en el mercado.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contacto" class="bg-primario hover:bg-secundario text-white font-medium py-3 px-8 rounded-lg efecto-sombra efecto-escala">
+                        Contáctanos
+                    </a>
+                    <a href="#servicios" class="border-2 border-primario text-primario font-medium py-3 px-8 rounded-lg hover:bg-primario hover:text-white transition-colors efecto-escala">
+                        Conoce nuestros servicios
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Soluciones tecnológicas" 
+                     class="rounded-xl efecto-sombra max-w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="py-16 contenedor">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-secundario mb-4">Nuestros Servicios</h2>
+            <p class="text-gris max-w-2xl mx-auto">Contamos con un equipo de profesionales altamente capacitados para brindarte soluciones adaptadas a las necesidades de tu negocio.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Servicio 1 -->
+            <div class="bg-white p-8 rounded-xl efecto-sombra efecto-escala text-center">
+                <div class="w-16 h-16 bg-claro text-primario rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa fa-code"></i>
+                </div>
+                <h3 class="text-xl font-bold text-secundario mb-3">Desarrollo de Software</h3>
+                <p class="text-gris mb-4">Creamos aplicaciones web y móviles a medida, adaptadas a los objetivos específicos de tu empresa, con tecnología de vanguardia.</p>
+                <a href="#" class="text-primario font-medium inline-flex items-center gap-1 hover:underline">
+                    Saber más <i class="fa fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Servicio 2 -->
+            <div class="bg-white p-8 rounded-xl efecto-sombra efecto-escala text-center">
+                <div class="w-16 h-16 bg-claro text-primario rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa fa-cloud"></i>
+                </div>
+                <h3 class="text-xl font-bold text-secundario mb-3">Transformación Digital</h3>
+                <p class="text-gris mb-4">Ayudamos a modernizar tus procesos y sistemas, integrando herramientas digitales que mejoran la eficiencia y productividad de tu equipo.</p>
+                <a href="#" class="text-primario font-medium inline-flex items-center gap-1 hover:underline">
+                    Saber más <i class="fa fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Servicio 3 -->
+            <div class="bg-white p-8 rounded-xl efecto-sombra efecto-escala text-center">
+                <div class="w-16 h-16 bg-claro text-primario rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa fa-laptop"></i>
+                </div>
+                <h3 class="text-xl font-bold text-secundario mb-3">Consultoría Tecnológica</h3>
+                <p class="text-gris mb-4">Brindamos asesoramiento experto para la toma de decisiones tecnológicas, evaluando opciones y diseñando estrategias para el crecimiento sostenible.</p>
+                <a href="#" class="text-primario font-medium inline-flex items-center gap-1 hover:underline">
+                    Saber más <i class="fa fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Servicio 4 -->
+            <div class="bg-white p-8 rounded-xl efecto-sombra efecto-escala text-center">
+                <div class="w-16 h-16 bg-claro text-primario rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa fa-shield"></i>
+                </div>
+                <h3 class="text-xl font-bold text-secundario mb-3">Seguridad Informática</h3>
+                <p class="text-gris mb-4">Protegemos tus datos e infraestructura tecnológica con sistemas de seguridad avanzados, previniendo riesgos y amenazas digitales.</p>
+                <a href="#" class="text-primario font-medium inline-flex items-center gap-1 hover:underline">
+                    Saber más <i class="fa fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Servicio 5 -->
+            <div class="bg-white p-8 rounded-xl efecto-sombra efecto-escala text-center">
+                <div class="w-16 h-16 bg-claro text-primario rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa fa-cogs"></i>
+                </div>
+                <h3 class="text-xl font-bold text-secundario mb-3">Soporte Técnico</h3>
+                <p class="text-gris mb-4">Brindamos asistencia continua y mantenimiento de tus sistemas, garantizando su funcionamiento óptimo y resolviendo cualquier inconveniente rápidamente.</p>
+                <a href="#" class="text-primario font-medium inline-flex items-center gap-1 hover:underline">
+                    Saber más <i class="fa fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Servicio 6 -->
+            <div class="bg-white p-8 rounded-xl efecto-sombra efecto-escala text-center">
+                <div class="w-16 h-16 bg-claro text-primario rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa fa-chart-line"></i>
+                </div>
+                <h3 class="text-xl font-bold text-secundario mb-3">Análisis de Datos</h3>
+                <p class="text-gris mb-4">Convertimos tus datos en información valiosa y estrategias claras para mejorar la toma de decisiones y optimizar los resultados de tu negocio.</p>
+                <a href="#" class="text-primario font-medium inline-flex items-center gap-1 hover:underline">
+                    Saber más <i class="fa fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="py-16 bg-claro">
+        <div class="contenedor">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-secundario mb-4">Sobre TechSolutions</h2>
+                    <p class="text-gris mb-4">
+                        Somos una empresa con más de 10 años de experiencia en el sector tecnológico, dedicada a ofrecer soluciones innovadoras que impulsan el desarrollo de nuestros clientes. Nuestro equipo está formado por profesionales apasionados por la tecnología y comprometidos con la excelencia.
+                    </p>
+                    <p class="text-gris mb-6">
+                        Creemos en la tecnología como una herramienta fundamental para resolver problemas y crear oportunidades. Nos enfocamos en escuchar las necesidades de cada cliente para desarrollar propuestas únicas que se adapten perfectamente a su realidad y objetivos.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="text-3xl font-bold text-primario mb-1">10+</h4>
+                            <p class="text-gris">Años de experiencia</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-primario mb-1">500+</h4>
+                            <p class="text-gris">Proyectos realizados</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-primario mb-1">200+</h4>
+                            <p class="text-gris">Clientes satisfechos</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-primario mb-1">50+</h4>
+                            <p class="text-gris">Profesionales</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Equipo de trabajo" 
+                         class="rounded-xl efecto-sombra max-w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Portafolio -->
+    <section id="portafolio" class="py-16 contenedor">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-secundario mb-4">Nuestros Proyectos</h2>
+            <p class="text-gris max-w-2xl mx-auto">Algunos de los trabajos que hemos desarrollado para empresas de diferentes sectores, siempre con la calidad y la innovación como prioridad.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Proyecto 1 -->
+            <div class="bg-white rounded-xl overflow-hidden efecto-sombra efecto-escala">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     alt="Sistema de gestión empresarial" 
+                     class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-secundario mb-2">Sistema de Gestión Empresarial</h3>
+                    <p class="text-gris mb-4">Plataforma integral para administrar recursos, ventas y procesos de una empresa comercial.</p>
+                    <span class="inline-block bg-claro text-primario text-sm px-3 py-1 rounded">Desarrollo Web</span>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div class="bg-white rounded-xl overflow-hidden efecto-sombra efecto-escala">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     alt="Aplicación móvil educativa" 
+                     class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-secundario mb-2">App Educativa

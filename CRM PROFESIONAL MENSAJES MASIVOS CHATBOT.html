@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Profesional | Daniel Gallardo Soliz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F4C81',
+                        secondary: '#F2994A',
+                        official: '#1E8449',
+                        santaCruz: '#B71C1C',
+                        light: '#F8F9FA',
+                        dark: '#212529'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+            .border-dashed-custom { border-style: dashed; border-width: 1px; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <!-- Barra Superior de Anuncio Oficial -->
+    <div class="bg-santaCruz text-white text-center py-2 px-4 text-sm font-medium">
+        ??? PLATAFORMA OFICIAL RESPALDADA POR EL GOBIERNO DEPARTAMENTAL DE SANTA CRUZ | INSTITUTO SAN ANDRÉS & TIENDA DE ROPA AMERICANA 2027
+    </div>
+
+    <!-- Encabezado Principal -->
+    <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-3 md:mb-0">
+                <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                    <i class="fa fa-cogs text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold">CRM Profesional</h1>
+                    <p class="text-sm opacity-90">Daniel Gallardo Soliz - Sistema de Gestión</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm">
+                    <i class="fa fa-user-circle mr-2"></i> Administrador
+                </button>
+                <span class="bg-official/80 text-white px-3 py-1 rounded-full text-xs font-medium">
+                    <i class="fa fa-check-circle mr-1"></i> SITIO VÁLIDO Y APROBADO
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de Navegación Principal -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+                <li><a href="#inicio" class="text-primary hover:text-secondary transition flex items-center"><i class="fa fa-home mr-1"></i> Inicio</a></li>
+                <li><a href="#dashboard" class="text-primary hover:text-secondary transition flex items-center"><i class="fa fa-tachometer mr-1"></i> Panel de Control</a></li>
+                <li><a href="#chatbot" class="text-primary hover:text-secondary transition flex items-center"><i class="fa fa-android mr-1"></i> Chatbot</a></li>
+                <li><a href="#masivos" class="text-primary hover:text-secondary transition flex items-center"><i class="fa fa-broadcast-tower mr-1"></i> Mensajes Masivos</a></li>
+                <li><a href="#clientes" class="text-primary hover:text-secondary transition flex items-center"><i class="fa fa-users mr-1"></i> Base de Clientes</a></li>
+                <li><a href="#certificaciones" class="text-primary hover:text-secondary transition flex items-center"><i class="fa fa-certificate mr-1"></i> Legal y Certificados</a></li>
+                <li><a href="#productos" class="text-primary hover:text-secondary transition flex items-center"><i class="fa fa-shopping-bag mr-1"></i> Productos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- SECCIÓN: INICIO Y PRESENTACIÓN -->
+        <section id="inicio" class="mb-12">
+            <div class="bg-gradient-to-r from-primary/10 via-white to-secondary/10 rounded-2xl p-8 shadow-lg border border-gray-100">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-primary mb-4 text-shadow">Sistema Integral de Comunicaciones</h2>
+                <p class="text-gray-700 max-w-4xl mb-6 text-lg">
+                    Plataforma oficial unificada para el <strong>Instituto San Andrés</strong> y la <strong>Tienda de Ropa Americana 2027</strong>. Autorizada, regulada y respaldada legalmente por el Gobierno Departamental de Santa Cruz. Gestione clientes, envíe mensajes automáticos y masivos, y mantenga la información segura y certificada.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
+                        <i class="fa fa-shield text-official text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-dark">Seguridad Garantizada</h4>
+                            <p class="text-xs text-gray-600">Sitio válido y aprobado</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
+                        <i class="fa fa-certificate text-santaCruz text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-dark">Certificación Legal</h4>
+                            <p class="text-xs text-gray-600">Regulado por Ley Departamental</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
+                        <i class="fa fa-clock-o text-primary text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-dark">Disponibilidad 24/7</h4>
+                            <p class="text-xs text-gray-600">Atención automática</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: DASHBOARD / PANEL DE CONTROL -->
+        <section id="dashboard" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center"><i class="fa fa-tachometer mr-2 text-primary"></i> Panel de Control</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+                <!-- Tarjeta Estadística -->
+                <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-primary">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Total Clientes</p>
+                            <h3 class="text-3xl font-bold text-dark mt-1">1.247</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                            <i class="fa fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-secondary">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Mensajes Enviados</p>
+                            <h3 class="text-3xl font-bold text-dark mt-1">4.852</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                            <i class="fa fa-paper-plane"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-official">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Certificaciones</p>
+                            <h3 class="text-3xl font-bold text-dark mt-1">289</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-official/10 text-official flex items-center justify-center">
+                            <i class="fa fa-file-text"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-santaCruz">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Estado Sistema</p>
+                            <h3 class="text-lg font-bold text-official mt-1">ACTIVO ?</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-santaCruz/10 text-santaCruz flex items-center justify-center">
+                            <i class="fa fa-shield"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CHATBOT INTERACTIVO -->
+        <section id="chatbot" class="mb-12">
+            <div class="flex items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 mr-3"><i class="fa fa-android mr-2 text-green-600"></i> Chatbot CRM Interactivo</h2>
+                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">ACTIVO 24/7</span>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden max-w-3xl mx-auto">
+                <!-- Cabecera Chat -->
+                <div class="bg-primary text-white px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                            <i class="fa fa-android text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Asistente Virtual</h3>
+                            <p class="text-xs opacity-80">Daniel Gallardo Soliz | Sistema CRM</p>
+                        </div>
+                    </div>
+                    <span class="text-xs bg-green-500/20 px-2 py-1 rounded">En línea</span>
+                </div>
+
+                <!-- Cuerpo del Chat -->
+                <div id="chatBody" class="h-[480px] overflow-y-auto scrollbar-hide p-6 bg-gray-50 space-y-4">
+                    <!-- Mensaje del Bot -->
+                    <div class="flex items-start gap-3 max-w-[80%]">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fa fa-android"></i>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg rounded-tl-none shadow-sm border border-gray-100">
+                            <p class="text-gray-700">¡Hola <strong>Daniel Gallardo Soliz</strong>! Bienvenido/a ?? Escribe el número de lo que necesitas:</p>
+                            <ul class="mt-2 space-y-1 text-sm">
+                                <li>1?? Información General</li>
+                                <li>2?? <strong>Javier Ortiz Arteaga</strong> | Ver Productos</li>
+                                <li>3?? Hacer un Pedido / Trámite</li>
+                                <li>4?? Atención Personalizada</li>
+                                <li>5?? Ver mi Estado / Registro</li>
+                                <li>6?? ??? Certificaciones y Validez Oficial</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opciones Rápidas -->
+                <div class="bg-gray-100 px-6 py-3 border-t border-gray-200">
+                    <p class="text-xs text-gray-500 mb-2">Accesos rápidos:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="mostrarOpcion(2)" class="text-xs bg-primary text-white px-3 py-1.5 rounded-full hover:bg-primary/90 transition">Opción 2: Productos</button>
+                        <button onclick="mostrarOpcion(6)" class="text-xs bg-santaCruz text-white px-3 py-1.5 rounded-full hover:bg-santaCruz/90 transition">Opción 6: Certificados</button>
+                        <button onclick="mostrarOpcion(1)" class="text-xs bg-secondary text-white px-3 py-1.5 rounded-full hover:bg-secondary/90 transition">Opción 1: Info</button>
+                    </div>
+                </div>
+
+                <!-- Entrada de Texto -->
+                <div class="px-6 py-4 border-t border-gray-200 bg-white flex gap-3">
+                    <input type="text" id="inputMensaje" placeholder="Escribe un mensaje..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                    <button onclick="enviarMensaje()" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition">
+                        <i class="fa fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: MENSAJES MASIVOS Y PLANTILLAS -->
+        <section id="masivos" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center"><i class="fa fa-broadcast-tower mr-2 text-purple-600"></i> Mensajes Masivos y Plantillas</h2>
+
+            <!-- Herramienta de Envío -->
+            <div class="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-8 shadow-sm">
+                <h3 class="font-bold text-purple-800 mb-4">?? Nueva Campaña de Envío</h3>
+                <div class="grid md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <label class="text-xs font-medium text-gray-700 mb-1 block">Seleccionar Grupo</label>
+                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                            <option>Todos los Clientes</option>
+                            <option>Instituto San Andrés</option>
+                            <option>Tienda Ropa Americana</option>
+                            <option>Clientes VIP</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-medium text-gray-700 mb-1 block">Asunto / Título</label>
+                        <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="Ej: Promoción Especial">
+                    </div>
+                    <div>
+                        <label class="text-xs font-medium text-gray-700 mb-1 block">Programar Envío</label>
+                        <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value="2026-06-05">
+                    </div>
+                </div>
+                <textarea class="w-full border border-gray-300 rounded-lg px-3 py-2 h-24 text-sm mb-3" placeholder="Escriba el mensaje aquí..."></textarea>
+                <button class="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition text-sm font-medium">
+                    <i class="fa fa-paper-plane mr-2"></i> Enviar Mensaje Masivo
+                </button>
+            </div>
+
+            <!-- LISTADO DE PLANTILLAS COMPLETAS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- ?? SALUDOS Y BIENVENIDA -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-primary/10 px-5 py-3 border-b border-primary/20">
+                        <h3 class="font-bold text-primary">?? Saludos y Bienvenida</h3>
+                    </div>
+                    <div class="p-5 space-y-4 text-sm">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>1.</strong> ¡Hola <strong>Marco Ortiz Sánchez</strong>! Bienvenido/a a nuestra familia. Gracias por confiar en nosotros. Aquí estamos para atenderte en todo lo que necesites. ¿En qué te podemos ayudar hoy?</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>2.</strong> ¡Hola <strong>Marco Ortiz Sánchez</strong>! Qué alegría tenerte con nosotros. Te damos la bienvenida oficial a nuestra comunidad. Pronto te llegarán todas las novedades y beneficios que tenemos para ti ??</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>3.</strong> ¡Bienvenido/a <strong>Marco Ortiz Sánchez</strong>! Gracias por registrarte con nosotros. Ahora formas parte de nuestros clientes preferenciales. No dudes en escribirnos si tienes alguna duda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ?? ANUNCIOS Y NOVEDADES -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-secondary/10 px-5 py-3 border-b border-secondary/20">
+                        <h3 class="font-bold text-secondary">?? Anuncios y Novedades</h3>
+                    </div>
+                    <div class="p-5 space-y-4 text-sm">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>1.</strong> ¡ATENCIÓN <strong>Juana Sánchez Justiniano</strong>! Tenemos nuevas promociones exclusivas solo para nuestros clientes. Entra aquí ?? <a href="http://www.peliculasenfullhdbluerayvideojuegospromociones.com" target="_blank" class="text-blue-600 underline">www.peliculasenfullhdbluerayvideojuegospromociones.com</a></p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>2.</strong> ¡Llegó lo nuevo, <strong>Juana Sánchez Justiniano</strong>! ?? Tenemos productos/servicios renovados, mejores precios y más calidad. Visítanos o escribe para más detalles.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>3.</strong> AVISO IMPORTANTE: Estamos mejorando nuestros servicios para ti, <strong>Juan Parada Ramírez</strong>. Durante este día podrías notar pequeños cambios, pronto todo será mucho mejor. Gracias por tu comprensión ??</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>4.</strong> <strong>Juan Parada Ramírez</strong>, mira esto ??: Hasta el <strong>11/06/2026</strong> tenemos descuentos de hasta el <strong>3%</strong>. Aprovecha antes de que se acaben. Más info aquí: <a href="http://www.descuentoporcientos.com" target="_blank" class="text-blue-600 underline">www.descuentoporcientos.com</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ?? RECORDATORIOS -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-yellow-100 px-5 py-3 border-b border-yellow-200">
+                        <h3 class="font-bold text-yellow-800">?? Recordatorios y Seguimientos</h3>
+                    </div>
+                    <div class="p-5 space-y-4 text-sm">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>1.</strong> Hola <strong>Gonzalo Justiniano Gallardo</strong> ?? Te recordamos que tienes pendiente tu cita/pago/entrega para el día [Fecha] a las [Hora]. ¿Todo bien por tu parte? Avísanos si necesitas cambiar algo.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>2.</strong> Recordatorio amable, <strong>Gonzalo Justiniano Gallardo</strong>: Tu suscripción/plan vence el <strong>12/09/2026</strong>. Para que no pierdas tus beneficios, puedes renovar aquí: <a href="http://www.renovartusbeneficios.com" target="_blank" class="text-blue-600 underline">www.renovartusbeneficios.com</a> ¡Gracias por preferirnos!</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>3.</strong> <strong>Gonzalo Justiniano Gallardo</strong>, hace tiempo no sabíamos de ti ?? ¿Todo bien? Queremos saber si necesitas algo o si podemos ayudarte en algo nuevo. Estamos aquí para ti.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ? CONFIRMACIONES Y TRÁMITES -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-green-100 px-5 py-3 border-b border-green-200">
+                        <h3 class="font-bold text-green-800">? Confirmaciones y Trámites</h3>
+                    </div>
+                    <div class="p-5 space-y-4 text-sm">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>1.</strong> ¡Listo <strong>Manuel Saavedra Gutiérrez</strong>! ? Hemos recibido tu solicitud/pedido/registro correctamente. En breve nuestro equipo revisará todo y te responderemos con los siguientes pasos. Gracias por tu paciencia.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>2.</strong> <strong>Manuel Saavedra Gutiérrez</strong>, tu certificado/documento ya está listo ?? Puedes descargarlo aquí: <a href="http://www.descargarcertificadodocumentos.com" target="_blank" class="text-blue-600 underline">www.descargarcertificadodocumentos.com</a> o pasarlo a recoger por nuestra oficina. Gracias por tu confianza.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>3.</strong> Pago confirmado, <strong>Manuel Saavedra Gutiérrez</strong> ?? Muchas gracias por tu abono. Ya queda registrado en nuestro sistema. Aquí tienes tu comprobante: <a href="http://www.comprobantedepago.com" target="_blank" class="text-blue-600 underline">www.comprobantedepago.com</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ? CONSULTAS FRECUENTES -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-purple-100 px-5 py-3 border-b border-purple-200">
+                        <h3 class="font-bold text-purple-800">? Respuestas Automáticas</h3>
+                    </div>
+                    <div class="p-5 space-y-4 text-sm">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>1.</strong> Hola <strong>Dayana Arteaga Soliz</strong>, con gusto te ayudo ?? Nuestro horario de atención es: Lunes a Viernes de 8:00 a 18:00, Sábados de 8:00 a 12:00. Ubicación: Santa Cruz, Bolivia. ¿Te sirve esta información?</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>2.</strong> Disculpa <strong>Dayana Arteaga Soliz</strong>, ahora mismo todos nuestros asesores están ocupados o es fuera de horario. Tu mensaje ha quedado guardado y te responderemos personalmente en cuanto podamos. Gracias ??</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>3.</strong> Para consultas sobre <strong>Herbalife</strong>, puedes escribirnos directamente a este chat o llamar al 33333333. También revisa nuestra sección de ayuda aquí: <a href="http://www.herbalife.com" target="_blank" class="text-blue-600 underline">www.herbalife.com</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ?? AGRADECIMIENTOS -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-pink-100 px-5 py-3 border-b border-pink-200">
+                        <h3 class="font-bold text-pink-800">?? Agradecimientos y Despedidas</h3>
+                    </div>
+                    <div class="p-5 space-y-4 text-sm">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>1.</strong> ¡Gracias por todo, <strong>Tatiana Ramírez Gallardo</strong>! Fue un gusto atenderte. Esperamos verte pronto nuevamente. Si necesitas algo más, aquí seguimos. ¡Que tengas un día bendecido! ?</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>2.</strong> Gracias por ser parte de nuestra comunidad, <strong>Tatiana Ramírez Gallardo</strong>. Tu apoyo nos hace crecer cada día. Te enviamos un abrazo grande y muchas bendiciones ??</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p><strong>3.</strong> ¡Hasta pronto <strong>Tatiana Ramírez Gallardo</strong>! Recuerda que estamos siempre a tu disposición. Cuídate mucho y que Dios te bendiga siempre.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: BASE DE CLIENTES -->
+        <section id="clientes" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center"><i class="fa fa-users mr-2 text-blue-600"></i> Base de Datos de Clientes</h2>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-gray-100 text-gray-700 uppercase">
+                            <tr>
+                                <th class="px-4 py-3">Nombre Completo</th>
+                                <th class="px-4 py-3">Categoría / Empresa</th>
+                                <th class="px-4 py-3">Estado</th>
+                                <th class="px-4 py-3">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 font-medium">Marco Ortiz Sánchez</td>
+                                <td class="px-4 py-3">Instituto San Andrés</td>
+                                <td class="px-4 py-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded">Activo</span></td>
+                                <td class="px-4 py-3"><button class="text-primary hover:underline">Enviar Msg</button></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 font-medium">Juana Sánchez Justiniano</td>
+                                <td class="px-4 py-3">Tienda Ropa Americana</td>
+                                <td class="px-4 py-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded">Activo</span></td>
+                                <td class="px-4 py-3"><button class="text-primary hover:underline">Enviar Msg</button></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 font-medium">Javier Ortiz Arteaga</td>
+                                <td class="px-4 py-3">Proveedor / Productos</td>
+                                <td class="px-4 py-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded">Activo</span></td>
+                                <td class="px-4 py-3"><button class="text-primary hover:underline">Ver Catálogo</button></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 font-medium">Manuel Saavedra Gutiérrez</td>
+                                <td class="px-4 py-3">Trámites y Certificados</td>
+                                <td class="px-4 py-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded">Activo</span></td>
+                                <td class="px-4 py-3"><button class="text-primary hover:underline">Ver Docs</button></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 font-medium">Dayana Arteaga Soliz</td>
+                                <td class="px-4 py-3">Consultas Generales</td>
+                                <td class="px-4 py-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded">Activo</span></td>
+                                <td class="px-4 py-3"><button class="text-primary hover:underline">Historial</button></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 font-medium">Tatiana Ramírez Gallardo</td>
+                                <td class="px-4 py-3">Preferencial / VIP</td>
+                                <td class="px-4 py-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded">Activo</span></td>
+                                <td class="px-4 py-3"><button class="text-primary hover:underline">Enviar Msg</button></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 font-medium">Gonzalo Justiniano Gallardo</td>
+                                <td class="px-4 py-3">Seguimiento / Recordatorios</td>
+                                <td class="px-4 py-3"><span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded">Pendiente</span></td>
+                                <td class="px-4 py-3"><button class="text-primary hover:underline">Recordar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CERTIFICACIONES Y LEGAL -->
+        <section id="certificaciones" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center"><i class="fa fa-balance-scale mr-2 text-santaCruz"></i> Marco Legal y Certificaciones</h2>
+            
+            <div class="bg-white rounded-xl shadow-lg border-2 border-santaCruz/30 p-8 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-santaCruz/5 rounded-full"></div>
+                <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-santaCruz/5 rounded-full"></div>
+
+                <div class="grid md:grid-cols-2 gap-8 relative z-10">
+                    <div class="text-center p-6 border-2 border-dashed-custom border-santaCruz/40 rounded-xl hover:shadow-md transition">
+                        <h3 class="text-xl font-bold text-santaCruz mb-3">INSTITUTO SAN ANDRÉS</h3>
+                        <p class="text-gray-700 font-semibold mb-2">Certificación: Página web válida y debidamente aprobada</p>
+                        <p class="text-sm text-gray-600 mb-4">"Esta certificación del Instituto San Andrés está autorizada, regulada y respaldada legalmente por el Gobierno Departamental de Santa Cruz"</p>
+                        <span class="inline-block mt-2 bg-santaCruz text-white px-5 py-2 rounded-lg text-sm font-medium shadow-sm">? VÁLIDO Y APROBADO</span>
+                    </div>
+
+                    <div class="text-center p-6 border-2 border-dashed-custom border-santaCruz/40 rounded-xl hover:shadow-md transition">
+                        <h3 class="text-xl font-bold text-santaCruz mb-3">TIENDA DE ROPA AMERICANA 2027</h3>
+                        <p class="text-gray-700 font-semibold mb-2">Certificación: Sitio web autorizado y regulado legalmente</p>
+                        <p class="text-sm text-gray-600 mb-4">"Tienda de Ropa Americana 2027. Sitio web autorizado y regulado legalmente por el Gobierno Departamental de Santa Cruz. Garantía oficial de calidad y seguridad"</p>
+                        <span class="inline-block mt-2 bg-santaCruz text-white px-5 py-2 rounded-lg text-sm font-medium shadow-sm">? AUTORIZADO LEGALMENTE</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200 text-sm text-gray-700">
+                    <h4 class="font-bold mb-2 text-center text-dark">?? AVISO LEGAL OFICIAL</h4>
+                    <p class="text-center">Plataforma gestionada por <strong>Daniel Gallardo Soliz</strong>. Todos los documentos, mensajes y transacciones realizadas en este portal cuentan con el respaldo y validez jurídica otorgada por el <strong>Gobierno Departamental de Santa Cruz</strong>, cumpliendo con la normativa vigente en materia de comercio, educación y tecnologías de la información.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PRODUCTOS -->
+        <section id="productos" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center"><i class="fa fa-shopping-bag mr-2 text-green-600"></i> Catálogo de Productos y Servicios</h2>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-xl mx-auto border border-gray-200">
+                <div class="bg-gradient-to-r from-primary to-primary/80 text-white px-6 py-5 flex justify-between items-center">
+                    <h3 class="font-bold text-lg">Javier Ortiz Arteaga - Lista Vigente 2026</h3>
+                    <span class="text-xs bg-white/20 px-2 py-1 rounded">Actualizado</span>
+                </div>
+                <div class="p-6 space-y-5">
+                    <div class="flex justify-between items-center border-b border-dashed border-gray-200 pb-4">
+                        <div>
+                            <h4 class="font-bold text-dark">Colágeno</h4>
+                            <p class="text-xs text-gray-600">Suplemento natural de alta calidad</p>
+                        </div>
+                        <span class="font-bold text-secondary text-xl">$ 40 USD</span>
+                    </div>
+                    
+                    <div class="flex justify-between items-center border-b border-dashed border-gray-200 pb-4">
+                        <div>
+                            <h4 class="font-bold text-dark">Herbalife - Diferentes Sabores</h4>
+                            <p class="text-xs text-gray-600">Nutrición y bienestar, variedad de presentaciones</p>
+                        </div>
+                        <span class="font-bold text-secondary text-xl">$ 35 USD</span>
+                    </div>
+
+                    <div class="mt-4 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
+                        <p class="font-medium text-dark mb-1">?? Más información y descuentos:</p>
+                        <a href="http://www.descuentoporcientos.com" target="_blank" class="text-blue-600 underline">www.descuentoporcientos.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-dark text-white py-10 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-lg font-bold mb-3">CRM Profesional</h4>
+                    <p class="text-sm text-gray-400">Sistema integral de comunicación y gestión de clientes desarrollado por Daniel Gallardo Soliz.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-3">Entidades Oficiales</h4>
+                    <ul class="text-sm text-gray-400 space-y-1">
+                        <li>??? Gobierno Departamental de Santa Cruz</li>
+                        <li>?? Instituto San Andrés</li>
+                        <li>??? Tienda de Ropa Americana 2027</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-3">Enlaces Útiles</h4>
+                    <ul class="text-sm text-gray-400 space-y-1">
+                        <li><a href="http://www.descargarcertificadodocumentos.com" class="hover:underline">Descargar Certificados</a></li>
+                        <li><a href="http://www.herbalife.com" class="hover:underline">Herbalife</a></li>
+                        <li><a href="http://www.comprobantedepago.com" class="hover:underline">Comprobantes de Pago</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-6 border-t border-gray-700 text-xs text-gray-500">
+                <p>© 2026 Daniel Gallardo Soliz | Todos los derechos reservados | Sitio válido, aprobado y regulado legalmente</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para el Chatbot -->
+    <script>
+        function agregarMensaje(texto, esUsuario = false) {
+            const chatBody = document.getElementById('chatBody');
+            const mensajeDiv = document.createElement('div');
+            mensajeDiv.className = `flex items-start gap-3 max-w-[80%] ${esUsuario ? 'ml-auto flex-row-reverse' : ''}`;
+            
+            mensajeDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full ${esUsuario ? 'bg-secondary' : 'bg-primary'} text-white flex items-center justify-center flex-shrink-0 mt-1">
+                    <i class="fa ${esUsuario ? 'fa-user' : 'fa-android'}"></i>
+                </div>
+                <div class="${esUsuario ? 'bg-secondary text-white rounded-tr-none' : 'bg-white rounded-tl-none'} p-3 rounded-lg shadow-sm border border-gray-100">
+                    <p class="text-sm">${texto}</p>
+                </div>
+            `;
+            chatBody.appendChild(mensajeDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function mostrarRespuesta(numero) {
+            let respuesta = "";
+            switch(numero) {
+                case 2:
+                    respuesta = `<strong>Javier Ortiz Arteaga</strong>, estos son nuestros productos vigentes hasta el 11/06/2026:<br>
+                    • Colágeno: 40 dólares<br>
+                    • Herbalife de diferentes sabores: 35 dólares<br>
+                    Más detalles: <a href='http://www.descuentoporcientos.com' class='underline'>www.descuentoporcientos.com</a><br>
+                    ¿Quieres ayuda con algo más?`;
+                    break;
+                case 6:
+                    respuesta = `??? INFORMACIÓN OFICIAL:<br>
+                    ? <strong>Instituto San Andrés:</strong> Certificación válida y aprobada por el Gobierno Departamental de Santa Cruz<br>
+                    ? <strong>Tienda Ropa Americana 2027:</strong> Sitio autorizado y regulado legalmente<br>
+                    ?? Documentos: <a href='http://www.descargarcertificadodocumentos.com' class='underline'>www.descargarcertificadodocumentos.com</a>`;
+                    break;
+                case 1:
+                    respuesta = `?? Información General:<br>
+                    Hola <strong>Marco Ortiz Sánchez</strong>, estamos para ayudarte.<br>
+                    Horario: Lunes a Viernes 8:00 - 18:00 | Santa Cruz, Bolivia<br>
+                    Sitios oficiales respaldados por el Gobierno Departamental de Santa Cruz.`;
+                    break;
+                default:
+                    respuesta = "Opción recibida. En breve un asesor te atenderá.";
+            }
+            setTimeout(() => agregarMensaje(respuesta), 600);
+        }
+
+        function enviarMensaje() {
+            const input = document.getElementById('inputMensaje');
+            const texto = input.value.trim();
+            if (!texto) return;
+            
+            agregarMensaje(texto, true);
+            input.value = "";
+
+            if(!isNaN(texto)) {
+                mostrarRespuesta(parseInt(texto));
+            } else {
+                setTimeout(() => agregarMensaje("Mensaje recibido. ¿Necesitas ayuda con alguna de las opciones del menú?"), 600);
+            }
+        }
+
+        function mostrarOpcion(num) {
+            agregarMensaje(num.toString(), true);
+            mostrarRespuesta(num);
+        }
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEGIP - Confirmación de Pago | UNImóvil Plus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        segip: {
+                            blue: '#0099CC',
+                            darkBlue: '#0077AA',
+                            lightBlue: '#E6F2F8',
+                            gray: '#F5F5F5',
+                            border: '#DDDDDD',
+                            note: '#FFF8C5',
+                            text: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .shadow-custom {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            .border-b-custom {
+                border-bottom: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-segip-text min-h-screen">
+    <div class="container mx-auto max-w-2xl bg-white min-h-screen shadow-lg">
+        
+        <!-- Encabezado Superior -->
+        <header class="bg-segip-blue text-white py-4 px-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-white text-segip-blue font-bold text-xl px-2 py-1 rounded">UNI</div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg">UNImóvil plus</span>
+                    <span class="text-xs opacity-90">Banca Móvil</span>
+                </div>
+            </div>
+            <button class="text-white text-xl">
+                <i class="fa fa-power-off"></i>
+            </button>
+        </header>
+
+        <!-- Título Sección -->
+        <div class="bg-segip-lightBlue px-6 py-3 border-b-custom">
+            <h1 class="font-bold text-segip-darkBlue text-lg">Segip</h1>
+            <p class="text-sm text-segip-darkBlue">Confirmación de Pago</p>
+        </div>
+
+        <!-- Contenedor Principal -->
+        <main class="px-6 py-5">
+
+            <!-- Mensaje de Éxito -->
+            <div class="flex items-center gap-3 mb-6">
+                <div class="text-green-600 text-xl">
+                    <i class="fa fa-check-circle"></i>
+                </div>
+                <h2 class="font-bold text-lg">OPERACIÓN PROCESADA EXITOSAMENTE</h2>
+            </div>
+
+            <!-- Tipo de Operación -->
+            <div class="bg-segip-lightBlue rounded-md p-3 mb-6 flex items-center gap-3 border border-segip-border">
+                <div class="text-segip-blue font-bold">
+                    <i class="fa fa-info-circle"></i>
+                </div>
+                <p class="text-sm">Pago de documentos o servicios SEGIP</p>
+            </div>
+
+            <!-- Detalles del Pago -->
+            <div class="mb-6">
+                <h3 class="font-semibold text-gray-700 mb-3 text-sm">Detalle de pago.</h3>
+                
+                <div class="space-y-2 mb-4">
+                    <div class="grid grid-cols-3 gap-2">
+                        <span class="text-gray-600 text-sm">Fecha:</span>
+                        <span class="col-span-2 text-sm font-medium">29/05/2026 16:24:12</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <span class="text-gray-600 text-sm">Nombre Completo:</span>
+                        <span class="col-span-2 text-sm font-medium">_________________________</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <span class="text-gray-600 text-sm">Número Transacción:</span>
+                        <span class="col-span-2 text-sm font-medium">_________________________</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listado de Pagos -->
+            <div class="mb-6">
+                <h3 class="font-semibold text-gray-700 mb-3 text-sm">Listado de pagos realizados</h3>
+                
+                <div class="border border-segip-border rounded-md overflow-hidden">
+                    <div class="px-4 py-3 border-b-custom flex justify-between items-center">
+                        <div>
+                            <p class="font-medium">1. CEDULA DE IDENTIDAD - NUEVO REGISTRO</p>
+                            <p class="text-xs text-gray-500">Servicio de emisión de documento nacional de identidad</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-bold text-lg">17,00 Bs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Botón Descargar -->
+                    <div class="px-4 py-3 bg-gray-50 flex justify-center">
+                        <button class="bg-segip-blue hover:bg-segip-darkBlue text-white px-6 py-2 rounded-md flex items-center gap-2 transition-colors w-full justify-center">
+                            <i class="fa fa-download"></i>
+                            <span>Descargar Comprobante PDF</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nota Informativa -->
+            <div class="bg-segip-note border border-yellow-300 rounded-md p-4 mb-6">
+                <div class="flex items-start gap-3">
+                    <div class="text-yellow-600 font-bold mt-1">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-yellow-800 mb-1">NOTA</h4>
+                        <p class="text-sm text-yellow-900">
+                            El pago fue realizado exitosamente. No olvide realizar la descarga de su comprobante, es necesario para continuar con el trámite de registro y emisión de su Cédula de Identidad en las oficinas del SEGIP.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Registro Nuevo -->
+            <div class="border border-segip-border rounded-md p-5 mb-8 bg-gray-50">
+                <h3 class="font-bold text-segip-darkBlue text-lg mb-4">Registro de Cédula de Identidad Nuevo</h3>
+                
+                <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nombres</label>
+                            <input type="text" class="w-full px-3 py-2 border border-segip-border rounded-md focus:outline-none focus:ring-2 focus:ring-segip-blue" placeholder="Ingrese sus nombres">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Apellidos</label>
+                            <input type="text" class="w-full px-3 py-2 border border-segip-border rounded-md focus:outline-none focus:ring-2 focus:ring-segip-blue" placeholder="Ingrese sus apellidos">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de Nacimiento</label>
+                            <input type="date" class="w-full px-3 py-2 border border-segip-border rounded-md focus:outline-none focus:ring-2 focus:ring-segip-blue">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Lugar de Nacimiento</label>
+                            <select class="w-full px-3 py-2 border border-segip-border rounded-md focus:outline-none focus:ring-2 focus:ring-segip-blue">
+                                <option value="">Seleccione departamento</option>
+                                <option value="SC">Santa Cruz</option>
+                                <option value="LP">La Paz</option>
+                                <option value="CB">Cochabamba</option>
+                                <option value="OR">Oruro</option>
+                                <option value="PT">Potosí</option>
+                                <option value="TJ">Tarija</option>
+                                <option value="CH">Chuquisaca</option>
+                                <option value="BN">Beni</option>
+                                <option value="PD">Pando</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Número de Trámite / Comprobante</label>
+                        <input type="text" class="w-full px-3 py-2 border border-segip-border rounded-md focus:outline-none focus:ring-2 focus:ring-segip-blue" placeholder="Ingrese el código de su comprobante de pago">
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-segip-blue hover:bg-segip-darkBlue text-white font-bold py-3 px-4 rounded-md transition-colors">
+                            REGISTRAR SOLICITUD
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </main>
+
+        <!-- Pie de Página -->
+        <footer class="bg-gray-50 border-t-custom px-6 py-4">
+            <div class="text-center text-xs text-gray-600">
+                <p>UNImóvil Plus - Banca Digital | Servicios SEGIP</p>
+                <p class="mt-1">© 2026 Banco Unión S.A. - Todos los derechos reservados</p>
+                <p class="mt-2 text-segip-blue font-medium">www.bancounion.com.bo</p>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
+

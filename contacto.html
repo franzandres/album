@@ -3,79 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-size: 16px;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
+    <title>Empresa Soluciones | Contáctanos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        principal: '#165DFF',
+                        oscuro: '#0F3FA8',
+                        claro: '#E6F0FF',
+                        gris: '#64748B',
+                        fondo: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
         }
-        input, textarea, button {
-            display: block;
-            margin: 10px auto;
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-        }
-        button {
-            background-color: white;
-            color: black;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: gray;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .contenedor {
+                @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+            }
+            .efecto-sombra {
+                @apply shadow-lg hover:shadow-xl transition-shadow duration-300;
+            }
         }
     </style>
 </head>
-<body>
-    <h2>Nombre:</h2>
-    <input type="text" id="nombre" placeholder="Ingrese su nombre">
-    
-    <h2>Apellido:</h2>
-    <input type="text" id="apellido" placeholder="Ingrese su apellido">
-    
-    <h2>Correo Electrónico (Gmail):</h2>
-    <input type="email" id="correo" placeholder="Ingrese su correo Gmail">
-    
-    <h2>Número de Celular:</h2>
-    <input type="tel" id="telefono" placeholder="Ingrese su número de celular">
-    
-    <h2>Mensaje:</h2>
-    <textarea id="mensaje" placeholder="Escriba su mensaje"></textarea>
-    
-    <h2>Para:</h2>
-    <input type="email" value="cfrn6157@gmail.com" disabled>
-    
-    <h2>De:</h2>
-    <input type="text" id="de" placeholder="Ingrese su nombre">
-    
-    <button onclick="enviarMensaje()">Enviar Mensaje</button>
-    
-    <p id="estado"></p>
+<body class="font-sans bg-fondo text-gray-800">
 
+    <!-- Barra de Navegación -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="contenedor py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <i class="fa fa-building text-principal text-2xl"></i>
+                <span class="font-bold text-xl text-oscuro">SolucionesPro</span>
+            </a>
+
+            <!-- Menú Escritorio -->
+            <div class="hidden md:flex gap-8">
+                <a href="#" class="font-medium hover:text-principal transition-colors">Inicio</a>
+                <a href="#" class="font-medium hover:text-principal transition-colors">Servicios</a>
+                <a href="#" class="font-medium hover:text-principal transition-colors">Nosotros</a>
+                <a href="#" class="font-medium text-principal border-b-2 border-principal pb-1">Contacto</a>
+            </div>
+
+            <!-- Botón Menú Móvil -->
+            <button class="md:hidden text-2xl" id="botonMenu">
+                <i class="fa fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Menú Móvil -->
+        <div class="md:hidden hidden bg-white" id="menuMovil">
+            <div class="flex flex-col gap-3 px-4 py-5 border-t">
+                <a href="#" class="font-medium py-2 hover:text-principal transition-colors">Inicio</a>
+                <a href="#" class="font-medium py-2 hover:text-principal transition-colors">Servicios</a>
+                <a href="#" class="font-medium py-2 hover:text-principal transition-colors">Nosotros</a>
+                <a href="#" class="font-medium py-2 text-principal">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Encabezado -->
+    <section class="bg-claro py-12 md:py-16">
+        <div class="contenedor text-center">
+            <h1 class="text-[clamp(1.8rem,5vw,2.8rem)] font-bold text-oscuro mb-4">Estamos aquí para ayudarte</h1>
+            <p class="text-gris max-w-2xl mx-auto text-lg">
+                Cuéntanos qué necesitas, nuestro equipo se pondrá en contacto contigo a la brevedad.
+                Puedes comunicarte con nosotros por cualquiera de los medios disponibles.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="py-16 contenedor">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+            
+            <!-- Datos de Contacto -->
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-oscuro mb-6">Información de contacto</h2>
+                <p class="text-gris mb-8">
+                    Estamos disponibles para resolver tus dudas, atender tus solicitudes o brindarte más información sobre nuestros servicios.
+                </p>
+
+                <div class="space-y-6 mb-10">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-claro text-principal flex items-center justify-center text-xl flex-shrink-0">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-1">Dirección</h3>
+                            <p class="text-gris">Av. Principal 123, Edificio Empresarial, Oficina 45<br>Santa Cruz de la Sierra, Bolivia</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-claro text-principal flex items-center justify-center text-xl flex-shrink-0">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-1">Teléfono</h3>
+                            <p class="text-gris">+591 3 1234567<br>+591 7 1234567</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-claro text-principal flex items-center justify-center text-xl flex-shrink-0">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-1">Correo Electrónico</h3>
+                            <p class="text-gris">info@solucionespro.com<br>soporte@solucionespro.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Síguenos</h3>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-principal text-white flex items-center justify-center hover:bg-oscuro transition-colors efecto-sombra">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-principal text-white flex items-center justify-center hover:bg-oscuro transition-colors efecto-sombra">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-principal text-white flex items-center justify-center hover:bg-oscuro transition-colors efecto-sombra">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-principal text-white flex items-center justify-center hover:bg-oscuro transition-colors efecto-sombra">
+                            <i class="fa fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de Contacto -->
+            <div class="bg-white p-8 rounded-xl efecto-sombra">
+                <h2 class="text-2xl font-bold text-oscuro mb-6">Envíanos un mensaje</h2>
+                <form id="formContacto" class="space-y-5">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label for="nombre" class="block text-sm font-medium text-gris mb-2">Nombre completo *</label>
+                            <input type="text" id="nombre" name="nombre" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-principal focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label for="correo" class="block text-sm font-medium text-gris mb-2">Correo electrónico *</label>
+                            <input type="email" id="correo" name="correo" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-principal focus:border-transparent transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="asunto" class="block text-sm font-medium text-gris mb-2">Asunto</label>
+                        <input type="text" id="asunto" name="asunto"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-principal focus:border-transparent transition">
+                    </div>
+
+                    <div>
+                        <label for="mensaje" class="block text-sm font-medium text-gris mb-2">Mensaje *</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-principal focus:border-transparent transition resize-vertical"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="flex items-center gap-2 text-sm text-gris">
+                            <input type="checkbox" required class="w-4 h-4 text-principal">
+                            Acepto recibir comunicaciones y la política de privacidad
+                        </label>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-principal hover:bg-oscuro text-white font-medium py-3 px-6 rounded-lg transition-colors efecto-sombra flex items-center justify-center gap-2">
+                        <i class="fa fa-paper-plane"></i>
+                        Enviar mensaje
+                    </button>
+
+                    <p id="mensajeExito" class="text-green-600 text-center hidden mt-4">
+                        ¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Mapa (ejemplo) -->
+    <section class="py-12 bg-claro">
+        <div class="contenedor">
+            <h2 class="text-2xl font-bold text-center text-oscuro mb-8">Encuéntranos aquí</h2>
+            <div class="rounded-xl overflow-hidden efecto-sombra h-[350px] bg-gray-200 flex items-center justify-center">
+                <div class="text-center p-6">
+                    <i class="fa fa-map-o text-6xl text-principal mb-4"></i>
+                    <p class="text-gris">Aquí se mostraría el mapa interactivo con nuestra ubicación</p>
+                    <p class="text-sm text-gris mt-2">(Puedes integrar Google Maps o cualquier otro servicio)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="bg-oscuro text-white py-10">
+        <div class="contenedor">
+            <div class="text-center">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <i class="fa fa-building text-principal text-2xl"></i>
+                    <span class="font-bold text-xl">SolucionesPro</span>
+                </div>
+                <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+                    Brindamos soluciones integrales para el crecimiento de tu empresa, con calidad y compromiso.
+                </p>
+                <p class="text-gray-400 text-sm">
+                    © 2026 SolucionesPro. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
     <script>
-        function enviarMensaje() {
-            let nombre = document.getElementById('nombre').value;
-            let apellido = document.getElementById('apellido').value;
-            let correo = document.getElementById('correo').value;
-            let telefono = document.getElementById('telefono').value;
-            let mensaje = document.getElementById('mensaje').value;
-            let de = document.getElementById('de').value;
+        // Menú móvil
+        const botonMenu = document.getElementById('botonMenu');
+        const menuMovil = document.getElementById('menuMovil');
+
+        botonMenu.addEventListener('click', () => {
+            menuMovil.classList.toggle('hidden');
+            botonMenu.innerHTML = menuMovil.classList.contains('hidden') 
+                ? '<i class="fa fa-bars"></i>' 
+                : '<i class="fa fa-times"></i>';
+        });
+
+        // Envío de formulario
+        const formContacto = document.getElementById('formContacto');
+        const mensajeExito = document.getElementById('mensajeExito');
+
+        formContacto.addEventListener('submit', (e) => {
+            e.preventDefault();
             
-            let asunto = `Mensaje de ${nombre} ${apellido}`;
-            let cuerpo = `Nombre: ${nombre} ${apellido}%0D%0A` +
-                         `Correo: ${correo}%0D%0A` +
-                         `Teléfono: ${telefono}%0D%0A` +
-                         `Mensaje: ${mensaje}%0D%0A`;
-            
-            let mailtoLink = `mailto:cfrn6157@gmail.com?subject=${asunto}&body=${cuerpo}`;
-            
-            window.location.href = mailtoLink;
-        }
+            // Aquí podrías agregar código para enviar los datos a un servidor
+            // Por ahora solo mostramos el mensaje de éxito
+            mensajeExito.classList.remove('hidden');
+            formContacto.reset();
+
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                mensajeExito.classList.add('hidden');
+            }, 5000);
+        });
     </script>
+
 </body>
 </html>

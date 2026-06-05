@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Empresa - Soluciones Profesionales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#165DFF',
+                        secundario: '#36BFFA',
+                        oscuro: '#1D2129',
+                        claro: '#F7F8FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .contenedor {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            .sombra-suave {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+            .transicion {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-oscuro bg-white">
+    <!-- Barra de Navegación -->
+    <header class="fixed w-full top-0 left-0 bg-white sombra-suave z-50">
+        <div class="contenedor">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-[22px] font-bold text-primario">NUESTRA EMPRESA</h1>
+                </div>
+
+                <!-- Menú Escritorio -->
+                <ul class="hidden md:flex gap-8 font-medium">
+                    <li><a href="#inicio" class="transicion hover:text-primario">Inicio</a></li>
+                    <li><a href="#nosotros" class="transicion hover:text-primario">Nosotros</a></li>
+                    <li><a href="#servicios" class="transicion hover:text-primario">Servicios</a></li>
+                    <li><a href="#proyectos" class="transicion hover:text-primario">Proyectos</a></li>
+                    <li><a href="#equipo" class="transicion hover:text-primario">Equipo</a></li>
+                    <li><a href="#contacto" class="transicion hover:text-primario">Contacto</a></li>
+                </ul>
+
+                <!-- Botón Contacto -->
+                <a href="#contacto" class="hidden md:block bg-primario text-white px-6 py-2 rounded-lg font-medium transicion hover:bg-primario/90">
+                    Solicitar Información
+                </a>
+
+                <!-- Botón Menú Móvil -->
+                <button class="md:hidden text-[24px]" id="botonMenu">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div class="md:hidden hidden bg-claro" id="menuMovil">
+            <ul class="contenedor py-4 space-y-3 font-medium">
+                <li><a href="#inicio" class="block py-2 transicion hover:text-primario">Inicio</a></li>
+                <li><a href="#nosotros" class="block py-2 transicion hover:text-primario">Nosotros</a></li>
+                <li><a href="#servicios" class="block py-2 transicion hover:text-primario">Servicios</a></li>
+                <li><a href="#proyectos" class="block py-2 transicion hover:text-primario">Proyectos</a></li>
+                <li><a href="#equipo" class="block py-2 transicion hover:text-primario">Equipo</a></li>
+                <li><a href="#contacto" class="block py-2 transicion hover:text-primario">Contacto</a></li>
+                <li>
+                    <a href="#contacto" class="block w-full text-center bg-primario text-white px-6 py-3 rounded-lg font-medium transicion hover:bg-primario/90 mt-4">
+                        Solicitar Información
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="pt-32 pb-20 bg-claro">
+        <div class="contenedor">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-[36px] md:text-[48px] font-bold leading-tight mb-4">
+                        Soluciones <span class="text-primario">profesionales</span><br>para tu éxito
+                    </h2>
+                    <p class="text-[18px] text-gray-600 mb-8 leading-relaxed">
+                        Somos un equipo dedicado a ofrecer servicios de alta calidad, innovación y compromiso. 
+                        Trabajamos contigo para alcanzar tus metas y superar tus expectativas en cada proyecto.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contacto" class="bg-primario text-white px-8 py-3 rounded-lg font-medium transicion hover:bg-primario/90">
+                            Contáctanos
+                        </a>
+                        <a href="#nosotros" class="border border-primario text-primario px-8 py-3 rounded-lg font-medium transicion hover:bg-primario/5">
+                            Conócenos más
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Equipo de trabajo profesional" 
+                         class="rounded-xl sombra-suave w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="contenedor">
+            <div class="text-center mb-16">
+                <h2 class="text-[32px] font-bold mb-3">Sobre Nosotros</h2>
+                <p class="text-gray-600 max-w-700 mx-auto">Conoce nuestra historia, nuestros valores y lo que nos hace diferentes en el mercado.</p>
+                <div class="w-20 h-1 bg-primario mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Nuestra oficina" 
+                         class="rounded-xl sombra-suave w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-[24px] font-bold mb-4">Más de 10 años de experiencia</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Fundada en el año 2012, nuestra empresa nació con el objetivo de brindar soluciones integrales 
+                        adaptadas a las necesidades de cada cliente. A lo largo de los años hemos crecido, 
+                        pero manteniendo siempre la misma pasión, calidad y atención personalizada.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Creemos en el trabajo en equipo, la innovación constante y la transparencia. 
+                        Estos valores nos han permitido construir relaciones duraderas y ganar la confianza 
+                        de cientos de clientes en todo el país.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-center gap-3">
+                            <i class="fa fa-check-circle text-primario text-[22px]"></i>
+                            <span>Calidad garantizada</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa fa-check-circle text-primario text-[22px]"></i>
+                            <span>Atención personalizada</span>
+
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa fa-check-circle text-primario text-[22px]"></i>
+                            <span>Profesionales certificados</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa fa-check-circle text-primario text-[22px]"></i>
+                            <span>Precios competitivos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="py-20 bg-claro">
+        <div class="contenedor">
+            <div class="text-center mb-16">
+                <h2 class="text-[32px] font-bold mb-3">Nuestros Servicios</h2>
+                <p class="text-gray-600 max-w-700 mx-auto">Ofrecemos una amplia gama de servicios diseñados para cubrir todas tus necesidades.</p>
+                <div class="w-20 h-1 bg-primario mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="bg-white p-8 rounded-xl sombra-suave transicion hover:-translate-y-2 hover:shadow-lg">
+                    <div class="w-16 h-16 bg-primario/10 text-primario rounded-lg flex items-center justify-center text-[28px] mb-6">
+                        <i class="fa fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-[20px] font-bold mb-3">Consultoría Empresarial</h3>
+                    <p class="text-gray-600 mb-4">Ayudamos a optimizar procesos, mejorar la gestión y aumentar la productividad de tu empresa.</p>
+                    <a href="#" class="text-primario font-medium transicion hover:underline">
+                        Saber más <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="bg-white p-8 rounded-xl sombra-suave transicion hover:-translate-y-2 hover:shadow-lg">
+                    <div class="w-16 h-16 bg-primario/10 text-primario rounded-lg flex items-center justify-center text-[28px] mb-6">
+                        <i class="fa fa-laptop"></i>
+                    </div>
+                    <h3 class="text-[20px] font-bold mb-3">Soluciones Tecnológicas</h3>
+                    <p class="text-gray-600 mb-4">Desarrollo de software, aplicaciones web y sistemas personalizados adaptados a tu negocio.</p>
+                    <a href="#" class="text-primario font-medium transicion hover:underline">
+                        Saber más <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="bg-white p-8 rounded-xl sombra-suave transicion hover:-translate-y-2 hover:shadow-lg">
+                    <div class="w-16 h-16 bg-primario/10 text-primario rounded-lg flex items-center justify-center text-[28px] mb-6">
+                        <i class="fa fa-line-chart"></i>
+                    </div>
+                    <h3 class="text-[20px] font-bold mb-3">Estrategias de Crecimiento</h3>
+                    <p class="text-gray-600 mb-4">Planes de marketing, expansión y desarrollo de mercado para hacer crecer tu proyecto.</p>
+                    <a href="#" class="text-primario font-medium transicion hover:underline">
+                        Saber más <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 4 -->
+                <div class="bg-white p-8 rounded-xl sombra-suave transicion hover:-translate-y-2 hover:shadow-lg">
+                    <div class="w-16 h-16 bg-primario/10 text-primario rounded-lg flex items-center justify-center text-[28px] mb-6">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h3 class="text-[20px] font-bold mb-3">Capacitación y Formación</h3>
+                    <p class="text-gray-600 mb-4">Cursos y talleres para mejorar las habilidades y conocimientos de tu equipo de trabajo.</p>
+                    <a href="#" class="text-primario font-medium transicion hover:underline">
+                        Saber más <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 5 -->
+                <div class="bg-white p-8 rounded-xl sombra-suave transicion hover:-translate-y-2 hover:shadow-lg">
+                    <div class="w-16 h-16 bg-primario/10 text-primario rounded-lg flex items-center justify-center text-[28px] mb-6">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <h3 class="text-[20px] font-bold mb-3">Mantenimiento y Soporte</h3>
+                    <p class="text-gray-600 mb-4">Asistencia técnica continua y mantenimiento de sistemas para garantizar su correcto funcionamiento.</p>
+                    <a href="#" class="text-primario font-medium transicion hover:underline">
+                        Saber más <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 6 -->
+                <div class="bg-white p-8 rounded-xl sombra-suave transicion hover:-translate-y-2 hover:shadow-lg">
+                    <div class="w-16 h-16 bg-primario/10 text-primario rounded-lg flex items-center justify-center text-[28px] mb-6">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </div>
+                    <h3 class="text-[20px] font-bold mb-3">Innovación y Diseño</h3>
+                    <p class="text-gray-600 mb-4">Creación de identidad visual, diseño gráfico y soluciones creativas para diferenciarte.</p>
+                    <a href="#" class="text-primario font-medium transicion hover:underline">
+                        Saber más <i class="fa fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="py-20 bg-white">
+        <div class="contenedor">
+            <div class="text-center mb-16">
+                <h2 class="text-[32px] font-bold mb-3">Nuestros Proyectos</h2>
+                <p class="text-gray-600 max-w-700 mx-auto">Conoce algunos de los trabajos que hemos realizado para nuestros clientes.</p>
+                <div class="w-20 h-1 bg-primario mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Proyecto 1 -->
+                <div class="rounded-xl overflow-hidden sombra-suave trans

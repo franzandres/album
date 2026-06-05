@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Conocimiento | Temas Especializados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#2563EB',
+                        secundario: '#7C3AED',
+                        oscuro: '#111827',
+                        claro: '#F9FAFB',
+                        gris: '#6B7280'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .contenedor {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 0 24px;
+            }
+            .sombra-suave {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+            .transicion {
+                transition: all 0.3s ease;
+            }
+            .efecto-imagen {
+                transition: transform 0.4s ease;
+            }
+            .efecto-imagen:hover {
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-oscuro bg-white">
+    <!-- Barra de Navegación -->
+    <header class="fixed w-full bg-white/95 sombra-suave z-50 transicion">
+        <div class="contenedor">
+            <nav class="flex items-center justify-between py-4">
+                <a href="#" class="flex items-center gap-2">
+                    <span class="text-primario text-3xl"><i class="fa fa-book"></i></span>
+                    <span class="font-bold text-xl md:text-2xl">PortalConocimiento</span>
+                </a>
+
+                <!-- Menú Escritorio -->
+                <ul class="hidden md:flex items-center gap-8">
+                    <li><a href="#inicio" class="font-medium hover:text-primario transicion">Inicio</a></li>
+                    <li><a href="#tecnologia" class="font-medium hover:text-primario transicion">Tecnología</a></li>
+                    <li><a href="#ciencia" class="font-medium hover:text-primario transicion">Ciencia</a></li>
+                    <li><a href="#naturaleza" class="font-medium hover:text-primario transicion">Naturaleza</a></li>
+                    <li><a href="#historia" class="font-medium hover:text-primario transicion">Historia</a></li>
+                    <li><a href="#cultura" class="font-medium hover:text-primario transicion">Cultura</a></li>
+                </ul>
+
+                <!-- Botón Menú Móvil -->
+                <button class="md:hidden text-2xl" id="botonMenu">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div class="md:hidden hidden bg-claro" id="menuMovil">
+            <div class="contenedor py-4">
+                <ul class="flex flex-col gap-4">
+                    <li><a href="#inicio" class="block py-2 hover:text-primario transicion">Inicio</a></li>
+                    <li><a href="#tecnologia" class="block py-2 hover:text-primario transicion">Tecnología</a></li>
+                    <li><a href="#ciencia" class="block py-2 hover:text-primario transicion">Ciencia</a></li>
+                    <li><a href="#naturaleza" class="block py-2 hover:text-primario transicion">Naturaleza</a></li>
+                    <li><a href="#historia" class="block py-2 hover:text-primario transicion">Historia</a></li>
+                    <li><a href="#cultura" class="block py-2 hover:text-primario transicion">Cultura</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio" class="pt-32 pb-20 md:pt-40 md:pb-32 bg-claro">
+        <div class="contenedor">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-4">
+                        Explora el mundo del conocimiento en sus diferentes áreas
+                    </h1>
+                    <p class="text-gris text-lg mb-8 max-w-xl">
+                        Descubre información detallada, datos interesantes y contenido de calidad sobre las ramas más importantes del saber humano. Desde la tecnología hasta la historia, aquí encontrarás todo lo que necesitas.
+                    </p>
+                    <a href="#tecnologia" class="inline-block bg-primario text-white px-8 py-3 rounded-lg font-medium hover:bg-primario/90 transicion">
+                        Comenzar a explorar
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Libros y conocimiento en una mesa de estudio" 
+                         class="rounded-xl shadow-lg w-full h-auto efecto-imagen">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Tecnología -->
+    <section id="tecnologia" class="py-20 bg-white">
+        <div class="contenedor">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 flex items-center justify-center gap-3">
+                    <i class="fa fa-microchip text-primario"></i> Tecnología
+                </h2>
+                <p class="text-gris max-w-2xl mx-auto">Conoce los avances, inventos y sistemas que han transformado la forma en que vivimos, trabajamos y nos comunicamos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Tecnología y desarrollo digital" 
+                         class="rounded-xl shadow-lg w-full h-auto efecto-imagen">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">El poder de la innovación digital</h3>
+                    <p class="text-gris mb-4">La tecnología ha evolucionado a pasos agigantados en las últimas décadas. Desde la invención de la computadora hasta la llegada de la inteligencia artificial, cada avance abre nuevas posibilidades para el futuro.</p>
+                    <p class="text-gris mb-6">Hoy en día, la conectividad, el procesamiento de datos y la automatización son parte fundamental de nuestra vida diaria, mejorando la eficiencia y creando soluciones para problemas globales.</p>
+                    
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-primario text-xl mt-1"></i>
+                            <span>Inteligencia artificial y aprendizaje automático</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-primario text-xl mt-1"></i>
+                            <span>Desarrollo de software y aplicaciones móviles</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-primario text-xl mt-1"></i>
+                            <span>Conectividad y redes globales</span>
+                        </li>
+                    </ul>
+
+                    <a href="#" class="inline-block bg-primario text-white px-6 py-2 rounded-lg font-medium hover:bg-primario/90 transicion">
+                        Leer más sobre tecnología
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Ciencia -->
+    <section id="ciencia" class="py-20 bg-claro">
+        <div class="contenedor">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 flex items-center justify-center gap-3">
+                    <i class="fa fa-flask text-secundario"></i> Ciencia
+                </h2>
+                <p class="text-gris max-w-2xl mx-auto">Descubre los secretos del universo, la materia y la vida a través de la investigación y el método científico.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-bold mb-4">Entendiendo nuestro entorno</h3>
+                    <p class="text-gris mb-4">La ciencia nos permite explicar cómo funciona el mundo que nos rodea. Desde las leyes de la física que rigen el movimiento de los cuerpos hasta los descubrimientos en biología que nos ayudan a cuidar nuestra salud.</p>
+                    <p class="text-gris mb-6">Gracias a la investigación científica, hemos logrado curar enfermedades, explorar el espacio y comprender los procesos naturales que mantienen el equilibrio en nuestro planeta.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-lg sombra-suave">
+                            <h4 class="font-bold mb-2">Física</h4>
+                            <p class="text-gris text-sm">Estudio de la energía, la materia y sus interacciones.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg sombra-suave">
+                            <h4 class="font-bold mb-2">Biología</h4>
+                            <p class="text-gris text-sm">Análisis de los seres vivos y sus procesos vitales.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg sombra-suave">
+                            <h4 class="font-bold mb-2">Química</h4>
+                            <p class="text-gris text-sm">Estudio de las sustancias y sus transformaciones.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg sombra-suave">
+                            <h4 class="font-bold mb-2">Astronomía</h4>
+                            <p class="text-gris text-sm">Investigación de los cuerpos celestes y el universo.</p>
+                        </div>
+                    </div>
+
+                    <a href="#" class="inline-block bg-secundario text-white px-6 py-2 rounded-lg font-medium hover:bg-secundario/90 transicion">
+                        Explorar temas científicos
+                    </a>
+                </div>
+                <div class="order-1 md:order-2">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Laboratorio e investigación científica" 
+                         class="rounded-xl shadow-lg w-full h-auto efecto-imagen">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Naturaleza -->
+    <section id="naturaleza" class="py-20 bg-white">
+        <div class="contenedor">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 flex items-center justify-center gap-3">
+                    <i class="fa fa-leaf text-green-600"></i> Naturaleza
+                </h2>
+                <p class="text-gris max-w-2xl mx-auto">Conoce la belleza del planeta, sus ecosistemas, especies y la importancia de su conservación.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta 1 -->
+                <div class="bg-claro rounded-xl overflow-hidden sombra-suave transicion hover:-translate-y-1">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Montañas y paisajes naturales" 
+                         class="w-full h-60 object-cover efecto-imagen">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Paisajes y Geografía</h3>
+                        <p class="text-gris mb-4">Descubre la diversidad geográfica del mundo, desde altas montañas hasta profundos océanos y extensos desiertos.</p>
+                        <a href="#" class="text-green-600 font-medium inline-flex items-center gap-1 hover:gap-2 transicion">
+                            Ver más <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="bg-claro rounded-xl overflow-hidden sombra-suave transicion hover:-translate-y-1">
+                    <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Fauna y vida animal" 
+                         class="w-full h-60 object-cover efecto-imagen">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Vida Silvestre</h3>
+                        <p class="text-gris mb-4">Conoce las especies animales y vegetales que habitan en diferentes regiones, sus hábitats y sus formas de vida.</p>
+                        <a href="#" class="text-green-600 font-medium inline-flex items-center gap-1 hover:gap-2 transicion">
+                            Ver más <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="bg-claro rounded-xl overflow-hidden sombra-suave transicion hover:-translate-y-1">
+                    <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Conservación ambiental" 
+                         class="w-full h-60 object-cover efecto-imagen">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Cuidado del Planeta</h3>
+                        <p class="text-gris mb-4">Aprende sobre los problemas ambientales actuales y las acciones que podemos realizar para proteger nuestro hogar común.</p>
+                        <a href="#" class="text-green-600 font-medium inline-flex items-center gap-1

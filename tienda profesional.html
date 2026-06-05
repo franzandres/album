@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Profesional - Catálogo de Productos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#165DFF',
+                        secundario: '#36BFFA',
+                        oscuro: '#1D2129',
+                        claro: '#F7F8FA',
+                        gris: '#86909C'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .contenedor {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            .tarjeta-sombra {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+            }
+            .tarjeta-sombra:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-claro text-oscuro">
+    <!-- Barra de Navegación -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="contenedor py-4 flex flex-wrap items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa fa-shopping-bag text-primario text-2xl"></i>
+                <h1 class="text-xl font-bold text-oscuro">Tienda <span class="text-primario">Profesional</span></h1>
+            </div>
+
+            <nav class="hidden md:flex gap-8">
+                <a href="#inicio" class="font-medium hover:text-primario transition-colors">Inicio</a>
+                <a href="#productos" class="font-medium hover:text-primario transition-colors">Productos</a>
+                <a href="#categorias" class="font-medium hover:text-primario transition-colors">Categorías</a>
+                <a href="#contacto" class="font-medium hover:text-primario transition-colors">Contacto</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button class="relative hover:text-primario transition-colors">
+                    <i class="fa fa-search text-xl"></i>
+                </button>
+                <button class="relative hover:text-primario transition-colors">
+                    <i class="fa fa-shopping-cart text-xl"></i>
+                    <span class="absolute -top-2 -right-2 bg-primario text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                </button>
+                <button class="md:hidden text-xl">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio" class="py-16 bg-gradient-to-r from-primario/10 to-secundario/10">
+        <div class="contenedor flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/2">
+                <h2 class="text-[clamp(1.8rem,5vw,2.8rem)] font-bold leading-tight mb-4">
+                    Calidad y mejores precios <br>en un solo lugar
+                </h2>
+                <p class="text-gris text-lg mb-6">
+                    Descubre nuestro catálogo completo de productos, con precios competitivos, garantía de calidad y envíos a todo el país.
+                </p>
+                <button class="bg-primario hover:bg-primario/90 text-white px-8 py-3 rounded-lg font-medium transition-all">
+                    Ver todos los productos
+                </button>
+            </div>
+            <div class="md:w-1/2">
+
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     alt="Productos variados" class="rounded-xl w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Categorías -->
+    <section id="categorias" class="py-16">
+        <div class="contenedor">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Categorías Destacadas</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl p-6 text-center tarjeta-sombra cursor-pointer">
+                    <i class="fa fa-laptop text-4xl text-primario mb-4"></i>
+                    <h3 class="font-medium">Tecnología</h3>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center tarjeta-sombra cursor-pointer">
+                    <i class="fa fa-home text-4xl text-primario mb-4"></i>
+                    <h3 class="font-medium">Hogar</h3>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center tarjeta-sombra cursor-pointer">
+                    <i class="fa fa-clothes text-4xl text-primario mb-4"></i>
+                    <h3 class="font-medium">Moda</h3>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center tarjeta-sombra cursor-pointer">
+                    <i class="fa fa-medkit text-4xl text-primario mb-4"></i>
+                    <h3 class="font-medium">Salud</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Productos -->
+    <section id="productos" class="py-16 bg-white">
+        <div class="contenedor">
+            <div class="flex flex-wrap items-center justify-between mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold">Nuestros Productos</h2>
+                <div class="flex gap-2">
+                    <button class="px-4 py-2 rounded-lg bg-primario text-white">Todos</button>
+                    <button class="px-4 py-2 rounded-lg bg-claro hover:bg-gray-200 transition-colors">Tecnología</button>
+                    <button class="px-4 py-2 rounded-lg bg-claro hover:bg-gray-200 transition-colors">Hogar</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Producto 1 -->
+                <div class="bg-white rounded-xl overflow-hidden tarjeta-sombra">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Laptop profesional" class="w-full h-full object-cover transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-medium text-white bg-secundario px-2 py-1 rounded">Nuevo</span>
+                        <h3 class="text-lg font-semibold mt-2 mb-2">Laptop Profesional 15"</h3>
+                        <p class="text-gris text-sm mb-4">Procesador rápido, 16GB RAM, 512GB SSD - Ideal para trabajo y estudio</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-oscuro">$ 1.299,00</span>
+                            <button class="bg-primario/10 text-primario px-3 py-2 rounded-lg hover:bg-primario hover:text-white transition-colors">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="bg-white rounded-xl overflow-hidden tarjeta-sombra">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1585079542156-2755d9c8a094?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Aspiradora robot" class="w-full h-full object-cover transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-medium text-white bg-red-500 px-2 py-1 rounded">Oferta</span>
+                        <h3 class="text-lg font-semibold mt-2 mb-2">Aspiradora Robot Inteligente</h3>
+                        <p class="text-gris text-sm mb-4">Limpieza automática, control por aplicación, batería de larga duración</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-xl font-bold text-oscuro">$ 349,00</span>
+                                <span class="text-gris text-sm line-through ml-2">$ 499,00</span>
+                            </div>
+                            <button class="bg-primario/10 text-primario px-3 py-2 rounded-lg hover:bg-primario hover:text-white transition-colors">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="bg-white rounded-xl overflow-hidden tarjeta-sombra">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Reloj inteligente" class="w-full h-full object-cover transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-medium text-white bg-primario px-2 py-1 rounded">Más vendido</span>
+                        <h3 class="text-lg font-semibold mt-2 mb-2">Reloj Inteligente Deportivo</h3>
+                        <p class="text-gris text-sm mb-4">Monitoreo de salud, notificaciones, resistente al agua, pantalla táctil</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-oscuro">$ 129,00</span>
+                            <button class="bg-primario/10 text-primario px-3 py-2 rounded-lg hover:bg-primario hover:text-white transition-colors">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="bg-white rounded-xl overflow-hidden tarjeta-sombra">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Juego de sábanas" class="w-full h-full object-cover transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mt-2 mb-2">Juego de Sábanas Premium</h3>
+                        <p class="text-gris text-sm mb-4">Algodón 100%, suave y resistente, disponible en varios tamaños y colores</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-oscuro">$ 79,00</span>
+                            <button class="bg-primario/10 text-primario px-3 py-2 rounded-lg hover:bg-primario hover:text-white transition-colors">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="bg-white rounded-xl overflow-hidden tarjeta-sombra">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Auriculares inalámbricos" class="w-full h-full object-cover transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-medium text-white bg-red-500 px-2 py-1 rounded">Oferta</span>
+                        <h3 class="text-lg font-semibold mt-2 mb-2">Auriculares Inalámbricos</h3>
+                        <p class="text-gris text-sm mb-4">Cancelación de ruido, sonido estéreo, batería de 24 horas de uso</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-xl font-bold text-oscuro">$ 89,00</span>
+                                <span class="text-gris text-sm line-through ml-2">$ 149,00</span>
+                            </div>
+                            <button class="bg-primario/10 text-primario px-3 py-2 rounded-lg hover:bg-primario hover:text-white transition-colors">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="bg-white rounded-xl overflow-hidden tarjeta-sombra">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Cafetera eléctrica" class="w-full h-full object-cover transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mt-2 mb-2">Cafetera Eléctrica Programable</h3>
+                        <p class="text-gris text-sm mb-4">Preparación rápida, capacidad para 12 tazas, función de mantenimiento de calor</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-oscuro">$ 59,00</span>
+                            <button class="bg-primario/10 text-primario px-3 py-2 rounded-lg hover:bg-primario hover:text-white transition-colors">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto

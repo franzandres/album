@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Sala / Grupo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1c1e21;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .messenger h2 { color: #0084ff; }
+        .whatsapp h2 { color: #25d366; }
+        .telegram h2 { color: #0088cc; }
+
+        p {
+            margin: 8px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        a {
+            color: #1877f2;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #0a5dc9;
+            text-decoration: underline;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>?? Crear Sala / Grupo</h1>
+
+        <div class="section messenger">
+            <h2>?? Messenger Rooms</h2>
+            <p>Crear sala: <a href="https://www.messenger.com/rooms/create" target="_blank">https://www.messenger.com/rooms/create</a></p>
+            <p>Desde Facebook: <a href="https://www.facebook.com/rooms/create" target="_blank">https://www.facebook.com/rooms/create</a></p>
+            <p>Formato enlace compartido: <a href="https://fb.me/room/XXXXXXXXXX" target="_blank">https://fb.me/room/XXXXXXXXXX</a> (único por sala)</p>
+        </div>
+
+        <div class="section whatsapp">
+            <h2>?? WhatsApp</h2>
+            <p>Iniciar nuevo grupo: <a href="https://wa.me/newgroup" target="_blank">https://wa.me/newgroup</a></p>
+            <p>Enlace de invitación a grupo ya creado: <a href="https://chat.whatsapp.com/XXXXXXXXXX" target="_blank">https://chat.whatsapp.com/XXXXXXXXXX</a></p>
+        </div>
+
+        <div class="section telegram">
+            <h2>?? Telegram</h2>
+            <p>Nuevo grupo: <a href="https://t.me/newgr" target="_blank">https://t.me/newgr</a></p>
+        </div>
+
+        <div class="note">
+            ?? <strong>Nota:</strong> Algunos enlaces requieren tener la aplicación instalada o sesión iniciada para funcionar bien.
+        </div>
+    </div>
+</body>
+</html>
+

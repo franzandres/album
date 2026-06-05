@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORO COLORES | Oficial</title>
+    <style>
+        /* Paleta de Colores Profesional */
+        :root {
+            --verde-lechuga: #8cfb21;
+            --rojo-pasion: #ff0000;
+            --negro-fondo: #0a0a0a;
+            --negro-card: #1a1a1a;
+            --blanco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--negro-fondo);
+            color: var(--blanco);
+            line-height: 1.6;
+        }
+
+        /* Navegación Superior */
+        nav {
+            background-color: #000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--rojo-pasion);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--verde-lechuga);
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--verde-lechuga);
+        }
+
+        /* Banner Principal (Imagen Generada) */
+        .hero {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://r.jina.ai/i/616d6265722f61627374726163742d62616e6e6572'); /* Aquí va la URL de tu imagen */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 5px solid var(--verde-lechuga);
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            color: var(--verde-lechuga);
+        }
+
+        .hero-text span {
+            color: var(--rojo-pasion);
+        }
+
+        /* Sección de Videos */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--blanco);
+            border-bottom: 2px solid var(--verde-lechuga);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: var(--negro-card);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.4s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--rojo-pasion);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-info {
+            padding: 15px;
+            border-top: 3px solid var(--verde-lechuga);
+        }
+
+        .video-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        /* Pie de Página */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">FORO COLORES</div>
+        <div class="nav-links">
+            <a href="#">INICIO</a>
+            <a href="#">VIDEOS</a>
+            <a href="#">BEATS</a>
+            <a href="#">COMUNIDAD</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>FORO <span>COLORES</span></h1>
+        </div>
+    </header>
+
+    <div class="container" style="text-align:center;">
+        <h2 class="section-title">ÚLTIMAS PRODUCCIONES</h2>
+        
+        <div class="video-grid">
+            
+            <div class="video-card">
+                <video controls>
+                    <source src="WhatsApp Video 2026-04-10 at 15.42.36.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Sesión Visual #1</h3>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <video controls>
+                    <source src="WhatsApp Video 2026-04-10 at 15.44.58.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Logo Animado Rey Sold</h3>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <video controls>
+                    <source src="WhatsApp Video 2026-04-10 at 15.44.20.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Efectos de Iluminación</h3>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <video controls>
+                    <source src="WhatsApp Video 2026-04-10 at 15.45.42.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>The Andrés Flow - Mix</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 FORO COLORES | Diseño Profesional | Negro, Rojo y Verde Lechuga</p>
+    </footer>
+
+</body>
+</html>

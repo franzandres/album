@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProdIndustrial | Soluciones de Producción para Todos los Sectores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#0A3D62',
+                        secundario: '#227093',
+                        acento: '#33D9B2',
+                        claro: '#F8F9FA',
+                        oscuro: '#212121'
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transicion {
+                transition: all 0.3s ease-in-out;
+            }
+            .sombra-texto {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-claro">
+
+    <!-- Barra de Navegación -->
+    <header class="fixed w-full top-0 left-0 z-50 bg-white/95 shadow-md transicion">
+        <div class="container mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2">
+                <span class="text-2xl font-bold text-primario">Prod<span class="text-acento">Industrial</span></span>
+            </a>
+
+            <!-- Menú Escritorio -->
+            <nav class="hidden md:flex gap-8">
+                <a href="#inicio" class="font-medium hover:text-acento transicion">Inicio</a>
+                <a href="#nosotros" class="font-medium hover:text-acento transicion">Nosotros</a>
+                <a href="#servicios" class="font-medium hover:text-acento transicion">Servicios</a>
+                <a href="#productos" class="font-medium hover:text-acento transicion">Productos</a>
+                <a href="#calidad" class="font-medium hover:text-acento transicion">Calidad</a>
+                <a href="#clientes" class="font-medium hover:text-acento transicion">Clientes</a>
+                <a href="#contacto" class="font-medium hover:text-acento transicion">Contacto</a>
+            </nav>
+
+            <!-- Botón Cotización -->
+            <a href="#contacto" class="hidden md:block bg-primario hover:bg-primario/90 text-white px-5 py-2 rounded-md font-medium transicion">
+                Solicitar Cotización
+            </a>
+
+            <!-- Botón Menú Móvil -->
+            <button id="botonMenu" class="md:hidden text-2xl text-oscuro">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div id="menuMovil" class="md:hidden hidden bg-white shadow-lg">
+            <div class="container mx-auto px-4 py-4 flex flex-col gap-3">
+                <a href="#inicio" class="font-medium py-2 hover:text-acento transicion">Inicio</a>
+                <a href="#nosotros" class="font-medium py-2 hover:text-acento transicion">Nosotros</a>
+                <a href="#servicios" class="font-medium py-2 hover:text-acento transicion">Servicios</a>
+                <a href="#productos" class="font-medium py-2 hover:text-acento transicion">Productos</a>
+                <a href="#calidad" class="font-medium py-2 hover:text-acento transicion">Calidad</a>
+                <a href="#clientes" class="font-medium py-2 hover:text-acento transicion">Clientes</a>
+                <a href="#contacto" class="font-medium py-2 hover:text-acento transicion">Contacto</a>
+                <a href="#contacto" class="bg-primario text-white px-5 py-3 rounded-md font-medium text-center transicion mt-2">
+                    Solicitar Cotización
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Principal -->
+    <section id="inicio" class="pt-28 md:pt-36 pb-16 md:pb-24 bg-gradient-to-r from-primario to-secundario text-white">
+        <div class="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/2 space-y-6">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight sombra-texto">
+                    Soluciones de Producción <br>para Cualquier Industria
+                </h1>
+                <p class="text-lg text-white/90 leading-relaxed">
+                    Somos líderes en fabricación, procesamiento y distribución. Ofrecemos productos de alta calidad, 
+                    tecnología avanzada y soluciones personalizadas para satisfacer las necesidades de cada sector.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#productos" class="bg-acento hover:bg-acento/90 text-oscuro px-6 py-3 rounded-md font-medium transicion">
+                        Ver Productos
+                    </a>
+                    <a href="#contacto" class="bg-white hover:bg-white/90 text-primario px-6 py-3 rounded-md font-medium transicion">
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1581094281217-b95599927348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Instalaciones de producción moderna" 
+                     class="rounded-lg shadow-xl w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-oscuro">Sobre Nosotros</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-3">Más de 20 años de experiencia respaldan nuestra trayectoria como productores confiables y comprometidos con la excelencia.</p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Equipo de trabajo profesional" 
+                         class="rounded-lg shadow-lg w-full h-auto">
+                </div>
+                <div class="md:w-1/2 space-y-4">
+                    <h3 class="text-2xl font-semibold text-primario">Nuestra Historia y Valores</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Comenzamos como un pequeño taller y hemos crecido hasta convertirnos en un referente en el sector productivo. 
+                        Nuestro objetivo es brindar soluciones integrales que ayuden a las empresas a crecer y mejorar sus procesos.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Nos regimos por valores como la calidad, la innovación, la responsabilidad y el compromiso con nuestros clientes. 
+                        Trabajamos con las últimas tecnologías y estrictos controles de calidad en cada etapa de producción.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-acento text-xl"></i>
+                            <span class="font-medium">Calidad Garantizada</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-acento text-xl"></i>
+                            <span class="font-medium">Innovación Constante</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-acento text-xl"></i>
+                            <span class="font-medium">Cumplimiento de Plazos</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-acento text-xl"></i>
+                            <span class="font-medium">Atención Personalizada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="py-16 md:py-24 bg-claro">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-oscuro">Nuestros Servicios</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-3">Ofrecemos una amplia gama de servicios adaptados a las necesidades de cada industria y proyecto.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="bg-white p-7 rounded-lg shadow-sm hover:shadow-md transicion">
+                    <div class="w-14 h-14 bg-primario/10 text-primario rounded-full flex items-center justify-center text-2xl mb-5">
+                        <i class="fa fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Fabricación Personalizada</h3>
+                    <p class="text-gray-600">Desarrollamos productos y piezas diseñadas específicamente según las especificaciones y requerimientos de cada cliente.</p>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="bg-white p-7 rounded-lg shadow-sm hover:shadow-md transicion">
+                    <div class="w-14 h-14 bg-primario/10 text-primario rounded-full flex items-center justify-center text-2xl mb-5">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Procesamiento y Transformación</h3>
+                    <p class="text-gray-600">Realizamos procesos de transformación de materiales, adaptándolos a diferentes formatos y estándares de calidad.</p>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="bg-white p-7 rounded-lg shadow-sm hover:shadow-md transicion">
+                    <div class="w-14 h-14 bg-primario/10 text-primario rounded-full flex items-center justify-center text-2xl mb-5">
+                        <i class="fa fa-truck"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Distribución y Logística</h3>
+                    <p class="text-gray-600">Gestionamos el transporte y entrega de productos a cualquier parte, garantizando que lleguen en perfectas condiciones y tiempos acordados.</p>
+                </div>
+                <!-- Servicio 4 -->
+                <div class="bg-white p-7 rounded-lg shadow-sm hover:shadow-md transicion">
+                    <div class="w-14 h-14 bg-primario/10 text-primario rounded-full flex items-center justify-center text-2xl mb-5">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Mantenimiento y Asesoría</h3>
+                    <p class="text-gray-600">Brindamos soporte técnico, mantenimiento de equipos y asesoramiento para optimizar procesos y mejorar la eficiencia productiva.</p>
+                </div>
+                <!-- Servicio 5 -->
+                <div class="bg-white p-7 rounded-lg shadow-sm hover:shadow-md transicion">
+                    <div class="w-14 h-14 bg-primario/10 text-primario rounded-full flex items-center justify-center text-2xl mb-5">
+                        <i class="fa fa-flask"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Investigación y Desarrollo</h3>
+                    <p class="text-gray-600">Trabajamos en la creación de nuevos productos y mejoras tecnológicas para estar a la vanguardia del sector.</p>
+                </div>
+                <!-- Servicio 6 -->
+                <div class="bg-white p-7 rounded-lg shadow-sm hover:shadow-md transicion">
+                    <div class="w-14 h-14 bg-primario/10 text-primario rounded-full flex items-center justify-center text-2xl mb-5">
+                        <i class="fa fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Control de Calidad</h3>
+                    <p class="text-gray-600">Aplicamos estrictos controles en cada etapa para asegurar que todos los productos cumplan con los más altos estándares.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Productos -->
+    <section id="productos" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-oscuro">Nuestros Productos</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-3">Amplia gama de artículos diseñados para cubrir necesidades en diferentes sectores industriales.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Producto 1 -->
+                <div class="bg-claro rounded-lg overflow-hidden shadow-sm hover:shadow-md transicion">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Producto industrial 1" 
+                         class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Componentes Mecánicos</h3>
+                        <p class="text-gray-600 mb-4">Piezas y repuestos fabricados con materiales de alta resistencia para maquinaria y equipos.</p>
+                        <span class="text-primario font-medium">Disponible en diferentes medidas y especificaciones</span>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="bg-claro rounded-lg overflow-hidden shadow-sm hover:shadow-md transicion">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Producto industrial 2" 
+                         class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Materiales de Construcción</h3
