@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB Connect CRM 2028 | Sistema Oficial</title>
+    <style>
+        :root {
+            --azul-principal: #1877F2;
+            --azul-claro: #4285F4;
+            --verde-exito: #28C76F;
+            --rojo-alerta: #EA5455;
+            --gris-texto: #1C1E21;
+            --fondo-claro: #F0F2F5;
+            --blanco: #FFFFFF;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        body {
+            background-color: var(--fondo-claro);
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--blanco);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        header {
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-claro));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .subtitulo {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .empresa-info {
+            background: rgba(255,255,255,0.2);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        nav {
+            background: var(--gris-texto);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: var(--azul-claro);
+        }
+        section {
+            padding: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        h2 {
+            color: var(--azul-principal);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        h2 span {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .regla-oro {
+            background: #e7f3ff;
+            border-left: 4px solid var(--azul-principal);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .tarjeta {
+            background: var(--fondo-claro);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .ejemplo-mensaje {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            max-width: 500px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .ejemplo-mensaje .remitente {
+            font-weight: bold;
+            color: var(--azul-principal);
+            margin-bottom: 0.5rem;
+        }
+        .variables {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+        }
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .codigo {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .estado-exito {
+            color: var(--verde-exito);
+            font-weight: bold;
+        }
+        .tabla-reporte {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .tabla-reporte th, .tabla-reporte td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        .tabla-reporte th {
+            background-color: var(--azul-principal);
+            color: white;
+        }
+        .boton {
+            display: inline-block;
+            background: var(--azul-principal);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0.3rem;
+        }
+        .boton:hover {
+            background: var(--azul-claro);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <header>
+            <div class="logo">?? ?? ??? FB Connect CRM 2028</div>
+            <div class="subtitulo">Automatización · Ventas · Conexión Total</div>
+            <div class="empresa-info">
+                ?? Tienda de películas en Bluray HD 1080 px por 1290 | 2x1<br>
+                ?? Santa Cruz de la Sierra, Bolivia ???? | ? Meta Approved 2028
+            </div>
+        </header>
+
+        <!-- NAVEGACIÓN -->
+        <nav>
+            <a href="#mensajeria">Mensajería Masiva</a>
+            <a href="#chatbots">Chatbots</a>
+            <a href="#carrito">Carrito Inteligente</a>
+            <a href="#cupones">Cupones</a>
+            <a href="#cambios">Cambios</a>
+            <a href="#reporte">Reporte</a>
+        </nav>
+
+        <!-- MENSAJERÍA MASIVA -->
+        <section id="mensajeria">
+            <h2><span>??</span> Mensajería Masiva</h2>
+            
+            <div class="regla-oro">
+                ? Solo enviamos a personas que te escribieron, compraron o dieron permiso. <strong>CERO SPAM.</strong>
+            </div>
+
+            <div class="tarjeta">
+                <h3>??? Funciones Activas</h3>
+                
+                <div class="variables">
+                    <strong>?? Variables de Personalización:</strong><br>
+                    <code>{variedad de productos}</code> | <code>{santa victoria}</code> | <code>{colágeno amino ácido}</code> | <code>{nombre_cliente}</code>
+                </div>
+
+                <ul>
+                    <li><strong>?? Segmentación:</strong> Solo Santa Cruz | Clientes frecuentes | Compraron hace 6 meses</li>
+                    <li><strong>?? Programación:</strong> Mejores horas: <strong>03:00 hs</strong> o <strong>12:00 hs</strong></li>
+                    <li><strong>?? Seguridad:</strong> Límites inteligentes ? Evita bloqueos automáticamente</li>
+                </ul>
+            </div>
+
+            <div class="tarjeta">
+                <h3>?? Ejemplo de Campaña Lista</h3>
+                <div class="ejemplo-mensaje">
+                    <div class="remitente">Tienda de Películas ??</div>
+                    <p>?? ¡Hola <strong>Joselín Ruiz Morales</strong>! ??</p>
+                    <p>?? <strong>OFERTA EXCLUSIVA SANTA CRUZ</strong> ??</p>
+                    <p>? 35% DESCUENTO en todo</p>
+                    <p>? ENVÍO GRATIS en toda la ciudad</p>
+                    <p>? Válido solo hoy hasta las 20:00 hs</p>
+                    <p><small>Variedad de productos: Películas Blu-ray HD 1080p | Promoción 2x1</small></p>
+                    <div style="margin-top: 10px;">
+                        <span class="boton">??? VER CATÁLOGO</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHATBOTS INTELIGENTES -->
+        <section id="chatbots">
+            <h2><span>??</span> Sistema de Chatbots Inteligentes</h2>
+
+            <div class="tarjeta">
+                <h3>? Características</h3>
+                <ul>
+                    <li>Entiende lenguaje natural, contexto y emociones</li>
+                    <li><strong>Geolocalización automática:</strong> Detecta Santa Cruz ? Ajusta tiempos/precios/zonas</li>
+                    <li>Funciona <strong>24/7</strong>, feriados y fines de semana</li>
+                    <li>Editor visual sin código: arrastra y suelta flujos</li>
+                    <li>Aprende de tus respuestas y mejora solo</li>
+                    <li><strong>Respuestas Inteligentes:</strong> Escribe poco ? El sistema responde completo</li>
+                </ul>
+
+                <div class="ejemplo-mensaje">
+                    <p><strong>Usuario (Daniela Moreno Martínez):</strong> "sí, hay"</p>
+                    <p><strong>Sistema responde:</strong><br>
+                    ¡Claro que sí, <strong>Gonzalo Morales Sanchez</strong>! Tenemos disponibilidad inmediata y te llega mañana mismo ??</p>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <h3>?? Flujo Básico Preinstalado</h3>
+                
+                <p><strong>1. Saludo:</strong><br>
+                "¡Hola <strong>Alejandro Ortiz Vargas</strong>! Bienvenido a la Tienda ??? ¿En qué te ayudo hoy?<br>
+                ?? Especialistas en Películas Bluray HD 1080px - ¡Aprovecha la promoción 2x1!"</p>
+
+                <p style="margin-top: 1rem;"><strong>2. Opciones:</strong><br>
+                Ver Productos | Envíos | Pagos | Hablar con persona</p>
+
+                <p style="margin-top: 1rem;"><strong>3. Respuestas Inteligentes:</strong></p>
+                <ul>
+                    <li><em>"¿Cuánto tarda?"</em> ? <em>"En Santa Cruz, llega en 24h máximo ??"</em></li>
+                    <li><em>"¿Tienen esta película?"</em> ? <em>"¡Claro que sí, <strong>Melisa Ortiz Arteaga</strong>! Tenemos varios modelos. Aquí te los muestro ?? [Imágenes + precios]"</em></li>
+                    <li><em>"¿Qué tienen?"</em> ? <em>"Contamos con gran <strong>variedad de productos</strong>: Bluray HD, 2x1, <strong>colágeno amino ácido</strong> y artículos <strong>Santa Victoria</strong>..."</em></li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>4. Escalado Humano:</strong><br>
+                <em>Pamela Martínez Justiniano:</em> "¿Me lo pueden cambiar si no me queda?"<br>
+                <em>Sistema:</em> "Te lo explico con gusto, un momento por favor..." ?? Pasa el chat a <strong>María</strong> (vendedora) con todo el historial.</p>
+            </div>
+        </section>
+
+        <!-- CARRITO DE COMPRAS -->
+        <section id="carrito">
+            <h2><span>??</span> Carrito de Compras - Funciones Inteligentes</h2>
+
+            <div class="tarjeta">
+                <ul>
+                    <li><strong>?? Recordatorio de carrito abandonado:</strong><br>
+                    <em>"¡Hola <strong>Harld Ortiz Justiniano</strong>! Te quedaron estos productos en el carrito ??, ¿te los reservo un día más o te ayudo a terminar la compra?"</em><br>
+                    <small>?? Se envía automáticamente a las 2 horas</small>
+                    </li>
+
+                    <li style="margin-top: 1rem;"><strong>??? Descuentos automáticos:</strong><br>
+                    <em>"?? Por llevar 3 productos, te aplicamos un 10% de descuento automático. Tu nuevo total es: 333 Bs"</em>
+                    </li>
+
+                    <li style="margin-top: 1rem;"><strong>?? Verificación de ubicación:</strong><br>
+                    <em>"Hola! Vemos que estás en <strong>Santa Cruz de la Sierra</strong>. Hacemos envíos ahí también, pero tardan 3 días y cuestan 30 Bs más. ¿Estás de acuerdo?"</em>
+                    </li>
+
+                    <li style="margin-top: 1rem;"><strong>?? Historial rápido:</strong><br>
+                    <em>"?? ¡Hola de nuevo! ¿Quieres volver a pedir lo de la vez pasada? [ ?? REPETIR PEDIDO ]"</em>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CUPONES Y DESCUENTOS -->
+        <section id="cupones">
+            <h2><span>???</span> Sistema de Cupones y Descuentos</h2>
+
+            <div class="tarjeta">
+                <h3>?? Caso 1: Cupón Automático</h3>
+                <div class="ejemplo-mensaje">
+                    <p>?? <strong>¡REGALO PARA TI, Ana Arteaga Gutierrez!</strong> ??</p>
+                    <p>Como vives en <strong>Santa Cruz</strong>, te regalamos un <strong>15% DE DESCUENTO</strong> en tu primera compra ???</p>
+                    <p>??? Código: <span class="codigo">SC-15-789X4</span></p>
+                    <p>? Válido hasta: 17 de Junio<br>
+                    ?? Además, envío gratis incluido ??</p>
+                    <span class="boton">?? IR A COMPRAR</span>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <h3>?? Caso 2: Ingreso Manual</h3>
+                <div class="ejemplo-mensaje">
+                    <p><strong>Carla Arias Arteaga:</strong> Tengo el código SC-15-789X4</p>
+                    <p class="estado-exito">? ¡CÓDIGO ACEPTADO! ??</p>
+                    <p>Se aplicó un 15% de descuento a tu compra.</p>
+                    <p><strong>?? Carrito actualizado:</strong><br>
+                    Productos: 370 Bs<br>
+                    - Descuento: -55,50 Bs<br>
+                    ?? Envío: GRATIS<br>
+                    ?? <strong>TOTAL A PAGAR: 314,50 Bs</strong></p>
+                    <div>
+                        <span class="boton">? SÍ</span>
+                        <span class="boton" style="background:#999">?? SEGUIR COMPRANDO</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAMBIOS Y DEVOLUCIONES -->
+        <section id="cambios">
+            <h2><span>??</span> Gestión de Cambios y Devoluciones</h2>
+
+            <div class="tarjeta">
+                <h3>?? Proceso Paso a Paso</h3>
+                <div class="ejemplo-mensaje">
+                    <p><strong>Laura:</strong> Hola, me llegó la camiseta pero me queda chica, quiero cambiarla por talla L</p>
+                    
+                    <p><strong>Sistema responde:</strong></p>
+                    <p>?? <strong>Solicitud de Cambio / Devolución</strong><br>
+                    ¡Sin problema, <strong>Alejandra Arias Pedraza</strong>! Lo resolvemos rápido ??</p>
+                    
+                    <p>?? <strong>Datos de tu pedido #2025-1245:</strong><br>
+                    Producto: Camiseta Azul M | Fecha entrega: 10/09/2026</p>
+                    
+                    <p>?? ¿Qué necesitas hacer?<br>
+                    <span class="boton">?? CAMBIAR POR OTRA TALLA/COLOR</span><br>
+                    <span class="boton">?? DEVOLVER Y PEDIR OTRO MODELO</span><br>
+                    <span class="boton">?? SOLICITAR REEMBOLSO</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- REPORTE MENSUAL -->
+        <section id="reporte">
+            <h2><span>??</span> Reporte Mensual Completo — Junio 2028</h2>
+
+            <div class="tarjeta">
+                <p><strong>Generado automáticamente por FB Connect CRM</strong><br>
+                ?? Empresa: Tienda de películas en bluerays HD 1080 px por 1290 2x1<br>
+                ?? Ubicación: Santa Cruz<br>
+                ?? Período: 01/06/2028 al 30/06/2028</p>
+
+                <table class="tabla-reporte">
+                    <tr>
+                        <th>ÁREA</th>
+                        <th>DATO</th>
+                        <th>VALOR</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">?? Atención</td>
+                        <td>Mensajes recibidos</td>
+                        <td>8.742</td>
+                    </tr>
+                    <tr>
+                        <td>Respondidos por BOT</td>
+                        <td>7.120 (81%) ?</td>
+                    </tr>
+                    <tr>
+                        <td>Respondidos por PERSONA</td>
+                        <td>1.622 (19%)</td>
+                    </tr>
+                    <tr>
+                        <td>Frase más usada</td>
+                        <td>"¡Claro que sí! Tenemos..."</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">?? Campañas</td>
+                        <td>Horarios usados</td>
+                        <td>03:00 hs y 12:00 hs</td>
+                    </tr>
+                    <tr>
+                        <td>Variable principal</td>
+                        <td>{variedad de productos}</td>
+                    </tr>
+                    <tr>
+                        <td>Sin reportes SPAM</td>
+                        <td class="estado-exito">? CERO ?</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">?? Ventas</td>
+                        <td>Ventas totales</td>
+                        <td>327 ventas</td>
+                    </tr>
+                    <tr>
+                        <td>Monto total</td>
+                        <td>48.250 Bs. ??</td>
+                    </tr>
+                    <tr>
+                        <td>Producto estrella</td>
+                        <td>Bluray HD 1080px - Promoción 2x1</td>
+                    </tr>
+                    <tr>
+                        <td>Otros intereses</td>
+                        <td>Colágeno amino ácido / Santa Victoria</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer style="background:var(--gris-texto); color:white; text-align:center; padding:1.5rem;">
+            <p>© 2028 FB Connect CRM | Sistema exclusivo para Tienda de Películas Santa Cruz</p>
+        </footer>
+    </div>
+</body>
+</html>
+

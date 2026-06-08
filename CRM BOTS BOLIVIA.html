@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM BOTS BOLIVIA - Sistema de Mensajería</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        success: '#00B42A',
+                        warning: '#FF7D00',
+                        danger: '#F53F3F',
+                        neutral: '#1D2129',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-neutral min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-6xl">
+        
+        <!-- Encabezado -->
+        <header class="mb-8 text-center">
+            <h1 class="text-[clamp(1.8rem,3vw,2.8rem)] font-bold text-primary flex items-center justify-center gap-3">
+                <i class="fa fa-rocket"></i>
+                CRM BOTS BOLIVIA
+            </h1>
+            <p class="text-gray-600 mt-2">Sistema Completo Chatbot CRM + Mensajes Masivos | WhatsApp API</p>
+            <div class="mt-3 inline-block bg-blue-50 text-primary px-4 py-2 rounded-full text-sm font-medium">
+                <i class="fa fa-map-marker mr-2"></i> Av. Samuel Rosado N° 90, 4to Anillo – Santa Cruz, Bolivia
+            </div>
+        </header>
+
+        <!-- Reglas de Oro -->
+        <div class="bg-white rounded-xl shadow-md p-5 mb-8 border-l-4 border-primary">
+            <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fa fa-shield mr-2 text-primary"></i> REGLAS DE ORO INTEGRADAS</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 text-sm">
+                <div class="flex items-center gap-2"><i class="fa fa-check-circle text-success"></i> Solo plantillas aprobadas</div>
+                <div class="flex items-center gap-2"><i class="fa fa-check-circle text-success"></i> Formato: 591XXXXXXX</div>
+                <div class="flex items-center gap-2"><i class="fa fa-check-circle text-success"></i> Velocidad: 1 msg/seg</div>
+                <div class="flex items-center gap-2"><i class="fa fa-check-circle text-success"></i> Opción de baja SIEMPRE</div>
+                <div class="flex items-center gap-2"><i class="fa fa-check-circle text-success"></i> Solo con permiso</div>
+            </div>
+        </div>
+
+        <!-- Configuración API -->
+        <div class="bg-white rounded-xl shadow-md p-5 mb-8">
+            <h3 class="font-bold text-lg mb-4 text-warning flex items-center"><i class="fa fa-cog mr-2"></i> CONFIGURACIÓN API WHATSAPP</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Token de Acceso</label>
+                    <input type="text" id="token" placeholder="Pega aquí tu Token de Meta" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">ID Teléfono</label>
+                    <input type="text" id="id_telefono" placeholder="Pega aquí tu ID de Teléfono" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Principal -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            
+            <!-- Base de Datos y Contactos -->
+            <div class="lg:col-span-1 bg-white rounded-xl shadow-md p-5">
+                <h3 class="font-bold text-lg mb-4 flex items-center"><i class="fa fa-address-book mr-2 text-primary"></i> Contactos Guardados</h3>
+                <div id="lista_contactos" class="space-y-3 max-h-[400px] overflow-y-auto scrollbar-hide pr-2">
+                    <p class="text-gray-500 text-center py-4">Cargando contactos...</p>
+                </div>
+                <button onclick="verContactos()" class="w-full mt-4 bg-primary text-white py-2 rounded-lg hover:bg-primary/90 transition">
+                    Actualizar Lista
+                </button>
+            </div>
+
+            <!-- Plantillas de Mensaje -->
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-md p-5">
+                <h3 class="font-bold text-lg mb-4 flex items-center"><i class="fa fa-file-text mr-2 text-success"></i> Plantillas Definitivas</h3>
+                
+                <!-- Bienvenida -->
+                <div class="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold mb-2 text-primary">?? TIPO 1: Bienvenida</h4>
+                    <p id="plantilla1" class="text-sm text-gray-700 whitespace-pre-line"></p>
+                </div>
+
+                <!-- Oferta -->
+                <div class="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold mb-2 text-primary">?? TIPO 2: Oferta / Promoción</h4>
+                    <p id="plantilla2" class="text-sm text-gray-700 whitespace-pre-line"></p>
+                </div>
+
+                <!-- Recordatorio -->
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold mb-2 text-primary">?? TIPO 3: Recordatorio / Aviso</h4>
+                    <p id="plantilla3" class="text-sm text-gray-700 whitespace-pre-line"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acciones y Campañas -->
+        <div class="bg-white rounded-xl shadow-md p-5 mb-8">
+            <h3 class="font-bold text-lg mb-5 flex items-center"><i class="fa fa-paper-plane mr-2 text-warning"></i> Lanzar Campañas Masivas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button onclick="lanzarCampaña('Venta_de_lentes_accesorios', 'oferta')" class="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-4 rounded-lg hover:shadow-lg transition-all">
+                    <i class="fa fa-tag mr-2"></i> Campaña Lentes y Accesorios
+                </button>
+                <button onclick="lanzarCampaña('Venta_de_ropa', 'recordatorio')" class="bg-gradient-to-r from-purple-500 to-purple-600 text-white py-3 px-4 rounded-lg hover:shadow-lg transition-all">
+                    <i class="fa fa-shopping-bag mr-2"></i> Campaña Ropa / Reunión
+                </button>
+                <button onclick="lanzarCampaña('Venta_de_computadoras', 'bienvenida')" class="bg-gradient-to-r from-green-500 to-green-600 text-white py-3 px-4 rounded-lg hover:shadow-lg transition-all">
+                    <i class="fa fa-laptop mr-2"></i> Campaña Computadoras
+                </button>
+            </div>
+        </div>
+
+        <!-- Consola / Registro de Actividad -->
+        <div class="bg-neutral text-gray-100 rounded-xl shadow-md p-5">
+            <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fa fa-terminal mr-2 text-success"></i> Registro de Actividad</h3>
+            <div id="consola" class="bg-black/60 rounded-lg p-4 h-[250px] overflow-y-auto text-sm font-mono whitespace-pre-line">
+                Sistema iniciado correctamente... ?
+            </div>
+            <button onclick="limpiarConsola()" class="mt-3 text-gray-400 hover:text-white text-sm">
+                <i class="fa fa-trash mr-1"></i> Limpiar registro
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // ==============================================
+        // ?? BASE DE DATOS
+        // ==============================================
+        let crm_database = [];
+
+        // ==============================================
+        // ?? PLANTILLAS DE MENSAJE (TUS DATOS EXACTOS)
+        // ==============================================
+        const plantillas = {
+            bienvenida: `¡Hola {nombre}! ?? Gracias por escribirnos.
+Recibimos tu solicitud sobre {interes} y te hemos agregado a nuestra lista.
+? Recuerda: te escribimos con tu permiso. Si no quieres más mensajes, responde BAJA.`,
+
+            oferta: `¡Hola {nombre}! ??
+Tenemos una novedad especial pensada para ti, que estás interesado en {categoria}:
+
+?? OFERTA ESPECIAL: Gafas para mujeres, lentes para hombres y mujeres, aros y accesorios exclusivos
+?? Detalle: Gran liquidación para renovar nuestro catálogo. Calidad garantizada y precios únicos.
+? Válido hasta: 30 de junio de 2026
+?? Visítanos: Av. Samuel Rosado N° 90, 4to Anillo – Santa Cruz
+
+?? Responde BAJA para dejar de recibir mensajes`,
+
+            recordatorio: `¡Hola {nombre}! ??
+Te recordamos un aviso importante relacionado con tu interés en {categoria}:
+
+?? AVISO: Ir a comprar ropa para ir a la reunión
+?? Información: Ropas nuevas y frescas, no son como las de algodón, más ligeras y cómodas.
+? Vigencia: 15 de julio de 2026
+?? Nuestra tienda: Av. Samuel Rosado N° 90, 4to Anillo – Santa Cruz
+
+?? Responde BAJA para dejar de recibir mensajes`
+        };
+
+        // Mostrar plantillas en interfaz
+        document.getElementById('plantilla1').textContent = plantillas.bienvenida;
+        document.getElementById('plantilla2').textContent = plantillas.oferta;
+        document.getElementById('plantilla3').textContent = plantillas.recordatorio;
+
+        // ==============================================
+        // ?? FUNCIÓN 1: CAPTURAR DATOS Y SEGMENTAR
+        // ==============================================
+        function capturarDatos(nombre, telefono, ciudad, interes) {
+            let contacto = {
+                nombre: nombre,
+                telefono: telefono.toString(),
+                ciudad: ciudad,
+                interes: interes,
+                grupo_segmentacion: "",
+                permiso_mensajes: true,
+                es_cliente_local: false
+            };
+
+            // Segmentación por producto
+            if (interes.toLowerCase().includes("computadora") || interes.toLowerCase().includes("vender computadora")) {
+                contacto.grupo_segmentacion = "Venta_de_computadoras";
+            } else if (interes.toLowerCase().includes("lector") || interes.toLowerCase().includes("cd")) {
+                contacto.grupo_segmentacion = "Venta_de_lectores_CD_DVD";
+            } else if (interes.toLowerCase().includes("tarjeta") || interes.toLowerCase().includes("memoria")) {
+                contacto.grupo_segmentacion = "Venta_de_tarjetas_de_memoria";
+            } else if (interes.toLowerCase().includes("lente") || interes.toLowerCase().includes("gafa") || interes.toLowerCase().includes("accesorio")) {
+                contacto.grupo_segmentacion = "Venta_de_lentes_accesorios";
+            } else if (interes.toLowerCase().includes("ropa") || interes.toLowerCase().includes("vestimenta") || interes.toLowerCase().includes("camisa")) {
+                contacto.grupo_segmentacion = "Venta_de_ropa";
+            } else {
+                contacto.grupo_segmentacion = "Otros_intereses";
+            }
+
+            // Segmentación por ubicación
+            if (ciudad.toLowerCase().includes("4to anillo") || ciudad.toLowerCase().includes("samuel rosado")) {
+                contacto.es_cliente_local = true;
+            }
+
+            crm_database.push(contacto);
+            agregarLog(`? Guardado: ${nombre} | Segmento: ${contacto.grupo_segmentacion}`);
+            return contacto;
+        }
+
+        // ==============================================
+        // ?? FUNCIÓN 2: ENVIAR MENSAJE (SIMULACIÓN + API)
+        // ==============================================
+        async function enviarMensajeWhatsApp(contacto, tipoMensaje) {
+            // ? REGLA 2: FORMATO CORRECTO BOLIVIA
+            let numero = contacto.telefono;
+            if (!numero.startsWith("591")) {
+                numero = "591" + numero;
+            }
+
+            let textoFinal = "";
+
+            // Seleccionar plantilla
+            if (tipoMensaje === "bienvenida") {
+                textoFinal = plantillas.bienvenida
+                    .replace("{nombre}", contacto.nombre)
+                    .replace("{interes}", contacto.interes);
+            } else if (tipoMensaje === "oferta" && contacto.grupo_segmentacion === "Venta_de_lentes_accesorios") {
+                textoFinal = plantillas.oferta
+                    .replace("{nombre}", contacto.nombre)
+                    .replace("{categoria}", contacto.interes);
+            } else if (tipoMensaje === "recordatorio" && contacto.grupo_segmentacion === "Venta_de_ropa") {
+                textoFinal = plantillas.recordatorio
+                    .replace("{nombre}", contacto.nombre)
+                    .replace("{categoria}", contacto.interes);
+            } else {
+                agregarLog(`?? Sin plantilla para: ${contacto.nombre}`);
+                return false;
+            }
+
+            // ? REGLA 3: VELOCIDAD CONTROLADA
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // ? SIMULACIÓN DE ENVÍO
+            agregarLog(`\n?? ENVIANDO A: ${contacto.nombre} | ?? ${numero}`);
+            agregarLog("-" .repeat(50));
+            agregarLog(textoFinal);
+            agregarLog("-" .repeat(50));
+
+            // ? AQUÍ IRÍA LA CONEXIÓN REAL CON LA API DE META
+            const TOKEN = document.getElementById('token').value;
+            const ID_TEL = document.getElementById('id_telefono').value;
+            
+            if (TOKEN && ID_TEL) {
+                agregarLog("?? Conectando a API Meta...");
+                // Código real fetch() iría aquí
+            }
+
+            return true;
+        }
+
+        // ==============================================
+        // ?? FUNCIÓN 3: LANZAR CAMPAÑA MASIVA
+        // ==============================================
+        async function lanzarCampaña(segmentoObjetivo, tipoMensaje) {
+            agregarLog(`\n?? === INICIANDO CAMPAÑA: ${segmentoObjetivo} ===`);
+
+            let listaEnvio = crm_database.filter(c => 
+                c.grupo_segmentacion === segmentoObjetivo && c.permiso_mensajes
+            );
+
+            agregarLog(`?? Total de contactos a procesar: ${listaEnvio.length}`);
+
+            for (let contacto of listaEnvio) {
+                await enviarMensajeWhatsApp(contacto, tipoMensaje);
+            }
+
+            agregarLog("\n? CAMPAÑA FINALIZADA CORRECTAMENTE");
+        }
+
+        // ==============================================
+        // ??? FUNCIONES DE INTERFAZ
+        // ==============================================
+        function agregarLog(texto) {
+            const consola = document.getElementById('consola');
+            consola.textContent += texto + "\n";
+            consola.scrollTop = consola.scrollHeight;
+        }
+
+        function limpiarConsola() {
+            document.getElementById('consola').textContent = "";
+        }
+
+        function verContactos() {
+            const lista = document.getElementById('lista_contactos');
+            lista.innerHTML = "";
+
+            if (crm_database.length === 0) {
+                lista.innerHTML = "<p class='text-gray-500 text-center py-4'>No hay contactos</p>";
+                return;
+            }
+
+            crm_database.forEach((c, i) => {
+                const div = document.createElement('div');
+                div.className = "p-3 bg-gray-50 rounded-lg border border-gray-200";
+                div.innerHTML = `
+                    <p class="font-semibold text-sm">${c.nombre}</p>
+                    <p class="text-xs text-gray-600">?? ${c.telefono} | ?? ${c.ciudad}</p>
+                    <p class="text-xs text-gray-500 mt-1">?? ${c.grupo_segmentacion}</p>
+                `;
+                lista.appendChild(div);
+            });
+        }
+
+        // ==============================================
+        // ?? CARGA INICIAL DE DATOS
+        // ==============================================
+        window.onload = function() {
+            // Cargar tus contactos exactos
+            capturarDatos("Julio Arteaga Justiniano", "77503105", "California", "vender computadora");
+            capturarDatos("Yenni Ortiz Vaca", "77645220", "Santa Cruz", "lentes y accesorios exclusivos");
+            capturarDatos("Danny Ortiz Arteaga", "75031234", "Santa Cruz", "venta de computadoras");
+            capturarDatos("Yesenia Ortiz Sánchez", "72098765", "4to Anillo", "lentes y accesorios exclusivos");
+            capturarDatos("Fabiola Gutiérrez Solares", "71122334", "Av. Samuel Rosado", "ropa para reuniones");
+            capturarDatos("Fernando Arteaga Vaca", "73344556", "Centro", "tarjetas de memoria");
+            capturarDatos("Karlos", "77634567", "Santa Cruz", "comprar camisa");
+
+            verContactos();
+            agregarLog("\n?? Sistema listo para enviar mensajes. Configura tu Token y ID arriba.");
+        }
+    </script>
+</body>
+</html>
+
