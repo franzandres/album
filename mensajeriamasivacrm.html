@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB Connect CRM 2028 | Sistema Oficial</title>
+    <style>
+        :root {
+            /* ?? OPCIÓN 2: COLORES PERSONALIZADOS DE TU MARCA */
+            --color-principal: #8B0000; /* Rojo oscuro (color de cine/películas) */
+            --color-secundario: #FFD700; /* Dorado (calidad HD) */
+            --color-azul-boton: #1877F2;
+            --verde-exito: #28C76F;
+            --rojo-alerta: #EA5455;
+            --gris-texto: #1C1E21;
+            --fondo-claro: #F8F9FA;
+            --blanco: #FFFFFF;
+            --naranja-aviso: #FF9F43;
+            --sombra: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        body {
+            background-color: var(--fondo-claro);
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--blanco);
+            box-shadow: var(--sombra);
+        }
+        header {
+            background: linear-gradient(135deg, var(--color-principal), #B22222);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitulo {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .empresa-info {
+            background: rgba(255,255,255,0.15);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .boton-admin {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.25);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .boton-admin:hover {
+            background: rgba(0,0,0,0.4);
+            transform: scale(1.05);
+        }
+        nav {
+            background: var(--gris-texto);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        nav a {
+            color: white;
+            margin: 0 0.8rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        nav a:hover {
+            color: var(--color-secundario);
+        }
+        section {
+            padding: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            transition: opacity 0.4s ease;
+        }
+        h2 {
+            color: var(--color-principal);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+        }
+        h2 span {
+            font-size: 1.8rem;
+            margin-right: 0.6rem;
+        }
+        .regla-oro {
+            background: #fff8e6;
+            border-left: 4px solid var(--color-secundario);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .tarjeta {
+            background: var(--fondo-claro);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.2rem 0;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+        .tarjeta:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra);
+        }
+        .ejemplo-mensaje {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            max-width: 500px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        .ejemplo-mensaje .remitente {
+            font-weight: bold;
+            color: var(--color-principal);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .variables {
+            background: #fff8e6;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+            border: 1px solid #ffe484;
+        }
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .codigo {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 0.4rem 0.7rem;
+            border-radius: 4px;
+            font-family: monospace;
+            cursor: pointer;
+            user-select: all;
+            border: none;
+        }
+        .estado-exito { color: var(--verde-exito); font-weight: bold; }
+        .estado-alerta { color: var(--rojo-alerta); font-weight: bold; }
+        .estado-aviso { color: var(--naranja-aviso); font-weight: bold; }
+        
+        .tabla-reporte {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #ddd;
+        }
+        .tabla-reporte th, .tabla-reporte td {
+            border: 1px solid #ddd;
+            padding: 0.9rem;
+            text-align: left;
+        }
+        .tabla-reporte th {
+            background-color: var(--color-principal);
+            color: white;
+            font-weight: 600;
+        }
+        .tabla-reporte tr:nth-child(even) { background-color: #f9f9f9; }
+
+        .boton {
+            display: inline-block;
+            background: var(--color-azul-boton);
+            color: white;
+            padding: 0.6rem 1.3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.3rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .boton:hover {
+            background: #0a5dc9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .boton:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .boton-rojo { background: var(--rojo-alerta); }
+        .boton-verde { background: var(--verde-exito); }
+        .boton-naranja { background: var(--naranja-aviso); }
+        .boton-whatsapp { background: #25D366; color: white; }
+        .boton-whatsapp:hover { background: #128C7E; }
+
+        footer {
+            background: var(--gris-texto);
+            color: white;
+            text-align: center;
+            padding: 1.8rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.75);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        .modal-contenido {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 700px;
+            width: 100%;
+            animation: aparecer 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        @keyframes aparecer {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.7rem;
+            margin: 0.6rem 0 1rem 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border 0.3s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-principal);
+            box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.1);
+        }
+
+        /* ?? OPCIÓN 1: DISEÑO 100% ADAPTADO A CELULARES */
+        @media (max-width: 768px) {
+            .logo { font-size: 1.7rem; }
+            .boton-admin { position: static; margin-bottom: 1rem; width: 100%; }
+            nav { flex-direction: column; text-align: center; padding: 0.5rem; }
+            nav a { margin: 0.4rem 0; display: block; padding: 0.5rem; border-radius: 4px; }
+            section { padding: 1.2rem; }
+            .tarjeta { padding: 1.2rem; }
+            .tabla-reporte th, .tabla-reporte td { padding: 0.6rem; font-size: 0.85rem; }
+            .ejemplo-mensaje { max-width: 100%; }
+            .boton { width: 100%; margin: 0.3rem 0; padding: 0.8rem; }
+            .modal-contenido { padding: 1.5rem; }
+            h2 { font-size: 1.3rem; }
+        }
+
+        /* ??? Estilo especial para Factura */
+        .factura {
+            background: white;
+            border: 2px solid var(--color-principal);
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        .factura .cabecera {
+            text-align: center;
+            border-bottom: 2px solid var(--color-principal);
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+        }
+        .factura .total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 1rem;
+            color: var(--color-principal);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="boton-admin" onclick="abrirAdmin()">?? PANEL ADMIN</button>
+            <div class="logo">?? FB Connect CRM 2028</div>
+            <div class="subtitulo">Tienda de Películas · Bluray HD · 2x1</div>
+            <div class="empresa-info">
+                ?? Tienda de películas en Bluray HD 1080 px por 1290 | 2x1<br>
+                ?? Santa Cruz de la Sierra, Bolivia ???? | ? Meta Approved 2028
+            </div>
+        </header>
+
+        <nav>
+            <a href="#mensajeria">?? Mensajería</a>
+            <a href="#chatbots">?? Chatbots</a>
+            <a href="#carrito">?? Carrito</a>
+            <a href="#cupones">??? Cupones</a>
+            <a href="#cambios">?? Cambios</a>
+            <a href="#reporte">?? Reporte</a>
+            <a href="#ayuda">?? Ayuda</a>
+        </nav>
+
+        <section id="mensajeria">
+            <h2><span>??</span> Mensajería Masiva</h2>
+            <div class="regla-oro">? Solo enviamos a personas que te escribieron, compraron o dieron permiso. <strong>CERO SPAM.</strong></div>
+
+            <div class="tarjeta">
+                <h3>??? Funciones Activas</h3>
+                <div class="variables">
+                    <strong>?? Variables:</strong><br>
+                    <code>{nombre_cliente}</code> | <code>{variedad de productos}</code> | <code>{ciudad}</code> | <code>{descuento}</code>
+                </div>
+                <ul>
+                    <li>Segmentación por ubicación: Solo Santa Cruz</li>
+                    <li>Programación: 03:00 hs o 12:00 hs (mejor rendimiento)</li>
+                </ul>
+                <button class="boton boton-verde" onclick="abrirModalCampana()">?? CREAR CAMPAÑA</button>
+            </div>
+
+            <div class="tarjeta">
+                <h3>?? Vista Previa y Envío Real</h3>
+                <div class="ejemplo-mensaje" id="ejemplo-mensaje-1">
+                    <div class="remitente">Tienda de Películas ??</div>
+                    <p>?? ¡Hola <strong id="nombre-dinamico">Joselín Ruiz Morales</strong>! ??</p>
+                    <p>?? <strong>OFERTA EXCLUSIVA {ciudad}</strong> ??</p>
+                    <p>? 35% DESCUENTO en todo</p>
+                    <p>? ENVÍO GRATIS en toda la ciudad</p>
+                    <p>? Válido solo hoy hasta las 20:00 hs</p>
+                    <p><small>Variedad: Películas Blu-ray HD 1080p | Promoción 2x1</small></p>
+                    <div style="margin-top: 12px;">
+                        <button class="boton boton-naranja" onclick="cambiarNombre()">?? Cambiar Nombre</button>
+                        <!-- ?? OPCIÓN 3: BOTÓN DE ENVÍO REAL POR WHATSAPP -->
+                        <button class="boton boton-whatsapp" onclick="enviarWhatsApp()">?? ENVIAR POR WHATSAPP</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chatbots">
+            <h2><span>??</span> Chatbots Inteligentes</h2>
+            <div class="tarjeta">
+                <ul>
+                    <li>Entiende lenguaje natural</li>
+                    <li>Geolocalización automática</li>
+                    <li>24/7, feriados y fines de semana</li>
+                </ul>
+                <div class="ejemplo-mensaje" id="chat-demo">
+                    <p><strong>Usuario:</strong> <span id="texto-usuario">¿Tienen películas de acción?</span></p>
+                    <p><strong>Sistema:</strong> <span id="texto-bot">¡Claro que sí! Gran variedad en acción, HD 1080p, 2x1.</span></p>
+                    <button class="boton boton-verde" onclick="nuevaRespuesta()">?? Otra Respuesta</button>
+                    <button class="boton" onclick="agregarRespuestaBD()">?? Guardar Regla</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="carrito">
+            <h2><span>??</span> Carrito de Compras</h2>
+            <div class="tarjeta">
+                <ul>
+                    <li><strong>?? Carrito abandonado:</strong> Aviso automático a las 2h</li>
+                    <li><strong>??? Descuentos:</strong> Cálculo automático por cantidad</li>
+                    <li><strong>?? Envíos:</strong> Costo y tiempo según ubicación</li>
+                </ul>
+                <p>Total actual: <strong id="total-carrito">333 Bs</strong></p>
+                <button class="boton boton-verde" onclick="aplicarDescuento()">?? Simular Compra</button>
+                <!-- ??? OPCIÓN 4: GENERAR FACTURA -->
+                <button class="boton boton-naranja" onclick="generarFactura()">??? GENERAR FACTURA</button>
+            </div>
+        </section>
+
+        <section id="cupones">
+            <h2><span>???</span> Sistema de Cupones</h2>
+            <div class="tarjeta">
+                <div class="ejemplo-mensaje">
+                    <p>?? <strong>¡REGALO PARA TI!</strong></p>
+                    <p>??? Código: <span class="codigo" onclick="copiarCodigo()">SC-15-789X4 ??</span></p>
+                    <input type="text" id="input-cupon" placeholder="Ingresa tu código aquí">
+                    <button class="boton boton-verde" onclick="validarCupon()">? Validar</button>
+                    <p id="estado-cupon"></p>
+                    <p>Total: <strong id="total-final">370 Bs</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cambios">
+            <h2><span>??</span> Cambios y Devoluciones</h2>
+            <div class="tarjeta">
+                <p>Proceso automatizado y registrado:</p>
+                <button class="boton" onclick="abrirModal('Cambio')">?? Cambiar</button>
+                <button class="boton" onclick="abrirModal('Devolución')">?? Devolver</button>
+                <button class="boton" onclick="abrirModal('Reembolso')">?? Reembolso</button>
+            </div>
+        </section>
+
+        <section id="reporte">
+            <h2><span>??</span> Reporte Mensual</h2>
+            <div class="tarjeta">
+                <table class="tabla-reporte">
+                    <tr><th>Área</th><th>Dato</th><th>Valor</th></tr>
+                    <tr><td>Atención</td><td>Mensajes</td><td id="rep-mensajes">8.742</td></tr>
+                    <tr><td>Ventas</td><td>Total</td><td id="rep-monto">48.250 Bs</td></tr>
+                    <tr><td>Productos</td><td>Estrella</td><td>Bluray HD 2x1</td></tr>
+                </table>
+                <button class="boton boton-verde" onclick="actualizarReporteReal()">?? Actualizar</button>
+            </div>
+        </section>
+
+        <!-- ?? OPCIÓN 5: SECCIÓN DE AYUDA E INSTALACIÓN -->
+        <section id="ayuda">
+            <h2><span>??</span> Guía de Uso e Instalación</h2>
+            <div class="tarjeta">
+                <h3>? ¿Cómo instalarlo?</h3>
+                <ol>
+                    <li>Copia todo este código que está aquí abajo.</li>
+                    <li>Abre el Bloc de Notas de tu computadora.</li>
+                    <li>Pega el código ahí.</li>
+                    <li>Guarda el archivo con el nombre: <code>crm-peliculas.html</code> (asegúrate que termine en .html).</li>
+                    <li>Haz doble clic sobre el archivo guardado y se abrirá como un programa en tu navegador.</li>
+                </ol>
+
+                <h3>?? ¿Cómo usarlo en el celular?</h3>
+                <p>Sube el archivo a Google Drive o al correo, ábrelo desde tu celular y selecciona "Abrir con Chrome". Funciona igual de bien.</p>
+
+                <h3>?? Funciones Clave</h3>
+                <ul>
+                    <li><strong>Panel Admin:</strong> Arriba derecha, para ver clientes y dinero.</li>
+                    <li><strong>Envío WhatsApp:</strong> Prepara el mensaje y abre WhatsApp listo para enviar.</li>
+                    <li><strong>Facturas:</strong> Se generan automáticamente al vender, listas para imprimir o enviar.</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2028 FB Connect CRM | Tienda de Películas Santa Cruz - Bolivia ????</p>
+        </footer>
+    </div>
+
+    <!-- MODALES -->
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <h3 id="titulo-modal"></h3>
+            <div id="texto-modal"></div>
+            <hr>
+            <button class="boton" onclick="cerrarModal()">Entendido</button>
+        </div>
+    </div>
+
+    <div id="modalAdmin" class="modal">
+        <div class="modal-contenido">
+            <h2>?? PANEL DE CONTROL</h2>
+            <p>Base de Datos Local</p>
+            <hr>
+            <h3>?? Clientes: <span id="cont-clientes">0</span></h3>
+            <ul id="lista-clientes" style="max-height:120px; overflow-y:auto;"></ul>
+            <h3>?? Campañas: <span id="cont-campanas">0</span></h3>
+            <h3>?? Ventas: <span id="cont-ventas">0</span> | Total: <strong id="total-acumulado">0 Bs</strong></h3>
+            <button class="boton boton-verde" onclick="agregarClienteManual()">+ Cliente</button>
+            <button class="boton boton-rojo" onclick="borrarTodo()">??? Borrar Todo</button>
+            <button class="boton" onclick="cerrarAdmin()">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modalCampana" class="modal">
+        <div class="modal-contenido">
+            <h2>?? Nueva Campaña</h2>
+            <label>Nombre:</label>
+            <input type="text" id="camp-nombre" placeholder="Ej: Oferta Junio">
+            <label>Mensaje:</label>
+            <textarea id="camp-mensaje" rows="4" placeholder="Hola {nombre_cliente}, 30% de descuento..."></textarea>
+            <label>Segmento:</label>
+            <select id="camp-segmento">
+                <option>Todos Santa Cruz</option>
+                <option>Clientes Frecuentes</option>
+            </select>
+            <button class="boton boton-verde" onclick="guardarCampana()">Guardar</button>
+            <button class="boton" onclick="cerrarModalCampana()">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        // ==================== BASE DE DATOS ====================
+        if(!localStorage.getItem('fbcrm_clientes')) localStorage.setItem('fbcrm_clientes', JSON.stringify([]));
+        if(!localStorage.getItem('fbcrm_campanas')) localStorage.setItem('fbcrm_campanas', JSON.stringify([]));
+        if(!localStorage.getItem('fbcrm_ventas')) localStorage.setItem('fbcrm_ventas', JSON.stringify([]));
+        if(!localStorage.getItem('fbcrm_respuestas')) localStorage.setItem('fbcrm_respuestas', JSON.stringify([{pregunta:"¿Cuánto tarda?", respuesta:"En Santa Cruz llega en 24h ??"}]));
+
+        function getDB(nombre) { return JSON.parse(localStorage.getItem(nombre)) || []; }
+        function saveDB(nombre, data) { localStorage.setItem(nombre, JSON.stringify(data)); }
+
+        // ==================== FUNCIONES ====================
+        function cambiarNombre() {
+            const nombres = ["Joselín Ruiz Morales", "María López", "Carlos Méndez", "Ana Arteaga", "Pedro Ortiz"];
+            const aleatorio = nombres[Math.floor(Math.random() * nombres.length)];
+            document.getElementById('nombre-dinamico').textContent = aleatorio;
+            let clientes = getDB('fbcrm_clientes');
+            if(!clientes.find(c => c.nombre === aleatorio)){
+                clientes.push({nombre: aleatorio, ubicacion: "Santa Cruz", fecha: new Date().toLocaleString()});
+                saveDB('fbcrm_clientes', clientes);
+            }
+            mostrarModal("? Nombre Actualizado", `Ahora: <strong>${aleatorio}</strong>`);
+        }
+
+        // ?? OPCIÓN 3: ENVIAR MENSAJE REAL POR WHATSAPP
+        function enviarWhatsApp(){
+            let nombre = document.getElementById('nombre-dinamico').textContent;
+            let mensaje = `?? ¡Hola ${nombre}! ???? OFERTA EXCLUSIVA SANTA CRUZ ??? 35% DESCUENTO en todo? ENVÍO GRATIS en toda la ciudad? Válido solo hoy hasta las 20:00 hs?? Variedad: Bluray HD 1080p | 2x1`;
+            let url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+            mostrarModal("?? WhatsApp Abierto", "El mensaje está listo para enviar. Solo elige el contacto.");
+        }
+
+        function nuevaRespuesta() {
+            const p = ["¿Cuánto cuesta el envío?", "¿Garantía?", "¿Pago efectivo?"];
+            const r = ["?? Envío GRATIS > 150 Bs.", "??? 6 meses garantía.", "?? Sí, aceptamos efectivo y tarjeta."];
+            let i = Math.floor(Math.random() * p.length);
+            document.getElementById('texto-usuario').textContent = p[i];
+            document.getElementById('texto-bot').textContent = r[i];
+        }
+
+        function agregarRespuestaBD(){
+            let preg = document.getElementById('texto-usuario').textContent;
+            let resp = document.getElementById('texto-bot').textContent;
+            let reglas = getDB('fbcrm_respuestas');
+            reglas.push({pregunta:preg, respuesta:resp});
+            saveDB('fbcrm_respuestas', reglas);
+            mostrarModal("? Guardado", "Respuesta agregada al sistema inteligente.");
+        }
+
+        function validarCupon() {
+            const cod = document.getElementById('input-cupon').value.trim();
+            const estado = document.getElementById('estado-cupon');
+            const total = document.getElementById('total-final');
+            const base = 370;
+            if(cod === "SC-15-789X4") {
+                estado.className = "estado-exito";
+                estado.textContent = "? CÓDIGO VÁLIDO (-15%)";
+                let fin = (base * 0.85).toFixed(2);
+                total.textContent = fin + " Bs";
+                let ventas = getDB('fbcrm_ventas');
+                ventas.push({producto:"Compra con Cupón", monto:fin, fecha:new Date().toLocaleString()});
+                saveDB('fbcrm_ventas', ventas);
+            } else {
+                estado.className = "estado-alerta";
+                estado.textContent = "? INVÁLIDO";
+                total.textContent = base + " Bs";
+            }
+        }
+
+        function aplicarDescuento() {
+            let total = document.getElementById('total-carrito');
+            let num = parseInt(total.textContent) - 33;
+            total.textContent = num + " Bs";
+            let ventas = getDB('fbcrm_ventas');
+            ventas.push({producto:"Paquete 3 Películas", monto:num, fecha:new Date().toLocaleString()});
+            saveDB('fbcrm_ventas', ventas);
+            mostrarModal("? Venta Guardada", "Descuento aplicado y venta registrada.");
+        }
+
+        // ??? OPCIÓN 4: GENERADOR DE FACTURA
+        function generarFactura(){
+            let totalActual = document.getElementById('total-carrito').textContent || "333 Bs";
+            let fecha = new Date().toLocaleDateString();
+            let facturaHTML = `
+            <div class="factura">
+                <div class="cabecera">
+                    <h2>?? TIENDA DE PELÍCULAS SANTA CRUZ</h2>
+                    <p>Blueray HD 1080px | Promoción 2x1</p>
+                    <p>NIT: 1234567890 | Santa Cruz - Bolivia</p>
+                    <p><strong>FACTURA N° ${Math.floor(Math.random()*10000)}</strong></p>
+                    <p>Fecha: ${fecha}</p>
+                </div>
+                <div class="cuerpo">
+                    <p>---------------------------------------------</p>
+                    <p>DESCRIPCIÓN              CANT.    PRECIO</p>
+                    <p>---------------------------------------------</p>
+                    <p>Películas Bluray HD        3      370 Bs</p>
+                    <p>Descuento 10%                          -37 Bs</p>
+                    <p>---------------------------------------------</p>
+                    <p class="total">TOTAL A PAGAR:   ${totalActual}</p>
+                </div>
+                <div style="margin-top:2rem; text-align:center;">
+                    <p>¡Gracias por su compra! ????</p>
+                    <p>Envío gratis en toda la ciudad</p>
+                </div>
+            </div>`;
+            mostrarModal("??? Factura Generada", facturaHTML);
+        }
+
+        function copiarCodigo(){ navigator.clipboard.writeText("SC-15-789X4"); mostrarModal("?? Copiado", "Código listo."); }
+        function actualizarReporteReal(){
+            let ventas = getDB('fbcrm_ventas');
+            let totalVentas = ventas.length;
+            let sumaTotal = ventas.reduce((a,v) => a + parseFloat(v.monto), 0).toFixed(2);
+            document.getElementById('rep-monto').textContent = sumaTotal + " Bs";
+            mostrarModal("?? Reporte Actualizado", `Ventas: ${totalVentas} | Total: ${sumaTotal} Bs`);
+        }
+
+        // ==================== MODALES Y ADMIN ====================
+        function mostrarModal(titulo, texto) {
+            document.getElementById('titulo-modal').textContent = titulo;
+            document.getElementById('texto-modal').innerHTML = texto;
+            document.getElementById('miModal').style.display = "flex";
+        }
+        function abrirModal(tipo) {
+            let txt = tipo==='Cambio'?"?? Cambio registrado": tipo==='Devolución'?"?? Devolución iniciada":"?? Reembolso aprobado";
+            mostrarModal(`Solicitud ${tipo}`, txt);
+        }
+        function cerrarModal() { document.getElementById('miModal').style.display = "none"; }
+
+        function abrirAdmin(){
+            let cli = getDB('fbcrm_clientes');
+            let cam = getDB('fbcrm_campanas');
+            let ven = getDB('fbcrm_ventas');
+            let totalVen = ven.reduce((a,v)=>a+parseFloat(v.monto),0).toFixed(2);
+            document.getElementById('cont-clientes').textContent = cli.length;
+            document.getElementById('cont-campanas').textContent = cam.length;
+            document.getElementById('cont-ventas').textContent = ven.length;
+            document.getElementById('total-acumulado').textContent = totalVen + " Bs";
+
+            let ul = document.getElementById('lista-clientes'); ul.innerHTML="";
+            cli.forEach(c=>{let li=document.createElement('li');li.textContent=c.nombre;ul.appendChild(li);});
+            document.getElementById('modalAdmin').style.display = "flex";
+        }
+        function cerrarAdmin(){ document.getElementById('modalAdmin').style.display = "none"; }
+        function agregarClienteManual(){ let n=prompt("Nombre:"); if(n){let c=getDB('fbcrm_clientes');c.push({nombre:n});saveDB('fbcrm_clientes',c);abrirAdmin();} }
+        function borrarTodo(){ if(confirm("¿Borrar todo?")){localStorage.clear();location.reload();} }
+        function abrirModalCampana(){ document.getElementById('modalCampana').style.display = "flex"; }
+        function cerrarModalCampana(){ document.getElementById('modalCampana').style.display = "none"; }
+        function guardarCampana(){ let n=document.getElementById('camp-nombre').value; let c=getDB('fbcrm_campanas');c.push({nombre:n});saveDB('fbcrm_campanas',c);cerrarModalCampana();mostrarModal("? Campaña Guardada",n); }
+
+        window.onclick = e => { if(e.target.classList.contains('modal')) e.target.style.display = "none"; }
+    </script>
+</body>
+</html>
+

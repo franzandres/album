@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Biz 2027 | CRM - Chatbots - Masivos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wpgreen: '#00C853',
+                        wpblue: '#1565C0',
+                        wpgray: '#F5F5F5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .clickable {
+                cursor: pointer;
+                transition: opacity 0.2s;
+            }
+            .clickable:hover {
+                opacity: 0.85;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-2 py-4 max-w-7xl">
+        <!-- ENCABEZADO PRINCIPAL -->
+        <header class="bg-wpgreen text-white rounded-lg shadow-lg p-4 mb-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <i class="fa fa-whatsapp text-3xl"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold">WhatsApp Biz 2027</h1>
+                        <p class="text-sm opacity-90">CRM • Chatbots IA • Mensajes Masivos | Santa Cruz - Bolivia ????</p>
+                    </div>
+                </div>
+                <div class="hidden md:block text-right">
+                    <p class="text-sm">?? emilipromocionesynovedadess.r.l</p>
+                    <p class="text-xs">?? +591 75093123 | ?? Av. El Trompillo, Zona Norte</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- NAVEGACIÓN -->
+        <nav class="grid grid-cols-4 md:grid-cols-8 gap-2 mb-6 text-center text-sm font-medium">
+            <a href="#crm" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? CRM</a>
+            <a href="#mensajes" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Mensajes</a>
+            <a href="#campanas" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Campañas</a>
+            <a href="#bot" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Chatbot</a>
+            <a href="#reportes" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Reportes</a>
+            <a href="#automaticos" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Automáticos</a>
+            <a href="#seguridad" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Seguridad</a>
+            <a href="#datos" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Datos</a>
+        </nav>
+
+        <!-- SECCIÓN CRM -->
+        <section id="crm" class="mb-10">
+            <h2 class="text-xl font-bold text-wpblue mb-4 flex items-center gap-2"><i class="fa fa-address-book"></i> BASE DE DATOS CRM</h2>
+            
+            <!-- FICHA CLIENTE -->
+            <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-wpgreen mb-4 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div>
+                        <p class="font-bold text-lg">????? Cliente: María Suárez</p>
+                        <p><i class="fa fa-phone"></i> Teléfono: +591 75077545</p>
+                        <p><i class="fa fa-map-marker"></i> Ubicación: Santa Cruz, Equipetrol</p>
+                        <p><span class="bg-wpgreen text-white text-xs px-2 py-0.5 rounded">? Cliente VIP</span> <span class="bg-wpblue text-white text-xs px-2 py-0.5 rounded">??? Compró Ropa</span> <span class="bg-purple-600 text-white text-xs px-2 py-0.5 rounded">?? Cumple: 12 Ago</span></p>
+                    </div>
+                    <div class="bg-wpgray p-2 rounded">
+                        <p class="font-semibold text-sm mb-1">?? Historial:</p>
+                        <ul class="text-xs space-y-1">
+                            <li>• 02/06/2026: Compró vestido Bs. 250</li>
+                            <li>• 01/05/2026: Recibió campaña 20% dto.</li>
+                            <li class="italic">• Nota: Le gustan colores claros</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULARIO PERMISO (AHORA FUNCIONAL) -->
+            <div class="bg-wpgray rounded-lg shadow p-4 max-w-md mx-auto text-center">
+                <h3 class="font-bold mb-2">?? ESCANEA PARA RECIBIR OFERTAS:</h3>
+                <div class="text-left text-sm mb-3">
+                    <p><input type="checkbox" id="chkAcepta" checked class="mr-2"> Acepto recibir mensajes, promociones y novedades de <strong>emilipromocionesynovedadess.r.l</strong></p>
+                    <p class="mt-1">?? Correo: <input type="email" id="txtCorreo" value="emilipromocionesynovedadess.r.l@priyomail.net" class="border p-1 w-full"></p>
+                    <p>?? Zona: <input type="text" id="txtZona" value="norte" class="border p-1 w-full"></p>
+                    <p>?? Teléfono: <input type="text" id="txtTelefono" placeholder="Ej: 75093123" class="border p-1 w-full"></p>
+                </div>
+                <button id="btnGuardar" class="bg-wpgreen text-white px-4 py-1 rounded hover:bg-green-600 clickable"> [ ENVIAR Y GUARDAR ] </button>
+                <p class="text-xs mt-2 text-gray-600">Mensaje de confirmación: <br><em>"¡Gracias Karina! ? Ya estás registrad@. Recibirás nuestras mejores ofertas aquí. Si te arrepientes, solo escribe BAJA en cualquier momento."</em></p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN MENSAJES POR RUBRO -->
+        <section id="mensajes" class="mb-10">
+            <h2 class="text-xl font-bold text-wpblue mb-4 flex items-center gap-2"><i class="fa fa-commenting-o"></i> PLANTILLAS DE MENSAJES</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- RUBRO 1: ROPA -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-wpgreen text-white p-2 font-bold">??? RUBRO 1: Tienda / Ropa</div>
+                    <div class="p-4 space-y-3 text-sm">
+                        <div class="bg-gray-50 p-3 rounded-lg border">
+                            <p>? ¡Hola eliana! ?</p>
+                            <p>¿List@ para el calor de Santa Cruz? ????</p>
+                            <p>Acabamos de recibir la nueva colección de verano: telas frescas, colores vibrantes y los modelos que más te gustan.</p>
+                            <p>?? Oferta exclusiva: 30% de descuento en todo lo nuevo solo esta semana</p>
+                            <p>?? Visítanos: Equipetrol, Ventura o Centro</p>
+                            <p class="mt-2"><span class="bg-wpgreen text-white text-xs px-2 py-1 rounded clickable btn-msj">?? Ver Catálogo Completo</span> | <span class="bg-gray-200 text-xs px-2 py-1 rounded clickable btn-msj">?? Imagen de modelos</span></p>
+                            <p class="text-xs text-gray-600 mt-2">Si no deseas recibir más ofertas, responde "BAJA ROPA"</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-3 rounded-lg border">
+                            <p>¡Hola Karla cortez ruiz! ?? El calor llegó a Santa Cruz y tenemos la ropa más fresca para ti. 30% de descuento esta semana.</p>
+                            <p class="mt-1"><span class="bg-wpgreen text-white text-xs px-2 py-1 rounded clickable btn-msj">?? Ver Catálogo</span></p>
+                            <p class="text-xs text-gray-600">Responde BAJA para salir</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RUBRO 2: COMIDA -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-orange-500 text-white p-2 font-bold">?? RUBRO 2: Comida / Restaurante</div>
+                    <div class="p-4 space-y-3 text-sm">
+                        <div class="bg-gray-50 p-3 rounded-lg border">
+                            <p>?? ¡Hola Liliana ortiz arteaga, hambre? ??</p>
+                            <p>Hoy es viernes, ¡día de disfrutar sin cocinar!</p>
+                            <p>Te preparamos este menú especial solo para ti:</p>
+                            <p>?? Combo Hamburguesa + Papas + Refresco ? Bs 35</p>
+                            <p>?? 2 x 1 en pizzas familiares hasta las 21:00 h</p>
+                            <p>?? Envío GRATIS en todo el primer anillo</p>
+                            <p class="mt-2"><span class="bg-wpgreen text-white text-xs px-2 py-1 rounded clickable btn-msj">?? Pedir Ahora</span> | <span class="bg-wpblue text-white text-xs px-2 py-1 rounded clickable btn-msj">?? Llamar para reservar</span></p>
+                            <p class="text-xs text-gray-600 mt-2">Para dejar de recibir nuestros menús, escribe "BAJA COMIDA"</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-3 rounded-lg border">
+                            <p>¿Hambre, Virginia vaca solares? ?? Viernes de disfrutar: 2x1 en pizzas y envío GRATIS en el primer anillo.</p>
+                            <p class="mt-1"><span class="bg-wpgreen text-white text-xs px-2 py-1 rounded clickable btn-msj">?? Pedir Ahora</span></p>
+                            <p class="text-xs text-gray-600">Responde BAJA para salir</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RUBRO 3: SERVICIOS -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-wpblue text-white p-2 font-bold">??? RUBRO 3: Servicios / Taller</div>
+                    <div class="p-4 space-y-3 text-sm">
+                        <div class="bg-gray-50 p-3 rounded-lg border">
+                            <p>?? Recordatorio Importante, Camila vaca Gutiérrez</p>
+                            <p>Hace tiempo pasaste por nuestro taller/consultorio y queremos cuidarte ???????</p>
+                            <p>? Tu mantenimiento/revisión ya está por vencer</p>
+                            <p>? Tenemos un precio preferencial: Bs 80 (precio normal Bs 120)</p>
+                            <p>? Agendamos cuando tú digas, ¡te esperamos!</p>
+                            <p>?? Dirección: Av. José Manuel N° 87, cerca del Hipermaxi Manuel jose</p>
+                            <p class="mt-2"><span class="bg-wpgreen text-white text-xs px-2 py-1 rounded clickable btn-msj">?? Agendar mi cita</span> | <span class="bg-purple-600 text-white text-xs px-2 py-1 rounded clickable btn-msj">?? Ver mis servicios</span></p>
+                            <p class="text-xs text-gray-600 mt-2">Si no quieres más recordatorios, responde "BAJA SERVICIOS"</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-3 rounded-lg border">
+                            <p>?? Recordatorio: rodrigo solares ruiz, tu mantenimiento está por vencer. Te preparamos precio especial Bs 80.</p>
+                            <p class="mt-1"><span class="bg-wpgreen text-white text-xs px-2 py-1 rounded clickable btn-msj">?? Reservar</span></p>
+                            <p class="text-xs text-gray-600">Responde BAJA para salir</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CAMPAÑAS PROGRAMADAS -->
+        <section id="campanas" class="mb-10">
+            <h2 class="text-xl font-bold text-wpblue mb-4 flex items-center gap-2"><i class="fa fa-calendar-check-o"></i> CAMPAÑAS PROGRAMADAS</h2>
+            
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="font-bold text-lg mb-3 text-center text-pink-600">?? CAMPAÑA: DÍA DE LA MADRE 2027</h3>
+                
+                <div class="space-y-4">
+                    <!-- ENVIO 1 -->
+                    <div class="border-l-4 border-pink-500 pl-4 py-2">
+                        <p class="font-semibold text-sm">?? ENVÍO 1 | 05 Mayo 09:00 h</p>
+                        <p>¡Hola Martha Rosales Ruiz! El Día de la Madre está llegando ??</p>
+                        <p>Tenemos los regalos más lindos y especiales para agasajar a la reina de la casa ??</p>
+                        <p>? Joyas, carteras, fragancias y conjuntos únicos</p>
+                        <p>?? Entrega a domicilio GRATIS en Santa Cruz</p>
+                        <p>?? Empaque de regalo incluido SIN COSTO</p>
+                        <p class="mt-1"><span class="bg-pink-500 text-white text-xs px-2 py-1 rounded clickable btn-msj">Ver Regalos</span> | <span class="bg-pink-500 text-white text-xs px-2 py-1 rounded clickable btn-msj">Agendar entrega</span></p>
+                        <p class="text-xs text-gray-600">Si no quieres recibir más avisos, responde "BAJA REGALOS"</p>
+                    </div>
+
+                    <!-- ENVIO 2 -->
+                    <div class="border-l-4 border-pink-500 pl-4 py-2">
+                        <p class="font-semibold text-sm">?? ENVÍO 2 | 13 Mayo 16:00 h</p>
+                        <p>?? marisol, no te olvides de mamá ??</p>
+                        <p>Ya falta poquito para su día y queremos que llegue el regalo perfecto a tiempo ??</p>
+                        <p>?? OFERTA ESPECIAL: 20% de descuento adicional pagando en efectivo o transferencia</p>
+                        <p>?? Llevamos tu regalo hasta la puerta de tu casa (Primer y Segundo Anillo)</p>
+                        <p>? Promoción válida hasta el viernes 14</p>
+                        <p class="mt-1"><span class="bg-pink-500 text-white text-xs px-2 py-1 rounded clickable btn-msj">Ver lo que queda disponible</span></p>
+                        <p class="text-xs text-gray-600">Si no quieres recibir más avisos, responde "BAJA REGALOS"</p>
+                    </div>
+
+                    <!-- ENVIO 3 -->
+                    <div class="border-l-4 border-pink-500 pl-4 py-2">
+                        <p class="font-semibold text-sm">?? ENVÍO 3 | 16 Mayo 10:00 h</p>
+                        <p>?? ¡ÚLTIMA OPORTUNIDAD, Noelia! ??</p>
+                        <p>Mañana es el gran día y hoy es el ÚLTIMO día para pedir y que llegue a tiempo ??</p>
+                        <p>Tenemos pocos modelos disponibles, ¡asegura el tuyo ya!</p>
+                        <p>?? Responde "QUIERO" y te llamamos al instante</p>
+                        <p class="mt-1"><span class="bg-pink-500 text-white text-xs px-2 py-1 rounded clickable btn-msj">Comprar Ahora</span></p>
+                        <p class="text-xs text-gray-600">Si no quieres recibir más avisos, responde "BAJA REGALOS"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CHATBOT Y RESPUESTAS -->
+        <section id="bot" class="mb-10">
+            <h2 class="text-xl font-bold text-wpblue mb-4 flex items-center gap-2"><i class="fa fa-android"></i> CHATBOT - FLUJOS Y RESPUESTAS</h2>
+            
+            <!-- FLUJO AUTOMATICO -->
+            <div class="bg-white rounded-lg shadow-md p-4 mb-4">
+                <h3 class="font-bold mb-3 text-center text-wpgreen">?? FLUJO AUTOMÁTICO DE RESPUESTA</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-3 rounded-lg border">
+                        <p class="font-semibold">?? Cliente: "Quiero la cartera roja"</p>
+                        <p class="text-wpgreen mt-2 clickable btn-msj">?? Bot: "¡Qué buena elección, Karlos Sánchez Ortiz! ?? Tenemos stock disponible. El precio es Bs 180. ¿Te la enviamos a tu dirección de Equipetrol o prefieres pasar a buscarla?"</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg border">
+                        <p class="font-semibold">?? Cliente: "Enviar"</p>
+                        <p class="text-wpgreen mt-2 clickable btn-msj">?? Bot: "Perfecto ? Te llegará mañana entre 09:00 y 12:00 h. Te mandaremos la foto antes de enviarla. El pago es contraentrega. Gracias por elegirnos ??"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESPUESTAS INTELIGENTES -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h3 class="font-bold mb-3 text-center text-wpblue">?? RESPUESTAS INTELIGENTES (Siempre activas)</h3>
+                <div class="space-y-3">
+                    <div class="flex gap-3 items-start">
+                        <span class="bg-gray-200 px-2 py-1 rounded text-sm font-mono">Teresa:</span>
+                        <p>"¿A qué hora abren mañana?"</p>
+                    </div>
+                    <div class="flex gap-3 items-start text-wpgreen">
+                        <span class="bg-green-100 px-2 py-1 rounded text-sm font-mono">Bot Sandy:</span>
+                        <p class="clickable btn-msj">"¡Hola! ?? Mañana abrimos a las 08:00 de la mañana. Te esperamos con gusto. Que tengas un buen día."</p>
+                    </div>
+                    
+                    <div class="flex gap-3 items-start mt-2">
+                        <span class="bg-gray-200 px-2 py-1 rounded text-sm font-mono">Sandy:</span>
+                        <p>"Quiero saber dónde están ubicados"</p>
+                    </div>
+                    <div class="flex gap-3 items-start text-wpgreen">
+                        <span class="bg-green-100 px-2 py-1 rounded text-sm font-mono">Bot Karlos:</span>
+                        <p class="clickable btn-msj">"Claro! ?? Estamos en Av. Principal #123, zona Equipetrol, Santa Cruz. Puedes ver el mapa aquí: <span class="bg-wpgreen text-white text-xs px-2 py-0.5 rounded">Ver Mapa</span>"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN MENSAJES AUTOMÁTICOS -->
+        <section id="automaticos" class="mb-10">
+            <h2 class="text-xl font-bold text-wpblue mb-4 flex items-center gap-2"><i class="fa fa-clock-o"></i> MENSAJES FUERA DE HORARIO Y FERIADOS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- FUERA DE HORARIO -->
+                <div class="bg-white rounded-lg shadow-md p-4 border-t-4 border-yellow-500 clickable btn-msj">
+                    <h3 class="font-bold text-yellow-600 mb-2">? FUERA DE HORARIO (Lun-Vie >20:00 / Sáb >14:00)</h3>
+                    <p class="text-sm">?? ¡Hola yamile Ruiz vaca! ??</p>
+                    <p class="text-sm mt-1">Gracias por escribirnos. Nuestro horario de atención es de Lunes a Viernes de 8:00 a 20:00 y Sábados hasta las 14:00 h.</p>
+                    <p class="text-sm mt-1">?? No te preocupes: tu mensaje quedó guardado y te responderemos a primera hora del día hábil siguiente.</p>
+                    <p class="text-sm mt-1">?? ¿Es urgente? Escribe URGENTE y te avisaremos si podemos ayudarte fuera de horario.</p>
+                    <p class="text-sm mt-1">?? Mientras tanto, puedes ver nuestros productos aquí:<br>www.verproductode electrodomé
