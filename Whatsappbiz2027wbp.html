@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Biz 2027 | CRM Completo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wpgreen: '#00C853',
+                        wpblue: '#1565C0',
+                        wpgray: '#F5F5F5',
+                        wpred: '#E53935',
+                        wpyellow: '#FFC107',
+                        wppurple: '#7B2CBF',
+                        wporange: '#F57C00',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+            .clickable { cursor: pointer; transition: all 0.2s; }
+            .clickable:hover { opacity: 0.85; transform: translateY(-1px); }
+            .btn { padding: 0.6rem 1rem; border-radius: 0.5rem; font-weight: 500; transition: all 0.2s; border: none; }
+            .btn-green { background-color: #00C853; color: white; }
+            .btn-green:hover { background-color: #00A846; }
+            .btn-blue { background-color: #1565C0; color: white; }
+            .btn-blue:hover { background-color: #0D47A1; }
+            .btn-yellow { background-color: #FFC107; color: #1E1E1E; }
+            .btn-yellow:hover { background-color: #FFA000; }
+            .btn-purple { background-color: #7B2CBF; color: white; }
+            .btn-purple:hover { background-color: #5A189A; }
+            .input { border: 1px solid #ddd; padding: 0.6rem; border-radius: 0.3rem; width: 100%; }
+            .input:focus { outline: none; border-color: #00C853; box-shadow: 0 0 0 2px rgba(0,200,83,0.2); }
+            .panel-oculto { display: none; }
+            .campo { margin-bottom: 1rem; }
+            .estado-pendiente { background: #FFF3E0; color: #E65100; padding: 0.2rem 0.5rem; border-radius: 0.3rem; font-size: 0.8rem; }
+            .estado-enviado { background: #E8F5E9; color: #1B5E20; padding: 0.2rem 0.5rem; border-radius: 0.3rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-2 py-4 max-w-7xl">
+        <!-- ENCABEZADO -->
+        <header class="bg-wpgreen text-white rounded-lg shadow-lg p-4 mb-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <i class="fa fa-whatsapp text-3xl"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold">WhatsApp Biz 2027</h1>
+                        <p class="text-sm opacity-90">CRM • Envíos Masivos • Programados • Cumpleaños | Santa Cruz ????</p>
+                    </div>
+                </div>
+                <button onclick="mostrarPanel()" class="bg-white text-wpgreen px-3 py-1 rounded text-sm font-medium">
+                    <i class="fa fa-lock"></i> Panel Admin
+                </button>
+            </div>
+        </header>
+
+        <!-- PANEL DE CONTROL -->
+        <section id="panelAdmin" class="mb-10 panel-oculto">
+            <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-wpyellow">
+                <h2 class="text-xl font-bold text-wpyellow mb-4 flex items-center gap-2">
+                    <i class="fa fa-tachometer"></i> PANEL DE ADMINISTRACIÓN
+                </h2>
+
+                <div id="formPass" class="mb-4">
+                    <p class="mb-2 text-sm text-gray-600">Ingresa tu contraseña:</p>
+                    <input type="password" id="passAdmin" class="input mb-2" placeholder="Contraseña">
+                    <button onclick="verificarPass()" class="btn btn-green w-full">Ingresar</button>
+                </div>
+
+                <div id="contenidoPanel" class="panel-oculto">
+                    <!-- ESTADÍSTICAS -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                        <div class="bg-wpgreen text-white p-3 rounded text-center">
+                            <p class="text-sm">Total Clientes</p>
+                            <p id="pTotal" class="text-2xl font-bold">0</p>
+                        </div>
+                        <div class="bg-wpblue text-white p-3 rounded text-center">
+                            <p class="text-sm">Zona Norte</p>
+                            <p id="pNorte" class="text-2xl font-bold">0</p>
+                        </div>
+                        <div class="bg-orange-500 text-white p-3 rounded text-center">
+                            <p class="text-sm">Aceptan Promos</p>
+                            <p id="pAceptan" class="text-2xl font-bold">0</p>
+                        </div>
+                        <div class="bg-wpred text-white p-3 rounded text-center">
+                            <p class="text-sm">Último Registro</p>
+                            <p id="pUltimo" class="text-xs">---</p>
+                        </div>
+                    </div>
+
+                    <!-- PESTAÑAS -->
+                    <div class="flex gap-2 mb-4 border-b">
+                        <button onclick="cambiarPestaña('inmediato')" id="tabInmediato" class="px-3 py-2 bg-wpgreen text-white rounded-t">?? Envío Inmediato</button>
+                        <button onclick="cambiarPestaña('programado')" id="tabProgramado" class="px-3 py-2 bg-gray-200 rounded-t">??? Envío Programado</button>
+                        <button onclick="cambiarPestaña('historial')" id="tabHistorial" class="px-3 py-2 bg-gray-200 rounded-t">?? Mis Programaciones</button>
+                        <button onclick="cambiarPestaña('cumple')" id="tabCumple" class="px-3 py-2 bg-gray-200 rounded-t">?? Cumpleaños</button>
+                    </div>
+
+                    <!-- ?? ENVÍO INMEDIATO -->
+                    <div id="seccionInmediato" class="bg-wpgray p-4 rounded-lg mb-6 border-l-4 border-wppurple">
+                        <h3 class="font-bold text-wppurple text-lg mb-3 flex items-center gap-2">
+                            <i class="fa fa-paper-plane"></i> ENVIAR AHORA
+                        </h3>
+                        
+                        <div class="campo">
+                            <label class="block text-sm font-medium mb-1">Seleccionar zona:</label>
+                            <select id="filtroZona" class="input">
+                                <option value="TODOS">?? Todos los clientes</option>
+                                <option value="Norte">?? Zona Norte</option>
+                                <option value="Sur">?? Zona Sur</option>
+                                <option value="Este">?? Zona Este</option>
+                                <option value="Oeste">?? Zona Oeste</option>
+                                <option value="Centro">?? Centro</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label class="block text-sm font-medium mb-1">Mensaje:</label>
+                            <textarea id="mensajeMasivo" class="input" rows="4" placeholder="Escribe tu campaña..."></textarea>
+                        </div>
+
+                        <div class="campo">
+                            <button onclick="cargarClientes()" class="btn btn-blue w-full mb-2">
+                                <i class="fa fa-search"></i> Ver cantidad de clientes
+                            </button>
+                            <div id="infoEnvio" class="text-sm text-center mb-2 font-medium text-gray-700"></div>
+                            <button onclick="enviarMensajesMasivos()" id="btnEnviarMasivo" class="btn btn-green w-full" disabled>
+                                <i class="fa fa-paper-plane"></i> ENVIAR AHORA
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ??? ENVÍO PROGRAMADO -->
+                    <div id="seccionProgramado" class="bg-wpgray p-4 rounded-lg mb-6 border-l-4 border-wporange panel-oculto">
+                        <h3 class="font-bold text-wporange text-lg mb-3 flex items-center gap-2">
+                            <i class="fa fa-calendar"></i> PROGRAMAR ENVÍO
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                            <div class="campo">
+                                <label class="block text-sm font-medium mb-1">Fecha:</label>
+                                <input type="date" id="fechaProgramada" class="input" min="">
+                            </div>
+                            <div class="campo">
+                                <label class="block text-sm font-medium mb-1">Hora (hora Bolivia):</label>
+                                <input type="time" id="horaProgramada" class="input">
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label class="block text-sm font-medium mb-1">Zona:</label>
+                            <select id="zonaProgramada" class="input">
+                                <option value="TODOS">?? Todos los clientes</option>
+                                <option value="Norte">?? Zona Norte</option>
+                                <option value="Sur">?? Zona Sur</option>
+                                <option value="Este">?? Zona Este</option>
+                                <option value="Oeste">?? Zona Oeste</option>
+                                <option value="Centro">?? Centro</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label class="block text-sm font-medium mb-1">Mensaje:</label>
+                            <textarea id="mensajeProgramado" class="input" rows="4" placeholder="Escribe el mensaje que se enviará..."></textarea>
+                        </div>
+
+                        <button onclick="guardarProgramacion()" class="btn btn-purple w-full">
+                            <i class="fa fa-save"></i> GUARDAR PROGRAMACIÓN
+                        </button>
+                    </div>
+
+                    <!-- ?? HISTORIAL -->
+                    <div id="seccionHistorial" class="bg-wpgray p-4 rounded-lg mb-6 border-l-4 border-wpyellow panel-oculto">
+                        <h3 class="font-bold text-wpyellow text-lg mb-3 flex items-center gap-2">
+                            <i class="fa fa-list"></i> MIS PROGRAMACIONES
+                        </h3>
+                        <button onclick="cargarProgramaciones()" class="btn btn-blue w-full mb-3">
+                            <i class="fa fa-refresh"></i> Actualizar lista
+                        </button>
+                        <div id="listaProgramaciones" class="space-y-3 max-h-80 overflow-y-auto">
+                            <p class="text-center text-gray-500">No hay programaciones guardadas</p>
+                        </div>
+                    </div>
+
+                    <!-- ?? CUMPLEAÑOS -->
+                    <div id="seccionCumple" class="bg-wpgray p-4 rounded-lg mb-6 border-l-4 border-pink-500 panel-oculto">
+                        <h3 class="font-bold text-pink-600 text-lg mb-3 flex items-center gap-2">
+                            <i class="fa fa-birthday-cake"></i> RECORDATORIOS DE CUMPLEAÑOS
+                        </h3>
+                        <p class="text-sm text-gray-700 mb-3">? El sistema envía automáticamente un saludo con descuento el día del cumpleaños a las 8:00 AM.</p>
+                        <div class="bg-white p-3 rounded border">
+                            <p class="font-semibold mb-1">?? Mensaje que se envía:</p>
+                            <p class="text-sm text-gray-700">?? ¡Feliz Cumpleaños {Nombre}! ???? Te deseamos un día lleno de alegría. Como regalo especial, tienes un <strong>20% de descuento</strong> en toda nuestra tienda hoy. ¡Te esperamos! ??? Si no deseas recibir mensajes, escribe BAJA.</p>
+                        </div>
+                    </div>
+
+                    <button onclick="descargarDatos()" class="btn btn-yellow w-full mb-2">
+                        <i class="fa fa-download"></i> Descargar base de datos
+                    </button>
+                    <button onclick="cerrarPanel()" class="btn bg-gray-300 text-gray-700 w-full">Cerrar sesión</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVEGACIÓN -->
+        <nav class="grid grid-cols-4 md:grid-cols-8 gap-2 mb-6 text-center text-sm font-medium">
+            <a href="#crm" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? CRM</a>
+            <a href="#mensajes" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Mensajes</a>
+            <a href="#campanas" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Campañas</a>
+            <a href="#bot" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Chatbot</a>
+            <a href="#reportes" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Reportes</a>
+            <a href="#automaticos" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Automáticos</a>
+            <a href="#seguridad" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Seguridad</a>
+            <a href="#datos" class="bg-white hover:bg-wpgreen hover:text-white p-2 rounded-lg shadow transition">?? Datos</a>
+        </nav>
+
+        <!-- SECCIÓN CRM -->
+        <section id="crm" class="mb-10">
+            <h2 class="text-xl font-bold text-wpblue mb-4 flex items-center gap-2"><i class="fa fa-address-book"></i> BASE DE DATOS CRM</h2>
+            
+            <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-wpgreen mb-4 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div>
+                        <p class="font-bold text-lg">????? Cliente: María Suárez</p>
+                        <p><i class="fa fa-phone"></i> Teléfono: +591 75077545</p>
+                        <p><i class="fa fa-map-marker"></i> Ubicación: Santa Cruz, Equipetrol</p>
+                        <p><span class="bg-wpgreen text-white text-xs px-2 py-0.5 rounded">? Cliente VIP</span> <span class="bg-wpblue text-white text-xs px-2 py-0.5 rounded">??? Compró Ropa</span></p>
+                    </div>
+                    <div class="bg-wpgray p-2 rounded">
+                        <p class="font-semibold text-sm mb-1">?? Historial:</p>
+                        <ul class="text-xs space-y-1">
+                            <li>• 02/06/2026: Compró vestido Bs. 250</li>
+                            <li>• 01/05/2026: Recibió campaña 20% dto.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULARIO ACTUALIZADO -->
+            <div class="bg-wpgray rounded-lg shadow p-4 max-w-md mx-auto text-center">
+                <h3 class="font-bold mb-2">?? ESCANEA PARA RECIBIR OFERTAS:</h3>
+                <div class="text-left text-sm mb-3 space-y-2">
+                    <p><input type="checkbox" id="chkAcepta" checked class="mr-2"> Acepto recibir mensajes, promociones y novedades de <strong>emilipromocionesynovedadess.r.l</strong></p>
+                    <p>?? Nombre: <input type="text" id="txtNombre" class="input" placeholder="Tu nombre completo"></p>
+                    <p>?? Correo: <input type="email" id="txtCorreo" class="input" placeholder="ejemplo@correo.com"></p>
+                    <p>?? Fecha de nacimiento: <input type="date" id="txtFechaNac" class="input"></p>
+                    <p>?? Zona: 
+                        <select id="txtZona" class="input">
+                            <option value="Norte">Norte</option>
+                            <option value="Sur">Sur</option>
+                            <option value="Este">Este</option>
+                            <option value="Oeste">Oeste</option>
+                            <option value="Centro">Centro</option>
+                        </select>
+                    </p>
+                    <p>?? Teléfono: <input type="tel" id="txtTelefono" class="input" placeholder="Ej: 75093123" maxlength="8"></p>
+                </div>
+                <button id="btnGuardar" class="btn btn-green w-full">
+                    <i class="fa fa-paper-plane"></i> ENVIAR Y GUARDAR
+                </button>
+                <p class="text-xs mt-2 text-gray-600">Si deseas dejar de recibir mensajes, escribe "BAJA" en cualquier momento.</p>
+            </div>
+        </section>
+
+        <footer class="bg-wpgreen text-white text-center p-4 rounded-lg shadow-inner mt-8">
+            <p class="font-bold">WhatsApp Biz 2027 - CRM • Envíos Masivos • Programados • Cumpleaños</p>
+            <p class="text-sm">Santa Cruz de la Sierra, Bolivia ???? | © 2026-2027</p>
+        </footer>
+    </div>
+
+    <script>
+        // ?? CONFIGURACIÓN
+        const URL_GOOGLE_SHEETS = "AQUÍ_TU_NUEVO_ENLACE";
+        const TELEFONO_EMPRESA = "59175093123";
+        const CONTRASEÑA_ADMIN = "admin123";
+        let listaClientes = [];
+
+        const hoy = new Date().toISOString().split('T')[0];
+        document.getElementById('fechaProgramada').min = hoy;
+        document.getElementById('txtFechaNac').max = hoy;
+
+        function cambiarPestaña(nombre) {
+            document.querySelectorAll('[id^="tab"]').forEach(t => t.className = "px-3 py-2 bg-gray-200 rounded-t");
+            document.querySelectorAll('[id^="seccion"]').forEach(s => s.classList.add('panel-oculto'));
+            
+            if (nombre === 'inmediato') {
+                document.getElementById('tabInmediato').className = "px-3 py-2 bg-wpgreen text-white rounded-t";
+                document.getElementById('seccionInmediato').classList.remove('panel-oculto');
+            } else if (nombre === 'programado') {
+                document.getElementById('tabProgramado').className = "px-3 py-2 bg-wporange text-white rounded-t";
+                document.getElementById('seccionProgramado').classList.remove('panel-oculto');
+            } else if (nombre === 'historial') {
+                document.getElementById('tabHistorial').className = "px-3 py-2 bg-wpyellow text-white rounded-t";
+                document.getElementById('seccionHistorial').classList.remove('panel-oculto');
+                cargarProgramaciones();
+            } else if (nombre === 'cumple') {
+                document.getElementById('tabCumple').className = "px-3 py-2 bg-pink-500 text-white rounded-t";
+                document.getElementById('seccionCumple').classList.remove('panel-oculto');
+            }
+        }
+
+        function enviarWhatsApp(texto, destino = TELEFONO_EMPRESA) {
+            const limpio = texto.replace(/<[^>]*>/g, '').trim();
+            const codificado = encodeURIComponent(limpio);
+            window.open(`https://wa.me/${destino}?text=${codificado}`, '_blank');
+        }
+
+        document.querySelectorAll('.btn-msj').forEach(elem => {
+            elem.addEventListener('click', () => enviarWhatsApp(elem.textContent));
+        });
+
+        document.getElementById('btnGuardar').addEventListener('click', async () => {
+            const nombre = document.getElementById('txtNombre').value.trim();
+            const telefono = document.getElementById('txtTelefono').value.trim();
+            const correo = document.getElementById('txtCorreo').value.trim();
+            const zona = document.getElementById('txtZona').value;
+            const fechaNac = document.getElementById('txtFechaNac').value;
+            const acepta = document.getElementById('chkAcepta').checked;
+
+            if (!nombre) { alert("? Ingresa tu nombre"); return; }
+            if (!telefono || telefono.length !== 8 || isNaN(telefono)) { alert("? Teléfono inválido (8 dígitos)"); return; }
+            if (!correo || !correo.includes('@')) { alert("? Correo inválido"); return; }
+
+            const datos = {
+                fecha: new Date().toLocaleDateString(),
+                hora: new Date().toLocaleTimeString(),
+                nombre, correo, zona, telefono, fechaNac, acepta: acepta ? "SI" : "NO", origen: "Web Santa Cruz"
+            };
+
+            try {
+                const res = await fetch(URL_GOOGLE_SHEETS, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(datos)
+                });
+                const json = await res.json();
+                if (json.resultado === "OK") {
+                    alert("? Registro guardado correctamente");
+                    if (acepta) enviarWhatsApp(`¡Gracias por registrarte ${nombre}! ? Recibirás nuestras mejores ofertas. Escribe BAJA para dejar de recibir mensajes. ??`, "591" + telefono);
+                    document.getElementById('txtNombre').value = "";
+                    document.getElementById('txtTelefono').value = "";
+                    document.getElementById('txtCorreo').value = "";
+                    document.getElementById('txtFechaNac').value = "";
+                } else alert("? Error: " + json.error);
+            } catch (err) { alert("? Verifica tu enlace de Google"); }
+        });
+
+        function mostrarPanel() { document.getElementById('panelAdmin').style.display = "block"; window.scrollTo({top:0, behavior:'smooth'}); }
+        function cerrarPanel() { document.getElementById('panelAdmin').style.display = "none"; }
+        function verificarPass() {
+            const pass = document.getElementById('passAdmin').value;
+            if (pass === CONTRASEÑA_ADMIN) {
+                document.getElementById('formPass').style.display = "none";
+                document.getElementById('contenidoPanel').style.display = "block";
+            } else alert("? Contraseña incorrecta");
+        }
+
+        async function cargarClientes() {
+            const zona = document.getElementById('filtroZona').value;
+            try {
+                const res = await fetch(`${URL_GOOGLE_SHEETS}?action=getClientes&zona=${zona}`);
+                const datos = await res.json();
+                listaClientes = datos.clientes || [];
+                document.getElementById('infoEnvio').innerHTML = `? ${listaClientes.length} clientes recibirán el mensaje`;
+                document.getElementById('btnEnviarMasivo').disabled = listaClientes.length === 0;
+            } catch (e) { document.getElementById('infoEnvio').innerHTML = "? Error al cargar datos"; }
+        }
+
+        function enviarMensajesMasivos() {
+            const mensaje = document.getElementById('mensajeMasivo').value.trim();
+            if (!mensaje || listaClientes.length === 0) return alert("? Completa todos los campos");
+            if (!confirm(`¿Enviar a ${listaClientes.length} clientes?`)) return;
+
+            listaClientes.forEach((cliente, i) => {
+                setTimeout(() => enviarWhatsApp(mensaje, "591" + cliente.telefono), i * 1200);
+            });
+            alert("? Proceso iniciado. Se abrirán las conversaciones.");
+        }
+
+        async function guardarProgramacion() {
+            const fecha = document.getElementById('fechaProgramada').value;
+            const hora = document.getElementById('horaProgramada').value;
+            const zona = document.getElementById('zonaProgramada').value;
+            const mensaje = document.getElementById('mensajeProgramado').value.trim();
+
+            if (!fecha || !hora || !mensaje) return alert("? Completa todos los campos");
+
+            try {
+                const res = await fetch(`${URL_GOOGLE_SHEETS}?action=guardarProgramado`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({fecha, hora, zona, mensaje})
+                });
+                const json = await res.json();
+                if (json.resultado === "OK") {
+                    alert("? Programación guardada correctamente");
+                    document.getElementById('fechaProgramada').value = "";
+                    document.getElementById('horaProgramada').value = "";
+                    document.getElementById('mensajeProgramado').value = "";
+                } else alert("? Error: " + json.error);
+            } catch (e) { alert("? Error de conexión"); }
+        }
+
+        async function cargarProgramaciones() {
+            try {
+                const res = await fetch(`${URL_GOOGLE_SHEETS}?action=getEnviosProgramados`);
+                const datos = await res.json();
+                const contenedor = document.getElementById('listaProgramaciones');
+                
+                if (!datos.envios || datos.envios.length === 0) {
+                    contenedor.innerHTML = "<p class='text-center text-gray-500'>No hay programaciones guardadas</p>";
+                    return;
+                }
+
+                contenedor.innerHTML = datos.envios.map(envio => `
+                    <div class="border p-3 rounded-lg bg-white">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">?? ${envio.fecha} - ${envio.hora}</span>
+                            <span class="${envio.estado === 'PENDIENTE' ? 'estado-pendiente' : 'estado-enviado'}">${envio.estado}</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-1">?? Zona: ${envio.zona}</p>
+                        <p class="text-sm border-t pt-2">${envio.mensaje}</p>
+                    </div>
+                `).join('');
+            } catch (e) {
+                document.getElementById('listaProgramaciones').innerHTML = "<p class='text-red-500'>? Error al cargar</p>";
+            }
+        }
+
+        function descargarDatos() {
+            alert("?? Ve a tu hoja de Google > Archivo > Descargar > Excel");
+        }
+    </script>
+</body>
+</html>
+
