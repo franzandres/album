@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgenteIA Empresarial | Tu Asistente Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primario: #0F4C75;
+            --secundario: #20B2AA;
+            --acento: #FF6B35;
+            --claro: #F7F9FB;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--claro); }
+        .gradiente { background: linear-gradient(135deg, var(--primario), var(--secundario)); }
+        .tarjeta { transition: all 0.3s ease; }
+        .tarjeta:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(15, 76, 117, 0.18); }
+        .seccion { display: none; }
+        .seccion.activa { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .activo-nav { border-bottom: 3px solid var(--acento); color: var(--primario); font-weight: 600; }
+        .badge { font-size: 0.75rem; padding: 3px 10px; border-radius: 12px; }
+        .input-field { transition: border 0.2s; }
+        .input-field:focus { border-color: var(--primario); outline: none; box-shadow: 0 0 0 3px rgba(15,76,117,0.1); }
+        .btn { transition: all 0.2s; }
+        .btn:hover { transform: translateY(-1px); }
+        .etiqueta-estado { display: inline-flex; align-items: center; gap: 4px; }
+    </style>
+</head>
+<body class="text-gray-800 min-h-screen">
+
+    <!-- Barra de Navegación -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-lg gradiente flex items-center justify-center text-white font-bold">A</div>
+                <span class="text-xl font-bold text-[#0F4C75]">genteIA Empresarial</span>
+            </div>
+            
+            <div class="hidden md:flex gap-5 text-sm">
+                <a href="#inicio" class="py-2 px-2 nav-link activo-nav" data-seccion="inicio">Inicio</a>
+                <a href="#documentos" class="py-2 px-2 nav-link" data-seccion="documentos">Documentos</a>
+                <a href="#empresa" class="py-2 px-2 nav-link" data-seccion="empresa">Empresa</a>
+                <a href="#correos" class="py-2 px-2 nav-link" data-seccion="correos">Correos</a>
+                <a href="#redes" class="py-2 px-2 nav-link" data-seccion="redes">Redes</a>
+                <a href="#prestamos" class="py-2 px-2 nav-link" data-seccion="prestamos">Préstamos</a>
+                <a href="#configuracion" class="py-2 px-2 nav-link" data-seccion="configuracion">Configuración</a>
+            </div>
+
+            <button class="md:hidden text-2xl text-gray-700" id="btnMenu">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div class="md:hidden hidden bg-white shadow-lg absolute w-full" id="menuMovil">
+            <div class="container mx-auto px-4 py-3 flex flex-col gap-2">
+                <a href="#inicio" class="py-2 nav-link activo-nav" data-seccion="inicio">Inicio</a>
+                <a href="#documentos" class="py-2 nav-link" data-seccion="documentos">Documentos</a>
+                <a href="#empresa" class="py-2 nav-link" data-seccion="empresa">Empresa</a>
+                <a href="#correos" class="py-2 nav-link" data-seccion="correos">Correos</a>
+                <a href="#redes" class="py-2 nav-link" data-seccion="redes">Redes</a>
+                <a href="#prestamos" class="py-2 nav-link" data-seccion="prestamos">Préstamos</a>
+                <a href="#configuracion" class="py-2 nav-link" data-seccion="configuracion">Configuración</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 pt-24 pb-20">
+
+        <!-- ================================= INICIO ================================= -->
+        <section id="inicio" class="seccion activa">
+            <div class="py-10 md:py-16">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h1 class="text-[clamp(1.8rem,5vw,3.2rem)] font-bold leading-tight mb-6 text-[#0F4C75]">
+                            Tu asistente con <span class="text-[#FF6B35]">Inteligencia Artificial</span> para todo tu negocio
+                        </h1>
+                        <p class="text-lg text-gray-600 mb-8">
+                            Gestiona documentos firmados y sellados, administra tu empresa, responde correos y redes sociales automáticamente, y envía solicitudes de préstamo profesionales a tus prestamistas — todo desde un solo lugar.
+                        </p>
+                        <div class="flex flex-wrap gap-4 mb-10">
+                            <button class="gradiente text-white px-8 py-3 rounded-lg font-semibold shadow-lg btn">
+                                <i class="fa fa-rocket mr-2"></i>Comenzar Ahora
+                            </button>
+                            <button onclick="cambiarSeccion('prestamos')" class="border-2 border-[#0F4C75] text-[#0F4C75] px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 btn">
+                                Solicitar Préstamo
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap gap-6 text-sm text-gray-600">
+                            <span><i class="fa fa-shield text-[#20B2AA] mr-2"></i>100% Seguro</span>
+                            <span><i class="fa fa-clock-o text-[#FF6B35] mr-2"></i>Disponible 24/7</span>
+                            <span><i class="fa fa-magic text-[#0F4C75] mr-2"></i>Impulsado por IA</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <img src="https://picsum.photos/id/287/600/380" alt="Gestión Empresarial" class="w-full h-auto rounded-xl">
+                    </div>
+                </div>
+
+                <!-- Accesos Rápidos -->
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold text-center mb-8 text-[#0F4C75]">¿Qué necesitas hacer hoy?</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
+                        <button onclick="cambiarSeccion('documentos')" class="bg-white p-5 rounded-xl shadow-sm tarjeta text-center">
+                            <i class="fa fa-file-text-o text-3xl text-blue-600 mb-2"></i>
+                            <div class="text-sm font-medium">Documentos</div>
+                        </button>
+                        <button onclick="cambiarSeccion('empresa')" class="bg-white p-5 rounded-xl shadow-sm tarjeta text-center">
+                            <i class="fa fa-building text-3xl text-teal-600 mb-2"></i>
+                            <div class="text-sm font-medium">Empresa</div>
+                        </button>
+                        <button onclick="cambiarSeccion('correos')" class="bg-white p-5 rounded-xl shadow-sm tarjeta text-center">
+                            <i class="fa fa-envelope text-3xl text-green-600 mb-2"></i>
+                            <div class="text-sm font-medium">Correos</div>
+                        </button>
+                        <button onclick="cambiarSeccion('redes')" class="bg-white p-5 rounded-xl shadow-sm tarjeta text-center">
+                            <i class="fa fa-share-alt text-3xl text-purple-600 mb-2"></i>
+                            <div class="text-sm font-medium">Redes</div>
+                        </button>
+                        <button onclick="cambiarSeccion('prestamos')" class="bg-white p-5 rounded-xl shadow-sm tarjeta text-center">
+                            <i class="fa fa-money text-3xl text-orange-500 mb-2"></i>
+                            <div class="text-sm font-medium">Préstamos</div>
+                        </button>
+                        <button onclick="cambiarSeccion('prestamos')" class="bg-white p-5 rounded-xl shadow-sm tarjeta text-center">
+                            <i class="fa fa-university text-3xl text-indigo-600 mb-2"></i>
+                            <div class="text-sm font-medium">Prestamistas</div>
+                        </button>
+                        <button onclick="cambiarSeccion('configuracion')" class="bg-white p-5 rounded-xl shadow-sm tarjeta text-center">
+                            <i class="fa fa-cog text-3xl text-gray-600 mb-2"></i>
+                            <div class="text-sm font-medium">Ajustes</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================= DOCUMENTOS ================================= -->
+        <section id="documentos" class="seccion py-10">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-[#0F4C75]">
+                <i class="fa fa-file-text-o"></i> Gestión de Documentos
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Subir y Procesar -->
+                <div class="md:col-span-2 bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-semibold mb-4">?? Subir y gestionar archivos</h3>
+                    <div class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center mb-6 hover:border-[#20B2AA] transition-colors">
+                        <i class="fa fa-cloud-upload text-4xl text-gray-400 mb-3"></i>
+                        <p class="text-gray-500 mb-3">Arrastra archivos aquí o haz clic para seleccionar</p>
+                        <input type="file" multiple class="w-full max-w-sm mx-auto text-sm">
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm btn">
+                            <i class="fa fa-pencil-square-o mr-1"></i> Firmar Documento
+                        </button>
+                        <button class="bg-teal-600 text-white px-4 py-2 rounded-lg text-sm btn">
+                            <i class="fa fa-certificate mr-1"></i> Sellar Documento
+                        </button>
+                        <button class="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm btn">
+                            <i class="fa fa-eye mr-1"></i> Previsualizar
+                        </button>
+                        <button class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm btn">
+                            <i class="fa fa-download mr-1"></i> Descargar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Estado Rápido -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-semibold mb-4">?? Estado</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <span class="text-sm"><i class="fa fa-check-circle text-green-600 mr-2"></i>Firmados</span>
+                            <span class="font-bold text-green-600">12</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-teal-50 rounded-lg">
+                            <span class="text-sm"><i class="fa fa-certificate text-teal-600 mr-2"></i>Sellados</span>
+                            <span class="font-bold text-teal-600">8</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-yellow-50 rounded-lg">
+                            <span class="text-sm"><i class="fa fa-clock-o text-yellow-600 mr-2"></i>Pendientes</span>
+                            <span class="font-bold text-yellow-600">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de Documentos -->
+                <div class="md:col-span-3 bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-semibold mb-4">?? Mis Documentos</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="text-left text-gray-500 border-b">
+                                    <th class="pb-3">Nombre</th>
+                                    <th class="pb-3">Tipo</th>
+                                    <th class="pb-3">Fecha</th>
+                                    <th class="pb-3">Estado</th>
+                                    <th class="pb-3">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3">contrato_servicios.pdf</td>
+                                    <td>PDF</td>
+                                    <td>14/10/2026</td>
+                                    <td><span class="badge bg-green-100 text-green-700">? Firmado y Sellado</span></td>
+                                    <td>
+                                        <button class="text-blue-600 mr-2" title="Ver"><i class="fa fa-eye"></i></button>
+                                        <button class="text-green-600 mr-2" title="Descargar"><i class="fa fa-download"></i></button>
+                                        <button class="text-red-500" title="Eliminar"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3">propuesta_prestamo.docx</td>
+                                    <td>DOCX</td>
+                                    <td>15/10/2026</td>
+                                    <td><span class="badge bg-yellow-100 text-yellow-700">? Pendiente</span></td>
+                                    <td>
+                                        <button class="text-blue-600 mr-2"><i class="fa fa-eye"></i></button>
+                                        <button class="text-teal-600 mr-2" title="Firmar"><i class="fa fa-pencil"></i></button>
+                                        <button class="text-red-500"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3">solicitud_prestamo_html.pdf</td>
+                                    <td>PDF</td>
+                                    <td>15/10/2026</td>
+                                    <td><span class="badge bg-green-100 text-green-700">? Enviado</span></td>
+                                    <td>
+                                        <button class="text-blue-600 mr-2"><i class="fa fa-eye"></i></button>
+                                        <button class="text-green-600 mr-2"><i class="fa fa-download"></i></button>
+                                        <button class="text-red-500"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================= ADMINISTRACIÓN DE EMPRESA ================================= -->
+        <section id="empresa" class="seccion py-10">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-[#0F4C75]">
+                <i class="fa fa-building"></i> Administración de Mi Empresa
+            </h2>
+
+            <!-- Resumen Financiero -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white p-4 rounded-xl shadow-sm tarjeta">
+                    <p class="text-sm text-gray-500">?? Clientes</p>
+                    <p class="text-2xl font-bold text-[#0F4C75]">48</p>
+                    <span class="text-xs text-green-500">+5 este mes</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm tarjeta">
+                    <p class="text-sm text-gray-500">?? Ingresos</p>
+                    <p class="text-2xl font-bold text-green-600">Bs. 24.500</p>
+                    <span class="text-xs text-green-500">+12% vs mes anterior</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm tarjeta">
+                    <p class="text-sm text-gray-500">?? Gastos</p>
+                    <p class="text-2xl font-bold text-red-500">Bs. 8.200</p>
+                    <span class="text-xs text-red-500">-3% vs mes anterior</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm tarjeta">
+                    <p class="text-sm text-gray-500">?? Ganancia</p>
+                    <p class="text-2xl font-bold text-teal-600">Bs. 16.300</p>
+                    <span class="text-xs text-green-500">+8% este mes</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Clientes -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-semibold mb-4 flex justify-between items-center">
+                        <span><i class="fa fa-users text-[#20B2AA] mr-2"></i>Clientes</span>
+                        <button class="text-sm bg-[#0F4C75] text-white px-3 py-1 rounded text-xs btn">+ Nuevo Cliente</button>
+                    </h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-gray-50 rounded-lg flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">Juan Pérez</p>
+                                <p class="text-xs text-gray-500">juan@email.com • +591 7000-1234</p>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">Activo</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">María López</p>
+                                <p class="text-xs text-gray-500">maria@email.com • +591 6999-5678</p>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">Activo</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">Empresa Constructora S.A.</p>
+                                <p class="text-xs text-gray-500">contacto@constructora.bo</p>
+                            </div>
+                            <span class="badge bg-yellow-100 text-yellow-700">Pendiente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventario -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-semibold mb-4 flex justify-between items-center">
+                        <span><i class="fa fa-cubes text-[#FF6B35] mr-2"></i>Inventario</span>
+                        <button class="text-sm bg-[#0F4C75] text-white px-3 py-1 rounded text-xs btn">+ Agregar</button>
+                    </h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-gray-50 rounded-lg flex justify-between items-center">
+                            <span>Producto A — Servicios</span>
+                            <span class="font-medium text-green-600">Disponible</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg flex justify-between items-center">
+                            <span>Producto B — Consultoría</span>
+                            <span class="font-medium text-green-600">Disponible</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg flex justify-between items-center">
+                            <span>Trámites y Préstamos</span>
+                            <span class="font-medium text-green-600">Activo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movimientos -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-semibold mb-4"><i class="fa fa-exchange text-green-600 mr-2"></i>Movimientos Recientes</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between p-2 border-b">
+                            <span>Venta — Servicio a Juan Pérez</span>
+                            <span class="text-green-600 font-medium">+ Bs. 1.500</span>
+                        </div>
+                        <div class="flex justify-between p-2 border-b">
+                            <span>Alquiler de oficina</span>
+                            <span class="text-red-500 font-medium">- Bs. 1.200</span>
+                        </div>
+                        <div class="flex justify-between p-2 border-b">
+                            <span>Honorarios — Empresa Constructora</span>
+                            <span class="text-green-600 font-medium">+ Bs. 8.000</span>
+                        </div>
+                        <div class="flex justify-between p-2">
+                            <span>Gastos operativos</span>
+                            <span class="text-red-500 font-medium">- Bs. 450</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tareas -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-semibold mb-4"><i class="fa fa-calendar-check-o text-blue-600 mr-2"></i>Tareas Pendientes</h3>
+                    <div class="space-y-3 text-sm">
+                        <label class="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+                            <input type="checkbox" class="w-4 h-4">
+                            <span>?? Enviar solicitud de préstamo al prestamista</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                            <input type="checkbox" class="w-4 h-4">
+                            <span>?? Responder correos pendientes</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                            <input type="checkbox" class="w-4 h-4">
+                            <span>?? Publicar en redes sociales</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="w-4 h-4">
+                            <span>?? Reunión con cliente — Viernes 10:00 AM</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================= CORREOS ================================= -->
+        <section id="correos" class="seccion py-10">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-[#0F4C75]">
+                <i class="fa fa-envelope"></i> Gestión de Correos
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Buzón -->
+                <div class="bg-white p-4 rounded-xl shadow-sm">
+                    <div class="flex gap-2 mb-4">
+                        <button class="flex-1 py-2 bg-red-50 text-red-600 rounded-lg text-sm font-medium border border-red-200">
+                            <i class="fa fa-google mr-1"></i> Gmail
+                        </button>
+                        <button class="flex-1 py-2 bg-blue-50 text-blue-600 rounded-lg text-sm font-medium border border-blue-200">
+                            <i class="fa fa-windows mr-1"></i> Outlook
+                        </button>
+                    </div>
+                    <h4 class="text-sm font-medium text-gray-500 mb-3">?? Buzón de entrada</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                            <p class="font-medium">?? Banco Nacional / Prestamista</p>
+                            <p class="text-xs text-gray-500 truncate">Re: Solicitud de préstamo — Documentación recibida...</p>
+                            <p class="text-xs text-gray-400 mt-1">Hoy, 09:15</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                            <p class="font-medium">María López</p>
+                            <p class="text-xs text-gray-500 truncate">Confirmación de reunión para mañana...</p>
+                            <p class="text-xs text-gray-400">Ayer</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                            <p class="font-medium">Juan Pérez</p>
+                            <p class="text-xs text-gray-500 truncate">Gracias por la asesoría y el apoyo...</p>
+                            <p class="text-xs text-gray-400">12/10/2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Redactar -->
+                <div class="md:col-span-2 bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-semibold mb-4">?? Redactar Correo</h3>
+                    <div class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <label class="block">
+                                <span class="text-sm text-gray-600">De:</span>
+                                <select class="mt-1 w-full border rounded-lg p-2 text-sm input-field">
+                                    <option>tu.empresa@gmail.com</option>
+                                    <option>contacto@tuempresa.bo</option>
+                                </select>
+                            </label>
+                            <label class="block">
+                                <span class="text-sm text-gray-600">Para:</span>
+                                <input type="email" class="mt-1 w-full border rounded-lg p-2 text-sm input-field" placeholder="destinatario@email.com">
+                            </label>
+                        </div>
+                        <label class="block">
+                            <span class="text-sm text-gray-600">Asunto:</span>
+                            <input type="text" class="mt-1 w-full border rounded-lg p-2 text-sm input-field" placeholder="Respuesta sobre solicitud de préstamo">
+                        </label>
+                        <label class="block">
+                            <span class="text-sm text-gray-600">Mensaje:</span>
+                            <textarea rows="5" class="mt-1 w-full border rounded-lg p-2 text-sm input-field" placeholder="Escribe tu mensaje... o pídele a la IA que lo redacte por ti"></textarea>
+                        </label>
+                        
+                        <div class="flex flex-wrap gap-3">
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm btn">
+                                <i class="fa fa-magic mr-1"></i> Generar con IA
+                            </button>
+                            <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm btn">
+                                <i class="fa fa-paper-plane mr-1"></i> Enviar
+                            </button>
+                            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm btn">
+                                <i class="fa fa-paperclip mr-1"></i> Adjuntar Documento
+                            </button>
+                            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm btn">
+                                <i class="fa fa-save mr-1"></i> Guardar Borrador
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================= REDES SOCIALES ================================= -->
+        <section id="redes" class="seccion py-10">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-[#0F4C75]">
+                <i class="fa fa-share-alt"></i> Redes Sociales
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Instagram -->
+                <div class="bg-white p-6 rounded-xl shadow-sm tarjeta">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa fa-instagram text-2xl text-pink-600"></i>
+                        <div>
+                            <h3 class="font-semibold">Instagram</h3>
+                            <p class="text-xs text-gray-500">@tu_empresa</p>
+                        </div>
+                    </div>
+                    <label class="block mb-3">
+                        <span class="text-sm text-gray-600">?? Mensaje / Publicación:</span>
+                        <textarea rows="3" class="mt-1 w-full border rounded-lg p-2 text-sm input-field" placeholder="Escribe tu publicación o respuesta..."></textarea>
+                    </label>
+                    <button class="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white py-2 rounded-lg text-sm btn">
+                        <i class="fa fa-send mr-1"></i> Publicar / Responder
+                    </button>
+                </div>
+
+                <!-- Facebook -->
+                <div class="bg-white p-6 rounded-xl shadow-sm tarjeta">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa fa-facebook-square text-2xl text-blue-700"></i>
+                        <div>
+                            <h3 class="font-semibold">Facebook</h3>
+                            <p class="text-xs text-gray-500">Tu Página Empresarial</p>
+                        </div>
+                    </div>
+                    <label class="block mb-3">
+                        <span class="text-sm text-gray-600">?? Mensaje / Publicación:</span>
+                        <textarea rows="3" class="mt-1 w-full border rounded-lg p-2 text-sm input-field" placeholder="Escribe tu publicación o respuesta..."></textarea>
+                    </label>
+                    <button class="w-full bg-blue-700 text-white py-2 rounded-lg text-sm btn">
+                        <i class="fa fa-send mr-1"></i> Publicar / Responder
+                    </button>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="bg-white p-6 rounded-xl shadow-sm tarjeta">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa fa-whatsapp text-2xl text-green-600"></i>
+                        <div>
+                            <h3 class="font-semibold">WhatsApp</h3>
+                            <p class="text-xs text-gray-500">+591 7000-0000</p>
+                        </div>
+                    </div>
+                    <label class="block mb-2">
+                        <span class="text-sm text-gray-600">?? Número destinatario:</span>
+                        <input type="tel" class="mt-1 w-full border rounded-lg p-2 text-sm input-field" placeholder="+591 6999-9999">
+                    </label>
+                    <label class="block mb-3">
+                        <span class="text-sm text-gray-600">?? Mensaje:</span>
+                        <textarea rows="2" class="mt-1 w-full border rounded-lg p-2 text-sm input-field" placeholder="Escribe tu mensaje..."></textarea>
+                    </label>
+                    <button class="w-full bg-green-600 text-white py-2 rounded-lg text-sm btn">
+                        <i class="fa fa-paper-plane mr-1"></i> Enviar Mensaje
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mensajes Recientes -->
+            <div class="mt-6 bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="font-semibold mb-4">?? Mensajes Recibidos — Responder con IA</h3>
+                <div class="space-y-4 text-sm">
+                    <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                        <i class="fa fa-instagram text-pink-500 mt-1 text-lg"></i>
+                        <div class="flex-1">
+                            <p class="font-medium">@cliente_interesado</p>
+                            <p class="text-gray-600 mt-1">¡Hola! Quisiera saber más sobre cómo puedo solicitar un préstamo con ustedes y qué requisitos necesito presentar.</p>
+                            <button class="mt-2 bg-purple-100 text-purple-700 px-3 py-1 rounded text-xs font-medium btn">
+                                <i class="fa fa-magic mr-1"></i> Generar Respuesta con IA
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                        <i class="fa fa-whatsapp text-green-500 mt-1 text-lg"></i>
+                        <div class="flex-1">
+                            <p class="font-medium">Sr. Carlos — Prestamista</p>
+                            <p class="text-gray-600 mt-1">Buen día. Quedo a la espera de la documentación solicitada para avanzar con su trámite de préstamo. Saludos.</p>
+                            <button class="mt-2 bg-purple-100 text-purple-700 px-3 py-1 rounded text-xs font-medium btn">
+                                <i class="fa fa-magic mr-1"></i> Generar Respuesta con IA
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================= PRÉSTAMOS Y PRESTAMISTAS ================================= -->
+        <section id="prestamos" class="seccion py-10">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-[#0F4C75]">
+                <i class="fa fa-money"></i> Préstamos y Envío a Prestamistas
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- Resumen de Préstamos -->
+                <div class="bg-white p-5 rounded-xl shadow-sm tarjeta">
+                    <p class="text-sm text-gray-500">Solicitudes Activas</p>
+                    <p class="text-3xl font-bold text-[#0F4C75]">3</p>
+                    <span class="text-xs text-blue-500">En trámite</span>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm tarjeta">
+                    <p class="text-sm text-gray-500">Monto Total Solicitado</p>
+                    <p class="text-3xl font-bold text-green-600">Bs. 85.000</p>
+                    <span class="text-xs text-green-500">En proceso</span>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm tarjeta">
+                    <p class="text-sm text-gray-500">Prestamistas Conectados</p>
+                    <p class="text-3xl font-bold text-teal-600">5</p>
+                    <span class="text-xs text-teal-500">Bancos y entidades</span>
+                </div>
+            </div>
+
+            <!-- Formulario de Solicitud -->
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-sm mb-8">
+                <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                    <i class="fa fa-file-code-o text-[#FF6B35]"></i> Nueva Solicitud de Préstamo — Generar Documento HTML
+                </h3>
+
+                <div class="grid md:grid-cols-2 gap-5 mb-6">
+                    <label class="block">
+                        <span class="text-sm font-medium text-gray-700">?? Nombre del Prestamista / Entidad</span>
+                        <input type="text" class="mt-1 w-full border rounded-lg p-2 input-field" placeholder="Ej: Banco Nacional de Bolivia S.A.">
+                    </label>
+                    <label class="block">
+                        <span class="text-sm font-medium text-gray-700">?? Correo de Envío</span>
+                        <input type="email" class="mt-1 w-full border rounded-lg p-2 input-field" placeholder="solicitudes@entidad.bo">
+                    </label>
+                    <label class="block">
+                        <span class="text-sm font-medium text-gray-700">?? Monto Solicitado (Bolivianos)</span>
+                        <input type="number" class="mt-1 w-full border rounded-lg p-2 input-field" placeholder="50000">
+                    </label>
+                    <label class="block">
+                        <span class="text-sm font-medium text-gray-700">?? Plazo de Pago (meses)</span>
+                        <input type="number" class="mt-1 w-full border rounded-lg p-2 input-field" placeholder="24">
+                    </label>
+                    <label class="block md:col-span-2">
+                        <span class="text-sm font-medium text-gray-700">?? Propósito del Préstamo</span>
+                        <select class="mt-1 w-full border rounded-lg p-2 input-field">
+                            <option>Capital de trabajo / Negocio</option>
+                            <option>Compra de activos / Equipo</option>
+                            <option>Ampliación de local</option>
+                            <option>Consolidación de deudas</option>
+                            <option>Personal / Otro</option>
+                        </select>
+                    </label>
+                </div>
+
+                <label class="block mb-5">
+                    <span class="text-sm font-medium text-gray-700">?? Documentos a adjuntar en la solicitud</span>
+                    <input type="file" multiple class="mt-2 block w-full text-sm border rounded-lg p-2">
+                    <p class="text-xs text-gray-500 mt-1">Puedes seleccionar varios: identificación, comprobantes de ingresos, estados de cuenta, etc.</p>
+                </label>
+
+                <label class="block mb-6">
+                    <span class="text-sm font-medium text-gray-700">?? Mensaje de presentación</span>
+                    <textarea rows="4" class="mt-1 w-full border rounded-lg p-2 input-field" placeholder="Estimado equipo de [Nombre de la entidad], por medio de la presente solicito formalmente un préstamo por el monto indicado. Adjunto toda la documentación requerida para su evaluación. Quedo a su disposición para cualquier consulta. Saludos cordiales."></textarea>
+                </label>
+
+                <!-- VISTA PREVIA HTML -->
+                <div class="p-5 bg-blue-50 rounded-xl mb-6 border border-blue-100">
+                    <h4 class="font-medium text-[#0F4C75] mb-4 flex items-center gap-2">
+                        <i class="fa fa-code"></i> Vista Previa — Documento HTML que se enviará
+                    </h4>
+                    <div class="bg-white border rounded-lg p-6 text-sm text-gray-700">
+                        <p class="text-center font-bold text-xl text-[#0F4C75] mb-4">SOLICITUD DE PRÉSTAMO</p>
+                        <p class="text-center text-gray-500 mb-6">Santa Cruz de la Sierra, Bolivia — 15 de octubre de 2026</p>
+                        
+                        <table class="w-full mb-4">
+                            <tr>
+                                <td class="font-medium py-2 w-40">Señores:</td>
+                                <td>[Nombre del Prestamista / Entidad Bancaria]</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium py-2">Correo:</td>
+                                <td>[Correo de la entidad]</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium py-2">Monto Solicitado:</td>
+                                <td class="font-bold text-green-600">Bs. [Monto en números] — ([Monto en letras])</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium py-2">Plazo:</td>
+                                <td>[Meses] meses</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium py-2">Propósito:</td>
+                                <td>[Propósito seleccionado]</td>
+                            </tr>
+                        </table>
+                        
+                        <hr class="my-4 border-blue-200">
+                        
+                        <p class="mb-3">Estimados señores,</p>
+                        <p class="mb-3">Por medio de la presente, solicito formalmente un préstamo por el monto y plazo indicados arriba. Adjunto a este correo encontrará la documentación completa requerida para el análisis de esta solicitud.</p>
+                        
+                        <p class="font-medium mb-2">?? Documentación adjunta:</p>
+                        <ul class="list-disc list-inside mb-4 space-y-1">
+                            <li>Documento de identidad vigente</li>
+                            <li>Comprobantes de ingresos de los últimos 3 meses</li>
+                            <li>Documentos de la empresa (si aplica)</li>
+                            <li>Otros: [documentos adicionales]</li>
+                        </ul>
+                        
+                        <p>Quedo a su entera disposición para coordinar una reunión o aclarar cualquier información adicional que requieran.</p>
+                        
+                        <p class="mt-6 mb-1">Atentamente,</p>
+                        <p class="font-semibold">[Su Nombre Completo / Razón Social]</p>
+                        <p class="text-sm text-gray-500">?? Teléfono: +591 XXXXXXXX<br>?? Correo: correo@suempresa.bo<br>?? Santa Cruz, Bolivia</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-[#0F4C75] text-white px-6 py-2.5 rounded-lg font-medium btn">
+                        <i class="fa fa-file-code-o mr-2"></i> Generar HTML
+                    </button>
+                    <button class="bg-green-600 text-white px-6 py-2.5 rounded-lg font-medium btn">
+                        <i class="fa fa-paper-plane mr-2"></i> Enviar al Prestamista
+                    </button>
+                    <button class="bg-gray-200 text-gray-700 px-6 py-2.5 rounded-lg font-medium btn">
+                        <i class="fa fa-download mr-2"></i> Descargar copia
+                    </button>
+                    <button class="bg-orange-500 text-white px-6 py-2.5 rounded-lg font-medium btn">
+                        <i class="fa fa-print mr-2"></i> Imprimir
+                    </button>
+                </div>
+            </div>
+
+            <!-- Historial de Solicitudes -->
+            <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="font-semibold mb-4">?? Historial de Solicitudes Enviadas</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="text-left text-gray-500 border-b">
+                                <th class="pb-3">Fecha</th>
+                                <th class="pb-3">Prestamista</th>
+                                <th class="pb-3">Monto (Bs.)</th>
+                                <th class="pb-3">Plazo</th>
+                                <th class="pb-3">Estado</th>
+                                <th class="pb-3">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="py-3">15/10/2026</td>
+                                <td>Banco Nacional S.A.</td>
+                                <td>50.000</td>
+                                <td>24 meses</td>
+                                <td><span class="badge bg-blue-100 text-blue-700">?? Enviado</span></td>
+                                <td>
+                                    <button class="text-blue-600 mr-2" title="Ver"><i class="fa fa-eye"></i></button>
+                                    <button class="text-green-600" title="Reenviar"><i class="fa fa-share"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="py-3">10/10/2026</td
